@@ -1,8 +1,33 @@
 # Journal :postbox:
 
-I plan to fill this section with what I discovered today - - - Everyday! 
+I plan to fill this section with what I discovered today - - - AFAP <As Frequently as possible>! 
 
+---
+`August 15, 2018`
 
+#### CS231n Convolutional Neural Networks
+
+- A ConvNet architecture is in the simplest case a list of Layers that transform the image volume into an output volume (e.g. holding the class scores)
+- There are a few distinct types of Layers (e.g. CONV/FC/RELU/POOL are by far the most popular)
+- Each Layer accepts an input 3D volume and transforms it to an output 3D volume through a differentiable function
+- Each Layer may or may not have parameters (e.g. CONV/FC do, RELU/POOL don’t)
+- Each Layer may or may not have additional hyperparameters (e.g. CONV/FC/POOL do, RELU doesn’t)
+- _Filter_ = _Receptive Field_
+- In general, setting zero padding to be P=(F−1)/2 when the stride is S=1 ensures that the input volume and output volume will have the same size spatially.
+- We can compute the spatial size of the output volume as a function of the input volume size (W), the receptive field size of the Conv Layer neurons (F), the stride with which they are applied (S), and the amount of zero padding used (P) on the border. How many neurons “fit” is given by (W−F+2P)/S+1
+- **Parameter sharing** scheme is used in Convolutional Layers to control the number of parameters. It turns out that we can dramatically reduce the number of parameters by making one reasonable assumption: That if one feature is useful to compute at some spatial position (x,y), then it should also be useful to compute at a different position (x2,y2). Only D unique set of weights (one for each depth slice)
+- It is worth noting that there are only two commonly seen variations of the max pooling layer found in practice: A pooling layer with F=3,S=2 (also called overlapping pooling), and more commonly F=2,S=2. Pooling sizes with larger receptive fields are too destructive.
+- Rules of thumb CNN architecture:
+	- The input layer (that contains the image) should be divisible by 2 many times.
+	- The conv layers should be using small filters (e.g. 3x3 or at most 5x5), using a stride of S=1, and crucially, padding the input volume with zeros in such way that the conv layer does not alter the spatial dimensions of the input.
+	- The pool layers are in charge of downsampling the spatial dimensions of the input. The most common setting is to use max-pooling with 2x2 receptive fields (i.e. F=2), and with a stride of 2 (i.e. S=2). Note that this discards exactly 75% of the activations in an input volume
+- Keep in mind that ConvNet features are more generic in early layers and more original-dataset-specific in later layers.
+- Transfer learning rules of thumb:
+	- New dataset is small and similar to original dataset. _Use CNN codes (CNN as a feature descriptor)_
+	- New dataset is large and similar to the original dataset. _We can fine-tune through the full network._
+	- New dataset is small but very different from the original dataset. _It might work better to train the SVM classifier from activations somewhere earlier in the network._
+	- New dataset is large and very different from the original dataset. _We can fine-tune through the full network with initialized weights from a pretrained network._
+- It’s common to use a smaller learning rate for ConvNet weights that are being fine-tuned, in comparison to the (randomly-initialized) weights for the new linear classifier that computes the class scores of your new dataset.
 ---
 `August 13, 2018`
 
@@ -26,7 +51,7 @@ than the input and output layers so it doesn't learn a one on one representation
 	- _Denoising Autoencoder_: The size of the input is smaller than the size of the hidden layer
 (overcomplete).(use regularization!)
 	- Split-brain auto encoders are composed of concatenated cross-channel encoders. are able to transfer well to other, unseen tasks.
-	- 
+
 - **GANs**
 - **Unsupervised Learning**: 
 	- It can learn compression to store large datasets  
@@ -42,7 +67,7 @@ semantic parsing tasks. PointNets are able to capture local structures from near
 - Hard attention focus on multiple sharp points in the image, while soft attention focusses on
 smooth areas in the image
 - YOLO limitations: Inappropriate treatment of error, Generalizing errors, Prediction of objects
-- 
+- Curriculum Learning - Easier samples come at the beginning of the training.
 
 ---
 `July 23, 2018`
