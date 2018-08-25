@@ -1,7 +1,22 @@
 # Journal :postbox:
 
-I plan to fill this section with what I discovered today - - - AFAP <As Frequently as possible>! 
+I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_! 
 
+---
+`August 24, 2018`
+
+#### PyTorch :fire:
+- Implemented a Dynamic Neural Network using Pytorch's amazing dynamic Computation graphs and `torch.nn`.
+- Autograd is epic.
+- Implemented a reusable save_model_epochs function to save model training state
+- Cool Findings:
+	- A fairly simple Dynamic net crushes the Spiral Dataset!
+	- Tried the Dynamic Net (Fully connected) on [Sign Language Digits Dataset](https://www.kaggle.com/ardamavi/sign-language-digits-dataset) and it seems to overfit (Train: 99%, Test: 85%) as expected.
+	- Will try to build a new net(`TenNet`) to crush this set now.
+
+#### More Python :snake:
+- Tried Spotify's Luigi for workflow development
+- Tried Threading module and decorators and ArgumentParser.
 ---
 `August 15, 2018`
 
