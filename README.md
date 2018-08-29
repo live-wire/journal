@@ -3,10 +3,29 @@
 I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_! 
 
 ---
+`August 28, 2018`
+
+Amazing [video](https://www.youtube.com/watch?v=u6aEYuemt0M) by Karpathy. (Timing: 1:21:47)
+- Convolutional net on the frame and the low-level representation is an input to the RNN
+- Make neurons in the ConvNet recurrent. Usually neurons in convnets represent a function of a local neighbourhood, but now this could also incorporate the dotproduct of it's own or neighbours previous activations making it a function of previous activations of the neighbourhood for each neuron. Each neuron in the convnet - _Recurrent_!
+
+** An idea for repitition estimation: Maybe look for activation spikes in the deepvis toolbox by Jason Yosinski and train a simple classifier on them. **
+
+
+#### TenNet :hand:
+- Modified `LeNet` architecture.
+- 
+
+#### Uber AI labs (Jason Yosinski)
+- **Coordconv layers** - for sharper object generation (GANs), Convolutional Neural Networks too and definitely Reinforcement learning. Paper [here](https://arxiv.org/abs/1807.03247)
+- **Intrinsic Dimension** - Lower Dimension representation of neural networks (Reduces Dimensions). Paper [here](https://arxiv.org/abs/1804.08838)
+
+---
 `August 24, 2018`
 
 #### PyTorch :fire:
 - Implemented a Dynamic Neural Network using Pytorch's amazing dynamic Computation graphs and `torch.nn`.
+- Fully Connected layers using `torch.nn.Linear(input_dimension, output_dimension)`
 - Autograd is epic.
 - Implemented a reusable save_model_epochs function to save model training state
 - Cool Findings:
@@ -66,7 +85,6 @@ than the input and output layers so it doesn't learn a one on one representation
 	- _Denoising Autoencoder_: The size of the input is smaller than the size of the hidden layer
 (overcomplete).(use regularization!)
 	- Split-brain auto encoders are composed of concatenated cross-channel encoders. are able to transfer well to other, unseen tasks.
-
 - **GANs**
 - **Unsupervised Learning**: 
 	- It can learn compression to store large datasets  
