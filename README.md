@@ -3,6 +3,25 @@
 I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_! 
 
 ---
+`September 1, 2018`
+
+#### Django unchained
+- Django Rest Framework [tutorials](http://www.django-rest-framework.org/tutorial/1-serialization/) are amazing.
+- _TokenAuthentication_ is needed for multipurpose API (But this doesn't support browsable APIs). Solution: Use SessionAuthentication as well (But this needs CSRF cookie set) Solution: Extend SessionAuthentication class and override *enforce_csrf* function and just return it. Boom! Browsable API with TokenAuthentication.
+- Views can be Class based or function based. ViewSets are even a further abstraction over class based views (Class based views can make use of _generics_ and _mixins_).
+- URLs are defined separately in a file usually called `urls.py`. (Use _Routers_ if you're using ViewSets).
+- Model is defined by extending _django.db.models.Model_. All the field types are defined here: `code = models.TextField()`
+- Serializer has to be defined for the model by extending *rest_framework.serializers.HyperlinkedModelSerializer / ModelSerializer* . Primary key relations etc are defined here.
+- _project/project/settings.py_ contains all the project settings and resides in `django.conf.settings`.
+
+Useful commands:
+	- django-admin.py startproject projectname
+	- django-admin.py startapp appname
+	- python manage.py makemigrations
+	- python manage.py migrate
+	- python manage.py runserver
+
+---
 `August 28, 2018`
 
 Amazing [video](https://www.youtube.com/watch?v=u6aEYuemt0M) by Karpathy. (Timing: 1:21:47)
@@ -13,8 +32,9 @@ Amazing [video](https://www.youtube.com/watch?v=u6aEYuemt0M) by Karpathy. (Timin
 
 
 #### TenNet :hand:
-- Modified `LeNet` architecture.
-- 
+- Used the `LeNet` architecture.
+- Got `95%` test and `99%` train accuracy. Is it still an overfit ?
+
 
 #### Uber AI labs (Jason Yosinski)
 - **Coordconv layers** - for sharper object generation (GANs), Convolutional Neural Networks too and definitely Reinforcement learning. Paper [here](https://arxiv.org/abs/1807.03247)
@@ -62,6 +82,7 @@ Amazing [video](https://www.youtube.com/watch?v=u6aEYuemt0M) by Karpathy. (Timin
 	- New dataset is small but very different from the original dataset. _It might work better to train the SVM classifier from activations somewhere earlier in the network._
 	- New dataset is large and very different from the original dataset. _We can fine-tune through the full network with initialized weights from a pretrained network._
 - It’s common to use a smaller learning rate for ConvNet weights that are being fine-tuned, in comparison to the (randomly-initialized) weights for the new linear classifier that computes the class scores of your new dataset.
+
 ---
 `August 13, 2018`
 
