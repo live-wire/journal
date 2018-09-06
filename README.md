@@ -3,6 +3,15 @@
 I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_! 
 
 ---
+`September 2, 2018`
+
+#### Django :mango:
+- Finished Routing
+- **Permissions / Groups**
+	- TODO 
+
+
+---
 `September 1, 2018`
 
 #### Django unchained
@@ -11,7 +20,7 @@ I plan to fill this section with what I discovered today - - - AFAP _(As Frequen
 - Views can be Class based or function based. ViewSets are even a further abstraction over class based views (Class based views can make use of _generics_ and _mixins_).
 - URLs are defined separately in a file usually called `urls.py`. (Use _Routers_ if you're using ViewSets).
 - Model is defined by extending _django.db.models.Model_. All the field types are defined here: `code = models.TextField()`
-- Serializer has to be defined for the model by extending *rest_framework.serializers.HyperlinkedModelSerializer / ModelSerializer* . Primary key relations etc are defined here.
+- Serializer has to be defined for the model by extending *rest_framework.serializers.HyperlinkedModelSerializer / ModelSerializer* . Primary key relations etc are defined here. Serializer and Views are where the API is brewed.
 - _project/project/settings.py_ contains all the project settings and resides in `django.conf.settings`.
 
 Useful commands:
