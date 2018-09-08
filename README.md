@@ -1,6 +1,29 @@
 # Journal :postbox:
 
 I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_! 
+
+---
+`September 9, 2018`
+
+#### Recurrent Neural Networks :dizzy:
+Karpathy's [talk](https://skillsmatter.com/skillscasts/6611-visualizing-and-understanding-recurrent-networks) and ofcourse his unreasonable blog [post](http://karpathy.github.io/2015/05/21/rnn-effectiveness/).
+- RNNs are freaking flexible:
+	- one to many -> Image Captioning (image to sequence of words)
+	- many to one -> Sentiment Classification (seq of words to positive or negative sentiment)
+	- many to many -> Machine Translation (seq of words to seq of words)
+	- many to many -> Video classification (using frame level CNNs)
+- These carry **state** unlike regular NNs. Might not produce the same output for the same input
+- Rules of thumb:
+	- Use RMSProp, Adam (sometimes SGD)
+	- Initialize forget gates with high bias (WHAT ?)
+	- Avoid L2 Regularization
+	- Use dropout along depth
+	- Use clip gradients (to avoid exploding gradients) (LSTMs take care of vanishing gradients)
+	- You can look for interpretable cells (Like one of the cell fires when there is a quote sequence going on)
+- When using RNN with CNN, plug extra information(CNN's output) directly to a RNN's (green - recurrent layer)
+
+
+
 ---
 `September 8, 2018`
 
