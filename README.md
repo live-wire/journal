@@ -1,6 +1,22 @@
 # Journal :postbox:
 
 I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_! 
+---
+`September 8, 2018`
+
+#### Pytorch :snake:
+- Earned basic badge in pytorch [forum](https://discuss.pytorch.org/).
+- Finished plotting utility of train, test accuracy vs epochs and train vs test accuracy
+- Finished plotting utility of loss vs epochs
+- Finished plotting of Learning rate vs epochs
+- To get reproducible results with torch:
+	```
+	torch.backends.cudnn.deterministic = True
+	torch.manual_seed(1973)
+	```
+- Call `model.train()` before training and `model.eval()` after training to set the mode. (It matters when you have layers like Batchnorm or Dropout)
+- Use `torch.nn.functional.<methods>` for non linear activations etc. where the model parameters like (training=True/False) doesn't matter. If using it with dropout make sure to pass arguments _training=False_ or use the corresponding torch.nn.<Module> (Layers).
+
 
 ---
 `September 2, 2018`
