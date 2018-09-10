@@ -203,8 +203,8 @@ Nice [Numpy](http://cs231n.github.io/python-numpy-tutorial/) tricks.
 	- Dropout(p=0.5) with L2(lambda cross validated) => In Practice
 - **Loss** = Average of losses over individual runs(training points)
 	- $L = 1/N \sum{L_i}$
-	- Hinge Loss - (SVM) => Li = SUM_j!=y(max(0, fj - fy + 1)). (Squared hinge loss also possible)
-	- Cross Entropy - (Softmax) => Li = -log(e^fy / SUM(e^fj))
+	- Hinge Loss - (SVM) => $L_i = \sum_{j \ne y}{max(0, f_j - f_y + \delta)}$. (Squared hinge loss also possible) ($\delta = margin$)
+	- Cross Entropy - (Softmax) => $L_i = -log(e^{f_y} / \sum{e^f_j})$
 	- Large number of classes (Imagenet etc.) use Hierarchial Softmax.
 
 
