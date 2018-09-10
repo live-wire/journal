@@ -5,8 +5,9 @@ These notes are best viewed with MathJax extension in chrome.
 
 #### MathJax extension in Chrome for Github Markdown
 - [Link](https://www.mathjax.org/) to MathJax's landing page.
+- Download the chrome extension from [here](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima).
 - Bayes $P(w/x) = \frac{P(x/w). P(w)}{P(x)}$
-- $ e^{i \pi} + 1 = 0 $
+- 
 
 ---
 `September 9, 2018`
@@ -201,7 +202,7 @@ Nice [Numpy](http://cs231n.github.io/python-numpy-tutorial/) tricks.
 	- L1 - Makes weight vectors sparse (invariant to noisy inputs) (Only a subset of neurons actually matters)
 	- Dropout(p=0.5) with L2(lambda cross validated) => In Practice
 - **Loss** = Average of losses over individual runs(training points)
-	- L = 1/N SUM(Li)
+	- $L = 1/N \sum{L_i}$
 	- Hinge Loss - (SVM) => Li = SUM_j!=y(max(0, fj - fy + 1)). (Squared hinge loss also possible)
 	- Cross Entropy - (Softmax) => Li = -log(e^fy / SUM(e^fj))
 	- Large number of classes (Imagenet etc.) use Hierarchial Softmax.
