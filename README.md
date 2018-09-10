@@ -1,6 +1,12 @@
 # Journal :postbox:
 
 I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_! 
+These notes are best viewed with MathJax extension in chrome.
+
+#### MathJax extension in Chrome for Github Markdown
+- [Link](https://www.mathjax.org/) to MathJax's landing page.
+- Bayes $P(w/x) = \frac{P(x/w). P(w)}{P(x)}$
+- $ e^{i \pi} + 1 = 0 $
 
 ---
 `September 9, 2018`
@@ -21,7 +27,7 @@ Karpathy's [talk](https://skillsmatter.com/skillscasts/6611-visualizing-and-unde
 	- Use clip gradients (to avoid exploding gradients) (LSTMs take care of vanishing gradients)
 	- You can look for interpretable cells (Like one of the cell fires when there is a quote sequence going on)
 - When using RNN with CNN, plug extra information(CNN's output) directly to a RNN's (green - recurrent layer)
-
+- Use Mixture Density Networks especially when generating something.
 
 
 ---
