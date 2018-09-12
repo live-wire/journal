@@ -1,13 +1,28 @@
 # Journal :postbox:
 
 I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_! 
-These notes are best viewed with MathJax extension in chrome.
+These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
+
+---
+`September 12, 2018`
 
 #### MathJax extension in Chrome for Github Markdown
 - [Link](https://www.mathjax.org/) to MathJax's landing page.
 - Download the chrome extension from [here](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima).
 - Bayes $P(w/x) = \frac{P(x/w). P(w)}{P(x)}$
-- 
+- Normal (Univariate) $N(\mu, \sigma) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp{-\frac{(x - \mu)^2}{2\sigma^2}}$
+- **Decision theory:**
+	- An element(x) belongs to class1 if $P(w_1 | x) > P(w_2 | x)$ _(posterior probability comparison)_
+	- i.e. $P( x | w_1) P(w_1) > P( x | w_2) P(w_2)$
+	- where $P(x | w_1) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp{-\frac{(x - \mu)^2}{2\sigma^2}}$
+	- Boom!
+- Use `np.random.normal(self.mean, self.cov, self.n)` for univariate and `numpy.random.multivariate_normal` for multivariate data generation 
+
+
+#### Seaborn for visualization in matplotlib
+- Multivariate contours: `sns.jointplot(x="x", y="y",kind="kde", data=df);`
+- Visualizing distributions 1D: `sns.distplot(np.random.normal(0, 0.5, 100), color="blue", hist=False, rug=True);`
+
 
 ---
 `September 9, 2018`
@@ -204,7 +219,7 @@ Nice [Numpy](http://cs231n.github.io/python-numpy-tutorial/) tricks.
 - **Loss** = Average of losses over individual runs(training points)
 	- $L = 1/N \sum{L_i}$
 	- Hinge Loss - (SVM) => $L_i = \sum_{j \ne y}{max(0, f_j - f_y + \delta)}$. (Squared hinge loss also possible) ($\delta = margin$)
-	- Cross Entropy - (Softmax) => $L_i = -log(e^{f_y} / \sum{e^f_j})$
+	- Cross Entropy - (Softmax) => $L_i = -log(e^{f_y} / \sum{e^{f_j}})$
 	- Large number of classes (Imagenet etc.) use Hierarchial Softmax.
 
 
