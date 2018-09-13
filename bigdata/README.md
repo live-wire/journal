@@ -1,6 +1,42 @@
 # Supercomputing for Big Data :laptop:
 
 ---
+## Lecture 2
+- MapReduce:
+	- Map - Loading of data and defining a set of keys
+	- Shuffling is automatic
+	- Reduce - Collect key based data to process and output
+	- For complex work, chain jobs together (each job will have map-reduce)
+		- Use a higher level language (Luigi :snake:)
+	- MapReduce is slow and difficult to master
+- Apache Spark to the rescue:
+	- Advantages
+		- Parallel distribution
+		- High level API
+		- Fault tolerance
+		- In memory computing
+	- Spark's cool libraries: (discussed in next lecture)
+		- Spark SQL
+		- Spark Streaming (real time streaming)
+		- MLib (Machine Learning)
+		- GraphX (Graph processing)
+ 	- Standalone scheduler, Yarn, Mesos
+ 	- Resilient Distributed Dataset (RDDs) (USP of spark) (Primary Data Abstraction)
+- RDD
+	- Distributed collection of elements
+	- Parallelize data across cluster
+	- Enables Caching
+		- Data Spills to disk if memory exceeds
+	- Tracks computation for recomputing lost data. (Called _lineage_)
+	- Types of operations:
+		- Transformations - Creates a DAG and lazy evaluation. (`map, filter, flatMap`)
+		- Actions - Actually performs the transformations and returns a value (`collect, take, count, reduce, saveAsTextFile`)
+- `.toDebugString` to view the rdd transformations DAG
+- Use `rdd.cache() = rdd.persist(StorageLevel.MEMORY_ONLY)` to store intermediate transformed result to memory where we can apply actions on.
+
+
+
+---
 ## Lab 1 
 [manual](https://github.com/Tclv/SBD-2018/blob/master/doc/manual.md)
 
