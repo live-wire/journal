@@ -4,6 +4,44 @@ I plan to fill this section with what I discovered today - - - AFAP _(As Frequen
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
 
 ---
+`September 17, 2018`
+
+#### Siraj stuff
+- Different parts of the image are masked separately
+- Image segmentation
+- Multi class classification inside a single image
+- Data is value - Andrew Trask (OpenMind) [video](https://www.youtube.com/watch?v=qJ1rdVEcl5g)
+
+
+#### Pytorch RNN - NameNet
+This Recurrent net is a classifier and classifies names of people to its origins
+- First pytorch RNN implementation using [this](https://pytorch.org/tutorials/intermediate/char_rnn_classification_tutorial.html) tutorial
+- Only used linear (fully connected layers in this)
+```
+self.i2h = nn.Linear(input_size + hidden_size, hidden_size)
+self.i2o = nn.Linear(input_size + hidden_size, output_size)
+self.softmax = nn.LogSoftmax(dim=1)
+
+def forward(self, input, hidden):
+        combined = torch.cat((input, hidden), 1)
+        hidden = self.i2h(combined)
+        output = self.i2o(combined)
+        output = self.softmax(output)
+        return output, hidden
+```
+- The hidden component obtained after each output-calculation is fed back to the next input
+- For this sequence of words, at each epoch, hidden layer is re-initialized to zeros (`hidden = model.initHidden()`) and model's gradients are reset (`model.zero_grad()`)
+- Training examples are also randomly fed to it
+- Negative Log Likelihood loss (`nn.NLLLoss`) is employed as it goes nicely with a LogSoftmax output (last layer).
+- Torch `.unsqueeze(0)` adds a dimension with 1 in 0th location. (tensor(a,b) -> tensor(1,a,b))
+
+#### Django ftw
+- Use `read_only_fields` in the `Meta` class inside a serializer to make it non-updatable
+- Views should contain all access-control logic
+
+
+
+---
 `September 12, 2018`
 
 #### MathJax extension in Chrome for Github Markdown
