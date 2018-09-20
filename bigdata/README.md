@@ -1,4 +1,4 @@
-# Supercomputing for Big Data :laptop:
+# Supercomputing for Big Data :computer: SPARK :sparkles:
 
 ---
 ## Lecture 2
@@ -33,7 +33,9 @@
 		- Actions - Actually performs the transformations and returns a value (`collect, take, count, reduce, saveAsTextFile`)
 - `.toDebugString` to view the rdd transformations DAG
 - Use `rdd.cache() = rdd.persist(StorageLevel.MEMORY_ONLY)` to store intermediate transformed result to memory where we can apply actions on.
-
+- Awesome tuple transformations:
+	- `groupByKey(), reduceByKey((x,y) => x+y), sortByKey()`
+	- `rdd1.join(rdd2)` joins tables on the key
 
 
 ---
@@ -68,7 +70,6 @@ val ds = spark.read.schema(schema)
               .csv("./lab1/sensordata.csv")
               .as[SensorData]
 ```
--  
 
 
 ---
@@ -86,50 +87,7 @@ val ds = spark.read.schema(schema)
 	- Visualize
 - Spark uses in RDD's (in memory) so are significantly faster than traditional map reduce (at-least for batch processing)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 ## LAb 0
 - Hadoop is not a replacement for Relational Database

@@ -4,6 +4,30 @@ I plan to fill this section with what I discovered today - - - AFAP _(As Frequen
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
 
 ---
+`September 19, 2018`
+
+#### Everything Gaussian 
+- When someone says random variable, it is a single dimension!
+- _Central limit theorem_: If any random variable is sampled infinitely, it ends up being normally distributed
+- Expectation values:
+	- **Discrete**
+		- $E[x] = \mu = \frac {1}{n}\sum_{i=0}^n x_i$
+		- $E[(x-\mu)^2] = \sigma^2 = \frac{1}{n}\sum_{i=0}^{n}(x-\mu)^2$
+	- **Continuous**:
+		- $E[x] = \mu = \int_{-\infty}^{+\infty} x.p(x)dx$
+		- $E[(x-\mu)^2] = \sigma^2 = \int_{-\infty}^{+\infty} (x-\mu)^2.p(x)dx$
+- Multivariate Gaussian:
+	- $p(x) = \frac{1}{\sqrt{2\pi\Sigma}}\exp\big{(}-\frac{1}{2}(x-\mu)^T\Sigma(x-\mu))\big{)}$
+	- Covariance Matrix: $\Sigma$
+		- $\Sigma = E[(x-\mu)(x-\mu)^T] = E\big{[}\begin{bmatrix} x_1 -\mu_1\\ x_2 - \mu_2 \end{bmatrix}\begin{bmatrix} x_1 - \mu_1 & x_2 - \mu_2 \end{bmatrix}\big{]} = \begin{bmatrix}\sigma_1^2 & \sigma_{12}\\ \sigma_{21} & \sigma_2^2 \end{bmatrix}$
+		- Always symetric and positive-semidefinite (Hermitian) (All the eigen values are non-negative).
+		- For a diagonal matrix, the elements on the diagonal are the eigen values.
+		- You can imagine the distribution (for 2D features) as a hill by looking at the covariance matrix.
+- Normally distributed classes:
+	- Use formula $(x-\mu)^T\Sigma^{-1}(x-\mu) = C$ to get the equation of an ellipse(the iso curve that `seaborn.jointplot` plots).
+	- The orientation and axes of this ellipse depend on the eigen vectors and eigen values respectively of the covariance matrix.
+	- 
+---
 `September 17, 2018`
 
 #### Siraj stuff
