@@ -3,6 +3,24 @@
 I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_! 
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
 
+
+---
+`September 23, 2018`
+
+#### Recurrent Neural Nets
+- [This](https://www.youtube.com/watch?v=yCC09vCHzF8) video by Andrej Karpathy.
+- Idea about the thesis project:
+	- Karpathy uses a feature vector (one-hot vecotor for all characters possible)-->(feature vector from a CNN) for each timestep.
+	- In the output layer, would it be better to have a one-hot vector representing the count instead of a single cell which will calculate the count ?
+	- Should I pad the input sequence with 0s based on the video with the maximum number of points in the matrix profile ? (For a fixed `seq_length`) ?
+- `seq_length` in the RNN is the region where it can memorize.(size of input sequence (batch size of broken input))
+- Gradient clipping for exploding gradients (because while backpropagating, same matrix($W_h$) is multiplied to the gradient several times ((largest eigenvalue is > 1)))
+- LSTM for vanishing gradients (same reason as above (largest eigenvalue is < 1))
+- LSTMs are super highways for gradient flow
+- GRU has similar performance as LSTM but has a single hidden state vector to remember instead of LSTM's (hidden-state-vector and c vector)
+
+
+
 ---
 `September 19, 2018`
 
@@ -27,6 +45,8 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 	- Use formula $(x-\mu)^T\Sigma^{-1}(x-\mu) = C$ to get the equation of an ellipse(the iso curve that `seaborn.jointplot` plots).
 	- The orientation and axes of this ellipse depend on the eigen vectors and eigen values respectively of the covariance matrix.
 	- 
+
+
 ---
 `September 17, 2018`
 
