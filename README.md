@@ -3,6 +3,21 @@
 I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_! 
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
 
+---
+`September 24, 2018`
+
+#### Counting peaks/valleys in a signal
+- Need to break down tasks
+- Tried to generate a sine wave and make a Neural Net predict the number of valleys in the wave (Could be a useful step while calculating the final count from the 1D signal in the matrix profile)
+- I assumed a signal of a fixed length (100). I trained a simple MLP on it assuming 100 features in the input. (Overfits nicely and fails to generalize as expected)
+- I want to train an LSTM/GRU on it now. Since it learns to generate a sine wave (as some of the online examples show). I am hoping it will be able to learn counting.
+
+#### Oh Py God
+- `os.cpu_count()` gives the number of cores.
+- threading.Thread vs multiprocessing.Process nice [video](https://www.youtube.com/watch?v=ecKWiaHCEKs)
+- Use Threading for IO tasks and Process for CPU intensive tasks.
+- Threading makes use of one core and switches context between the threads on the same core.
+- Processing makes use of all the cores (Like a badass) 
 
 ---
 `September 23, 2018`
@@ -13,11 +28,13 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 	- Karpathy uses a feature vector (one-hot vecotor for all characters possible)-->(feature vector from a CNN) for each timestep.
 	- In the output layer, would it be better to have a one-hot vector representing the count instead of a single cell which will calculate the count ?
 	- Should I pad the input sequence with 0s based on the video with the maximum number of points in the matrix profile ? (For a fixed `seq_length`) ?
+	- To make the learning process for blade-counting online, need an RNN with 3 outputs, clockwise-anticlockwise-repitition
 - `seq_length` in the RNN is the region where it can memorize.(size of input sequence (batch size of broken input))
 - Gradient clipping for exploding gradients (because while backpropagating, same matrix($W_h$) is multiplied to the gradient several times ((largest eigenvalue is > 1)))
 - LSTM for vanishing gradients (same reason as above (largest eigenvalue is < 1))
 - LSTMs are super highways for gradient flow
 - GRU has similar performance as LSTM but has a single hidden state vector to remember instead of LSTM's (hidden-state-vector and c vector)
+- During training, feed it not the true input but its generated output with a certain probability p. Start out training with p=0 and gradually increase it so that it learns to general longer and longer sequences, independently. This is called schedualed sampling. [paper](https://arxiv.org/abs/1506.03099)
 
 
 
