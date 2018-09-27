@@ -4,12 +4,39 @@ I plan to fill this section with what I discovered today - - - AFAP _(As Frequen
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
 
 ---
+`September 26, 2018`
+
+#### torch.nn
+- If you share the weights across time, then your input time sequences can be a variable length. Because each time before backpropagating loss, you go over atleast a sequence.
+	- Shared weights means fewer parameters to train.
+	- IDEA! - For longer sequences, maybe share less weights across time.
+- nn.LSTM: Suppose we have 2 layers. 
+	- Input to L1 = input, (h1, c1)
+	- Output from L1 = (h1_, c1_)
+	- Input to L2 = h1_, (h2, c2)
+	- Output from L2 = (h2_, c2_) ==> final output = h2_
+- `tensor.size()` = `np.shape` || `tensor.view(_)` = `np.reshape`
+- 
+
+---
+`September 25, 2018`
+
+#### Recurrent Nets
+- Recursive network that is going to be trained with very long sequences, you could run into memory problems when training because of that excessive length. Look at **truncated-BPTT**. Pytorch discussion [link](https://discuss.pytorch.org/t/implementing-truncated-backpropagation-through-time/15500).
+- Ways of dealing with looooong sequences in LSTM: [link](https://machinelearningmastery.com/handle-long-sequences-long-short-term-memory-recurrent-neural-networks/)
+	- TBPTT (in the point above)
+	- Truncate sequence
+	- Summarize sequence
+	- Random sampling
+	- Use encoder decoder architecture
+
+
+---
 `September 24, 2018`
 
-#### Counting peaks/valleys in a signal
-- Need to break down tasks
+#### Counting peaks/valleys in a 1D signal
 - Tried to generate a sine wave and make a Neural Net predict the number of valleys in the wave (Could be a useful step while calculating the final count from the 1D signal in the matrix profile)
-- I assumed a signal of a fixed length (100). I trained a simple MLP on it assuming 100 features in the input. (Overfits nicely and fails to generalize as expected)
+- I assumed a signal of a fixed length (100). I trained a simple MLP on it assuming 100 features in the input. (Overfits and fails to generalize -- as expected)
 - I want to train an LSTM/GRU on it now. Since it learns to generate a sine wave (as some of the online examples show). I am hoping it will be able to learn counting.
 
 #### Oh Py God
