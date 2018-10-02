@@ -40,6 +40,10 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 		- deadlock, livelock
 		- context-switching
 		- Scheduling
+- Algo books
+	- Algorithm Design Manual [link](http://mimoza.marmara.edu.tr/~msakalli/cse706_12/SkienaTheAlgorithmDesignManual.pdf)
+	- Introduction to algorithms [link](https://labs.xjtudlc.com/labs/wldmt/reading%20list/books/Algorithms%20and%20optimization/Introduction%20to%20Algorithms.pdf)
+
 
 ---
 `September 26, 2018`
