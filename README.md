@@ -2,6 +2,44 @@
 
 I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_! 
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
+---
+`October 2, 2018`
+
+#### Interview PREP
+- Python style [guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md)
+- MIT Algorithm assignments [page](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-spring-2008/).
+- Example coding [interview](https://www.youtube.com/watch?v=XKu_SEDAykw)
+- Interview prep blog [post](http://steve-yegge.blogspot.com/2008/03/get-that-job-at-google.html)
+- Topics importante:
+	- Complexity
+	- Sorting (nlogn)
+	- Hashtables, Hashsets
+	- Trees - binary trees, n-ary trees, and trie-trees
+		- Red/black tree
+		- Splay tree
+		- AVL tree
+	- Graphs - objects and pointers, matrix, and adjacency list
+		- breadth-first search
+		- depth-first search.
+		- computational complexity
+		- tradeoffs
+		- implement them in real code.
+			- Dijkstras
+			- A*
+		- Make absolutely sure you can't think of a way to solve it using graphs before moving on to other solution types.
+	- NP-completeness
+		- traveling salesman 
+		- knapsack problem
+		- Greedy approaches
+	- Math
+		- Combinatorics
+		- Probability [link](https://ocw.mit.edu/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2014/assignments/)
+	- Operating System
+		- Threads, Processes
+		- Locks, mutexes, semaphores and monitors
+		- deadlock, livelock
+		- context-switching
+		- Scheduling
 
 ---
 `September 26, 2018`
@@ -16,7 +54,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 	- Input to L2 = h1_, (h2, c2)
 	- Output from L2 = (h2_, c2_) ==> final output = h2_
 - `tensor.size()` = `np.shape` || `tensor.view(_)` = `np.reshape`
-- 
+- From what I've found out, **batching** in pytorch gives a speedup when running on GPU. Not very critical while prototyping on toy-datasets.
 
 ---
 `September 25, 2018`
