@@ -2,6 +2,36 @@
 
 I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_! 
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
+
+> "One day I will find the right words, and they will be simple." - Jack Kerouac
+
+---
+`October 3, 2018`
+
+#### Knapsack problem - Thief breaks into house and wants to steal valuable items (weight constrained)
+	- Brute-Force - $2^n$ (For each item, decide take/no-take)
+	- Greedy approach - Sort based on a criteria (weight, value or value/weight) - complexity = nlogn for sorting
+		- You could get stuck @ a local optimum
+	-  
+
+
+---
+`October 3, 2018`
+
+#### RNN for 1D signal repitition-counting
+- Even the `nn.LSTM` implementation gives bad results. I suspect this could be because the sequence length is too huge? Trying to generate a sequence with a smaller length.
+- Maybe look at some other representation of the 1D signal ? (Like HOG ?)
+- PvsNP - What can be computed in a given amount of space and time ? (Polynomial vs Non Deterministic Polynomial)
+	- P = Polynomial, NP = Non Polynomial but the answer can be checked in polynomial time.
+	- NP-complete = Hardest problem in NP
+		- Can prove a problem is np-complete if it is in NP and is NP-hard
+	- NP complete problems can be used to solve any problems in NP :crown:
+	- If A can be converted to B in Poly, A >= B
+
+	> "If P = NP, then there would be no special value in creative leaps, no fundamental gap between solving a problem and recognising a solution once its found. Everyone who could appreciate a symphony would be Mozart and everyone who could follow a step by step argument would be Gauss!" - Scott Aronson
+
+
+
 ---
 `October 2, 2018`
 
@@ -123,7 +153,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Multivariate Gaussian:
 	- $p(x) = \frac{1}{\sqrt{2\pi\Sigma}}\exp\big{(}-\frac{1}{2}(x-\mu)^T\Sigma(x-\mu))\big{)}$
 	- Covariance Matrix: $\Sigma$
-		- $\Sigma = E[(x-\mu)(x-\mu)^T] = E\big{[}\begin{bmatrix} x_1 -\mu_1\\ x_2 - \mu_2 \end{bmatrix}\begin{bmatrix} x_1 - \mu_1 & x_2 - \mu_2 \end{bmatrix}\big{]} = \begin{bmatrix}\sigma_1^2 & \sigma_{12}\\ \sigma_{21} & \sigma_2^2 \end{bmatrix}$
+		- $\Sigma = E[(x-\mu)(x-\mu)^T] = E\big{[}\begin{bmatrix} x_1 -\mu_1\\ x_2 - \mu_2 \end{bmatrix}\begin{bmatrix} x_1 - \mu_1 & x_2 - \mu_2 \end{bmatrix}^T\big{]} = \begin{bmatrix}\sigma_1^2 & \sigma_{12}\\ \sigma_{21} & \sigma_2^2 \end{bmatrix}$
 		- Always symetric and positive-semidefinite (Hermitian) (All the eigen values are non-negative).
 		- For a diagonal matrix, the elements on the diagonal are the eigen values.
 		- You can imagine the distribution (for 2D features) as a hill by looking at the covariance matrix.
