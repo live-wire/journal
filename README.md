@@ -12,8 +12,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 	- Brute-Force - $2^n$ (For each item, decide take/no-take)
 	- Greedy approach - Sort based on a criteria (weight, value or value/weight) - complexity = nlogn for sorting
 		- You could get stuck @ a local optimum
-	-  
-
+		- these approaches often provide adequate/often not optimal solutions.
+	- Build a tree - Dynamic Programming - (Finds the optimal solution)
+		- Left means take element and right means no-take
+		- **Dynamic programming**:
+			- Optimal Substructure
+			- Overlapping subproblems
+		- At each node, given the remaining weight, just maximize the value by chosing among the remaining items.
+	- Variants: `subset sum`, `scuba div` [link](https://www.spoj.com/problems/SCUBADIV/) etc.
 
 ---
 `October 3, 2018`
