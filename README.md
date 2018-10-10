@@ -6,6 +6,31 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "One day I will find the right words, and they will be simple." - Jack Kerouac
 
 ---
+`October 10, 2018`
+
+#### RepCount 
+	- Discuss about IndRNN (Long sequence problems for Recurrent neural network)
+	- Plot activations in layers(one by one) over timesteps. Activation vs Timestep.
+	- NEWMA - online change point detection
+
+#### Classifiers
+	- Logistic classifier vs LDA: LDA assumes $p(x/w)$ (class densities) is assumed to be Gaussian. It involves the use of marginal density $p(x)$ for the calculation of unknown parameters but for Logistic, $p(x)$ is a part of the Constant term. LDA is the better approach if Gaussian Assumption is valid.
+	- L1-distance = $\sum_p (V_1^p - V_2^p)$, L2-distance = $\sqrt{(\sum_p (V_1^p - V_2^p)^2)}$
+	- Square-root is a monotonic function (Can be avoided when using L2)
+	- KNN is okay in low dimensional datasets. Usually not okay with images.
+	- Linear Classifier:
+		- Better than KNN because 
+			- parameters need to be checked instead of all existing images.
+			- Template is learned and negative-dot-product is used as distance with the template instead of L1, L2 distances like in KNN
+		- The class score function has the form $Wx_i + b$. You get scores for each class.
+		- If you plot a row of W, it will be a template vector for a class. Loss is a different thing be it SVM(hinge loss) or softmax (cross-entropy). 
+		- And once you have the loss, you can perform optimization over the loss.
+![svm-softmax](http://cs231n.github.io/assets/svmvssoftmax.png)
+#### Constraint optimization
+	- *Lagrange Multipliers* - awesome MIT [video](https://www.youtube.com/watch?v=HyqBcD_e_Uw).
+		- BOTTOM LINE - Helps find points where Gradient(first partial derivatives) of a function are parallel to the gradients of the constraints and also the constraints are satisfied. [post](https://medium.com/@andrew.chamberlain/a-simple-explanation-of-why-lagrange-multipliers-works-253e2cdcbf74)
+
+---
 `October 3, 2018`
 
 #### Knapsack problem - Thief breaks into house and wants to steal valuable items (weight constrained)
