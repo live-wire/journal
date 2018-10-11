@@ -6,6 +6,17 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "One day I will find the right words, and they will be simple." - Jack Kerouac
 
 ---
+`October 11, 2018`
+
+#### PyTorch is back
+	- When you have bias in the number of classes in your training data:
+		- Oversample smaller classes
+		- Use `WeightedRandomSampler`
+	- [Transfer Learning](http://cs231n.github.io/transfer-learning/) is the way to go most of the times. Don't always freeze the pretrained convnet when you have a lot of training data
+	- Always try to overfit a small dataset before scaling up. :boom:
+	
+
+---
 `October 10, 2018`
 
 #### RepCount 
