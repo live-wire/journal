@@ -6,6 +6,15 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "One day I will find the right words, and they will be simple." - Jack Kerouac
 
 ---
+`October 12, 2018`
+#### Repetition counting
+	- Things to try:
+		- Discretizing the output like in [this](https://www.cs.tau.ac.il/~wolf/papers/repcounticcv.pdf) paper.
+		- Look at [NEWMA](http://openaccess.thecvf.com/content_cvpr_2018/papers/Runia_Real-World_Repetition_Estimation_CVPR_2018_paper.pdf) as Jan suggested. It is fast and uses little memory instead of LSTM.
+		- Can also look at [Wavenet](https://arxiv.org/pdf/1609.03499.pdf) and try out dilated convolutions ?
+
+
+---
 `October 11, 2018`
 
 #### PyTorch is back
@@ -14,7 +23,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 		- Use `WeightedRandomSampler`
 	- [Transfer Learning](http://cs231n.github.io/transfer-learning/) is the way to go most of the times. Don't always freeze the pretrained convnet when you have a lot of training data
 	- Always try to overfit a small dataset before scaling up. :boom:
-	
+
 
 ---
 `October 10, 2018`
