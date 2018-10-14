@@ -6,13 +6,26 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "One day I will find the right words, and they will be simple." - Jack Kerouac
 
 ---
+`October 14, 2018`
+#### WaveNet - Speech synthesis
+- Two types of TTS(text to speech):
+	- Concatenative TTS: Basically needs a human sound database (from a single human) (Ewww)
+	- Parametric TTS: Model stores the parameters
+- PixelRNN, PixelCNN - Show that it is possible to generate synthetic images one pixel at a time or one color channel at a time. (Involving thousands of predictions per image)
+![WaveNet Structure](https://storage.googleapis.com/deepmind-live-cms/documents/BlogPost-Fig2-Anim-160908-r01.gif)
+- Dilated convolutions support exponential expansion of the receptive field instead of linear
+- Saves memory, but also preserves resolution.
+- Parametrising convolution kernels as Kronecker-products is a cool idea. (It is a nice approximation technique - very natural) 
+	- Reduces number of parameters by over 3x with accuracy loss of not over 1%.
+- Convolutions arithmetic. [Link](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
+
+---
 `October 12, 2018`
 #### Repetition counting
 - Things to try:
 	- Discretizing the output like in [this](https://www.cs.tau.ac.il/~wolf/papers/repcounticcv.pdf) paper.
 	- Look at [NEWMA](http://openaccess.thecvf.com/content_cvpr_2018/papers/Runia_Real-World_Repetition_Estimation_CVPR_2018_paper.pdf) as Jan suggested. It is fast and uses little memory instead of LSTM.
 	- Can also look at [Wavenet](https://arxiv.org/pdf/1609.03499.pdf) and try out dilated convolutions ?
-
 
 ---
 `October 11, 2018`
