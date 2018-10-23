@@ -6,6 +6,22 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "One day I will find the right words, and they will be simple." - Jack Kerouac
 
 ---
+`October 23, 2018`
+#### HackJunction Budapest
+- DCM files(from both MRI and CT scans) contain pixel_array for each slice.
+- A different file contains information about the contours of tumour - corresponding to the slices.
+- Learnings: 
+	- **Fail Fast**,  **Move on**, **Don't try to protect your code**
+	- Spend time on MLH challenges, win cool stuff like the Google home mini :wink:
+	- Check out Algolia (Hosted search API) for quick prototyping
+
+#### Algorithms Q1 New Year's chaos:
+[Link](https://www.hackerrank.com/challenges/new-year-chaos/) to the problem.
+- Solution: 
+	- No one can move more than two positions backwards (2 bribes each) (Break if someone does)
+	- Start from the back: See how many bribes the small number took to reach there. If the number at the end is 4, see from 4-2= _2 to end-1_ if there are numbers bigger than 4 and keep a count :happy:
+
+---
 `October 14, 2018`
 #### WaveNet - Speech synthesis
 - Two types of TTS(text to speech):
