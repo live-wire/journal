@@ -6,6 +6,17 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "One day I will find the right words, and they will be simple." - Jack Kerouac
 
 ---
+`October 24, 2018`
+#### Video editing - Repetition counting
+- Preprocessing:
+	- Using [Bresenhem's Line algorithm](https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm) to sample representative elements from a list.
+		- Sample m items from n: `lambda m,n: [i*n//m + n//(2*m) for i in range(m)]`
+		- Finally sampling 10fps for all videos using this technique
+	- Making images Black&White
+	- Resizing images to 64x64 for now (Toy Dataset)
+
+
+---
 `October 23, 2018`
 #### HackJunction Budapest
 - DCM files(from both MRI and CT scans) contain pixel_array for each slice.
