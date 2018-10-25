@@ -6,6 +6,45 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "One day I will find the right words, and they will be simple." - Jack Kerouac
 
 ---
+`October 25, 2018`
+#### Cool tools
+- _Tinkercad_ by **Autodesk** - Awesome for prototyping 3D models for 3Dprinting
+- _Ostagram_ Style transfer on images.
+
+#### Neural Style
+[Pytorch tutorial](https://pytorch.org/tutorials/advanced/neural_style_tutorial.html)
+- Distances (Minimize both of these during optimization): 
+	- $D_s$ - Style Distance
+	- $D_c$ - Content Distance
+- It is amazing how easy it was to run this :O (Loving PyTorch :fire:)
+
+#### Torchvision useful functions
+- `torchvision.transforms` contains a bunch of image transformation options
+- Chain them up using `transforms.Compose` like this: 
+```
+loader = transforms.Compose([
+    transforms.Resize(imsize),  # scale imported image
+    transforms.CenterCrop(imsize), # Center crop the image
+    transforms.ToTensor()])  # transform it into a torch tensor
+unloader = transforms.ToPILImage()
+```
+and use it like: 
+```
+def image_loader(image_name):
+    image = Image.open(image_name)
+    # fake batch dimension required to fit network's input dimensions
+    image = loader(image).unsqueeze(0)
+    return image.to(device, torch.float)
+```
+- Import a pre-trained model like: ([link](https://pytorch.org/docs/stable/torchvision/models.html))
+```
+cnn = torchvision.models.vgg19(pretrained=True).features.to(device).eval()
+# In Pytorch, vgg is implemented with sequential modules containing _features_ and _classifier_(fully connected layers) hence the use of ".features"
+```
+These models expect some normalizations in the input
+- Finished a wrapper around the neural style transfer tutorial code. :heart:
+
+---
 `October 24, 2018`
 #### Video editing - Repetition counting
 - Preprocessing:
