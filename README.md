@@ -6,6 +6,13 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "One day I will find the right words, and they will be simple." - Jack Kerouac
 
 ---
+`October 26, 2018`
+#### Konigsberg Bridge problem 
+`Algorithm` `Puzzle`
+- The Graph needs to have all nodes with even degree and only zero or 2 nodes with odd degree for the _Eulerian Walk_ to be possible. (Same as being able to draw a figure without lifting the pencil or drawing on the same line again)
+
+
+---
 `October 25, 2018`
 #### Cool tools
 - _Tinkercad_ by **Autodesk** - Awesome for prototyping 3D models for 3Dprinting
