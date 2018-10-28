@@ -6,11 +6,61 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > Average hop-count of the planet <= 4 :cyclone:
 
 ---
+`Lecture 3`
+
+- **Eigen** things: $Ax = \lambda x$
+	- x is a non-zero vector, for the eigen value $\lambda$
+	- n x n matrix has n eigen values (not all distinct possibly)
+	- A and $A^T$ have same eigen values but not necessarily the same eigen vectors
+	- Eigen vectors are linearly independent
+	- If $P^{-1}$ exists then $P^{-1}AP$ has the same eigen values as A but the eigen vector is Px
+- More cool stuff
+	- Any real symmetric matrix can be written as $X\deltaX^T$ (X = matrix containing eigenvectors as columns and orthogonal ($X^T = X^{-1}$ or $XX^T = I$), $delta$ = diagonal matrix with real eigen values as diagonal elements)
+	- therefore If we use it with the eigen equation: $AX = X\delta$ => $A = X\deltaX^{-1}$
+	- If symmetric, A = $A^T = X\deltaX^T = \sum_k^N\lambda_kx_kx_k^T$
+	- Therefore $A^m = \sum_k^N\lambda_k^mx_kx_kT$ - Remember this can be used to find number of m-hop paths from i to j using this technique.
+
+#### Linear Algebra on Graphs
+`Important`
+- **Spectrum of Adjacency** - All eigenvalues lie in the interval $(-d_{max}, d_{max})$ (degree contains information about range of eigen values)
+- Sum of eigen values of A = 0 $\sum\lambda = 0$
+	- \sum\lambda^2 = 2L = sum of degree of all nodes
+	- \sum\lambda^k = Trace(A^k)
+	- _Peron Frobenius theory_: For a connected graph, the main eigen vector has elements > 0 and eigen value is > 0 
+	- Number of triangles = $1/N \sum\lambda^3$
+- **Largest eigenvalue** of a symmetric matrix
+  - For a symmetric matrix, $A^kx = \lambda^kx$ Notice how eigen vectors remain unchanged and power gets passed on to the eigen value.
+  - Power method to find largest eigen value of a huge matrix!
+  - $E[d]=2L/N <= \lambda_{largest} <= d_{max}$
+  	- Better Bound: $\lambda_{largest} >= \frac{2L}{N}\sqrt{1 + \frac{Var(d)}{E(d)^2}}$
+- Interlacing : Eigenvalues of a matrix obtained by removing some nodes from the original graph are always bounded by the eigen values of the original graph
+- **Eigenvector Centrality**
+	- Rank the importance of nodes according to the eigenvalues
+	- Principal eigenvector $x_1$ is often used. $(x_1)_i$ is the eigenvector centrality of node i. Which is proportional to the number of walks through $node_i$
+	- Sooo powerful - we just need to calculate the principal eigen vector to get the importance(rank) of a node! :bomb:
+- **Spectrum of Laplacian** - Laplacian always has one eigen value of all ones with eigen value 0
+	- _Algebraic connectivity_: _high means strongly connected_, >0 means connected. (Second smallest eigen value of Laplacian($BB^T$ where B = incidence matrix)).
+	- `Graph partitioning` into disjoint subgraphs $G_1$ and $G_2$
+	  - Laplacian can also be written as : $\delta - A$ where $\delta$ = diagonal matrix containing degrees.
+	  - One eigen value will always be 0 (corresponding to vector: all ones u)
+	  - All eigen values will be +ve
+	  - Laplacian = $Q = BB^T$, Quadratic form = $z^TQz = z^TBB^Tz = ||B^Tz||^2_2$
+	  - Number of links between G_1 and G_2 = 1/4 $\sum (y_{1}^+ - y_{-1}^-)^2$ (where y = 1 or -1 based on if the node is in G1 or G2)
+- **Fiedler vector** - Split graph based on threshold. (Sum of eigen vector components)
+- Notations for exam:
+	- $\mu$ = eigen values of laplacian
+	- $\alpha_k = y^Tx_k$ (x => eigen value of laplacian (linear combination)) and y is -1 or 1 based on where node belongs
+	- Partition links to separate graphs = $R = 1/4 \sum_j^N \alpha_j^2\mu_j$
+	- Smallest number of links == $R >= 1/4 \alpha_{N-1}^2 \mu_{N-1}$ (Second smallest eigen value after zero!)
+- Degree preserving rewiring (crazy! so the effects of a node going down are minimized!)
+
+
+---
 `Lecture 2`
 
 **Graph Metrics** - Measures or quantifies graph properties
 - Walk succession of links, Path - A walk in which all hops are different nodes.
-	- betweek i, j, k-hop walks = $(A^k)_ij$
+	- betweek i, j, k-hop walks = $(A^k)_{ij}$
 	- total k-hop walks = $u^T A^k u$ (Sum of all elements of $A^k$)
 	- means that all the diagonal elements of $A^k$ will be the k-hop-walks that end on the same node.
 _Types of properties_: local (properties of the surrounding of a node), global.
@@ -27,12 +77,12 @@ _Types of properties_: local (properties of the surrounding of a node), global.
 		- Many networks have a power law degree distribution.
 - **Clustering Coefficient** (How well connected are the node's neighbors (local density around a node))(between 0 and 1)
 	- For a node v, Number of actual links between neighbors of a node = y, number of neighbors = $d_v$ (Max possible links = $d_v(d_v - 1)/2$)
-	- Clustering coefficient $c_G(v) = \frac{2y}{d_v(d_v - 1)}$ $c_G = 0 if d_v = 1$
+	- Clustering coefficient $c_G(v) = \frac{2y}{d_v(d_v - 1)}$ $c_G = 0$ if $d_v = 1$
 	- For the entire graph = $\frac{1}{N} \sum_v^N c_G(v)$ (Average of all nodes)
 - **Hopcount** - Length of shortest path from i to j
 	- Diameter of G = Length of longest shortest path.
 	- Average hopcount E[H] = Efficiency of transport in G.
-	- Calculating diameter from the adjacency matrix - Keep claculating A, A^2, A^3 till you have all non zero elements. the power is then the diameter as discussed in the formula above (betweek i, j, k-hop walks = $(A^k)_ij$)
+	- Calculating diameter from the adjacency matrix - Keep claculating A, A^2, A^3 till you have all non zero elements. the power is then the diameter as discussed in the formula above (betweek i, j, k-hop walks = $(A^k)_{ij}$)
 - **Between-ness** of a node/link
 	- Number of shortest paths passing throught the node/link.
 	- Degree is correlated to betweenness (like most metrics)
