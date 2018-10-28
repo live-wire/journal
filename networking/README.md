@@ -1,15 +1,19 @@
 # **EE4C06 Networking** - notes :scroll:
 _TU Delft_
 
+These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
+
+> Average hop-count of the planet <= 4 :cyclone:
+
 ---
 `Lecture 2`
+
 **Graph Metrics** - Measures or quantifies graph properties
 - Walk succession of links, Path - A walk in which all hops are different nodes.
 	- betweek i, j, k-hop walks = $(A^k)_ij$
 	- total k-hop walks = $u^T A^k u$ (Sum of all elements of $A^k$)
 	- means that all the diagonal elements of $A^k$ will be the k-hop-walks that end on the same node.
 _Types of properties_: local (properties of the surrounding of a node), global.
-
 - **Degree** $\sum_j^N d_j = 2L$ (Local metric)
 	- Average Degree: $E[D] = \frac{1}{N}\sum_j^N d_j = \frac{2L}{N}$
 	Soo for a connected graph, $Tree < E[D] < Complete$ = $2(N-1)/N < E[D] < (N-1)$
@@ -42,6 +46,7 @@ _Types of properties_: local (properties of the surrounding of a node), global.
 
 ---
 `Lecture 1`
+
 - `Konigsberg Bridge problem` The Graph needs to have all nodes with even degree and only zero or 2 nodes with odd degree for the _Eulerian Walk_ to be possible. (Same as being able to draw a figure without lifting the pencil or drawing on the same line again)
 - Types of Graph representations:
 	- List of neighbors
