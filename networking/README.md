@@ -6,6 +6,49 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > Average hop-count of the planet <= 4 :cyclone:
 
 ---
+`Lecture 4`
+#### Network Models
+- Deterministic networks (Don't change over time)
+- Types of graphs:
+    - **Random Graphs - Erdos Renyi**
+    	- Each node pair is connected independently with probability p (randomly)
+    	- Average number of links in graph = number of links * p
+    	- Complement of such a graph is also Erdos Renyi! (With probability of 1-p duh!)
+    	- Link density = $L/L_{max}$ = p
+    	- Clustering coefficient = p
+    	- Degree distribution = Binomial = Pr[D=k] = $C^{N-1}_kp^k(1-p)^{N-1-k}$ very close to a Gaussian
+    		- $\mu = E[D] = (N-1)p$
+    		- $\sigma^2 = Var[D] = (N-1)p(1-p)$
+    	- If N is very large, the randomness goes away as the ratio of $\sigma / \mu$ grows to zero! (Regular graph) (Becomes deterministic).
+    	- For very large N, the binomial distribution tends to a Poisson distribution if E[D] is kept constant. (Degree is kept constant)
+    	- Critical density p = $log N/N$ (Above which, the graph will be connected) (`phase transition`)
+	- **Small world**
+		- Take a regular graph and randomly rewire a few links
+			- Clustering coefficient decreases rapidly (Triangles)
+			- Diameter (Hop counts) decreases rapidly
+		- Spectrums of Real world graphs show: (Eigen value ranges of the adjacency matrix)
+			- Sum of eigen values = 0 (Trace of A = 0)
+			- Broadness of peak = randomness
+			- If it is even, it is tree like
+			- Any tree can be represented as a bipartite graph
+		
+	- **Scale-free graph - Barabasi Albert**
+		- Power law graphs
+			- $P[D=k] = ck^{-\beta}$ here most important parameter = $\beta$ the exponent!
+		- Scale Freeness - $Pr[D=ak] = a^{-t}Pr[D=ak]$
+		- Near a phase transition, many properties of a physical distribution are power-law distributed!
+		- Prepare your own power-law graph: courtesy Barabasi-Albert
+			- Start with n nodes
+			- Attach a node with m links to each node proportionally to its degree
+			- Repeat untill desirable size(N) is achieved.
+	- Properties of real world networks:
+		- Small world: Average Hop count E[H] = O(Log(N)) is short compared to size of network N.
+		- Scale free- Non Gaussian behaviour
+		- Power law has 3 critical points as $\tau$ increases:
+			- 1-2 -> Degree grows fast, E[H] constant (No large powerlaw network can exist here)
+			- 2-3 -> $D_{max} = N^{1/(\tau-1)}$, E[H] ~ log(log(N)) Ultra small world (Scale free regime)
+			- 3+ -> Small world, $D_{max} = N^{1/(\tau-1)}$, E[H] = logN/logE[D] (Random regime)
+---
 `Lecture 3`
 
 - **Eigen** things: $Ax = \lambda x$
