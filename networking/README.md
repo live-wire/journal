@@ -4,7 +4,64 @@ _TU Delft_
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
 
 > Average hop-count of the planet <= 4 :cyclone:
-> Any eigenvector is orthogonal to any other one!
+
+> Any eigenvector is orthogonal to any other one! (dot product = 0)
+
+> Calculating Mean and Variance of a distribution is easy! But calculating a tail probability is difficult!
+
+---
+`Exam time`
+- Spectral radius = Largest Eigen Value
+	- Eigen values are bounded by $-d_{max}, d_{max}$ (non inclusive)
+	- Largest Eigen value is bounded by $d_{average}, d_{max}$
+	- $d_{average} = 2L/N \sqrt{1 + \frac{Var(d)}{E[D]^2}}$
+- Expected Betweenness = E[B] = maxLinks $\frac{(N(N-1)/2)}{L}E[H]$ H = expected value of hopcount
+- When calculating R (robustness value),$R = \sum_k s_km_k$ all the metrics(m) being considered are orthogonal to each other.
+- Number of k-hop walks = All elements of $A^k$ which is $u^TA^ku$. Closed walks = Diagonals of this array
+- Sum of graphs in Erdos Renyi will be Union so p1 + p2 - p1p2
+- Sum of degrees will always be <= 2L
+- Multiplicity of eigenvalues = some value occurs again.
+	- Eigen values of a complete graph are: 0 and N(same for all N-1 nodes)
+- Odd power of A (Adjacency) matrix for a bipartite graph, the diagonal elements are 0.
+- Zero or 2 odd degree nodes in a graph! 
+- Solve electrical circuits without matrices!
+- If there are x nodes with degree y, there are nodes with degree 1 >= $x(y-2) + 2$
+- Effective graph resistance = sum of all elements of $\omega$/2 = $N. trace(Q^{-1})$
+- For a star graph, effective graph resistance = $(n-1)\sum_i^n r_{ni}$  where n is the hub (sum of resistances connected to the hub * (n-1))
+
+
+
+---
+`Lecture 7`
+#### Function of a network
+Function of a network is to transport the items over its underlying graph.
+- Asynchronous Transfer Mode - (ATM)
+- Natural Information rate - Rate at which a source is generating information
+- Statistical multiplexing - Increases the capacity of network by reducing bandwidth
+- Constant bit rate- Not constant in real life situations (Usually distributed gaussianly)
+- PCR = Peak Cell Rate
+- SCR = Sustainable Cell Rate, burst tolerance can represent the packets distributed over the on-off(incoming packets are flowing/not) periods homogeneously.
+- **Arrival Rate**: (Instantaneous arrival rate = $\lambda(t)$)
+	- In interval u,t, $L(u, t) = \int_u^t \lambda(\tau)d\tau$
+	- It is bounded by $L(u,t) <= max(\lambda(\tau))(t - u)$ because duh!
+	- $E[\lambda] = L(u,t)/(t-u)$
+- **Burstiness Constraint**
+	- $L(u,t) = \int_u^t \lambda(\tau)d\tau <= \sigma^_ + \lambda^_(t-u)$
+	- This was deducible from substituting $\sigma^_$ to zero in the above equation and $\lambda^_$ to max.
+	- Divide both sides by (t - u) to get a relation with $E[\lambda]$ as well
+	- If you plot Rate($\lambda^_$) vs tolerance($\sigma^_$), for each source, there exists a convex curve.
+- Input control - Rate can't exceed more than what was agreed upon before. (Network policing)
+- Quality of Service, CAC- Connection Admission Control - Connection acceptance rules for new requests in order to guarantee QoS.
+- Congestion - Offered load vs Carried Load, Curve bends after like 80%. 
+	- System buffers fill up! -> Retransmissions -> More packet loss -> System collapse
+	- Controlling:
+		Preventives:
+		- CAC
+		- Traffic Shaping
+		- Priority Control
+		Reactive:
+		- Selective Cell Discard
+		- Forward Congestion indication
 
 ---
 `Lecture 6`
@@ -16,20 +73,20 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 	- Define R value, then keep modifying the graph such that the graph achieves the desired R value threshold.
 	- $R = \sum_{k=1}^m s_kt_k$ where s is the weight/service vector and t is the topology vector containing graph metrics like (clustering coefficient, average degree, algebraic connectivity etc.)
 	- Assuming deterministic and Linear (Calculating E[R] is easy!)
-	- Issues:
-		- Linearity - WHy? 
+	- _Issues_:
+		- Linearity - Why ? Too simple ?
 		- Dimension m - (Number of metrics)
 		- Dependence of metrics on each other (correlation) Solution: Use eigenvectors
 		- Normalization: Compare graphs with different number of nodes and links
 		- Service decomposition: How to find weight corresponding to a metric?
-- Robustness Envelope
+- _Robustness Envelope_
 	- Resillience - network's capability to withstand perturbations(removal/rewiring of links).
 	- Find probability contours(envelope) of the R value on introducing n perturbations.
 	- Looking at R vs attacks graph:
 		- Look at area under the curve (R value) (higher the better)
 		- Sensitivity: how spread out the contour plots are around the line. (lower/smaller the better)
 	- Try out strategies when introducing perturbations like removing nodes with highest degree/betweenness/eigenvectors etc.
-	
+
 ---
 `Lecture 5`
 - Create a graph from the circuit provided and find directions of links in the graph (direction of current) Find currents $y_{ij}$ and node voltages $v_i$
@@ -57,7 +114,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 		- Can also be written as :  $\omega = uz^T + zu^T - 2Q_p^{-1}$ (where z = diagonal elements of $Q_p^{-1}$)
 			- Omega is symmetric
 			- diagonal elements are zero
-			- Effective graph resistance = sum of all elements of omega/2 $1/2 (u^T \omega u)$ also = $N. trace(Q_p^{-1})$ = $N. u^T z$ = $N. \sum (1/ \mu)$ (Note that diagonal elements of pseudo inverse are 1/eigenvalues of the original matrix)
+			- Effective graph resistance = sum of all elements of $omega/2$ $1/2 (u^T \omega u)$ also = $N. trace(Q_p^{-1})$ = $N. u^T z$ = $N. \sum (1/ \mu)$ (Note that diagonal elements of pseudo inverse are 1/eigenvalues of the original matrix)
 			- Remember both techniques above `important`
 			- ELements of this matrix can be verified by manually calculating resistance between two nodes:
 				- Series = R1 + R2
@@ -127,8 +184,8 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 `Important`
 - **Spectrum of Adjacency** - All eigenvalues lie in the interval $(-d_{max}, d_{max})$ (degree contains information about range of eigen values)
 - Sum of eigen values of A = 0 $\sum\lambda = 0$
-	- \sum\lambda^2 = 2L = sum of degree of all nodes
-	- \sum\lambda^k = Trace(A^k)
+	- $\sum\lambda^2$ = 2L = sum of degree of all nodes
+	- $\sum\lambda^k$ = Trace(A^k)
 	- _Peron Frobenius theory_: For a connected graph, the main eigen vector has elements > 0 and eigen value is > 0 
 	- Number of triangles = $1/N \sum\lambda^3$
 - **Largest eigenvalue** of a symmetric matrix
@@ -186,10 +243,11 @@ _Types of properties_: local (properties of the surrounding of a node), global.
 	- Diameter of G = Length of longest shortest path.
 	- Average hopcount E[H] = Efficiency of transport in G.
 	- Calculating diameter from the adjacency matrix - Keep claculating A, A^2, A^3 till you have all non zero elements. the power is then the diameter as discussed in the formula above (betweek i, j, k-hop walks = $(A^k)_{ij}$)
-- **Between-ness** of a node/link
+- **Betweenness** of a node/link
 	- Number of shortest paths passing throught the node/link.
 	- Degree is correlated to betweenness (like most metrics)
 	- Formula of linear correlation for variables X, Y = $\frac{E[XY] - E[X]E[Y]}{std(X)std(Y)}$ (-1 to 1)
+	- E[B] = MaxLinks/L (E[Hopcount])
 - **Degree Assortativity** - How are degrees on both sides of **a link** related
 	- Can be used for load balancing
 	- Correlation between the degrees of the nodes on left and right sides of the link
