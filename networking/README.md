@@ -6,6 +6,39 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > Average hop-count of the planet <= 4 :cyclone:
 
 ---
+`Lecture 5`
+- Create a graph from the circuit provided and find directions of links in the graph (direction of current) Find currents $y_{ij}$ and node voltages $v_i$
+- Recap: $u^TB = 0$, $Qu=0$
+- Current Laws:
+	- _Kirchhoff's Law_ - Sum of currents in each node = 0 $\sum_{j belongs to neighbours(i)} y_{ij} = 0$
+	$By = 0$ (and if you inject current $f_i$ in the node i): $By = f$
+	- _Ohm's Law_ - Voltage difference = current * Resistance => $v_i - v_j = r_{ij}y_{ij}$
+	$y = B^Tv$ where v is the voltage vector (Nx1) and y is the current vector (Lx1)
+	general form with resistance not always 1 = $y = diag(1/r_{ij})B^Tv$
+	- Combining laws gives: $f = Qv$ so we can deduce:
+		- if no injected current, Qv = 0 (Means the v = all 1s vector and eigen value 0)
+		- If injected current, Qv = f (But determinant of Q is non zero) (Substitute a reference voltage (Remove one node from the graph and solve))
+		- Another way would be to compute pseudo-inverse of Q. 
+			- Laplacian is symmetric so can be decomposed as $ZMZ^T$ (Z are orthogonal eigen vectors and M is eigen value diagonal matrix)
+			- $Q = \sum_k\mu_kz_kz_k^T$ and $Q_p^{-1} = \sum_k \frac{1}{\mu_k}z_kz_k^T$ pseudo inverse
+			- $QQ_p = I - \frac{1}{N}J$ where $J = uu^T$ all one matrix (The eigen vector corresponding to the 0 eigen value)
+			(Basically doing the same thing fancily)
+		- Now $f = Qv$ => $Q_p^{-1}f = (I - (1/N)J)v$ => $Q_p^{-1}f = v - v_{average}u$
+		- $v_{average} = u^Tv/N$ (u = all 1s vector)
+	- Effective resistance: 
+		- $v = Q_p^{-1}f$ = $v = IQ_p^{-1}(e_a - e_b)$
+		- Aim: $v_1 - v_2 = I \omega_{12}$
+		- Finally Effective resistance = $\omega = (e_a - e_b)^T Q_p^{-1} (e_a - e_b)$
+		- Can also be written as :  $\omega = uz^T + zu^T - 2Q_p^{-1}$ (where z = diagonal elements of $Q_p^{-1}$)
+			- Omega is symmetric
+			- diagonal elements are zero
+			- Effective graph resistance = sum of all elements of omega/2 $1/2 (u^T \omega u)$ also = $N. trace(Q_p^{-1})$ = $N. u^T z$ = $N. \sum (1/ \mu)$ (Note that diagonal elements of pseudo inverse are 1/eigenvalues of the original matrix)
+			- Remember both techniques above `important`
+			- ELements of this matrix can be verified by manually calculating resistance between two nodes:
+				- Series = R1 + R2
+				- 1/Parallel = 1/R1 + 1/R2
+
+---
 `Lecture 4`
 #### Network Models
 - Deterministic networks (Don't change over time)
@@ -41,13 +74,15 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 			- Start with n nodes
 			- Attach a node with m links to each node proportionally to its degree
 			- Repeat untill desirable size(N) is achieved.
-	- Properties of real world networks:
-		- Small world: Average Hop count E[H] = O(Log(N)) is short compared to size of network N.
-		- Scale free- Non Gaussian behaviour
 		- Power law has 3 critical points as $\tau$ increases:
 			- 1-2 -> Degree grows fast, E[H] constant (No large powerlaw network can exist here)
 			- 2-3 -> $D_{max} = N^{1/(\tau-1)}$, E[H] ~ log(log(N)) Ultra small world (Scale free regime)
 			- 3+ -> Small world, $D_{max} = N^{1/(\tau-1)}$, E[H] = logN/logE[D] (Random regime)
+	- Properties of real world networks:
+		- Small world: Average Hop count E[H] = O(Log(N)) is short compared to size of network N.
+		- Scale free- Non Gaussian behaviour
+		- Robustness to random node failures is not that awesome in real world powerlaw unlike Erdos-Renyi.
+		
 ---
 `Lecture 3`
 
@@ -58,9 +93,9 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 	- Eigen vectors are linearly independent
 	- If $P^{-1}$ exists then $P^{-1}AP$ has the same eigen values as A but the eigen vector is Px
 - More cool stuff
-	- Any real symmetric matrix can be written as $X\deltaX^T$ (X = matrix containing eigenvectors as columns and orthogonal ($X^T = X^{-1}$ or $XX^T = I$), $delta$ = diagonal matrix with real eigen values as diagonal elements)
-	- therefore If we use it with the eigen equation: $AX = X\delta$ => $A = X\deltaX^{-1}$
-	- If symmetric, A = $A^T = X\deltaX^T = \sum_k^N\lambda_kx_kx_k^T$
+	- Any real symmetric matrix can be written as $X \delta X^T$ (X = matrix containing eigenvectors as columns and orthogonal ($X^T = X^{-1}$ or $XX^T = I$), $delta$ = diagonal matrix with real eigen values as diagonal elements)
+	- therefore If we use it with the eigen equation: $AX = X\delta $ => $A = X\delta X^{-1}$
+	- If symmetric, A = $A^T = X\delta X^T = \sum_k^N\lambda_kx_kx_k^T$
 	- Therefore $A^m = \sum_k^N\lambda_k^mx_kx_kT$ - Remember this can be used to find number of m-hop paths from i to j using this technique.
 
 #### Linear Algebra on Graphs
