@@ -4,13 +4,38 @@ _TU Delft_
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
 
 > Average hop-count of the planet <= 4 :cyclone:
+> Any eigenvector is orthogonal to any other one!
 
+---
+`Lecture 6`
+#### Robustness of a Network
+- Probability distribution of the magnitude of a disaster often follows a power-law $Pr[D=k] = k^{-a}$ where a is called the `avelanche exponent`
+	- Energy blackouts, earthquakes, twitter retweets etc.
+- Framework for robustness:
+	- Express robustness by a real number R (is between 0(not robust) and 1(robust af))
+	- Define R value, then keep modifying the graph such that the graph achieves the desired R value threshold.
+	- $R = \sum_{k=1}^m s_kt_k$ where s is the weight/service vector and t is the topology vector containing graph metrics like (clustering coefficient, average degree, algebraic connectivity etc.)
+	- Assuming deterministic and Linear (Calculating E[R] is easy!)
+	- Issues:
+		- Linearity - WHy? 
+		- Dimension m - (Number of metrics)
+		- Dependence of metrics on each other (correlation) Solution: Use eigenvectors
+		- Normalization: Compare graphs with different number of nodes and links
+		- Service decomposition: How to find weight corresponding to a metric?
+- Robustness Envelope
+	- Resillience - network's capability to withstand perturbations(removal/rewiring of links).
+	- Find probability contours(envelope) of the R value on introducing n perturbations.
+	- Looking at R vs attacks graph:
+		- Look at area under the curve (R value) (higher the better)
+		- Sensitivity: how spread out the contour plots are around the line. (lower/smaller the better)
+	- Try out strategies when introducing perturbations like removing nodes with highest degree/betweenness/eigenvectors etc.
+	
 ---
 `Lecture 5`
 - Create a graph from the circuit provided and find directions of links in the graph (direction of current) Find currents $y_{ij}$ and node voltages $v_i$
 - Recap: $u^TB = 0$, $Qu=0$
 - Current Laws:
-	- _Kirchhoff's Law_ - Sum of currents in each node = 0 $\sum_{j belongs to neighbours(i)} y_{ij} = 0$
+	- _Kirchhoff's Law_ - Sum of currents in each node = 0 $\sum_{j \in neighbours(i)} y_{ij} = 0$
 	$By = 0$ (and if you inject current $f_i$ in the node i): $By = f$
 	- _Ohm's Law_ - Voltage difference = current * Resistance => $v_i - v_j = r_{ij}y_{ij}$
 	$y = B^Tv$ where v is the voltage vector (Nx1) and y is the current vector (Lx1)
@@ -21,7 +46,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 		- Another way would be to compute pseudo-inverse of Q. 
 			- Laplacian is symmetric so can be decomposed as $ZMZ^T$ (Z are orthogonal eigen vectors and M is eigen value diagonal matrix)
 			- $Q = \sum_k\mu_kz_kz_k^T$ and $Q_p^{-1} = \sum_k \frac{1}{\mu_k}z_kz_k^T$ pseudo inverse
-			- $QQ_p = I - \frac{1}{N}J$ where $J = uu^T$ all one matrix (The eigen vector corresponding to the 0 eigen value)
+			- $QQ_p^{-1} = I - \frac{1}{N}J$ where $J = uu^T$ all one matrix (The eigen vector corresponding to the 0 eigen value)
 			(Basically doing the same thing fancily)
 		- Now $f = Qv$ => $Q_p^{-1}f = (I - (1/N)J)v$ => $Q_p^{-1}f = v - v_{average}u$
 		- $v_{average} = u^Tv/N$ (u = all 1s vector)
