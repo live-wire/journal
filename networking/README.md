@@ -9,6 +9,8 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > Calculating Mean and Variance of a distribution is easy! But calculating a tail probability is difficult!
 
+`NOTE: Apparently these notes don't contain information about Reiman zeta function (Power law graphs) and the best Spreader.`
+
 ---
 `Exam time`
 - Spectral radius = Largest Eigen Value
@@ -116,6 +118,7 @@ Function of a network is to transport the items over its underlying graph.
 		Reactive:
 		- Selective Cell Discard
 		- Forward Congestion indication
+- If eigen values of A are evenly distributed around 0, it means the Graph is a tree.
 
 ---
 `Lecture 6`
