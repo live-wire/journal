@@ -36,12 +36,12 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Multiclass queueing system:
 	- $N_k(t)$ - Number of class k packets at time t
 	- $\mu_k(t)$ - Service rate of class k packets at time t
-	- For stability, FlowRate / ServiceRate $\frac{\lambda}{\row}$ should always be <= 1.
+	- For stability, FlowRate / ServiceRate $\frac{\lambda}{\rho}$ should always be <= 1.
 - Priority Systems:
 	- Head of the Line - _Packets always sorted_ (Logical implementation, different queues for each class) (Bad for low priority!) 
 	- Partial Buffer Sharing - _Packets above a Threshold are not sorted_
 	- Push out buffer - Pushes out a low priority buffer if buffer is full (FiFO or LiFO or Random Out)
-- Token Bucket: (Burstiness constraint = $L(u,t) = \lambda(t-u) + \sigma$)
+- Token Bucket: [] Burstiness constraint = $L(u,t) = \lambda(t-u) + \sigma$
 	- Each packet needs a token to enter the network
 	- Bucket rate = $\lambda$ = token generation rate
 	- Bucket depth = $\sigma$ = Burst!
@@ -49,7 +49,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Connection Admission Control: (Regulated flow w.r.t. loss of packets) (Non-realtime!)
 	- Check if Sum of all input burstinesses $\sum_i \sigma_i $ is <= G (Buffer positions) Guaranteed Loss-less multiplexing!
 - Regulated flow w.r.t. delay (Real-time)
-	- service rate = $\mu$, Packet arrival rate = $\lambda$ $\keppa = \frac{\mu}{\sum_i \lambda_i}$ (which is > 1 for stability)
+	- service rate = $\mu$, Packet arrival rate = $\lambda$ , $\kappa = \frac{\mu}{\sum_i \lambda_i}$ (which is > 1 for stability)
 	- Again Connection Admission Control: Maximum Delay < $\frac{\sigma_k}{\lambda_k}$
 - Wow! Just check $\sigma$ and $\lambda$ You can guarantee loss-lessness and maximum delay!
 - No free lunch: `work hard to get rich`
