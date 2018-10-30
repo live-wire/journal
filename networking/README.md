@@ -15,7 +15,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 	- Eigen values are bounded by $-d_{max}, d_{max}$ (non inclusive)
 	- Largest Eigen value is bounded by $d_{average}, d_{max}$
 	- $d_{average} = 2L/N \sqrt{1 + \frac{Var(d)}{E[D]^2}}$
-- Expected Betweenness = E[B] = maxLinks/L * Expected Hopcount = $\frac{(N(N-1)/2)}{L}E[H]$
+- Shortest paths passing through the link: Expected Betweenness = E[B] = maxLinks/L * Expected Hopcount = $\frac{(N(N-1)/2)}{L}E[H]$ Average hop count is in the scale O(log(N)) for small world graphs.
 - When calculating R (robustness value),$R = \sum_k s_km_k$ all the metrics(m) being considered are orthogonal to each other.
 - Number of k-hop walks = All elements of $A^k$ which is $u^TA^ku$. Closed walks = Diagonals of this array
 - Sum of graphs in Erdos Renyi will be Union so p1 + p2 - p1p2
@@ -28,6 +28,31 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - If there are x nodes with degree y, there are nodes with degree 1 >= $x(y-2) + 2$
 - Effective graph resistance = sum of all elements of $\omega$/2 = $N. trace(Q^{-1})$
 - For a star graph, effective graph resistance = $(n-1)\sum_i^n r_{ni}$  where n is the hub (sum of resistances connected to the hub * (n-1))
+- For a fully connected circuit, add a node in the center and make it a star!
+- For any graph
+	- Atleast two nodes with same degree
+	- Even odd degree nodes
+- Eigen stuff:
+	- A and $A^T$ have same eigen values but not necessarily the same eigen vectors
+	- Eigen vectors are linearly independent
+	- If $P^{-1}$ exists then $P^{-1}AP$ has the same eigen values as A but the eigen vector is Px
+- Of Adjacency matrix
+	- If main eigen vector has elements > 0 and eigen value > 0, Graph is connected!
+    - sum of eigen values = 0, sum of squared = sum of degrees = 2L, sum of $\lambda^k$ = Trace of $A^k$
+    - Triangles = 1/N*$\sum \lambda^3$
+- Of Laplacian
+	- Partition links to separate graphs = $1/4 \sum_j^N \alpha^2_j \mu_j$ (where $\alpha = y^Tx$) (where y = +1/-1 based on graph and x = eigenvector of Q, $\mu$ = eigen values of Q)
+	- Minimum number of links to separate = second smalles eigen value: $1/4\alpha^2_{N-1}\mu_{N-1}$
+- Erdos Renyi
+	- link density, clustering coefficient = p.
+	- $\mu=(N-1)p$ (Maximum degree * p), $\sigma^2=(N-1)p(1-p)$
+	- critical density(p) = logN/N
+- Electrical:
+	- $By=f$, $y = B^Tv$ y=current in link(Lx1), B = incidence matrix, v = voltage vector(Nx1)
+	- $f=Qv$, $Q^{-1}f = v - v_{average}u$ where $v_{average} = u^Tv/N$
+	- Effective resistance:
+		- $\omega = zu^T + uz^T - 2Q^{-1}$ (z is diagonal elements of $Q^{_1}$)
+		- Effective graph resistance = sum of omega elements /2 = $(u^T \omega u)/2$ = $N.Trace(Q^{-1})$ = $N.\sum \frac{1}{\mu}$
 
 
 ---
