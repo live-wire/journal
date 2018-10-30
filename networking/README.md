@@ -15,7 +15,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 	- Eigen values are bounded by $-d_{max}, d_{max}$ (non inclusive)
 	- Largest Eigen value is bounded by $d_{average}, d_{max}$
 	- $d_{average} = 2L/N \sqrt{1 + \frac{Var(d)}{E[D]^2}}$
-- Expected Betweenness = E[B] = maxLinks $\frac{(N(N-1)/2)}{L}E[H]$ H = expected value of hopcount
+- Expected Betweenness = E[B] = maxLinks/L * Expected Hopcount = $\frac{(N(N-1)/2)}{L}E[H]$
 - When calculating R (robustness value),$R = \sum_k s_km_k$ all the metrics(m) being considered are orthogonal to each other.
 - Number of k-hop walks = All elements of $A^k$ which is $u^TA^ku$. Closed walks = Diagonals of this array
 - Sum of graphs in Erdos Renyi will be Union so p1 + p2 - p1p2
@@ -29,6 +29,35 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Effective graph resistance = sum of all elements of $\omega$/2 = $N. trace(Q^{-1})$
 - For a star graph, effective graph resistance = $(n-1)\sum_i^n r_{ni}$  where n is the hub (sum of resistances connected to the hub * (n-1))
 
+
+---
+`Lecture 8`
+#### Scheduling
+- Multiclass queueing system:
+	- $N_k(t)$ - Number of class k packets at time t
+	- $\mu_k(t)$ - Service rate of class k packets at time t
+	- For stability, FlowRate / ServiceRate $\frac{\lambda}{\row}$ should always be <= 1.
+- Priority Systems:
+	- Head of the Line - _Packets always sorted_ (Logical implementation, different queues for each class) (Bad for low priority!) 
+	- Partial Buffer Sharing - _Packets above a Threshold are not sorted_
+	- Push out buffer - Pushes out a low priority buffer if buffer is full (FiFO or LiFO or Random Out)
+- Token Bucket: (Burstiness constraint = $L(u,t) = \lambda(t-u) + \sigma$)
+	- Each packet needs a token to enter the network
+	- Bucket rate = $\lambda$ = token generation rate
+	- Bucket depth = $\sigma$ = Burst!
+	- Packet is discarded if token bucket is empty (Packets arriving too fast!)
+- Connection Admission Control: (Regulated flow w.r.t. loss of packets) (Non-realtime!)
+	- Check if Sum of all input burstinesses $\sum_i \sigma_i $ is <= G (Buffer positions) Guaranteed Loss-less multiplexing!
+- Regulated flow w.r.t. delay (Real-time)
+	- service rate = $\mu$, Packet arrival rate = $\lambda$ $\keppa = \frac{\mu}{\sum_i \lambda_i}$ (which is > 1 for stability)
+	- Again Connection Admission Control: Maximum Delay < $\frac{\sigma_k}{\lambda_k}$
+- Wow! Just check $\sigma$ and $\lambda$ You can guarantee loss-lessness and maximum delay!
+- No free lunch: `work hard to get rich`
+	- Loss-less multiplexing vs Statistical Multiplexing
+	- $N_u = G$ and $N_s = \frac{2}{ln(clr)}G^2$
+	- For buffer size 100 ratios of $N_u$ and $N_s$ are 100 vs 865, and for buffer size 1000, they are 1000 vs 86500
+
+> Once resources are finite (Moore's law is not exponential anymore) we'll need resource planning like the use of ATM (instead of the Internet!)
 
 
 ---
@@ -46,10 +75,10 @@ Function of a network is to transport the items over its underlying graph.
 	- It is bounded by $L(u,t) <= max(\lambda(\tau))(t - u)$ because duh!
 	- $E[\lambda] = L(u,t)/(t-u)$
 - **Burstiness Constraint**
-	- $L(u,t) = \int_u^t \lambda(\tau)d\tau <= \sigma^_ + \lambda^_(t-u)$
-	- This was deducible from substituting $\sigma^_$ to zero in the above equation and $\lambda^_$ to max.
+	- Flow rate $L(u,t) = \int_u^t \lambda(\tau)d\tau <= \overline{\sigma} + \overline{\lambda}(t-u)$
+	- This was deducible from substituting $\overline{\sigma}$ to zero in the above equation and $\overline{\lambda}$ to max.
 	- Divide both sides by (t - u) to get a relation with $E[\lambda]$ as well
-	- If you plot Rate($\lambda^_$) vs tolerance($\sigma^_$), for each source, there exists a convex curve.
+	- If you plot Rate $\overline{\lambda}$ vs tolerance $\overline{\sigma}$ , for each source, there exists a convex curve.
 - Input control - Rate can't exceed more than what was agreed upon before. (Network policing)
 - Quality of Service, CAC- Connection Admission Control - Connection acceptance rules for new requests in order to guarantee QoS.
 - Congestion - Offered load vs Carried Load, Curve bends after like 80%. 
