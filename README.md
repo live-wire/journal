@@ -17,7 +17,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Take away: How many primes are less than x ? $\frac{x}{ln(x)}$ :bomb: and the prime density is $\frac{1}{ln(x)}$
 
 #### Thesis idea
-`thesis`
+`msc`
 - How can I use the repeating properties of a sine wave for repetition counting ? Generate some features ?
 
 
@@ -42,7 +42,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - It is amazing how easy it was to run this :O (Loving PyTorch :fire:)
 
 #### Torchvision useful functions
-`thesis`
+`msc`
 - `torchvision.transforms` contains a bunch of image transformation options
 - Chain them up using `transforms.Compose` like this: 
 ```
@@ -71,7 +71,7 @@ These models expect some normalizations in the input
 ---
 `October 24, 2018`
 #### Video editing - Repetition counting
-`thesis`
+`msc`
 - Preprocessing:
 	- Using [Bresenhem's Line algorithm](https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm) to sample representative elements from a list.
 		- Sample m items from n: `lambda m,n: [i*n//m + n//(2*m) for i in range(m)]`
@@ -113,7 +113,7 @@ These models expect some normalizations in the input
 ---
 `October 12, 2018`
 #### Repetition counting
-`thesis`
+`msc`
 - Things to try:
 	- Discretizing the output like in [this](https://www.cs.tau.ac.il/~wolf/papers/repcounticcv.pdf) paper.
 	- Look at [NEWMA](http://openaccess.thecvf.com/content_cvpr_2018/papers/Runia_Real-World_Repetition_Estimation_CVPR_2018_paper.pdf) as Jan suggested. It is fast and uses little memory instead of LSTM.
@@ -121,7 +121,7 @@ These models expect some normalizations in the input
 
 ---
 `October 11, 2018`
-`thesis`
+`msc`
 #### PyTorch is back
 - When you have bias in the number of classes in your training data:
 	- Oversample smaller classes
@@ -132,7 +132,7 @@ These models expect some normalizations in the input
 
 ---
 `October 10, 2018`
-`thesis`
+`msc`
 #### RepCount 
 - Discuss about IndRNN (Long sequence problems for Recurrent neural network)
 - Plot activations in layers(one by one) over timesteps. Activation vs Timestep.
@@ -173,7 +173,7 @@ These models expect some normalizations in the input
 
 ---
 `October 3, 2018`
-`thesis`
+`msc`
 #### RNN for 1D signal repetition-counting
 - Even the `nn.LSTM` implementation gives bad results. I suspect this could be because the sequence length is too huge? Trying to generate a sequence with a smaller length.
 - Maybe look at some other representation of the 1D signal ? (Like HOG ?)
@@ -233,7 +233,7 @@ These models expect some normalizations in the input
 
 ---
 `September 26, 2018`
-`thesis`
+`msc`
 #### torch.nn
 - If you share the weights across time, then your input time sequences can be a variable length. Because each time before backpropagating loss, you go over atleast a sequence.
 	- Shared weights means fewer parameters to train.
@@ -248,7 +248,7 @@ These models expect some normalizations in the input
 
 ---
 `September 25, 2018`
-`thesis`
+`msc`
 #### Recurrent Nets
 - Recursive network that is going to be trained with very long sequences, you could run into memory problems when training because of that excessive length. Look at **truncated-BPTT**. Pytorch discussion [link](https://discuss.pytorch.org/t/implementing-truncated-backpropagation-through-time/15500).
 - Ways of dealing with looooong sequences in LSTM: [link](https://machinelearningmastery.com/handle-long-sequences-long-short-term-memory-recurrent-neural-networks/)
@@ -278,7 +278,7 @@ These models expect some normalizations in the input
 `September 23, 2018`
 
 #### Recurrent Neural Nets
-`thesis`
+`msc`
 - [This](https://www.youtube.com/watch?v=yCC09vCHzF8) video by Andrej Karpathy.
 - Idea about the thesis project:
 	- Karpathy uses a feature vector (one-hot vecotor for all characters possible)-->(feature vector from a CNN) for each timestep.
@@ -403,7 +403,7 @@ Karpathy's [talk](https://skillsmatter.com/skillscasts/6611-visualizing-and-unde
 
 ---
 `September 8, 2018`
-`thesis`
+`msc`
 #### Pytorch :snake:
 - Earned basic badge in pytorch [forum](https://discuss.pytorch.org/).
 - Finished plotting utility of train, test accuracy vs epochs and train vs test accuracy
@@ -448,7 +448,7 @@ Useful commands:
 
 ---
 `August 28, 2018`
-`thesis`
+`msc`
 Amazing [video](https://www.youtube.com/watch?v=u6aEYuemt0M) by Karpathy. (Timing: 1:21:47)
 - Convolutional net on the frame and the low-level representation is an input to the RNN
 - Make neurons in the ConvNet recurrent. Usually neurons in convnets represent a function of a local neighbourhood, but now this could also incorporate the dotproduct of it's own or neighbours previous activations making it a function of previous activations of the neighbourhood for each neuron. Each neuron in the convnet - _Recurrent_!
@@ -467,7 +467,7 @@ Amazing [video](https://www.youtube.com/watch?v=u6aEYuemt0M) by Karpathy. (Timin
 
 ---
 `August 24, 2018`
-`thesis`
+`msc`
 #### PyTorch :fire:
 - Implemented a Dynamic Neural Network using Pytorch's amazing dynamic Computation graphs and `torch.nn`.
 - Fully Connected layers using `torch.nn.Linear(input_dimension, output_dimension)`
