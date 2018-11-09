@@ -6,6 +6,22 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "One day I will find the right words, and they will be simple." - Jack Kerouac
 
 ---
+`Nov 9, 2018`
+#### Riemann Hypothesis
+`Maths` `Numbers` `Primes`
+- The $\zeta(s) = \frac{1}{1^s} + \frac{1}{2^s} + \frac{1}{3^s} + \frac{1}{4^s} ...$
+- This is undefined for real numbers <=1 and is convergent for any values greater.
+- Great [video](https://www.youtube.com/watch?v=d6c6uIyieoo). 
+- Where is this function zero apart from the trivial(-2, -4, -6 etc.) ones. (On the strip between zero and 1 somewhere)
+- Rieman's hypothesis = they lie on the line where the real-component = 1/2. This tells us something about the distribution of primes.
+- Take away: How many primes are less than x ? $\frac{x}{ln(x)}$ :bomb: and the prime density is $\frac{1}{ln(x)}$
+
+#### Thesis idea
+`thesis`
+- How can I use the repeating properties of a sine wave for repetition counting ? Generate some features ?
+
+
+---
 `October 26, 2018`
 #### Konigsberg Bridge problem 
 `Algorithm` `Puzzle`
@@ -26,6 +42,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - It is amazing how easy it was to run this :O (Loving PyTorch :fire:)
 
 #### Torchvision useful functions
+`thesis`
 - `torchvision.transforms` contains a bunch of image transformation options
 - Chain them up using `transforms.Compose` like this: 
 ```
@@ -54,6 +71,7 @@ These models expect some normalizations in the input
 ---
 `October 24, 2018`
 #### Video editing - Repetition counting
+`thesis`
 - Preprocessing:
 	- Using [Bresenhem's Line algorithm](https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm) to sample representative elements from a list.
 		- Sample m items from n: `lambda m,n: [i*n//m + n//(2*m) for i in range(m)]`
@@ -95,6 +113,7 @@ These models expect some normalizations in the input
 ---
 `October 12, 2018`
 #### Repetition counting
+`thesis`
 - Things to try:
 	- Discretizing the output like in [this](https://www.cs.tau.ac.il/~wolf/papers/repcounticcv.pdf) paper.
 	- Look at [NEWMA](http://openaccess.thecvf.com/content_cvpr_2018/papers/Runia_Real-World_Repetition_Estimation_CVPR_2018_paper.pdf) as Jan suggested. It is fast and uses little memory instead of LSTM.
@@ -102,7 +121,7 @@ These models expect some normalizations in the input
 
 ---
 `October 11, 2018`
-
+`thesis`
 #### PyTorch is back
 - When you have bias in the number of classes in your training data:
 	- Oversample smaller classes
@@ -113,7 +132,7 @@ These models expect some normalizations in the input
 
 ---
 `October 10, 2018`
-
+`thesis`
 #### RepCount 
 - Discuss about IndRNN (Long sequence problems for Recurrent neural network)
 - Plot activations in layers(one by one) over timesteps. Activation vs Timestep.
@@ -154,8 +173,8 @@ These models expect some normalizations in the input
 
 ---
 `October 3, 2018`
-
-#### RNN for 1D signal repitition-counting
+`thesis`
+#### RNN for 1D signal repetition-counting
 - Even the `nn.LSTM` implementation gives bad results. I suspect this could be because the sequence length is too huge? Trying to generate a sequence with a smaller length.
 - Maybe look at some other representation of the 1D signal ? (Like HOG ?)
 - PvsNP - What can be computed in a given amount of space and time ? (Polynomial vs Non Deterministic Polynomial)
@@ -214,7 +233,7 @@ These models expect some normalizations in the input
 
 ---
 `September 26, 2018`
-
+`thesis`
 #### torch.nn
 - If you share the weights across time, then your input time sequences can be a variable length. Because each time before backpropagating loss, you go over atleast a sequence.
 	- Shared weights means fewer parameters to train.
@@ -229,7 +248,7 @@ These models expect some normalizations in the input
 
 ---
 `September 25, 2018`
-
+`thesis`
 #### Recurrent Nets
 - Recursive network that is going to be trained with very long sequences, you could run into memory problems when training because of that excessive length. Look at **truncated-BPTT**. Pytorch discussion [link](https://discuss.pytorch.org/t/implementing-truncated-backpropagation-through-time/15500).
 - Ways of dealing with looooong sequences in LSTM: [link](https://machinelearningmastery.com/handle-long-sequences-long-short-term-memory-recurrent-neural-networks/)
@@ -259,12 +278,13 @@ These models expect some normalizations in the input
 `September 23, 2018`
 
 #### Recurrent Neural Nets
+`thesis`
 - [This](https://www.youtube.com/watch?v=yCC09vCHzF8) video by Andrej Karpathy.
 - Idea about the thesis project:
 	- Karpathy uses a feature vector (one-hot vecotor for all characters possible)-->(feature vector from a CNN) for each timestep.
 	- In the output layer, would it be better to have a one-hot vector representing the count instead of a single cell which will calculate the count ?
 	- Should I pad the input sequence with 0s based on the video with the maximum number of points in the matrix profile ? (For a fixed `seq_length`) ?
-	- To make the learning process for blade-counting online, need an RNN with 3 outputs, clockwise-anticlockwise-repitition
+	- To make the learning process for blade-counting online, need an RNN with 3 outputs, clockwise-anticlockwise-repetition
 - `seq_length` in the RNN is the region where it can memorize.(size of input sequence (batch size of broken input))
 - Gradient clipping for exploding gradients (because while backpropagating, same matrix($W_h$) is multiplied to the gradient several times ((largest eigenvalue is > 1)))
 - LSTM for vanishing gradients (same reason as above (largest eigenvalue is < 1))
@@ -383,7 +403,7 @@ Karpathy's [talk](https://skillsmatter.com/skillscasts/6611-visualizing-and-unde
 
 ---
 `September 8, 2018`
-
+`thesis`
 #### Pytorch :snake:
 - Earned basic badge in pytorch [forum](https://discuss.pytorch.org/).
 - Finished plotting utility of train, test accuracy vs epochs and train vs test accuracy
@@ -428,12 +448,12 @@ Useful commands:
 
 ---
 `August 28, 2018`
-
+`thesis`
 Amazing [video](https://www.youtube.com/watch?v=u6aEYuemt0M) by Karpathy. (Timing: 1:21:47)
 - Convolutional net on the frame and the low-level representation is an input to the RNN
 - Make neurons in the ConvNet recurrent. Usually neurons in convnets represent a function of a local neighbourhood, but now this could also incorporate the dotproduct of it's own or neighbours previous activations making it a function of previous activations of the neighbourhood for each neuron. Each neuron in the convnet - _Recurrent_!
 
-** An idea for repitition estimation: Maybe look for activation spikes in the deepvis toolbox by Jason Yosinski and train a simple classifier on them. **
+** An idea for repetition estimation: Maybe look for activation spikes in the deepvis toolbox by Jason Yosinski and train a simple classifier on them. **
 
 
 #### TenNet :hand:
@@ -447,7 +467,7 @@ Amazing [video](https://www.youtube.com/watch?v=u6aEYuemt0M) by Karpathy. (Timin
 
 ---
 `August 24, 2018`
-
+`thesis`
 #### PyTorch :fire:
 - Implemented a Dynamic Neural Network using Pytorch's amazing dynamic Computation graphs and `torch.nn`.
 - Fully Connected layers using `torch.nn.Linear(input_dimension, output_dimension)`

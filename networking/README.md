@@ -57,6 +57,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 		- Effective graph resistance = sum of omega elements /2 = $(u^T \omega u)/2$ = $N.Trace(Q^{-1})$ = $N.\sum \frac{1}{\mu}$
 	- Injected nodal current = f (x some places). By = f or Qv = f
 - Turan Graph: $L = \frac{(r-1)}{2r}N^2$ r = number of partitions
+
 ---
 `Lecture 8`
 #### Scheduling

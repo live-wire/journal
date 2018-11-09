@@ -1,4 +1,41 @@
-# Supercomputing for Big Data :computer: SPARK :sparkles:
+# Supercomputing for Big Data :computer: SPARK KAFKA :sparkles:
+
+---
+## Stream Processing with [Kafka](https://kafka.apache.org/intro) :surfer:
+
+> ETL Is Dead, Long Live Streams [talk by Neha Narkhede](https://www.infoq.com/presentations/etl-streams)
+
+
+Generate real-time insights from a bunch of stuff!
+- **Topics**
+	- Each message that is fed must be apart of a topic.
+	- Each topic can have multiple partitions. (So each instance just needs to be able to host a partition instead of the entire topic)
+		- Each partition is also replicated for fault tolerance
+		- Each partition has a leader(for read/writes) and a few followers(who passively replicate the leader).
+		- Hence ordering possible only within a partition
+	- In partitions, the records have a sequence assigned to them (called _offsets_)
+- **Producers**
+	- These apps publish messages on one of the topics
+	- Produces choses the partition to publish to (or round robin).
+- **Consumers**
+	- These apps subscribe to one/more topics and consume data
+- **Broker**
+	- Every instance of Kafka (could be on a single machine or on a cluster)
+	- If Kafka brokers are godowns for a restaurant, chefs are consumers
+- **Streams API**
+	- Reads a stream(from one or more topics) and produces a stream back to a(one or more) topic(s).
+	- Uses Kafka stateful storage
+	- Aggregations etc. :bomb:
+	- Simple is Beautiful
+	- It is the **T in ETL**
+- **Connector API**
+	- Allows building reusable producers/consumers to connect to existing Data solutions/systems.
+	- It is the **E and L in ETL**
+- Kafka > Traditional Queues
+	- It allows both `queueing` (load shared among consumers in a consumer-group) and `publish-subscribe` (messages broadcasted to all consumer-groups) instead of chosing one.
+- Kafka relies on `zookeeper` to run.
+- `WOW`: Treat the past and incoming stream data the same way! And replace everything else for data processing.
+
 
 ---
 ## Lecture 2
