@@ -6,6 +6,15 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "One day I will find the right words, and they will be simple." - Jack Kerouac
 
 ---
+`Nov 12, 2018`
+#### Causal Convolutions, WaveNet
+`msc`
+- Crazy reddit [post](https://www.reddit.com/r/MachineLearning/comments/7lvqay/d_future_of_lstm_and_gru_given_rise_of_causal/)
+- Papers to read series: PixelRNN/PixelCNN/WaveNet/ByteNet
+- ConvNets haven't been able to beat RNNs in question answering (Can't keep running hidden state of the past like RNNs)
+- 
+
+---
 `Nov 9, 2018`
 #### Riemann Hypothesis
 `Maths` `Numbers` `Primes`
