@@ -6,6 +6,11 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "One day I will find the right words, and they will be simple." - Jack Kerouac
 
 ---
+`Nov 14, 2018`
+#### Pattern Recognition
+- Decision Trees: `Bagging` might not necessarily give better results but the results will have lower variance and will be more reliable / reproducible.
+
+---
 `Nov 12, 2018`
 #### Causal Convolutions, WaveNet
 `msc`
