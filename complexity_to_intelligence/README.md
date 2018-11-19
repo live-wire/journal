@@ -15,7 +15,7 @@
         - **UTM** - (Universal turing machine) - That can simulate any turing machine.
     - **Turing test** - That Google Assistant almost just beat in the recent IO.
 - Complexity: $C_M(x) = min_{p \in P_M}\{l(p):p() = x\}$ - Shortest program on M producing an output x. Here p() means empty input-tape for the turing machine.
-- Conditional Complexity: $C_M(x|y) = min_{p\inP_M}\{l(p): p(y) = x\}$
+- Conditional Complexity: $C_M(x|y) = min_{p \in P_M} \{l(p): p(y) = x\}$
 - Invariance Theorem: $|C_{M_2}(x) - C_{M_1}(x)| < c_{M_1 M_2}$ (Bounded) Doesn't depend on the output sequence x
 - $\pi$ is not complex: $\frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7}...$
 - Complexity of integer = $C(i) = log_2(i)$
