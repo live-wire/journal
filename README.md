@@ -20,7 +20,8 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Crazy reddit [post](https://www.reddit.com/r/MachineLearning/comments/7lvqay/d_future_of_lstm_and_gru_given_rise_of_causal/)
 - Papers to read series: PixelRNN/PixelCNN/WaveNet/ByteNet
 - ConvNets haven't been able to beat RNNs in question answering (Can't keep running hidden state of the past like RNNs)
-- 
+- `IDEA: Try to generate a sine wave based on the number of repetitions in the duration specified! Minimize Loss somehow! How to deal with repetitions of varying lengths though ?`
+- `IDEA: Think of a minimum repetition wave, try to minimize loss by varying the wavelength. The entire signal could be a combination of such wave-lets(scaled)`
 
 ---
 `Nov 9, 2018`
