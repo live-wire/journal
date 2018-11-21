@@ -19,4 +19,4 @@
 $E[X^n] = \sum_x x^n Pr[X=x]$
 - Variance of X is $Var[X] = E[(X - E[x])^2] = E[X^2] - \mu^2$
 - Probability generating function: $E[g(x)] \sum_x g(x) Pr[X=x] $ therefore: $\phi(z) = E[z^x]$
-
+- Derivative of **pgf** = $frac{d}{dx}E[z^x]$, now since Expectation is linear, derivative can move inside. = $E[xz^{x-1}], for z= 1 = E[x]
