@@ -44,7 +44,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Shannon Claude:
     - Father of Information Theory. 
     - Also invented the flip the switch game
-    - L = min $\{ \sum_x P(x)l_x: C is a prefix code \}$ Where P is the probability that a word x is produced by the source
+    - L = min $\{ \sum_x P(x)l_x\}$ :C is a prefix code. Where P is the probability that a word x is produced by the source
     - Shannon Fano code: $l_x = \[ \frac{1}{log(p(x))} \]$
 - _Zipf law_: Rank of the word is linearly correlated to the frequency of occurance.
     - Means rank can be used instead of actual probability
@@ -100,16 +100,16 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
         - Use K-means clustering algorithm. $\sum_{i=1}^n min_{1..k} K(x_i|p_j) + \sum_{j=1}^k K(p_j)$ Here, the first term is kind of K(O/h) and the second term is kind of K(h)
 
 #### Complexity in Mathematics
-- Chaitin's constant - $\omega = \sum_{U(p)<\inf} 2^{-l(p)} $ -Produced an integer that cannot be computed thereby proving Godel's theory of incompleteness (There are things that cannot be proved or disproved). $\omega > 0$ and by kraft's inequality, $\omega <= 1$
+- Chaitin's constant - $\Omega = \sum_{U(p)<\infty} 2^{-l(p)} $ -Produced an integer that cannot be computed thereby proving Godel's theory of incompleteness (There are things that cannot be proved or disproved). $\Omega > 0$ and by kraft's inequality, $\Omega <= 1$
     - Truely random!
     - Not computable! *kill me now*
     - All numbers in the universe are also in this number (like chapernowne's constant)
-    - The answer to Riemann's hypothesis is contained within the first 7780 bits of $\omega$
+    - The answer to Riemann's hypothesis is contained within the first 7780 bits of $\Omega$
     - Wisdom Number!
 - No turing machine can't tell if the program will halt the turing machine in finite time.
     - If we did, we would solve all conjectures(including the reiman conjecture) and all mathematical questions (that can be solved by a program).
 
 #### Universal Artificial Intelligence
 - Reinforcement Learning = Exploration + Exploitation
-- :bomb: Safely Interruptable Robots - Robot won't be able to get better at killing you if you interrupt them (force them into following a suboptimal strategy). :wow:
+- :bomb: Safely Interruptable Robots - Robot won't be able to get better at killing you if you interrupt them (force them into following a suboptimal strategy). :sunglasses:
 
