@@ -107,9 +107,30 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - The answer to Riemann's hypothesis is contained within the first 7780 bits of $\Omega$
     - Wisdom Number!
 - No turing machine can't tell if the program will halt the turing machine in finite time.
-    - If we did, we would solve all conjectures(including the reiman conjecture) and all mathematical questions (that can be solved by a program).
+    - If we did, we would solve all conjectures(including the riemann conjecture) and all mathematical questions (that can be solved by a program).
 
 #### Universal Artificial Intelligence
 - Reinforcement Learning = Exploration + Exploitation
 - :bomb: Safely Interruptable Robots - Robot won't be able to get better at killing you if you interrupt them (force them into following a suboptimal strategy). :sunglasses:
 
+#### Complexity of distance from locations (landmarks)
+- For locations in space
+- For locations in time
+- Interest of an event decreases as 2wice the log of distance to the observer
+    - decreases with $2log(d)$
+- Proximity to a landmark can dramatically increase interest by making the description simpler. 
+- How to solve dilema - minimize (C(L) + C(h/L))
+- Formula: C(h/L) ~ 2log(dist(h/L)) (L = Landmark, h = House)
+- Interesting events are simpler to describe than to generate.
+    - Gap between causal expectation and description = $C(s_2) - C(s_2/s_1)$
+
+
+---
+`Lecture 5`
+**Nov 22, 2018**
+#### Interesing events
+- Interesting events are simpler to describe than to generate.
+- Interesting when generating an event is much more complex than describing it.
+- Learning is not Acquisition
+- Complexity is a great tool for modelling in AI.
+- AI = Mimicking human behaviour, ML = Solving Problems that humans can't solve (DNA sequencing)
