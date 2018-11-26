@@ -8,6 +8,13 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
 ---
+`Nov 26, 2018`
+#### New Autoencoders
+- Autoencoders: Lower dimensional latent space [link](https://www.youtube.com/watch?v=9zKuYvjFFS8)
+	- Variational Autoencoders: Instead of bottleneck neurons, a distribution is learned (mean and variance) (Backpropagation Reparamatrized trick is used where the stochastic part is kept separate from mean and std. so gradients can flow back)
+	- New Type: **Disentangled Variational Autoencoder** - Changing the latent variables leads to interpretable things in the input space (few causal features from a high dimensional space - latent variables (and understandable)).
+
+---
 `Nov 25, 2018`
 #### Reading papers
 `msc`
@@ -24,11 +31,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 	- Traditional ML models like XGBoost and RandomForests don't work well with small data. [source](https://www.youtube.com/watch?v=7QlKZKbQa6M)
 	- Used for Semi-supervised learning.
 	- Variatiomal inference models for time-series forecasting ? SVI ? (IDEA ? `msc` ?)
-
-#### Imperative vs Functional Programming
-`algorithm`
-- 
-
+	
 
 ---
 `Nov 14, 2018`

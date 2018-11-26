@@ -14,6 +14,13 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - Techniques like AutoEncoders make use of Latent Variables (for dimensioanlity reduction) but are not tractable.
     - Tractable models involve modeling using products of conditional distributions, but are not sophisticated enough to model long-range correlation between pixels.
     - Enter, RNNs! They (2d-RNNs) have been awesome at modelling gray-scale images and textures before this paper.
+        - Generating image pixel by pixel (sequential from top left) can be written as a product of conditional distributions: $p(x) = \prod_{i=1}^{n^2} p(x_i | x_1, .. x_{i-1})$
 - _Contributions_:
+    - Row LSTM - Triangular Receptive Field
+    - Diagonal BiLSTM - All pixels on left and top are in the receptive field.
+    - Masked Convolutions - Values from R shouldnt be available when predicting G and B. 
+    - PixelCNN - Preserves spatial resolution (No pooling layers)
+    - Using Softmax Discrete for pixel values 0-255 instead of continuous
+    - Using Skip-connections helps with increased depth.
 
 
