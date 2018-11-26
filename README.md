@@ -5,6 +5,31 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "One day I will find the right words, and they will be simple." - Jack Kerouac
 
+> "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
+
+---
+`Nov 25, 2018`
+#### Reading papers
+`msc`
+- Going through the [PixelRNN](https://arxiv.org/abs/1601.06759) paper as it is kind of a prerequisite for WaveNet.
+- **Latent Variables**: [link](https://learnche.org/pid/latent-variable-modelling/what-is-a-latent-variable)
+    - Latent variable is not directly observable by the machine (potentially observable - hypothesis - using features and examples)
+    - In most interesting datasets, there are no/missing labels!
+    - Principal Component Analysis / Maximum Likelihood estimation / Variational AutoEncoders. We use it when some data is missing! Who else uses this ? - Auto Encoders.
+    - Latent variables capture, in some way, an underlying phenomenon in the system being investigated
+    - After calculating the latent variables in a system, we can use these fewer number of variables, instead of the K columns of raw data. This is because the actual measurements are correlated with the latent variable
+- Two Dimensional RNNs [link](https://arxiv.org/pdf/1506.03478.pdf) used for generating patterns in images. 
+- Autoregressive - A value is a function of itself (in a previous timestep). AR(1) means the process includes instance of t-1.
+- **Uber's pyro** - Probabilistic programming (Bayesian statistics) with PyTorch. Build Bayessian Deep learning models.
+	- Traditional ML models like XGBoost and RandomForests don't work well with small data. [source](https://www.youtube.com/watch?v=7QlKZKbQa6M)
+	- Used for Semi-supervised learning.
+	- Variatiomal inference models for time-series forecasting ? SVI ? (IDEA ? `msc` ?)
+
+#### Imperative vs Functional Programming
+`algorithm`
+- 
+
+
 ---
 `Nov 14, 2018`
 #### Pattern Recognition
