@@ -18,9 +18,9 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - _Contributions_:
     - Row LSTM - Triangular Receptive Field
     - Diagonal BiLSTM - All pixels on left and top are in the receptive field.
-    - Masked Convolutions - Values from R shouldnt be available when predicting G and B. 
+    - Masked Convolutions - Values from R shouldnt be available when predicting G and B. To model full dependencies between color channels.
     - PixelCNN - Preserves spatial resolution (No pooling layers)
     - Using Softmax Discrete for pixel values 0-255 instead of continuous
-    - Using Skip-connections helps with increased depth.
-
+    - Using Skip-connections helps with increased depth (12 layers).
+    - Larger models = better results
 
