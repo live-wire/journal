@@ -8,6 +8,59 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
 ---
+`Nov 28, 2018`
+#### LSTMs and WaveNet
+`msc`
+- Idea - find the sequence of images in the video that show the maximum similarity when super-imposed on the upcoming frames.
+- Activation functions and derivatives:
+	- `Sigmoid` (0 to 1): $f(x) = \frac {1}{1+e^{-x}}$ and $f^{'}(x)=\frac{f(x)}{1-f(x)}$ (Useful for probabilities, though softmax is a better choice)
+	- `TanH` (-1 to 1): $f(x)=\frac{e^x - e^{-x}}{e^x + e^{-x}}$ and $f^{'}(x)=1 - f(x)^2$
+![LSTM Un-rolled](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png)
+- **LSTM**: [link](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)<br>
+Notations: $h_t$ = output at each time step, $C_t$ = Cell State, $x_t$ = Input at a time step.
+	- Forget Gate: I consumes the previous time step, merges it with current input, passes it through a sigmoid gate output(0 to 1) and pointwise multiplies the result with the cell state. (It specifies how much needs to be passed to the next state).<br>
+	$f_t = \sigma (W_f[h_{t-1}, x_t] + b_f)$ (This square brackets means the h and x are concatenated and more weights for W_f to learn)
+	- Cell state: It decides what needs to be saved in the current state. It takes the output from pointwise multiplication of forget gate and old cell-state and then adds (the tanh of current input and sigmoid of current input(for making it range from 0 to 1)) <br>
+	$i_t = \sigma (W_i[h_{t-1}, x_t] + b_i)$ <br>
+	$C_t^{-} =tanh(W_c[h_{t-1}, x_t] + b_c)$ <br>
+	$C_t = C_t^{-} * i_t + f_t * C_{t-1}$ (Here * is pointwise multiplication) (This is the state stored for this cell that is forwarded to the next time-step)
+	- Output: We still haven't figured out what to output ($h_t$). Now take this computed cell state, tanh it to make it span from -1 to 1 and pointwise multiply it with the sigmoid of current input.<br>
+	$h_t = tanh(C_t) * \sigma (W_o[h_{t-1}, x_t] + b_o)$ This output is then sent upward (out) and also to the next time step.
+	- Easy peasy :lemon: squeezy!
+- **LSTM Variants**:
+	- There is a variant which uses coupled forget and input gates: merges sigmoids for $f_t$ and $i_t$ and uses $1 - f_t$ instead of $i_t$.
+	- There is a variant which uses peep-hole connections everywhere (Adds State value C_t everywhere in all W[]s)
+	- **GRU**:
+		- No Cell state variable to be forwarded through timesteps.
+		- Only output is generated which is propagated up and to the next timestep.
+		- Lesser parameters to train.
+			- Uses the coupled forget and input gates idea.
+			- $f_t = \sigma (W_f[h_{t-1}, x_t] + b_f)$ <br>
+			  $c_t = \sigma (W_c[h_{t-1}, x_t] + b_c)$ <br>
+			  $h_t^{-} = tanh (W_o[c_t * h_{t-1}, x_t] + b_o)$ <br>
+			  $h_t = (1 - f_t)*h_{t-1} + f_t * h_t^{-}$ -> This is the output that is forwarded upwards and into the next time step.
+
+---
+`Nov 27, 2018`
+#### Data Structures and Python
+`algorithm`
+- Making your implementation of (say a LinkedList) iterable in Python:
+	- Declare a member variable which contains the current (`__current`) element (for iterations)
+	- Declare function `__iter__` which inits the first element in `__current` and returns self!
+	- Declare function `__next__` which calls `StopIteration()` or updates the `__current` and returns the actual item(node)!
+	- :bomb: You can now do a `for node in LinkedList:` (elegant af)
+- **Self-balancing trees** : (AVL Trees, Red-Black Trees, B-trees)
+	- _B-Trees_ [link](https://medium.com/basecs/busying-oneself-with-b-trees-78bbf10522e7): Generalization of a _2-3 tree_ (Inorder traversal = sorted list. Node can have 1 (and 2 children) or 2 keys (and 3 children))
+		- All leaves must be at the same level
+		- Number of children = x is $B<= x < 2B$ (Note the < sign in upper bound)
+		- If B = 2, It is a 2-3 tree (2 Keys, 3 children)
+		- Insertion is okay, when overflows (more elements in a node than the allowed number of keys), move the middle element up. If keeps overflowing, keep going up till you reach the root.
+		- Deletion - Trickier! Delete the node, Rotation!
+		- Why? - Large datasets - On-disk data structure (not in-memory). It makes fewer larger accesses to the disk! - they are basically like maps with sorted keys (that can enable range operations)!
+		- Databases nowadays usually implement B+ trees (store data in leaves and don't waste space) and not B-trees.
+
+
+---
 `Nov 26, 2018`
 #### New Autoencoders
 - Autoencoders: Lower dimensional latent space [link](https://www.youtube.com/watch?v=9zKuYvjFFS8)
