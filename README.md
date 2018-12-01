@@ -9,12 +9,22 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 ---
 `Nov 28, 2018`
+#### PixelCNN and WaveNet
+`msc`
+- Reading the paper Conditional Image generation using PixelCNN Decoders. [Link](https://arxiv.org/pdf/1606.05328.pdf)
+- PixelCNN employs the _Conditional Gated PixelCNN_ on portraits. It uses Flicker Images and crops them using a face detector!
+	- Face Embeddings are generated using a triplet loss function which ensures that embeddings for one person are further away from embeddings for other people. (FaceNet [link](https://arxiv.org/abs/1503.03832))
+- Use Linear Interpolation (between a pair of embeddings) to generate a smooth output from one to the next generation. Looks beautiful! DeepMind's generations.
+
+---
+`Nov 28, 2018`
 #### LSTMs and WaveNet
 `msc`
 - Idea - find the sequence of images in the video that show the maximum similarity when super-imposed on the upcoming frames.
 - Activation functions and derivatives:
-	- `Sigmoid` (0 to 1): $f(x) = \frac {1}{1+e^{-x}}$ and $f^{'}(x)=\frac{f(x)}{1-f(x)}$ (Useful for probabilities, though softmax is a better choice)
-	- `TanH` (-1 to 1): $f(x)=\frac{e^x - e^{-x}}{e^x + e^{-x}}$ and $f^{'}(x)=1 - f(x)^2$
+	- `Sigmoid` (0 to 1): $f(x) = \frac {1}{1+e^{-x}}$ and $f'(x)=\frac{f(x)}{1-f(x)}$ (Useful for probabilities, though softmax is a better choice)
+	- `TanH` (-1 to 1): $f(x)=\frac{e^x - e^{-x}}{e^x + e^{-x}}$ and $f'(x)=1 - f(x)^2$
+	- `RELU` (0 to x): $f(x) = max(0, x)$ and $f'(x) = 1 if x>0 else 0$
 ![LSTM Un-rolled](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png)
 - **LSTM**: [link](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)<br>
 Notations: $h_t$ = output at each time step, $C_t$ = Cell State, $x_t$ = Input at a time step.
@@ -39,6 +49,7 @@ Notations: $h_t$ = output at each time step, $C_t$ = Cell State, $x_t$ = Input a
 			  $c_t = \sigma (W_c[h_{t-1}, x_t] + b_c)$ <br>
 			  $h_t^{-} = tanh (W_o[c_t * h_{t-1}, x_t] + b_o)$ <br>
 			  $h_t = (1 - f_t)*h_{t-1} + f_t * h_t^{-}$ -> This is the output that is forwarded upwards and into the next time step.
+		- Probably experiment with this as well, as it has lesser parameters to train for the small dataset we have.
 
 ---
 `Nov 27, 2018`
@@ -83,7 +94,7 @@ Notations: $h_t$ = output at each time step, $C_t$ = Cell State, $x_t$ = Input a
 - **Uber's pyro** - Probabilistic programming (Bayesian statistics) with PyTorch. Build Bayessian Deep learning models.
 	- Traditional ML models like XGBoost and RandomForests don't work well with small data. [source](https://www.youtube.com/watch?v=7QlKZKbQa6M)
 	- Used for Semi-supervised learning.
-	- Variatiomal inference models for time-series forecasting ? SVI ? (IDEA ? `msc` ?)
+	- Variational inference models for time-series forecasting ? SVI ? (IDEA ? `msc` ?)
 	
 
 ---
