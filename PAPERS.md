@@ -5,6 +5,30 @@
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
 
 ---
+`Nov 30, 2018`
+#### Conditional Image generation with PixelCNN Decoders
+- [Link](https://arxiv.org/pdf/1606.05328.pdf)
+- Aims at conditional image modelling, as an image is generated pixel by pixel so the joint image distribution will be a product of conditionals (probability that a pixel will occur given the existing pixels (Autoregressive!))
+- Usually PixelRNN performs better than this (Because all the previous pixel information is available to all layers of LSTMs but only to the last layers of the convolutional stack (as the receptive field grows as we go deeper), also because LSTMs use gates(sigmoid and tanh of dot products) which can model more complex interactions instead of the usual RELUs), but this is much faster to train!
+- _Contributions_:
+    - **Gated PixelCNN**: Image can be described as a product of conditional distributions of pixels: $p(x) = \prod_{i=1}^{n^2} p(x_i | x_1, .. x_{i-1})$. Each of these conditional distributions are modelled by a CNN in this technique!
+        - This produces an output for an image of dimensions: (N x N x 3) as (N x N x 3 x 256) probabilities. And this can be produced parallely because of convolutions.
+        - Gated convolutional layers: Replace RELUs with elementwise product of tanh and sigmoid of Wx- (To model more complex behaviours) <br>
+        $y = tanh(W * x) \odot \sigma (W * x)$ where $\odot$ is elementwise product and * is convolution.
+        - RECAP Activations:
+            - Sigmoid: (0 - 1): $f(x) = \frac{1}{1+e^{-x}}$ and $f'(x)= \frac{f(x)}{1-f(x)}$
+            - TanH: (-1 - 1): $f(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$ and $f'(x)=1 - f(x)^2$
+            - RELU: (0 to x): $f(x) = max(0, x)$ and $f'(x) = 1 if x>0 else 0$
+        - Uses a vertical and horizontal stack (Like PixelRN used the Diagonal BiLSTM) for having all pixels that occured before in the receptive field.
+    - **Conditional Gated PixelCNN**:
+        - Given a high level image description, given as a latent vector h (like a one-hot encoding of classes of ImageNet), it models the product of conditionals. <br>
+        $p(x|h) = \prod_{i=1}^{n^2} p(x_i | x_1, .. x_{i-1},h)$ we do this by <br>
+        $y = tanh(W * x + V^Th) \odot \sigma (W * x + V^Th)$ to model if object is in the image (not where) Spatial coordinates can also be mapped if we use (V * s) in the above formula instead of $V^Th$ were s = spatialMapping(h).
+        - Since it models the image distribution well based on latent vector representations, it will do well as a decoder in AutoEncoders!
+        - This is also tried on face dataset with embeddings( h vector ) generated using FaceNet's([link](https://arxiv.org/abs/1503.03832)) triplet loss function.
+
+
+---
 `Nov 25, 2018`
 #### Pixel Recurrent Neural Networks
 - [Link](https://arxiv.org/abs/1601.06759)
