@@ -8,6 +8,20 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
 ---
+`Dec 2, 2018`
+#### WaveNet
+`msc`
+- Use softmax to discretize the output and model conditional distributions. If there are way too many output values, use the $\mu$-law. (Try Mu-law or some alternative)
+- Look at LS-SVR Lest square support vector regression.
+- Also try the Gated-activation-units (tanh, sigmoid approach like pixelCNN, Wavenet) instead of regular RELUs.
+- Seems like WaveNets are cheaper than LSTMs. So my experiments shoule be in this order.
+- _Skip-Connections_: If some future layers(like the fully connected ones) need some information from the initial layers (like edges etc.) that might be otherwise lost/made too abstract.
+- _Residual Learning_: Like skip connections, allow the gradients to flow back freely. Force the networks to learn something new with every new layer added. (Also handle the vanishing gradient problem)
+- **Cool Convolutions:**
+	- Kernel for box-blur = np.ones((3,3)) / 9 (Note that sum of all values in the kernel = 1)
+	- Edge detection: all -1s, center = 8
+	- Sobel Edge (less affected by noise)= [[-1, -2, -1],[0,0,0],[1, 2, 1]]
+---
 `Nov 28, 2018`
 #### PixelCNN and WaveNet
 `msc`

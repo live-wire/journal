@@ -11,13 +11,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - PixelRNN and PixelCNN generate images several thousand pixels at a time, inspired the 2-D Nets to a 1-D WaveNet!
 - The same concept of products of conditional probabilities of previous timesteps is used by wavenet:<br> $p(x) = \prod_{t=1}^T p(x_t | x_1,..,x_{t-1})$
 - A stack of convolutional layers is used. Output is fed back to the network to generate next sample. Causal convolutions are used - which means the output depends on only previous items in the layer before it (But, the network needs to be very deep to increase receptive field)
-- Dilated convolutions are used (Output the same size as input) Dilation Factor 1 = normal convolution. Helps networks to have a huge receptive field with just a few layers.
+- Dilated convolutions are used (Output the same size as input) Dilation Factor 1 = normal convolution. Helps networks to have a huge receptive field with just a few layers. This model also uses residual links and skip connections to train deep models.
 - It uses softmax to discretize the outputs. But per each timestep, it will need to output $2^{16}$ probabilities. For this, it uses the mu-law to create 256 possibilities from it instead (called quantization). <br>
 $f(x_t) = sign(x_t) \frac{ln(1 + \mu |x_t|)}{ln(1 + \mu)}$ where $-1 < x_t < 1$ and $\mu= 255$
 - It also uses gated-activation instead of RELUs:<br>
 $z = tanh(W * x) \odot \sigma(W * x)$ (Here \odot = elementwise product and * = convolution)
 - Conditional WaveNets: get p(x|h) just like in PixelCNNs. (In this case, the h would be speaker's embeddings in a text-to-speech model (Exactly a one-hot vector containing speaker-ID)) This would help generate speech samples from the speaker: <br>
 $z = tanh(W*x + V^Th) \odot \sigma(W*x + V^Th)$
+- Model consists of several blocks, each contining a bunch of layers with increasing dialating factors.
 
 
 ---
