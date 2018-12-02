@@ -11,6 +11,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 `Dec 2, 2018`
 #### WaveNet
 `msc`
+- [Link to my summary of the paper](https://github.com/live-wire/journal/blob/master/PAPERS.md#wavenet-generative-model-for-raw-audio)
 - Use softmax to discretize the output and model conditional distributions. If there are way too many output values, use the $\mu$-law. (Try Mu-law or some alternative)
 - Look at LS-SVR Lest square support vector regression.
 - Also try the Gated-activation-units (tanh, sigmoid approach like pixelCNN, Wavenet) instead of regular RELUs.
@@ -25,6 +26,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 `Nov 28, 2018`
 #### PixelCNN and WaveNet
 `msc`
+- [Link to my summary of the paper](https://github.com/live-wire/journal/blob/master/PAPERS.md#conditional-image-generation-with-pixelcnn-decoders)
 - Reading the paper Conditional Image generation using PixelCNN Decoders. [Link](https://arxiv.org/pdf/1606.05328.pdf)
 - PixelCNN employs the _Conditional Gated PixelCNN_ on portraits. It uses Flicker Images and crops them using a face detector!
 	- Face Embeddings are generated using a triplet loss function which ensures that embeddings for one person are further away from embeddings for other people. (FaceNet [link](https://arxiv.org/abs/1503.03832))
@@ -96,6 +98,7 @@ Notations: $h_t$ = output at each time step, $C_t$ = Cell State, $x_t$ = Input a
 `Nov 25, 2018`
 #### Reading papers
 `msc`
+- [Link to my summary of the paper](https://github.com/live-wire/journal/blob/master/PAPERS.md#pixel-recurrent-neural-networks)
 - Going through the [PixelRNN](https://arxiv.org/abs/1601.06759) paper as it is kind of a prerequisite for WaveNet.
 - **Latent Variables**: [link](https://learnche.org/pid/latent-variable-modelling/what-is-a-latent-variable)
     - Latent variable is not directly observable by the machine (potentially observable - hypothesis - using features and examples)
