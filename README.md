@@ -8,6 +8,21 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
 ---
+`Dec 4, 2018`
+#### The future of AI rendered world
+- Amazing [project](https://news.developer.nvidia.com/nvidia-invents-ai-interactive-graphics/?ncid=so-you-ndrhrhn1-66582) by NVIDIA. It renders the world after training on real videos.
+- Want a setup whenever you open python console ?
+	- Set an environment variable `PYTHONSTARTUP` with the path to a python file that imports stuff! :bomb:
+
+`msc`
+- Generating sine-wavelets is taking some shape. The variables when generating a combination of sine-wavelets are:
+	- begin = 0 # Can have values 0 or pi/2 (growing or decreasing function)
+    - wavelength_factor = 0.5 # chop the wave (values between 0 and 1)
+    - stretch_factor = 3 # Stretch the wave to span more/less than 2pi
+    - amplitude_factor = 0.5 # Increase/decrease the height of each curve
+    - ground = 2 # base line for the wave
+
+---
 `Dec 3, 2018`
 #### Sine-ing up
 `msc`
@@ -15,9 +30,10 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Generating a bunch of sine-waves today.
 - `np.linspace(start, end, num)` gives num values between start and end.
 - `tensor.view()` is like reshape of numpy (-1 means calculate its value based on the other parameters specified)
-- `Prophet`: Forecasting procedure implemented by Facebook. [link](https://facebook.github.io/prophet/)
+- `Prophet`: Forecasting procedure implemented by Facebook. [link](https://facebook.github.io/prophet/). It's nice for periodic data with a trend. (It assumes there is yearly, monthly, weekly data available). [post](https://www.digitalocean.com/community/tutorials/a-guide-to-time-series-forecasting-with-prophet-in-python-3)
 - Experimenting with sine-wavelets! Trying to create complex randomized sine-waves with varying [amplitude, wavelength (cropping the wave), stretch factor (making the wave span less or more than 2pi) and ground (the base of the wave which is 0 by default)].
 - `Idea: Will it be possible to model the matrix-profile as sine-wavelets using regression ?`
+- `Idea for RealTime: Learn a wavelet-like-sequence-of-frames from the given video that represents a repetition`
 
 ---
 `Dec 2, 2018`
