@@ -8,6 +8,18 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
 ---
+`Dec 3, 2018`
+#### Sine-ing up
+`msc`
+-_Yield in Python_ If a function **yield**s something instead of return, it is a `generator function` which can be iterated upon. try calling `next(f)` on f where f = gen_function(). It will return the next value from the generator. - It reduces the memory footprint! and is coool!
+- Generating a bunch of sine-waves today.
+- `np.linspace(start, end, num)` gives num values between start and end.
+- `tensor.view()` is like reshape of numpy (-1 means calculate its value based on the other parameters specified)
+- `Prophet`: Forecasting procedure implemented by Facebook. [link](https://facebook.github.io/prophet/)
+- Experimenting with sine-wavelets! Trying to create complex randomized sine-waves with varying [amplitude, wavelength (cropping the wave), stretch factor (making the wave span less or more than 2pi) and ground (the base of the wave which is 0 by default)].
+- `Idea: Will it be possible to model the matrix-profile as sine-wavelets using regression ?`
+
+---
 `Dec 2, 2018`
 #### WaveNet
 `msc`
