@@ -8,6 +8,15 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
 ---
+`Dec 6, 2018`
+#### Plotting peaks and valleys in Sine waves 
+`msc`
+- combining multiple generators - 
+    - `from itertools import chain`
+    - `generator3 = chain(generator1(), generator2())`
+
+
+---
 `Dec 4, 2018`
 #### The future of AI rendered world
 - Amazing [project](https://news.developer.nvidia.com/nvidia-invents-ai-interactive-graphics/?ncid=so-you-ndrhrhn1-66582) by NVIDIA. It renders the world after training on real videos.
@@ -34,6 +43,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Experimenting with sine-wavelets! Trying to create complex randomized sine-waves with varying [amplitude, wavelength (cropping the wave), stretch factor (making the wave span less or more than 2pi) and ground (the base of the wave which is 0 by default)].
 - `Idea: Will it be possible to model the matrix-profile as sine-wavelets using regression ?`
 - `Idea for RealTime: Learn a wavelet-like-sequence-of-frames from the given video that represents a repetition`
+- `Idea: more than one frame at a time to the matrix profile`
 
 ---
 `Dec 2, 2018`
