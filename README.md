@@ -15,7 +15,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - `from itertools import chain`
     - `generator3 = chain(generator1(), generator2())`
 - Sine waves - Manual Peak detection can look at the local minimas and maximas! What about the global characteristics ? How to tackle them ? :sad:
-
+- Wrote `sine_generator.py` to generate X, Y from the sine waves generated.
 
 ---
 `Dec 4, 2018`
