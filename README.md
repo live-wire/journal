@@ -8,6 +8,15 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
 ---
+`Dec 11, 2018`
+#### Python creating custom comparable objects
+`algorithm`
+- Create functions like `__eq__(self, other)`, `__le__(self, other)`  inside the class to overload the corresponding operators. Compare the objects of your classes like a boss!
+- Use the decorator `@staticmethod` with a function in a class to mark it as a static method. This will be callable by ClassName.method or classObject.method!
+
+
+
+---
 `Dec 6, 2018`
 #### Plotting peaks and valleys in Sine waves 
 `msc`
@@ -16,6 +25,12 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - `generator3 = chain(generator1(), generator2())`
 - Sine waves - Manual Peak detection can look at the local minimas and maximas! What about the global characteristics ? How to tackle them ? :sad:
 - Wrote `sine_generator.py` to generate X, Y from the sine waves generated.
+- `IDEA: Maybe merge the wavelet peaks that are too close to each other based on a threshold`
+    - Or prune based on amplitude/stretch_factor on both sides of the peak.
+- **Fourier transform**: Get the original bunch of waves from the combination wave
+    - It will show spikes where the actual components occur.
+    - Wind the wave into a circle, the center of mass shifts(on changing the wind frequency) only when it finds a component frequency.
+    - How ? `Integral of -` $g(t)e^{2\pi i f t}$ (Depicts the center of mass (scaled)).
 
 ---
 `Dec 4, 2018`
