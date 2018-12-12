@@ -4,6 +4,7 @@
 
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
 
+> "Breakdown to Breakthrough" - Tony Robbins
 
 ---
 `Dec 2, 2018`
@@ -29,7 +30,7 @@ $z = tanh(W * x + V^Th) \odot \sigma(W * x + V^Th)$ (Look at the Conditional Gat
 - [Link](https://arxiv.org/pdf/1606.05328.pdf)
 - Aims at conditional image modelling, as an image is generated pixel by pixel so the joint image distribution will be a product of conditionals (probability that a pixel will occur given the existing pixels (Autoregressive!))
 - Usually PixelRNN performs better than this (Because all the previous pixel information is available to all layers of LSTMs but only to the last layers of the convolutional stack (as the receptive field grows as we go deeper), also because LSTMs use gates(sigmoid and tanh of dot products) which can model more complex interactions instead of the usual RELUs), but this is much faster to train!
-- _Contributions_:
+- **Contributions**:
     - **Gated PixelCNN**: Image can be described as a product of conditional distributions of pixels: $p(x) = \prod_{i=1}^{n^2} p(x_i | x_1, .. x_{i-1})$. Each of these conditional distributions are modelled by a CNN in this technique!
         - This produces an output for an image of dimensions: (N x N x 3) as (N x N x 3 x 256) probabilities. And this can be produced parallely because of convolutions.
         - Gated convolutional layers: Replace RELUs with elementwise product of tanh and sigmoid of Wx- (To model more complex behaviours) <br>
@@ -53,12 +54,12 @@ $z = tanh(W * x + V^Th) \odot \sigma(W * x + V^Th)$ (Look at the Conditional Gat
 - [Link](https://arxiv.org/abs/1601.06759)
 - The aim of this paper is to estimate the distribution of images to compute the likelihood and generate new ones.
 - Important obstacle in Generative Modeling is building something that is `tractable` (easy to understand) and `scalable`. 
-- _Previous works_:
+- **Previous works**:
     - Techniques like AutoEncoders make use of Latent Variables (for dimensioanlity reduction) but are not tractable.
     - Tractable models involve modeling using products of conditional distributions, but are not sophisticated enough to model long-range correlation between pixels.
     - Enter, RNNs! They (2d-RNNs) have been awesome at modelling gray-scale images and textures before this paper.
         - Generating image pixel by pixel (sequential from top left) can be written as a product of conditional distributions: $p(x) = \prod_{i=1}^{n^2} p(x_i | x_1, .. x_{i-1})$
-- _Contributions_:
+- **Contributions**:
     - Row LSTM - Triangular Receptive Field
     - Diagonal BiLSTM - All pixels on left and top are in the receptive field.
     - Masked Convolutions - Values from R shouldnt be available when predicting G and B. To model full dependencies between color channels.
