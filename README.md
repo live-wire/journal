@@ -14,6 +14,8 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Create functions like `__eq__(self, other)`, `__le__(self, other)`  inside the class to overload the corresponding operators. Compare the objects of your classes like a boss!
 - Use the decorator `@staticmethod` with a function in a class to mark it as a static method. This will be callable by ClassName.method or classObject.method!
 
+#### Heapify
+
 
 
 ---

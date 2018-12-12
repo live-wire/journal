@@ -1,15 +1,8 @@
 # Papers ArXiv :notebook_with_decorative_cover:
 
-`Summaries of all the papers I read` :pencil2:
+`Summaries of the papers I read` :pencil2:
 
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
-
----
-`Dec 11, 2018`
-#### An Empirical Evaluation of Generic Convolutional and Recurrent Networks
-for Sequence Modeling
-- [Link](https://arxiv.org/abs/1803.01271)
-- 
 
 
 ---
@@ -24,10 +17,10 @@ for Sequence Modeling
 - It uses softmax to discretize the outputs. But per each timestep, it will need to output $2^{16}$ probabilities. For this, it uses the mu-law to create 256 possibilities from it instead (called quantization). <br>
 $f(x_t) = sign(x_t) \frac{ln(1 + \mu |x_t|)}{ln(1 + \mu)}$ where $-1 < x_t < 1$ and $\mu= 255$
 - It also uses gated-activation instead of RELUs:<br>
-$z = tanh(W * x) \odot \sigma(W * x)$ (Here \odot = elementwise product and * = convolution)
+$z = tanh(W * x) \odot \sigma(W * x)$ (Here $\odot$ = elementwise product and * = convolution)
 - Conditional WaveNets: get p(x|h) just like in PixelCNNs. (In this case, the h would be speaker's embeddings in a text-to-speech model (Exactly a one-hot vector containing speaker-ID)) This would help generate speech samples from the speaker: <br>
-$z = tanh(W*x + V^Th) \odot \sigma(W*x + V^Th)$
-- Model consists of several blocks, each contining a bunch of layers with increasing dialating factors.
+$z = tanh(W * x + V^Th) \odot \sigma(W * x + V^Th)$ (Look at the Conditional Gated PixelCNN section below).
+- Model consists of several blocks, each contining a bunch of layers with increasing dialating factors. (AS we go deeper, the receptive field increases).
 
 
 ---
@@ -42,9 +35,9 @@ $z = tanh(W*x + V^Th) \odot \sigma(W*x + V^Th)$
         - Gated convolutional layers: Replace RELUs with elementwise product of tanh and sigmoid of Wx- (To model more complex behaviours) <br>
         $y = tanh(W * x) \odot \sigma (W * x)$ where $\odot$ is elementwise product and * is convolution.
         - RECAP Activations:
-            - Sigmoid: (0 - 1): $f(x) = \frac{1}{1+e^{-x}}$ and $f'(x)= \frac{f(x)}{1-f(x)}$
-            - TanH: (-1 - 1): $f(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$ and $f'(x)=1 - f(x)^2$
-            - RELU: (0 to x): $f(x) = max(0, x)$ and $f'(x) = 1 if x>0 else 0$
+            - Sigmoid: (0 to 1): $f(x) = \frac{1}{1+e^{-x}}$ and $f'(x)= \frac{f(x)}{1-f(x)}$
+            - TanH: (-1 to 1): $f(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$ and $f'(x)=1 - f(x)^2$
+            - RELU: (0 to x): $f(x) = max(0, x)$ and $f'(x) = 1$ if x>0 else 0.
         - Uses a vertical and horizontal stack (Like PixelRN used the Diagonal BiLSTM) for having all pixels that occured before in the receptive field.
     - **Conditional Gated PixelCNN**:
         - Given a high level image description, given as a latent vector h (like a one-hot encoding of classes of ImageNet), it models the product of conditionals. <br>
