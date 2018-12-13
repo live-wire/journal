@@ -13,10 +13,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 `algorithm`
 - Create functions like `__eq__(self, other)`, `__le__(self, other)`  inside the class to overload the corresponding operators. Compare the objects of your classes like a boss!
 - Use the decorator `@staticmethod` with a function in a class to mark it as a static method. This will be callable by ClassName.method or classObject.method!
+- Override methods `__str__` to make the object printable when printed directly and `__repr__` to make the object printable even when a part of an array etc.
 
-#### Heapify
-
-
+#### Heapify [RECAP](https://en.wikipedia.org/wiki/Binary_heap#Building_a_heap)
+- Heapify! = log(n) = (Trickle down! **ALWAYS TRICKLE DOWN**) 
+    - Insert element at the top and call heapify once.
+    - Pop element by first swapping the first with the last and removing the last! Then call heapify once.
+- BuildHeap = n/2 * log(n) = (Start from bottom) check children for heap property (trickle up)
+    - loop from items n/2 to 1 and call heapify on all of them! (Called once initially!)
 
 ---
 `Dec 6, 2018`
