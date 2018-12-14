@@ -8,6 +8,21 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
 ---
+`Dec 14, 2018`
+#### LSTM Experiments
+`msc`
+- `Idea: Should I one hot encode X values(by categorizing them into range categories) as well ?`
+- ^ ^ Not required I guess! LSTM does alright using Cross-Entropy-Loss. (Negative log of Softmax! as the loss).
+    - Followed the following steps:
+    - Generate class-wise scores using the output of a NN (RNN-LSTM-2 Layers and 10 hidden units for today's experiments)
+    - Use `torch.nn.CrossEntropyLoss()` as the `criterion` to get the loss by comparing output and target!
+    - Call `loss.backward()` to backpropagate the loss and `optimizer.step()` to actually update the weights.
+    - Now your model will output the class scores!
+    - Use `torch.nn.functional.softmax(torch.squeeze(output), 1)` to get an interpretable probabilistic output per class. :heart:
+- Rock on :metal:
+
+
+---
 `Dec 11, 2018`
 #### Python creating custom comparable objects
 `algorithm`
