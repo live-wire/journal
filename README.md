@@ -7,12 +7,30 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
+
+---
+`Dec 17, 2018`
+#### Docker and Compose
+- Set up docker for my project community
+    - Docker networking `ports: [host:container]` (Compose creates a network in which all the containers reside)
+    - `docker ps` shows all containers
+    - `docker exec -it <containerid> /bin/bash` to open a container
+    - `docker system prune` remove dangling images
+    - Docker volumes = shared storage for containers on the host!
+- TODO: Play around with container networking!
+
+#### LSTM Experiments continued
+`msc`
+- Number of parameters in an RNN (LSTM) `torch.nn.Module` model is **NOT DEPENDENT** on the sequence length
+    - Longer the sequence, the harder it will be to understand for a simple model.
+
+
 ---
 `Dec 14, 2018`
 #### LSTM Experiments
 `msc`
 - `Idea: Should I one hot encode X values(by categorizing them into range categories) as well ?`
-- ^ ^ Not required I guess! LSTM does alright using Cross-Entropy-Loss. (Negative log of Softmax! as the loss).
+- ^ ^ Not required I guess! LSTM does well (for small sequences of length 20 or so) using Cross-Entropy-Loss. (Negative log of Softmax! as the loss).
     - Followed the following steps:
     - Generate class-wise scores using the output of a NN (RNN-LSTM-2 Layers and 10 hidden units for today's experiments)
     - Use `torch.nn.CrossEntropyLoss()` as the `criterion` to get the loss by comparing output and target!
