@@ -17,13 +17,22 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - `docker exec -it <containerid> /bin/bash` to open a container
     - `docker system prune` remove dangling images
     - Docker volumes = shared storage for containers on the host!
-- TODO: Play around with container networking!
+- TODO: Play around with container networking! (Crucial before setting up some Nginxes)
 
 #### LSTM Experiments continued
 `msc`
 - Number of parameters in an RNN (LSTM) `torch.nn.Module` model is **NOT DEPENDENT** on the sequence length
     - Longer the sequence, the harder it will be to understand for a simple model.
-
+- Number of parameters explained:
+    - Weights multiplied by 4 for all the 4 sets of Weights and Biases `W` [link](https://github.com/live-wire/journal#lstms-and-wavenet). Number of weights and biases is multiplied by 3 for GRUs and 1 for regular RNNs.
+    - Into an LSTM layer:
+        - input --> hidden_dim (input*hidden_dim + hidden_dim) * 4
+    - Coming out from an LSTM layer:
+        - It should output something with dimensions = hidden_dim because it also needs to be fed back to possibly more layers!
+        - hidden_dim --> hidden_dim (hidden_dim*hidden_dim + hidden_dim) * 4
+    - :zap:
+- Since the sequence length doesn't account for a change in parameters, the same model can be trained over several sequence lengths to make it more robust!
+- `How to make the final model end to end trainable?`
 
 ---
 `Dec 14, 2018`
