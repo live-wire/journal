@@ -9,6 +9,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Dec 22, 2018`
+#### Bidirectional LSTM
+- `Bidirectional=True` with Same number of hidden parameters (actually multiplied by 2 for both directions), performs much better for peak detection.
+    - Make sure to double the input params of the linear layer that follows it when you make it bidirectional.
+    - A fair competition would be competing against a regular(unidirectional) LSTM with double the hidden units.
+- Need to try Convolutions with dilations now.
+
+---
 `Dec 17, 2018`
 #### Docker and Compose
 - Set up docker for my project community
