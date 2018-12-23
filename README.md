@@ -18,6 +18,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 `Dec 22, 2018`
 #### Bidirectional LSTM
 `msc`
+![Bidirectional LSTM](https://cdn-images-1.medium.com/max/800/1*6QnPUSv_t9BY9Fv8_aLb-Q.png)
 - `Bidirectional=True` with same number of hidden parameters (actually multiplied by 2 for both directions), performs much better for peak detection.
     - Make sure to double the input params of the linear layer that follows it when you make it bidirectional.
     - A fair competition would be competing against a regular(unidirectional) LSTM with double the hidden units.
