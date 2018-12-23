@@ -9,11 +9,25 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Dec 23, 2018`
+#### CNNs with dilations
+`msc`
+
+
+---
 `Dec 22, 2018`
 #### Bidirectional LSTM
-- `Bidirectional=True` with Same number of hidden parameters (actually multiplied by 2 for both directions), performs much better for peak detection.
+`msc`
+- `Bidirectional=True` with same number of hidden parameters (actually multiplied by 2 for both directions), performs much better for peak detection.
     - Make sure to double the input params of the linear layer that follows it when you make it bidirectional.
     - A fair competition would be competing against a regular(unidirectional) LSTM with double the hidden units.
+    - Calculating parameters in a bidirectional LSTM/GRU/RNN: 
+        - First Layer: 2 * (inp * hidden + hidden) (Multiplied by 2 as bidirectional)
+        - Output of first/upcoming hidden layers: 2 * (hidden*hidden + hidden)
+        - Input of second/upcoming hidden layers: 2 * ((hidden+hidden)*hidden + hidden)
+        - Output same as before.
+        - :bomb:
+    - Model trained on sequence length 50 does alright on sequences of length 100 as well.
 - Need to try Convolutions with dilations now.
 
 ---
