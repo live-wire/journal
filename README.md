@@ -7,11 +7,21 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
+> "Simplicity is Beautiful" - Juergen Schmidhuber
 
 ---
 `Dec 23, 2018`
+#### Godel Machines
+- [Chat with Juergen Schmidhuber](https://www.youtube.com/watch?v=3FIo6evmweo)
+- Self-Improving computer program that solves problems in an optimal way. Adds a constant overhead (which seems huge/infeasible to us right now for the problems at hand but it is constant.) But if you think of all-problems (Googol problems), this is a big-big thing. Right ?
+- LSTMs and RNNs are just looking for local minimums by descending down them gradients. Imbecile! lol!
+- Look for a shortest program that can create a universe! Only the random points create problems and big lines of code (not compressible - more bits to be described). The most fundamental things of nature can be described in a few lines of code.
+- Seemingly random = Not understood as of now! = UGLY!
+
+
 #### CNNs with dilations
 `msc`
+- Coming soon.
 
 
 ---
