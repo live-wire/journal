@@ -21,7 +21,13 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 #### CNNs with dilations
 `msc`
-- Coming soon.
+- There are other activations like ELU, SELU etc. 
+    - They make RELU differentiable at x=0! (RELU = $max(0,x)$, ELU = $max(0,x) + min(0, \alpha*(exp(x)-1))$)
+- Learnable parameters in 1D-CNNs = For each kernel: kernel_params + 1 (bias)
+    - 1D CNN Pytorch: 
+        - Input/Output = (N (Batch size), C(input/output channels), L(length of sequence))
+- `Try to make a bidirectional CNN with dilations model!`
+- Looks like I wasn't employing the dilations before. Was just using the FCN. :see_no_evil:
 
 
 ---
