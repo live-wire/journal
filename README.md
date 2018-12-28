@@ -10,6 +10,24 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
 ---
+`Dec 28, 2018`
+#### Google's Protocol Buffers
+- Serialization and Deserialization wrapper for several languages!
+- [Tutorial](https://developers.google.com/protocol-buffers/docs/tutorials)
+
+#### Convolution Details
+- Ideology:
+    - Low level features are local! (Kernels and Convolutions)
+    - What's useful in one place will also be useful in another place in the image. (Weight sharing in kernels)
+- Smaller kernel = more information = more confusion
+- Larger kernel = More information = Less attention to detail
+- Output of a convolution layer:
+    - Depth = Number of filters applied
+    - Width, Height = $W=\frac{W−F+2P}{S} + 1$ (where W is current width, F is filter width (receptive field, P = padding, S = Stride))
+    - Recommended settings for keeping same dimensions = (S = 1) and (P = (F-1)/2)
+
+
+---
 `Dec 23, 2018`
 #### Godel Machines
 - [Chat with Juergen Schmidhuber](https://www.youtube.com/watch?v=3FIo6evmweo)
