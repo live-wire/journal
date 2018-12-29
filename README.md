@@ -9,6 +9,20 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
+
+---
+`Dec 29, 2018`
+#### Pytorch Convolutions
+`msc`
+- [Convolutions Visualizer](https://ezyang.github.io/convolution-visualizer/index.html)
+- Output size after convolutions: [discuss.pytorch post](https://discuss.pytorch.org/t/how-to-keep-the-shape-of-input-and-output-same-when-dilation-conv/14338)
+    - `o = [i + 2*p - k - (k-1)*(d-1)]/s + 1` (o = output, p = padding, k = kernel_size, s = stride, d = dilation)
+- Unable to get a simple CNN with dilations to learn like an LSTM learns a sequence. My guess is that the output needs to be kept of the same size as the input (which requires a lot of padding!). This messes up the learning. 
+- Reading [this](https://arxiv.org/abs/1803.01271) paper now and planning to implement TCNs for my sequence modelling task. It should give me a better feel about how to use convolutions with dilations instead of LSTMs. (Bi-directional LSTMs already look promising for the task)
+- `How about a new Convolutional architecture that mimics the bi-directional nature of LSTMs ?`
+
+
+
 ---
 `Dec 28, 2018`
 #### Google's Protocol Buffers
