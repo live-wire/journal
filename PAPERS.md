@@ -7,6 +7,12 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Breakdown to Breakthrough" - Tony Robbins
 
 ---
+`Dec 29, 2018`
+#### An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling
+- [Link](https://arxiv.org/abs/1803.01271)
+
+
+---
 `Dec 2, 2018`
 #### Wavenet: Generative model for raw audio
 - [Link](https://arxiv.org/pdf/1609.03499.pdf), [post](https://deepmind.com/blog/wavenet-generative-model-raw-audio/)

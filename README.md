@@ -17,11 +17,13 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - [Convolutions Visualizer](https://ezyang.github.io/convolution-visualizer/index.html)
 - Output size after convolutions: [discuss.pytorch post](https://discuss.pytorch.org/t/how-to-keep-the-shape-of-input-and-output-same-when-dilation-conv/14338)
     - `o = [i + 2*p - k - (k-1)*(d-1)]/s + 1` (o = output, p = padding, k = kernel_size, s = stride, d = dilation)
-- Unable to get a simple CNN with dilations to learn like an LSTM learns a sequence. My guess is that the output needs to be kept of the same size as the input (which requires a lot of padding!). This messes up the learning. 
+- **A dilated kernel is a a huge sparse kernel!**
+- Got a simple CNN with dilations to learn like an LSTM learns a sequence. It is okay but not great! But look at the number of parameters it needs :open_mouth: only 18 compared to over 1000 in LSTMs.
 - Reading [this](https://arxiv.org/abs/1803.01271) paper now and planning to implement TCNs for my sequence modelling task. It should give me a better feel about how to use convolutions with dilations instead of LSTMs. (Bi-directional LSTMs already look promising for the task)
 - `How about a new Convolutional architecture that mimics the bi-directional nature of LSTMs ?`
-
-
+    - Use `torch.flip` to reverse a tensor. [link](https://pytorch.org/docs/stable/torch.html?highlight=flip#torch.flip)
+- Finished first draft of my own Bidirectional CNN with dilations! It clearly works better than a (conventional) unidirectional CNN without dilations!
+- Next experiment = trying TCN
 
 ---
 `Dec 28, 2018`
