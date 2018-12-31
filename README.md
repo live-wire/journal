@@ -11,6 +11,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Dec 31, 2018`
+#### DeepDream
+- Need to play around with the deepdream notebook of google and generate some art!
+- Implemented the loss-plotter for plotting the moving average of my bidirectional CNN experiment. My implementation of the bidirectional CNN has more learnable parameters, so not a fair competition!
+- See you next year. :beers:
+
+
+---
 `Dec 29, 2018`
 #### Pytorch Convolutions
 `msc`
