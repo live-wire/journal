@@ -11,6 +11,20 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Jan 1, 2019`
+#### Temporal Convolutional Networks
+`msc`
+- Could TCNs replace LSTMs for Sequence Tasks ? 
+    - TCNs have a longer memory and have Convolutions (faster to train, fewer parameters)
+- TCNs employs residual modules instead of simple conv layers with dilations.
+    - It employs `Weight Normalization`
+        - For each layer, before applying the activations, normalize! ((x - mean) / std)
+    - Recap: `Batch Normalization` normalizes values out of the activation function.
+- I could also try to implement a bi-directional TCN as I did with CNN :smirk:
+- Looking at [Copy Memory task](https://github.com/locuslab/TCN/blob/master/TCN/copy_memory/copymem_test.py) from the TCN implementation.
+
+
+---
 `Dec 31, 2018`
 #### DeepDream
 - Need to play around with the deepdream notebook of google and generate some art!

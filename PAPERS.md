@@ -7,10 +7,22 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Breakdown to Breakthrough" - Tony Robbins
 
 ---
-`Dec 29, 2018`
+`Jan 1, 2019`
 #### An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling
 - [Link](https://arxiv.org/abs/1803.01271)
-
+- The paper comes up with a new simple Temporal CNN architecture to compete against the canonical LSTMs and GRUs in RNN's home turf.
+- Apparently TCNs are more suitable (than LSTMs) where a long history is required!
+- **Temporal Convolutional Networks**
+    - Convolutions are _causal(no leakage from future to past)_
+    - Can take in a sequence of any length and output a sequence of the same length (:heart_eyes:)
+    - Dilated convolutions and residual links help look way back in the history.
+    - Don't have Gating mechanisms (what is that ?)
+    - Each CNN layer is replaced by a _residual module_:
+        - Contains two dilated CNNs and normalization and non-linearities.
+        - It is added to the next layer after a 1x1 Convolution to maintain input-output size.
+    - Faster to train (parallelizable CNNs) / less parameters compared to typical canonical RNNs.
+- TCNs could be the new LSTMs for Sequence predictions!
+- Time to play with their [model](https://github.com/locuslab/TCN)
 
 ---
 `Dec 2, 2018`
