@@ -14,6 +14,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 `Jan 1, 2019`
 #### Temporal Convolutional Networks
 `msc`
+![TCN Block](https://live-wire.github.io/msc/temporal_block.png)
 - Could TCNs replace LSTMs for Sequence Tasks ? 
     - TCNs have a longer memory and have Convolutions (faster to train, fewer parameters)
 - TCNs employs residual modules instead of simple conv layers with dilations.
