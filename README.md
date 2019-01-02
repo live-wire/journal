@@ -22,7 +22,9 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - Recap: `Batch Normalization` normalizes values out of the activation function.
 - I could also try to implement a bi-directional TCN as I did with CNN :smirk:
 - Looking at [Copy Memory task](https://github.com/locuslab/TCN/blob/master/TCN/copy_memory/copymem_test.py) from the TCN implementation.
-
+- `Applying TCN was not learning that well. I used ELU instead of RELU in the TemporalBlock of the TCN implementation` It significantly improved the learning results.
+- Also implemented the bidirectional variant of TCN and as expected, it does better than the unidirectional one!
+- Pretty happy with these TCN results and planning to use this as the peak detection model if not LSTM/GRU!
 
 ---
 `Dec 31, 2018`
