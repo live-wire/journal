@@ -4,16 +4,16 @@
 `Lecture 1`
 #### Random Variables and Distributions
 - $Pr[A]=\frac{n_A}{n}$ where $n_A$ = favourable outcomes and n = all possible outcomes
-- For mutually exclusive events, $Pr[A \union B] = Pr[A] + Pr[B]$
-- Mutually exclusive (means $A \cap B = \o$) events: $Pr[A \cup B] = Pr[A] + Pr[B] - Pr[A \cap B]$
+- For mutually exclusive events: $Pr[A \cup B] = Pr[A] + Pr[B]$
+- Mutually exclusive (means $A \cap B = \phi$) events: $Pr[A \cup B] = Pr[A] + Pr[B] - Pr[A \cap B]$
 - **Independent events:** $Pr[A \cap B] = Pr[A]Pr[B]$
 - **Conditional:** $Pr[A \cap B] = Pr[A|B]Pr[B]$ therefore for independent events, $Pr[A|B] = Pr[A]$ Duh!
-- **Law of total probability**: $Pr[A] = \sum_i Pr[A|B_i]Pr[B_i]$ where $B_i \cap B_j = \o$
+- **Law of total probability**: $Pr[A] = \sum_i Pr[A|B_i]Pr[B_i]$ where $B_i \cap B_j = \phi$
 
 #### Discrete Random Variables
 - Countable outcomes (set)
 - Discrete probability space. PDF = $Pr[X = x]$
-- $\ohm = {x_1, x_2, ...}$, $P[\ohm] = 1$
+- $\Omega = {x_1, x_2, ...}$, $P[\Omega] = 1$
 - Expectation of a discrete random variable $E[X] = \sum_x xPr[X=x] = \mu$
 - Moment of a random variable:
 $E[X^n] = \sum_x x^n Pr[X=x]$
