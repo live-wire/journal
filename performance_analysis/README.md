@@ -1,6 +1,15 @@
 # IN4341 Performance Analysis :space_invader:
 
 ---
+`Self Evaluation Prep`
+#### Distributions
+- Binomial $P[X=number of successes k] = C^N_k p^k (1-p)^{N-k}$
+- Geometric Distribution: Distribution of number of trials needed to get _the first success_ in independent bernouli trials. First success k = $(1-p)^{k-1}.p$
+- Poisson Distribution: (mean = $\lambda$ Number other than mean k) $\frac{\lambda^k e^{-\lambda}}{k!}$
+- Gaussian Distribution: $P[X=x] = \frac{e^{-\frac{(x-\mu)^2}{2.\sigma^2}}}{\sqrt{2.\pi.\sigma^2}}$
+
+
+---
 `Lecture 1`
 #### Random Variables and Distributions
 - $Pr[A]=\frac{n_A}{n}$ where $n_A$ = favourable outcomes and n = all possible outcomes
@@ -18,5 +27,5 @@
 - Moment of a random variable:
 $E[X^n] = \sum_x x^n Pr[X=x]$
 - Variance of X is $Var[X] = E[(X - E[x])^2] = E[X^2] - \mu^2$
-- Probability generating function: $E[g(x)] \sum_x g(x) Pr[X=x] $ therefore: $\phi(z) = E[z^x]$
-- Derivative of **pgf** = $frac{d}{dx}E[z^x]$, now since Expectation is linear, derivative can move inside. = $E[xz^{x-1}], for z= 1 = E[x]
+- Probability generating function: $E[g(x)] \sum_x g(x) Pr[X=x]$ therefore: $\phi(z) = E[z^x]$
+- Derivative of **pgf** = $\frac{d}{dx}E[z^x]$, now since Expectation is linear, derivative can move inside. = $E[xz^{x-1}]$, for z= 1 = E[x]

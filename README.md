@@ -12,6 +12,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 ---
 `Jan 4, 2019`
+#### Random variables and Distributions
 
 
 
