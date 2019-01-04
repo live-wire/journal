@@ -11,6 +11,27 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Jan 4, 2019`
+
+
+
+---
+`Jan 2, 2019`
+#### Pong to pixels
+- [Blog post] by Karpathy on Reinforcement Learning! 
+- Good [video](https://www.youtube.com/watch?v=JgvyzIkgxF0) by Xander.
+- Deep Q Learning with function approximation (which can be a CNN etc.)
+- "Whenever there is a disconnect between how magical something seems and how simple it is under the hood I get all antsy and really want to write a blog post" - _Karpathy_ You Go Boy!
+- **Policy Gradients** are end to end trainable and favourites for attacking Reinforcement Learning problems.
+- Needs billions of samples for training as the rewarding set of moves will occur not-so-frequently. And it needs a lot of them to be able to make a policy that leads to rewards.
+- Nice take-away = Policy gradients help incorporate stochastic, non-differentiable flows which can be backpropagated through. [Stochastic computation paths](https://arxiv.org/abs/1506.05254). These work best if there are a few discrete choices.
+- [Trust Region Policy](https://arxiv.org/abs/1502.05477) is generally used in practice. (Monotonically improves)
+- Keyboard/mouse input programatically = [Pyautogui](https://github.com/asweigart/pyautogui)
+- Applying for AI jobs! In amazing teams? Be useful to them! Read what they must be reading right now! 
+
+
+
+---
 `Jan 1, 2019`
 #### Temporal Convolutional Networks
 `msc`
@@ -26,6 +47,8 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - `Applying TCN was not learning that well. I used ELU instead of RELU in the TemporalBlock of the TCN implementation` It significantly improved the learning results.
 - Also implemented the bidirectional variant of TCN and as expected, it does better than the unidirectional one!
 - Pretty happy with these TCN results and planning to use this as the peak detection model if not LSTM/GRU!
+- `Align the existing labels of repetitions by dragging them along the time axis such that it minimizes the loss` - Think of ways to auto-label the dataset.
+
 
 ---
 `Dec 31, 2018`
