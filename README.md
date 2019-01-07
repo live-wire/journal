@@ -9,10 +9,74 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
+---
+`Jan 7, 2019`
+#### End to End
+`msc`
+- `Idea to make it end to end trainable. Can I use policy gradients to make it end to end trainable ? Reward the states which end up in the correct count ? Woah! Can I ?`
+    - Policy gradient on top of the matrix profile output ?
+- 
+
 
 ---
-`Jan 4, 2019`
-#### Random variables and Distributions
+`Jan 6, 2019`
+#### Hello Gopher
+- Workspace = `~/go/src/` ( Typically a single workspace is used for all go-programs) (All repositories inside this workspace ) (Usually create a folder structure like `~/go/src/github.com/live-wire/project/` to avoid clashes in the future)
+    - `$ go env GOPATH` (Set the environment variable GOPATH to change the workspace)
+- `$ go filename.go` generates an executable binary!
+- `$ go install` in this folder adds that binary to `~/go/bin/` (Make sure it is added to PATH so you can run the installed packages right away)
+- Go discourages use of Symlinks in the workspace
+- Workspace contains `src` and `bin`
+- Use `go build` to see if your program compiles
+- First line in a Go program must be `package blah` where the files belonging to this package must all have this. This package name must not always be unique, just the path where it resides should be! Use `package main` for executables.
+- Importing packages:
+```
+import (
+    "fmt"
+    "github.com/live-wire/util"
+)
+
+fmt.Println(util.something)
+```
+- Testing. A file blah_test.go will have the tests:
+```
+import "testing"
+```
+- Looping over variableName which could be an array, slice, string, or map (use range):
+    - `for key,value := range variableName {}`
+- Capitalize the stuff in the file that you want to export to other packages!
+- Naked return. Name the return values and assign them inside the function
+```
+func addSub(a int, b int) (ret1 int, ret2 int) {
+    ret1 = a + b
+    ret2 = a - b
+    return
+}
+```
+- `var a,b = true, "lol"` Use `var` over `:=` everywhere!
+- If in go can have a small declaration before the condition (whose scope ends with if)
+- `defer` calls function after the surrounding function returns! (All defers are pushed to a stack)
+- Pointers var p *int
+    - i = 24; p = &i (*p = i)
+- Structs = collections of fields
+```
+type lol struct {
+    A int
+    B int
+}
+```
+- Pointers to structs can access the fields without using the star! `p = *lol; p.A = 12` instead of `(*p).A = 12`
+- Slices are just references to the underlying arrays `cats = [3]string{"peppy", "potat", "blackie"}; potat  := cats[0:2]` Anything can be appended to these slices but not to the arrays. `potat = append(potat, "tom")`
+- Maps: `map[keytype]valuetype` make sure to surround it all with `make(..)` when initializing
+- Function pointers: `func (v *Vertex) fun(arg int) {}` can be called as `v.fun(10)` (The star makes it in-place)
+    - define a `String()` function for a struct like python's `__str__` and `__repr__` functions.
+- Interfaces: `type I interface { M()}` Now all variables of type I will have to implement this function. Like `func (t *T) M() {}` now all variables of type T will have a function available called M and can be casted to type I.
+    - Each variable is of type `interface{}`
+- Errors: cast the erroneous variable with the error class.
+    - define `type ErrType float64`
+    - `func (e ErrType) Error()string { return fmt.Sprintf("%f",e) } `
+    - Use it as `ErrType(12.23)` 
+    - It will also be of type error!
 
 
 

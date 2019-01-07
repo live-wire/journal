@@ -3,7 +3,7 @@
 ---
 `Self Evaluation Prep`
 #### Distributions
-- Binomial $P[X=number of successes k] = C^N_k p^k (1-p)^{N-k}$
+- Binomial P[X=number of successes k] = $C^N_k p^k (1-p)^{N-k}$
 - Geometric Distribution: Distribution of number of trials needed to get _the first success_ in independent bernouli trials. First success k = $(1-p)^{k-1}.p$
 - Poisson Distribution: (mean = $\lambda$ Number other than mean k) $\frac{\lambda^k e^{-\lambda}}{k!}$
 - Gaussian Distribution: $P[X=x] = \frac{e^{-\frac{(x-\mu)^2}{2.\sigma^2}}}{\sqrt{2.\pi.\sigma^2}}$
