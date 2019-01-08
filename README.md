@@ -15,12 +15,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 `msc`
 - `Idea to make it end to end trainable. Can I use policy gradients to make it end to end trainable ? Reward the states which end up in the correct count ? Woah! Can I ?`
     - Policy gradient on top of the matrix profile output ?
+- Good Toy task - make the Net remember a sequence of numbers pattern!
 - 
 
 
 ---
 `Jan 6, 2019`
 #### Hello Gopher
+Following the Go Tour now!
 - Workspace = `~/go/src/` ( Typically a single workspace is used for all go-programs) (All repositories inside this workspace ) (Usually create a folder structure like `~/go/src/github.com/live-wire/project/` to avoid clashes in the future)
     - `$ go env GOPATH` (Set the environment variable GOPATH to change the workspace)
 - `$ go filename.go` generates an executable binary!
@@ -29,25 +31,19 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Workspace contains `src` and `bin`
 - Use `go build` to see if your program compiles
 - First line in a Go program must be `package blah` where the files belonging to this package must all have this. This package name must not always be unique, just the path where it resides should be! Use `package main` for executables.
-- Importing packages:
-```
-import (
-    "fmt"
-    "github.com/live-wire/util"
-)
-
-fmt.Println(util.something)
+- Importing packages <br>
+``` import ( 
+        "fmt" 
+        "github.com/live-wire/util" )
+    fmt.Println(util.something)
 ```
 - Testing. A file blah_test.go will have the tests:
-```
-import "testing"
-```
+`import "testing"`
 - Looping over variableName which could be an array, slice, string, or map (use range):
     - `for key,value := range variableName {}`
 - Capitalize the stuff in the file that you want to export to other packages!
 - Naked return. Name the return values and assign them inside the function
-```
-func addSub(a int, b int) (ret1 int, ret2 int) {
+```func addSub(a int, b int) (ret1 int, ret2 int) {
     ret1 = a + b
     ret2 = a - b
     return
@@ -59,8 +55,7 @@ func addSub(a int, b int) (ret1 int, ret2 int) {
 - Pointers var p *int
     - i = 24; p = &i (*p = i)
 - Structs = collections of fields
-```
-type lol struct {
+``` type lol struct {
     A int
     B int
 }
@@ -77,7 +72,34 @@ type lol struct {
     - `func (e ErrType) Error()string { return fmt.Sprintf("%f",e) } `
     - Use it as `ErrType(12.23)` 
     - It will also be of type error!
+- Go Routines:
+    - Usage `go functionName()`
+- Channels (For communication among go-routines): (Like maps and slices, channels must be created before use)
+    - `ch := make(chan int)`
+    - Channels need to close themselves by calling when `close(c)` when reading in a loop (to exit a _range_) `for i := range c {}`
+- To select a channel to run:
+``` for { select { 
+        case res := <-resc:
+            fmt.Println(res)
+        case err := <-errc:
+            fmt.Println(err)
+        }
+    }
+```
+    - This is important as `select` makes the current routine wait for communication on the respective channels! Can be used to make the main thread wait!
+- Mutex (Mutual exclusion): Thread safety, sharing resources by locking/unclocking them (Counters)
+    - `import "sync"`
+    - Create a struct with a field say `mux` of type `sync.Mutex`
+    - This field has functions Lock() and Unlock() attached to it.
+    - Example:
+``` func (c *Node) CountInc(st YourStruct) {
+    st.mux.Lock() // Your object Locked
+    defer st.mux.Unlock() // called after this function ends
 
+    st.counter ++
+    // NEAT!
+}
+```
 
 
 ---
