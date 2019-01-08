@@ -16,7 +16,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - `Idea to make it end to end trainable. Can I use policy gradients to make it end to end trainable ? Reward the states which end up in the correct count ? Woah! Can I ?`
     - Policy gradient on top of the matrix profile output ?
 - Good Toy task - make the Net remember a sequence of numbers pattern!
-- 
+- Peak counter presentation [link](https://docs.google.com/presentation/d/1JA4eYx3Zji8oCTF94CR3i6ha3R7VKxpoNHGKk2DqJAw/edit?usp=sharing)
 
 
 ---
