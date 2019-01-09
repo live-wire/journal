@@ -10,6 +10,29 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
 ---
+`Jan 9, 2019`
+#### Beats setting up
+- I have decided to contribute to Elastic Beats! Cz go go go! 
+- Following these [setup instructions](https://www.elastic.co/guide/en/beats/devguide/current/beats-contributing.html#setting-up-dev-environment).
+- Use [EditorConfig](https://editorconfig.org/) file for your open-source projects fellas! Installed the sublime plugin.
+- Installed [govendor](https://github.com/kardianos/govendor) for dependency management.
+- Beats contain 
+    - Data collection logic aka _The Beater_!
+    - Publisher - (Implemented already by `libbeat` which is a utility for creating custom beats)
+- Bare minimum message requirements:
+    - Message should be of type `map[string]interface{}` (like JSON)
+    - should contain fields `@timestamp` and `type`
+- Virtual environment python2
+- `go get github.com/magefile/mage`
+- After breaking my head for hours!
+    - Update in Makefile in `$GOPATH/src/github.com/elastic/beats/libbeat/scripts/Makefile`: change this key to: `ES_BEATS?=./vendor/github.com/elastic/beats` (It has a comment next to it, but this was not mentioned in the docs for some reason)
+    - Install a fresh Python2.7 from [conda](https://conda.io/miniconda.html) (I used the bash setup for my Mac)
+    - Create a virtualenvironment in folder `yourbeat/build/` with the name `python-env`
+- Run `make setup` inside your beat folder
+- Need to play around with [Make](https://opensourceforu.com/2012/06/gnu-make-in-detail-for-beginners/)!
+- Next episode = Writing the Beater!
+
+---
 `Jan 7, 2019`
 #### End to End
 `msc`
