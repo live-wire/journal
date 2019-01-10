@@ -9,6 +9,20 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
+
+---
+`Jan 10, 2019`
+#### PRB Student Meeting First Presentation
+`msc`
+- Had my 1st presentation today.
+- [Link](https://docs.google.com/presentation/d/106ene-HL8h1mwIeRBgyymKkofNmm9YYxilTl-aCPqyI/edit?usp=sharing) to the slides.
+- [Link](https://drive.google.com/file/d/1_d3FBY2S_OBvw5whQEO4-Du3XfnCKIcV/view?usp=sharing
+
+) to the evaluation.
+
+#### Beats continued
+
+
 ---
 `Jan 9, 2019`
 #### Beats setting up
@@ -31,6 +45,12 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Run `make setup` inside your beat folder
 - Need to play around with [Make](https://opensourceforu.com/2012/06/gnu-make-in-detail-for-beginners/)!
 - Next episode = Writing the Beater!
+
+#### Visualizing CNN filters
+- Just print the model to see what the architecture looks like.
+- `model.state_dict()` contains all the weights (layer-wise)
+- Use `torchvision.utils.make_grid` to plot them all.
+
 
 ---
 `Jan 7, 2019`
