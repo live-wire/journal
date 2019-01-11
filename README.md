@@ -21,6 +21,18 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 ) to the evaluation.
 
 #### Beats continued
+- Golang has _tags_ which are just backticks. These add meta information to struct fields and can be accessed by using the _reflect_ package
+    - `import "reflect"`
+    - `type Name struct { VariableName int mytag:"variableName" }`
+    - `obj = Name{12};r = reflect.TypeOf(obj);`
+    - `field, found := r.FieldByName(VariableName)`
+    - `field.Tag.Get("mytag")`
+- These _tags_ make having a config like _.yaml_ easier!
+- Your beat implements ** Run, Stop and New ** methods.
+- If you add new configs to .yaml, add them to `_meta/beat.yaml` and also to the code in `config/config.go`
+- If you add more fields in the published message, add them to Run method and also in `_meta/fields.yml`
+    - Use make update after any of the above changes!
+
 
 
 ---
