@@ -11,14 +11,21 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Jan 13, 2019`
+#### Elastic
+- Created a [pull request](https://github.com/elastic/beats/pull/10037) with my new beat :dancer:
+
+#### Poisson :snake:
+- Following these [MIT Lectures](https://www.youtube.com/playlist?list=PLUl4u3cNGP60A3XMwZ5sep719_nh95qOe) for Applied probability
+- 
+
+---
 `Jan 10, 2019`
 #### PRB Student Meeting First Presentation
 `msc`
 - Had my 1st presentation today.
 - [Link](https://docs.google.com/presentation/d/106ene-HL8h1mwIeRBgyymKkofNmm9YYxilTl-aCPqyI/edit?usp=sharing) to the slides.
-- [Link](https://drive.google.com/file/d/1_d3FBY2S_OBvw5whQEO4-Du3XfnCKIcV/view?usp=sharing
-
-) to the evaluation.
+- [Link](https://drive.google.com/file/d/1_d3FBY2S_OBvw5whQEO4-Du3XfnCKIcV/view?usp=sharing) to the evaluation.
 
 #### Beats continued
 - Golang has _tags_ which are just backticks. These add meta information to struct fields and can be accessed by using the _reflect_ package
