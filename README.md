@@ -11,13 +11,20 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Jan 14, 2019`
+#### Matrix Profiling
+`msc`
+- Should I use the (n x n) distance profile for my training ? 
+
+---
 `Jan 13, 2019`
 #### Elastic
 - Created a [pull request](https://github.com/elastic/beats/pull/10037) with my new beat :dancer:
 
 #### Poisson :snake:
 - Following these [MIT Lectures](https://www.youtube.com/playlist?list=PLUl4u3cNGP60A3XMwZ5sep719_nh95qOe) for Applied probability
-- 
+- Poisson is just Bernoulli trials with n (number of trials) (Granularity) approaching infinity.
+
 
 ---
 `Jan 10, 2019`

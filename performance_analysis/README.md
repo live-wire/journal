@@ -1,6 +1,15 @@
 # IN4341 Performance Analysis :space_invader:
 
 ---
+`Poisson`
+#### Chapter 1
+- MIT Opencourseware vide [link](https://www.youtube.com/watch?v=jsqSScywvMc&index=53&t=16s&list=PLUl4u3cNGP60A3XMwZ5sep719_nh95qOe)
+- Beautiful [video](https://www.khanacademy.org/math/statistics-probability/random-variables-stats-library/poisson-distribution/v/poisson-process-1) by Khan Academy.
+- Derived Poisson.
+- Poisson is just Bernoulli trials with n (number of trials) (Granularity) approaching infinity.
+
+
+---
 `Self Evaluation Prep`
 #### Distributions
 - Binomial P[X=number of successes k] = $C^N_k p^k (1-p)^{N-k}$
