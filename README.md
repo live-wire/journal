@@ -11,10 +11,42 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
-`Jan 14, 2019`
+`Jan 15, 2019`
 #### Matrix Profiling
 `msc`
 - Should I use the (n x n) distance profile for my training ? 
+- IDEA: Make use of the fact that a repetition means it has a peak and the part after the peak is a mirror of the part before the peak.
+
+#### Neural Ordinary Differential Equations
+- [Video by Siraj](https://www.youtube.com/watch?v=AD3K8j12EIE)
+- New neural networks for time series datasets. (Uses integral calculus)
+- Remember residual nets $x_{k+1} = x_{k} + F(x_k)$ can be written as $x_{k+1} = x_{k} + h.F(x_k)$
+- Find original function by taking integral of the derivative.
+- Frame your net as an ODE!
+- Use ODE solvers after that like Euler's method or better (Adjoint Method)
+
+#### GNU Make
+- [Tutorial](https://opensourceforu.com/2012/06/gnu-make-in-detail-for-beginners/)
+- `sudo apt-get install build-essential`
+- 
+``` 
+target: dependency1 dependency2 ...
+[TAB] action1
+[TAB] action2 
+```
+- Target can be all, clean etc.
+- all/First target is executed if make is run without arguments. Otherwise `make target`
+- Target can also be filenames. If targets and filenames clash, avoid these targets to be treated as files : `.PHONY: all clean`
+- Dry run = `make -n`
+- `@echo $(shell ls)` to print output of ls command
+- Running make inside subdirectories:
+```
+subtargets:
+    cd subdirectory && $(MAKE)
+```
+- `include 2ndmakefile` to halt current makefile execution and execute the other makefile.
+- Use prefix `-` with actions/include to ignore errors.
+
 
 ---
 `Jan 13, 2019`
@@ -24,7 +56,9 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 #### Poisson :snake:
 - Following these [MIT Lectures](https://www.youtube.com/playlist?list=PLUl4u3cNGP60A3XMwZ5sep719_nh95qOe) for Applied probability
 - Poisson is just Bernoulli trials with n (number of trials) (Granularity) approaching infinity.
-
+    - Success = Arrival
+    - Memoryless
+- Causal = Based on what has happened before.
 
 ---
 `Jan 10, 2019`
@@ -55,6 +89,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - I have decided to contribute to Elastic Beats! Cz go go go! 
 - Following these [setup instructions](https://www.elastic.co/guide/en/beats/devguide/current/beats-contributing.html#setting-up-dev-environment).
 - Use [EditorConfig](https://editorconfig.org/) file for your open-source projects fellas! Installed the sublime plugin.
+- `magefile` = Make like tool for converting go-functions to make-target like executables.
 - Installed [govendor](https://github.com/kardianos/govendor) for dependency management.
 - Beats contain 
     - Data collection logic aka _The Beater_!

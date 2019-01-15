@@ -3,11 +3,20 @@
 ---
 `Poisson`
 #### Chapter 1
-- MIT Opencourseware vide [link](https://www.youtube.com/watch?v=jsqSScywvMc&index=53&t=16s&list=PLUl4u3cNGP60A3XMwZ5sep719_nh95qOe)
+- MIT Opencourseware video [link](https://www.youtube.com/watch?v=jsqSScywvMc&index=53&t=16s&list=PLUl4u3cNGP60A3XMwZ5sep719_nh95qOe)
 - Beautiful [video](https://www.khanacademy.org/math/statistics-probability/random-variables-stats-library/poisson-distribution/v/poisson-process-1) by Khan Academy.
 - Derived Poisson.
 - Poisson is just Bernoulli trials with n (number of trials) (Granularity) approaching infinity.
-
+    - Success = Arrival
+    - Memoryless
+    - Independent from what happened before
+- Assumptions:
+    - Intervals of same length behave probabilistically identically.
+- **Interarrival times**
+    - Prob that arrival occurs between t and $t+\delta$ = k-1 arrivals from [0,t] and 1 arrival from [$t,t+\delta$]
+        - $f_{Y_k}(t)\delta = \frac{\lambda^{k-1} e^{-\lambda y}}{(k-1)!} . \lambda \delta$
+        - Kth arrival = $f_{Y_k} = \frac{\lambda^{k} e^{-\lambda y}}{(k-1)!}$
+        - Time of first arrival = $\lambda . e^{\lambda.y}$ (Exponential distribution)
 
 ---
 `Self Evaluation Prep`
