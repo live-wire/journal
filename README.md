@@ -11,6 +11,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Jan 17, 2019`
+#### Luigi's Princess
+- Found an issue to work on in Spotify's Luigi. Working on creating a pull request for the same. 
+    - Currently, a dictionary {bool, worker} is returned along with the worker details.
+    - an object of type `LuigiRunResult` should be returned
+
+
+---
 `Jan 15, 2019`
 #### Matrix Profiling
 `msc`
