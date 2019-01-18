@@ -16,6 +16,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Found an issue to work on in Spotify's Luigi. Working on creating a pull request for the same. 
     - Currently, a dictionary {bool, worker} is returned along with the worker details.
     - an object of type `LuigiRunResult` should be returned
+- Got responses from `Beats` and `Luigi` on the PRs. :heart_eyes:
 
 
 ---
