@@ -18,6 +18,21 @@
         - Kth arrival = $f_{Y_k} = \frac{\lambda^{k} e^{-\lambda y}}{(k-1)!}$
         - Time of first arrival = $\lambda . e^{\lambda.y}$ (Exponential distribution)
 
+#### Piet Van Mieghem's poisson
+- Poisson ~ counting process.
+- Probability of Number of occurences (k) in a small time interval (h). $P[X(h + s) - X(s) = k]$ = $\frac{(\lambda h)^k e^{-lambda.h}}{k !}$
+- These interval probabilities are conditionally independent!
+- Expected Number of occurences in interval (h) = $\lambda. h$
+- Sum of two poisson processes is also a poisson with $\lambda s$ added.
+- **Uniform distribution**: If an event of a Poisson Process occurs during interval [0, t], the time of occurance of this event is uniformly distributed over [0, t].
+- `PROBLEMS TAKEAWAY`: 
+    - Don't forget the law of total probabilities (Summation) for calculating PDFs with a **variable** input etc. There can be questions with a mixture of Poisson (Probability that Count of something is k) and Bernoulli (Probability that number of successes is k) distributions.
+    - From a combination of poissons, **Given an arrival:** prob that arrival was from p1 = $\frac{\lambda_1}{\lambda_1 + \lambda_2}$ 
+        - This will be just a product if **not given** an arrival. (Bayes! Duh!)
+        - **A joint flow can also be decomposed** with rates $\lambda.p$ and $\lambda.(1-p)$ (Instead of mixing it up with a binomial).
+    - Maximising winning probability = equate first derivative to 0 and solve!
+    - For calculating the prob from x to infinity, don't forget you can always compute it as [ 1 - P(0 to x)].
+
 ---
 `Self Evaluation Prep`
 #### Distributions
