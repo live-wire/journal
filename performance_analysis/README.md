@@ -1,8 +1,47 @@
-# IN4341 Performance Analysis :space_invader:
+# IN4341 Performance Analysis of Complex Networks :space_invader:
+
+These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
+
+> "Only what you do today, determines your tomorrow" - Me (inspired by Markov Chains :robot:)
+
 
 ---
-`Poisson`
-#### Chapter 1
+`Lecture 3`
+#### Markov Discrete :pager:
+- Markov Process is called a Markov chain if its state space is discrete.
+- Markov process can be entirely defined by the **transition probabilities**:
+- $P[X(t_{n+1})=x_{n+1}|X(t_0)=x_0, X(t_1)=x_1,.. X(t_n)=x_n] = P[X(t_{n+1})=x_{n+1}|X(t_n)=x_n]$
+- For the transition probability matrix it holds that: $\sum_{j=1}^N P_{ij} = 1$
+    - For each row, sum of transition probabilities = 1
+    - vector $Pu = u$ (u here is 1s column vector)
+    - Duh! Because it is 100% certain that the state makes a transition with each timestep. Be it back to itself!
+- Even after n time steps, the markov chain must be in one of the N states, $\sum_{j=1}^N (P^n)_{ij} = 1$
+    - Iteratively multiply $Pu = u$ with P on both sides to get $P^nu = u$
+- If every state is reachable from every other state, the Markov chain is called **irreducible**.
+- A = Adjacency matrix. Between i,k: Total k hop walks = $(A^k)_{ij}$
+- **Equivalence Class** (set of states that can communicate (back and forth reachable)). If the equivalence relations result in a single class, the markov chain is irreducible. If there is a no-way-back-link from one equivalence class to another, the chain is *reducible*.
+- An irreducible chain is **periodic** $(P^n)_{jj} > 0$ if period (d > 1) else it is *aperiodic* with period (d = 1) which means a self loop.
+- Infinite iterations for Markovs: **recurrent** state if it will ever occur again ? For a markov initiated at i, will it come to j ?
+    - $r_{ij} = P[T_j < \infty | X_0 = i]$ if $r_{ij} = 1$ it is recurrent and **transient** if P < 1.
+    - A finite Markov chain must have **at least one reccurent state**.
+    - If i is reachable from j (back path available) and i is recurrent, then j is also recurrent! Duh!
+- **Steady State of Markov Chains** - 
+    - For **aperiodic and irreducible chains**, the steady state is _unique_!
+        - It is a vector like a row i P. $\pi =lim_{k \to \infty} s[k]$
+        - $\pi = \pi P$ Therefore $\pi$ is a row vector where each element of pi is: $\pi_j = \sum_{k=1}^N P_{kj} \pi_k$
+        - Two ways of computing $\pi$ for irreducible chains:
+            - $lim_{k \to \infty} (P^k)ij = \pi_j$
+            - Solve matrix $P\pi = [0,0,0...1]$ where pi and R.H.S are column vectors!
+        - There has to be one $\pi_j != 0$ otherwise there is no stationary probability distribution.
+    - Steady state is independent of where the chain began!
+    - **Only recurrent states** (not transients) have a non-zero steady state probability $\pi_j$
+    - Steady state _also occurs for periodic chains_: $\pi = [\frac{p}{p+q}, \frac{q}{p+q}]$ where p = q = 1 will be [1/2, 1/2]
+- `PROBLEMS TAKEAWAY`: 
+
+
+---
+`Lecture 2`
+#### Poisson :snake:
 - MIT Opencourseware video [link](https://www.youtube.com/watch?v=jsqSScywvMc&index=53&t=16s&list=PLUl4u3cNGP60A3XMwZ5sep719_nh95qOe)
 - Beautiful [video](https://www.khanacademy.org/math/statistics-probability/random-variables-stats-library/poisson-distribution/v/poisson-process-1) by Khan Academy.
 - Derived Poisson.
@@ -20,7 +59,7 @@
 
 #### Piet Van Mieghem's poisson
 - Poisson ~ counting process.
-- Probability of Number of occurences (k) in a small time interval (h). $P[X(h + s) - X(s) = k]$ = $\frac{(\lambda h)^k e^{-lambda.h}}{k !}$
+- Probability of Number of occurences (k) in a small time interval (h). $P[X(h + s) - X(s) = k]$ = $\frac{(\lambda h)^k e^{-\lambda.h}}{k !}$
 - These interval probabilities are conditionally independent!
 - Expected Number of occurences in interval (h) = $\lambda. h$
 - Sum of two poisson processes is also a poisson with $\lambda s$ added.
@@ -34,16 +73,13 @@
     - For calculating the prob from x to infinity, don't forget you can always compute it as [ 1 - P(0 to x)].
 
 ---
-`Self Evaluation Prep`
-#### Distributions
+`Lecture 1`
+#### Self Evaluation Prep
 - Binomial P[X=number of successes k] = $C^N_k p^k (1-p)^{N-k}$
 - Geometric Distribution: Distribution of number of trials needed to get _the first success_ in independent bernouli trials. First success k = $(1-p)^{k-1}.p$
 - Poisson Distribution: (mean = $\lambda$ Number other than mean k) $\frac{\lambda^k e^{-\lambda}}{k!}$
 - Gaussian Distribution: $P[X=x] = \frac{e^{-\frac{(x-\mu)^2}{2.\sigma^2}}}{\sqrt{2.\pi.\sigma^2}}$
 
-
----
-`Lecture 1`
 #### Random Variables and Distributions
 - $Pr[A]=\frac{n_A}{n}$ where $n_A$ = favourable outcomes and n = all possible outcomes
 - For mutually exclusive events: $Pr[A \cup B] = Pr[A] + Pr[B]$

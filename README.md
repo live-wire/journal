@@ -13,7 +13,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 `Jan 22, 2019`
 #### Piet Van Mieghem's poisson
 - Poisson ~ counting process.
-- Probability of Number of occurences (k) in a small time interval (h). $P[X(h + s) - X(s) = k]$ = $\frac{(\lambda h)^k e^{-lambda.h}}{k !}$
+- Probability of Number of occurences (k) in a small time interval (h). $P[X(h + s) - X(s) = k]$ = $\frac{(\lambda h)^k e^{-\lambda.h}}{k !}$
 - These interval probabilities are conditionally independent!
 - Expected Number of occurences in interval (h) = $\lambda. h$
 - Sum of two poisson processes is also a poisson with $\lambda s$ added.
