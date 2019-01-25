@@ -31,13 +31,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
         - $\pi = \pi P$ Therefore $\pi$ is a row vector where each element of pi is: $\pi_j = \sum_{k=1}^N P_{kj} \pi_k$
         - Two ways of computing $\pi$ for irreducible chains:
             - $lim_{k \to \infty} (P^k)ij = \pi_j$
-            - Solve matrix $P\pi = [0,0,0...1]$ where pi and R.H.S are column vectors!
+            - Solve matrix $P^T\pi^T = [0,0,0...1]^T$ where the last row of $P^T$ is all ones and R.H.S is a column vector with the last row as 1!
         - There has to be one $\pi_j != 0$ otherwise there is no stationary probability distribution.
     - Steady state is independent of where the chain began!
     - **Only recurrent states** (not transients) have a non-zero steady state probability $\pi_j$
     - Steady state _also occurs for periodic chains_: $\pi = [\frac{p}{p+q}, \frac{q}{p+q}]$ where p = q = 1 will be [1/2, 1/2]
 - `PROBLEMS TAKEAWAY`: 
-
+    - If there is an absorbing state, steady state will usually be 1 for that and 0 for the other transient states.
+    - For a 2 state markov, steady-state: $\pi = [\frac{p}{p+q}, \frac{q}{p+q}]$ where p and q are probabilities of moving to the other state!
 
 ---
 `Lecture 2`

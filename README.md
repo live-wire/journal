@@ -11,6 +11,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 ---
 `Jan 22, 2019`
+#### Conditional Random Fields ?
+`msc`
+- Nice blog [post](https://towardsdatascience.com/conditional-random-field-tutorial-in-pytorch-ca0d04499463)
+- Given a sequence of occurences, what is the probability that the dice rolled was biassed or unbiassed ? (Could this be used for our scenario ?) Given a sequence of matrix profile inputs, what is the prob that there were 2 peaks, 4 peaks etc. ?
+- A Conditional Random Field* (CRF) is a standard model for predicting the most likely sequence of labels that correspond to a sequence of inputs.
+
+---
+`Jan 22, 2019`
 #### Piet Van Mieghem's poisson
 - Poisson ~ counting process.
 - Probability of Number of occurences (k) in a small time interval (h). $P[X(h + s) - X(s) = k]$ = $\frac{(\lambda h)^k e^{-\lambda.h}}{k !}$
