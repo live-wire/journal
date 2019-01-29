@@ -9,6 +9,21 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
+
+---
+`Jan 22, 2019`
+#### Sublime Text Pluggin
+- Came across [this](https://cnpagency.com/blog/creating-sublime-text-3-plugins-part-1/) nice short tutorial for creating my first tiny sublime text plugin.
+- I have decided to call it `meow`
+- :cat:
+- Finished it. Find it [here](https://github.com/live-wire/meow)
+
+#### TCNs shine when I plot probability bars
+`msc`
+- I was expecting LSTMs to be better, (They were probably overfitting). TCNs show a better understanding of the curves (judging by the learned probabilities).
+
+
+
 ---
 `Jan 22, 2019`
 #### Conditional Random Fields ?
