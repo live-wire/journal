@@ -11,8 +11,34 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Jan 30, 2019`
+#### Visual Rhythm Prediction
+`msc`
+- Submitted in 2019. Next task = Read [this](https://arxiv.org/abs/1901.10163) paper.
+
+#### Meeting conclusions
+- Try adding noise to my sine waves.
+- Have counting classes at the end instead of peaks and valleys.
+- Read papers [Visual Rhythm Prediction](https://arxiv.org/abs/1901.10163) and [Video CNN](https://dutran.github.io/R2Plus1D/)
+- Maybe also try:
+    - Training an LSTM from scratch
+    - Use a stacked LSTM with the first one being my peak detector.
+
+---
+`Jan 29, 2019`
+#### `with` in python
+- It can replace a `try-finally` block
+- It is used as a context manager.
+- Can be implemented by implementing `__enter__` and `__exit__` methods in a class!
+
+#### LSTMs vs MP
+- LSTMs trained just on sine waves showed some good signs on the Matrix Profile :heart:
+- Waiting for the meeting to decide how to make it and end to end model!
+- 
+
+---
 `Jan 22, 2019`
-#### Sublime Text Pluggin
+#### Sublime Text Plugin
 - Came across [this](https://cnpagency.com/blog/creating-sublime-text-3-plugins-part-1/) nice short tutorial for creating my first tiny sublime text plugin.
 - I have decided to call it `meow`
 - :cat:
