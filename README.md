@@ -11,10 +11,25 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Feb 9, 2019`
+#### Voice Typing
+- *Google Docs*: `Tools > Voice Typing` :octopus: 
+- Gonna start *typing* :wink: tonight!
+
+
+---
+`Feb 3, 2019`
+#### Gsoc Meetup, Brussels
+- New connections in Cloudera, Goldman.
+- Gooogleeee
+- GoLang Delve Debugging.
+
+---
 `Jan 30, 2019`
 #### Visual Rhythm Prediction
 `msc`
 - Submitted in 2019. Next task = Read [this](https://arxiv.org/abs/1901.10163) paper.
+- "Wavelets in a wave are like words in a sentence" - Jan Van Gemert
 
 #### Meeting conclusions
 - Try adding noise to my sine waves.
