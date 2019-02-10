@@ -16,6 +16,10 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - *Google Docs*: `Tools > Voice Typing` :octopus: 
 - Gonna start *typing* :wink: tonight!
 
+#### Noise generation
+`msc`
+- Decided to use some numpy Gaussian Noise with a decided mean and std to generate noise.
+- Applied noise on normalized waves (values between 0 - 1) so, if we decide on a mu/sigma (say 0, 0.1), we'll know that for 60% of the waves a maximum of 10% distortion will be added to the signal.
 
 ---
 `Feb 3, 2019`
