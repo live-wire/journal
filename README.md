@@ -11,6 +11,20 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Feb 12, 2019`
+#### Ramping up for count-classes
+`msc`
+- Should I keep a fixed window and have classes for respective counts ?
+- Should I let the window size be variable and have a moving class count ?
+
+#### Sorts
+`algorithm`
+- Quicksort - remember ` return quicksort(arr[:pivotPosition]) + [pivot] + quicksort(arr[pivotPosition+1:])`
+- Mergesort - remember `return arr`
+    - Calls `mergesort(left)` and `mergesort(right)` internally.
+
+
+---
 `Feb 9, 2019`
 #### Voice Typing
 - *Google Docs*: `Tools > Voice Typing` :octopus: 
