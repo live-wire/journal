@@ -12,4 +12,8 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - **Search space** = All possible solutions
     - Solution to a satisfaction problem = **feasible**
     - Optimal solution to an optimization problem = **feasible and optimal**
-- 
+- `MiniZinc`:
+    - Parameters
+    - Variables
+    - Constraints
+    - Solver
