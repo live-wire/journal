@@ -11,6 +11,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Feb 26, 2019`
+#### Video Capture
+- Completed video capture and matrix profile generation. (NON REAL TIME)
+- Next task is count-classes for sure.
+- Batching windows into fixed size regions (100 frames).
+- Thinking of using classes 0-10 in this region.
+
+---
 `Feb 12, 2019`
 #### Ramping up for count-classes
 `msc`
