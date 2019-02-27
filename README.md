@@ -9,6 +9,13 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
+---
+`Feb 27, 2019`
+#### gRPC
+- Make a function in your server callable through the clients.
+- Makes use of Google's protocol buffers instead of (JSON in REST etc.)
+- Serve SDKs instead of APIs.
+- Nice gRPC [python example](https://www.semantics3.com/blog/a-simplified-guide-to-grpc-in-python-6c4e25f0c506/).
 
 ---
 `Feb 26, 2019`
