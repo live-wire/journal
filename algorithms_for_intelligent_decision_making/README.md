@@ -43,3 +43,6 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
         - **enums to name objects**
         - **arrays to capture information about objects**
         - **comprehensions for building constraints**
+    - `If else` can be used inside forall blocks and outside the nested forall blocks.
+    - `if condition then <blah> else <blah2> endif`
+
