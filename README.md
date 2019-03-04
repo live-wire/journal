@@ -9,6 +9,24 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
+
+---
+`March 4, 2019`
+#### Visual Rhythm Prediction
+`msc`
+- [This paper](https://arxiv.org/pdf/1901.10163.pdf) for **Visual Rhythm Prediction with Feature-Aligning Network** seems useful.
+- Various features could be used like:
+    - Original Frames
+    - Frame Residuals
+    - Optical Flow Detection
+    - Scene change detection
+    - Body Pose detection
+- The features could be misaligned as some features just depend on one frame while others depend on multiple frames.
+    - Solution: **Feature Alignment Layer**
+        - Employs *Attention mechanism* which is a hit in NLP
+- Finally sequence labelling with BiLSTM
+- Also a [Conditional Random Field] layer to make prediction aware of consecutive predictions. (Instead of my existing Linear layer ?)
+
 ---
 `Feb 27, 2019`
 #### gRPC
