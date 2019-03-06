@@ -11,6 +11,16 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`March 6, 2019`
+#### Rotate Image (2D array) in-place
+`algorithm`
+- Transpose first - 
+    - You transpose only on one side of the diagonal. (Inner loop `for j in range(i,n)`)
+- Then reverse column order
+- Easy Peasy!
+
+
+---
 `March 4, 2019`
 #### Visual Rhythm Prediction
 `msc`
