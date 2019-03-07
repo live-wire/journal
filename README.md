@@ -15,9 +15,12 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 #### Rotate Image (2D array) in-place
 `algorithm`
 - Transpose first - 
-    - You transpose only on one side of the diagonal. (Inner loop `for j in range(i,n)`)
+    - You transpose only on one side of the diagonal. (Inner loop should be  `for j in range(i,n)` - OR - `for j in range(0,i)`)
 - Then reverse column order
 - Easy Peasy!
+- Suppose, in an array, something(x) is added from range p-q for each iteration. Find maximum element in the array:
+    - Store x in arr[p] and -x in arr[q], so while iterating from left to right, the items will be +x only in the range p to q. :open_mouth:
+
 
 
 ---
