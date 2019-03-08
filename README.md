@@ -9,6 +9,56 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
+---
+`March 8, 2019`
+#### Minimum moves to reach a point with a knight in chess
+`algorithm`
+- TIP: Don't always think recursively. Think if there is a optimized loop solution possible.
+- TIP: Whenever you want parallel execution(inside recursion), think of a queue (like Breadth First Search)!
+- Total possible moves by a knight are 8.
+- Keep popping elements from this **q** in a loop.
+    - For each item popped, add to the **q** the next possible 8 moves.
+
+#### Julia - A fresh approach to technical computing
+- Dynamic, High-Level(like Python) JIT compiler and Fast(like C) for scientific computing.
+- `brew cask install julia`
+- [GitHub Link](https://github.com/JuliaLang/julia)
+
+#### MiniZinc - For constraint optimization problems
+- `MiniZinc`:
+    - Parameters - (Constants that don't change) `int: budget = 1000;`
+    - Variables - (Variables that you want to compute) `var 0..1000: a;`
+    - Constraints - (Constraints on variables) `constraint a + b < budget;`
+    - Solver - (Solve the optimization problem) `solve maximize 3*a + 2*b;` or `solve satisfy`
+- More MiniZinc Tricks:
+    - `enum COLOR = {RED, GREEN, BLUE}` then vars can be of type `COLOR` like `var COLOR: a;`
+    - To get all solutions run with flag `minizinc --all-solutions test.mzn`
+    - Parameters can be given a value later on using a file with extension `.dzn` like `minizinc test.mzn values.dzn` (The model MUST be provided with the values of the parameters from a single / multiple dzn files)
+    - Array declarations for parameters:
+        - `array[range/enum] of int: arr1`
+        - 2D `array[enum1, enum2] of float: consumption`
+        - Generator operations on arrays:
+            - `constraint forall(i in enum)(arr1[i] >= 0)`
+            - `solve maximize sum(i in enum)(arr1[i]*2) < 10`
+    - Array Comprehensions: `[expression | generator, generator2 where condition]`
+        - example: `[i+j | i,j in 1..4 where i < j]`
+    - TLDR:
+        - **enums to name objects**
+        - **arrays to capture information about objects**
+        - **comprehensions for building constraints**
+    - `If else` can be used inside forall blocks and outside the nested forall blocks.
+    - `if condition then <blah> else <blah2> endif`
+
+---
+`March 7, 2019`
+#### Self Driving AI ?
+- Use [Pyglet](https://bitbucket.org/pyglet/pyglet/wiki/Home) for making graphics in Python.
+- Use Q-Learning! It's great!
+- This [code-bullet video](https://www.youtube.com/watch?v=r428O_CMcpI) is great!
+
+#### Reverse a list with enumeration
+- Pythonic way to do it: `reversed(list(enumerate(lst)))`
+
 
 ---
 `March 6, 2019`
@@ -18,7 +68,11 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - You transpose only on one side of the diagonal. (Inner loop should be  `for j in range(i,n)` - OR - `for j in range(0,i)`)
 - Then reverse column order
 - Easy Peasy!
-- Suppose, in an array, something(x) is added from range p-q for each iteration. Find maximum element in the array:
+
+#### Array Manipulation
+- Pythonic array init `a = [0]*10`
+- Pythonic `for i in range(a,b)` Remember that b in this is not inclusive!
+- Suppose, in an array, something(x) is added from range *p to q* for each test-row. Find maximum element in the final array:
     - Store x in arr[p] and -x in arr[q], so while iterating from left to right, the items will be +x only in the range p to q. :open_mouth:
 
 
