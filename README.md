@@ -9,6 +9,18 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
+
+---
+`March 11, 2019`
+#### Python List Comprehensions and Generators
+`algorithm`
+- Use List comprehensions (`[x*2 for x in range(256)]`) when you need to iterate over the sequence multiple times.
+- Use Generators (`(x*2 for x in range(256))`) (same as `yield`) when you need to iterate over the sequence once!
+- **xrange** uses yielding(generator) and **range** creates the list. (Python3's range = Python2's xrange)
+- Sorting a string in python: `''.join(sorted(a))`
+- **Find all substrings in a string:**
+    - use a nested loop. Inner loop iterating from i to length! (Keep yielding the results)
+
 ---
 `March 8, 2019`
 #### Minimum moves to reach a point with a knight in chess
@@ -18,6 +30,8 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Total possible moves by a knight are 8.
 - Keep popping elements from this **q** in a loop.
     - For each item popped, add to the **q** the next possible 8 moves.
+- Pythonic: Init a 2D array using array comprehension
+    - `[[0]*n for i in range(n)]` :bomb:
 
 #### Julia - A fresh approach to technical computing
 - Dynamic, High-Level(like Python) JIT compiler and Fast(like C) for scientific computing.
