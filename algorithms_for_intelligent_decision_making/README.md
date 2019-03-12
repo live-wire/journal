@@ -12,8 +12,32 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - *Dominant Strategy* - (**Independent of what the others do**, this is the best course of action)
 - Given a strategy profile of all other players, a pure best response of a player is his pure strategy profile.
     - *Mixed strategy profile* assigns a probability to each strategy.
-- First Price Auction:
-    - 
+- Following this [Advanced Game Theory Course](https://www.coursera.org/learn/game-theory-2/) on coursera.
+
+##### Voting schemes
+- Our setting:
+    - **Outcomes** / Alternatives
+    - Agents have **preferences**
+    - Goal: **Social choice function** - Mapping from preference profiles to outcomes
+- Voting Schemes:
+    - *Plurality*: Pick outcome that is most prefferred by most people 
+    - *Cumulative Voting*: Distribute 5 votes each (Possible to vote same candidate multiple times)
+    - *Approval Voting*: Vote as many candidates as you like (Stackoverflow rating)
+    - *Plurality with elimination*: Outcome with fewest votes is eliminated (Repeat till there is a majority/winner) (French Elections)
+    - *Borda count*: If there are n candidates, each agent will give n-1 votes to top preference,n-2 to second .. and 0 to the last one. (Sports Evaluations)
+    - *Successive/Pairwise Elimination*: Pairwise elimination. (Like Hackjunction Budapest) (Sensitive to order in which you run it)
+- **Condorcet Consistency**:
+    - Means there is a clear winner (a candidate always wins in a pairwise majority(50% votes)).
+    - NOTE: There is not always a condorcet winner!
+- Every voting scheme can run into problems! Paradoxical outcomes:
+- Pareto efficiency- 
+    - Social welfare also should have b at last.
+    - If b is always top or always last, social welfare function also should have b at top or last.
+- Monotonicity: If outcome was the winner, It must stay the winner if support for it in a preference profile is increased.
+
+##### Mechanism Design
+- Can we design a game that yields a particular outcome.
+
 
 ---
 ### Part I: Constraint Programming
