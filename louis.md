@@ -1,0 +1,12 @@
+### Stuff to read
+- The matrix Profile [link](https://www.cs.ucr.edu/~eamonn/MatrixProfile.html)
+- Wavenet for CNNs with dilation [link](https://deepmind.com/blog/wavenet-generative-model-raw-audio/) (Also nice to read PixelRNN and PixelCNN)
+- Temporal CNNs [link](https://arxiv.org/abs/1608.08242)
+- Old Deep Learning approach [link](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Levy_Live_Repetition_Counting_ICCV_2015_paper.pdf)
+- Generic repetition dataset [link](http://tomrunia.github.io/projects/repetition/)
+- Slides :
+    - [Slide 1](https://docs.google.com/presentation/d/1NfRs_QdatvVvo614VxFKSr3Al75JKroCy6nGklNKiPI/edit?usp=sharing)
+    - [Slide 2](https://docs.google.com/presentation/d/1JA4eYx3Zji8oCTF94CR3i6ha3R7VKxpoNHGKk2DqJAw/edit?usp=sharing)
+    - [Slide 3](https://docs.google.com/presentation/d/1rFwR2vCYkm92sVNmSY3cRRoNdf52MryaCw-i4p-IeE4/edit?usp=sharing)
+    - [Slide 4](https://docs.google.com/presentation/d/1ZwJPuH5UAFLXpJUBCEBOKFV-KOEEQ1BSYEF2wOLyHvw/edit?usp=sharing)
+    - [Quick incomplete summary](https://docs.google.com/presentation/d/106ene-HL8h1mwIeRBgyymKkofNmm9YYxilTl-aCPqyI/edit?usp=sharing)
