@@ -11,6 +11,29 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`March 15, 2019`
+#### Triplets which form a GP
+- Use 2 dicts to solve this!
+- [Great Problem](https://www.hackerrank.com/challenges/count-triplets-1/problem)
+
+#### SMS Split
+- If the message exceeds the given max_size, all the messages will be prepended with some text of fixed length!
+- Good Problem!
+
+---
+`March 11, 2019`
+#### Longest common subsequence
+`algorithm`
+- This is also known as common child problem. Two strings with deletion allowed, what is the longest list of characters common to both strings (in order ofcourse).
+- NP hard problem.
+- This has optimal substructure and overlapping subproblems! Enter Dynamic Programming! [g4g](https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/)
+- Suppose substrings are lcs(A[:n-1], B[:m-1])
+    - If the last character is the same, subsequence length =  1 + lcs(A[:n-2], B[:m-2])
+    - Else it is = max(lcs(A[:n-2], B[:m-1]), lcs(A[:n-1], B[:m-2]))
+- Weird Hackerrank bug - when your program times out in `Python3` submit the same in `PyPy3` and see if it runs :|
+
+
+---
 `March 11, 2019`
 #### Python List Comprehensions and Generators
 `algorithm`

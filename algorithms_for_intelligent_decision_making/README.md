@@ -5,6 +5,11 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+### Part III: Reinforcement Learning and Planning
+- Markov Decision Process
+- Partially observable Markov Decision Process
+
+---
 ### Part II: Game Theory and Mechanism Design
 - Prisoner's dilema
     - *Pareto* - Improve for one player without harming any other player. (Minimum one pareto optimal solution exists)
