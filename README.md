@@ -15,6 +15,10 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 #### Triplets which form a GP
 - Use 2 dicts to solve this!
 - [Great Problem](https://www.hackerrank.com/challenges/count-triplets-1/problem)
+- How to find all possible triplets ? 
+    - Recursively call the function that adds to a global array!
+    - Append only if the size of the triplet is 3.
+    - Call the function like merge_sort! without having to return anything!
 
 #### SMS Split
 - If the message exceeds the given max_size, all the messages will be prepended with some text of fixed length!
