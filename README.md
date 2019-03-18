@@ -11,8 +11,33 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`March 19,2019`
+#### Leetcode Take-Aways
+`algorithm`
+- When finding longest substring, split on problematic point and recurse!
+- When having to use a quad loop, see if two double-loops and a dict can suffice!
+- Data structure for O(1) insert delete and randomsample = *list + dict with keys as items and values as index locations of those items in the list*.
+
+---
+`March 18, 2019`
+#### Python has type checking
+- Python since 3.6 has static type checking!
+- `from typing import Dict, List, Tuple, Any`
+- `a: List[Dict[str, int]] = [{"yellow":10}]`
+- Complex types can also be assigned to other variables!
+
+#### Heapq
+- [use me everywhere](https://docs.python.org/2/library/heapq.html)
+- Awesome functions like `.nsmallest(n, iterable)/ .merge(*iterables)`
+- Use it as: `heapq.heapify(lst) #inplace` Then use `heapq.heappush(heap, val)` or `heappop(heap)`
+
+- More python trickery:
+    `print("xyz"*False or "yellow") will print yellow`
+
+---
 `March 15, 2019`
 #### Triplets which form a GP
+`algorithm`
 - Use 2 dicts to solve this!
 - [Great Problem](https://www.hackerrank.com/challenges/count-triplets-1/problem)
 - How to find all possible triplets ? 
@@ -23,6 +48,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 #### SMS Split
 - If the message exceeds the given max_size, all the messages will be prepended with some text of fixed length!
 - Good Problem!
+
 
 ---
 `March 11, 2019`
