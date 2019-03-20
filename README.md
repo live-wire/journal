@@ -17,6 +17,8 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - When finding longest substring, split on problematic point and recurse!
 - When having to use a quad loop, see if two double-loops and a dict can suffice!
 - Data structure for O(1) insert delete and randomsample = *list + dict with keys as items and values as index locations of those items in the list*.
+- If rows and columns are sorted, find top n elements! Create the first row as a heap and keep adding the items from the last used column to it! `heapq.heappush and heapq.heappop`
+- Bits! For a 32 bit integer max number = 0x7FFFFFFF (as if the first bit is 1, the number is negative).
 
 ---
 `March 18, 2019`
