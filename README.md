@@ -11,6 +11,30 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`March 21,2019`
+#### Leetcode Take-Aways
+`algorithm`
+- Is number(n) a power of 3 ? Without loops/recursions ? 
+    - Find biggest power of 3 which is a valid int! (3^19) (call it `a`)
+    - Number is a power if `a%n == 0`.
+- For power of 4, see if number has 1s at odd bit locations! `1, 100, 10000, ..` and prepare a mask like `10101010101`.
+- Python `a[::2]` will give all elements on even locations and `a[1::2]` will give all on odd locations.
+    - `a[::-1]` will return the reversed array! :tiger:
+    - `a[::2] = some_slice_of_same_size` inplace! Isn't Python neat ? :snake:
+- Dynamic programming: Always use loops to fill up stuff! Instead of recursion!
+- Smaller numbers ahead of each number! Loop back from the end and maintain a BST with counts of how many smaller numbers were encountered at each node.
+
+---
+`March 20,2019`
+#### Leetcode Take-Aways
+`algorithm`
+- Maximum Length Subarray:  (*Kanade's algorithm* **O(n)**) Keep track of global minimum subarray and of minLengthSubarray from the left. if sum is +ve of the subarray, it must be added to the right side!
+    - Best day to buy/sell stocks is also a version of this problem.
+- **Sharding** : Split database by a key (say city ID). That's it, each shard is a different server. Easier to scale! Boom!
+- Hash functions : Mod by the maximum number of positions available!
+- **Consistent Hash Ring** : LoadBalancing/Caching/Cassandra uses it too. Instead of looking for the exact key from the hash function output, store the result in the next address-which is bigger than the key! If all locations are smaller, put it in the first element! Hence the ring :ring:!
+
+---
 `March 19,2019`
 #### Leetcode Take-Aways
 `algorithm`
@@ -19,6 +43,9 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Data structure for O(1) insert delete and randomsample = *list + dict with keys as items and values as index locations of those items in the list*.
 - If rows and columns are sorted, find top n elements! Create the first row as a heap and keep adding the items from the last used column to it! `heapq.heappush and heapq.heappop`
 - Bits! For a 32 bit integer max number = 0x7FFFFFFF (as if the first bit is 1, the number is negative).
+    - Why do we need this ? If the final result is greater than this max value, that means the number is negative. First, find the absolute value of this -ve number is found which is always: **IN PYTHON: ** `-x = complement(x-1)`
+    - And then the pythonic complement is found! `~()` which will be the actual negative number!
+- Recursively reverse an array! = `rev(arr[l/2:]) + rev(arr[:l/2])`
 
 ---
 `March 18, 2019`
