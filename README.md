@@ -14,6 +14,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 `March 21,2019`
 #### Leetcode Take-Aways
 `algorithm`
+- Median from a running list ?
+    - Maintain two heaps! One for smaller elements and one for larger elements! Their tops will contribute to the median.
+    - Another approach ? Keep a sorted list! Insertion will be O(logn) and median will be the middle of the sorted list! Same complexity simple solution! 
+
+---
+`March 21,2019`
+#### Leetcode Take-Aways
+`algorithm`
 - Is number(n) a power of 3 ? Without loops/recursions ? 
     - Find biggest power of 3 which is a valid int! (3^19) (call it `a`)
     - Number is a power if `a%n == 0`.
@@ -23,6 +31,21 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - `a[::2] = some_slice_of_same_size` inplace! Isn't Python neat ? :snake:
 - Dynamic programming: Always use loops to fill up stuff! Instead of recursion!
 - Smaller numbers ahead of each number! Loop back from the end and maintain a BST with counts of how many smaller numbers were encountered at each node.
+- Increasing subsequence! - DP again! Check sequences of sizes 1 and then 2 etc. 
+    - Keep iterating, if new element is larger than everything, append! else replace/update an existing item in the list! That's it!
+    - NOTE: the elements will be incorrect, but the length is correct:
+    - Dry run the seq: `[8, 2, 5, 1, 6, 7, 9, 3]`
+        - `8 -> [8]`
+        - `2 -> [2]`
+        - `5 -> [2, 5]`
+        - `1 -> [1, 5]`
+        - `6 -> [1, 5, 6]`
+        - `7 -> [1, 5, 6, 7]`
+        - `9 -> [1, 5, 6, 7, 9]`
+        - `3 -> [1, 3, 6, 7, 9]`
+        Final answer is the length of this sequence found! (The elements in the sequence are incorrect though!)
+    - A poorer DP O(n^2) solution also exists:
+        - `for i in range(len(A))` nest `for j in range(0,i)`, keep track of all the sequences that end at `A[i]`
 
 ---
 `March 20,2019`
