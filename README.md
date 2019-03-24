@@ -11,16 +11,52 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`March 24,2019`
+#### More :snake: pythonic collections and Regex 🇯🇲
+`algorithm`
+- **Bisect** - Binary searching and maintaining an ordered list:
+    - `import bisect`
+    - `bisect.bisect_left(a,x)` will give location where the current element can be inserted in the array! (**Before** previous occurances)
+    - `bisect.bisect_right(a,x)` will give location where the current element can be inserted in the array! (**After** previous occurances)
+    - `bisect.insort_left(a,x)` and `bisect.insort_right(a,x)` actually adds the element!
+- **Counter** - Dictionary of counts of iterable:
+    - Usage: `c = collections.Counter("reggae")`
+    - other methods: `c.update("shark")` or `c.subtract("lolol")`
+- **Deque** - Stacks and Queues - Python Lists are not optimized to perform `pop(0)` or `insert(0, x)`:
+    - Usage: `d = collections.deque(lst, [maxlen])`
+    - Has methods like: `append, appendleft, pop, popleft`
+    - Useful methods like `d.rotate(n)` Rotate by n steps, `d.count(x)` count elements equal to x.
+- **OrderedDict** - List of tuples!
+    - Supports all dictfunctions too!
+    - Usage: `od = collections.OrderedDict(d)` or can submit a dict sorted on keys/vals
+    - useful method: `od.popitem()` removes a `(k,v)` from the end. Can remove from beginning if argument `False` is passed to it. 
+- Python reduce has to be imported: `from functools import reduce`
+- Regex:
+    - `import re`
+    - `re.search` will search anywhere in string, `re.match` at the beginning (Useless). `re.findall` will try to find all occurances!
+    - 
+
+
+---
 `March 21,2019`
-#### Leetcode Take-Aways
+#### Heaps and In-place updates :apple:
 `algorithm`
 - Median from a running list ?
     - Maintain two heaps! One for smaller elements and one for larger elements! Their tops will contribute to the median.
     - Another approach ? Keep a sorted list! Insertion will be O(logn) and median will be the middle of the sorted list! Same complexity simple solution! 
+- In place array update ? Use an encoding for different cases! (like substitute 2,3,4 when array can actually have only 0s and 1s).
+- 2D Matrix with sorted rows and cols. How to find an element in this ?
+    - O(m + n) soln: Start looking from top right corner: (row=0, col = m)
+        - If target is bigger -> discard row
+        - If target is smaller -> discard column
+        - :lemon:
+- Rotating an array in place (by k):
+    - `a[:k], a[k:] = a[-k:], a[:k]`
+    - Or reverse(reverse(`a[:n-k]`), reverse(`a[n-k:]`))
 
 ---
 `March 21,2019`
-#### Leetcode Take-Aways
+#### Hello DP :robot:
 `algorithm`
 - Is number(n) a power of 3 ? Without loops/recursions ? 
     - Find biggest power of 3 which is a valid int! (3^19) (call it `a`)
@@ -49,7 +85,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 ---
 `March 20,2019`
-#### Leetcode Take-Aways
+#### Sharding and Hashing :hash:
 `algorithm`
 - Maximum Length Subarray:  (*Kanade's algorithm* **O(n)**) Keep track of global minimum subarray and of minLengthSubarray from the left. if sum is +ve of the subarray, it must be added to the right side!
     - Best day to buy/sell stocks is also a version of this problem.
@@ -59,12 +95,12 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 ---
 `March 19,2019`
-#### Leetcode Take-Aways
+#### Bits and Masks :pager:
 `algorithm`
 - When finding longest substring, split on problematic point and recurse!
 - When having to use a quad loop, see if two double-loops and a dict can suffice!
 - Data structure for O(1) insert delete and randomsample = *list + dict with keys as items and values as index locations of those items in the list*.
-- If rows and columns are sorted, find top n elements! Create the first row as a heap and keep adding the items from the last used column to it! `heapq.heappush and heapq.heappop`
+- In a 2D array, if rows and columns are sorted, find top n elements! Create the first row as a heap and keep adding the items from the last used column to it! `heapq.heappush and heapq.heappop`
 - Bits! For a 32 bit integer max number = 0x7FFFFFFF (as if the first bit is 1, the number is negative).
     - Why do we need this ? If the final result is greater than this max value, that means the number is negative. First, find the absolute value of this -ve number is found which is always: **IN PYTHON: ** `-x = complement(x-1)`
     - And then the pythonic complement is found! `~()` which will be the actual negative number!
