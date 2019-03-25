@@ -11,6 +11,32 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`March 25,2019`
+#### Tree common ancestor :man:
+`algorithm`
+- Common Ancestor: Bottom up! If both left and right subtrees have one of the children, return the current node! else return None!
+- Path to a node: BackTracking! Keep appending items to a passed array (by reference) and remove them if result was not found!
+- Reverse a linked list inplace: prev, curr, next 
+    - `while(curr is not None):`
+    - `next = curr.next`, `curr.next = prev`, `prev = curr`, `curr = next`
+    - Recursive solutions:
+        - Head recursive: First and rest: First `reverse(next)` then, `first.next.next = first, first.next = None`.
+- `RECURSION TIP`: When going bottom up: Store something in a global variable!
+    - Don't always have to return something!
+    - Return something only when you need like minimums and maximums! like most DPs!
+- Stack for building calculator!
+- Building your own regex matcher: DP! Build a table with n number of rows and m columns:
+    - n = length of string + 1
+    - m = length of pattern + 1
+    - Didn't quite understand this one!
+- Merge Overlapping intervals:
+    - sort by the starting index before iterating!
+    - On each iteration, check if the starting index is less than the end of last element in the return array!
+    - Brilliant! :bulb:
+    - Also solves if the person can attend all the meetings!
+- When finding the pair (of times etc.) with minimum difference in an array, consider sorting the array first! Then check adjascent elements only :heart:
+
+---
 `March 24,2019`
 #### More :snake: pythonic collections and Regex 🇯🇲
 `algorithm`
