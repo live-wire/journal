@@ -35,6 +35,10 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - Brilliant! :bulb:
     - Also solves if the person can attend all the meetings!
 - When finding the pair (of times etc.) with minimum difference in an array, consider sorting the array first! Then check adjascent elements only :heart:
+- Jump game - Maximum jump from a particular position is given. Minimum jumps required to reach end:
+    - Keep track of current max-reach and last max-reach!
+    - In each jump-increment-iteration, iterate from i till last max-reach to update the current max-reach!
+    - Like BFS!
 
 ---
 `March 24,2019`
