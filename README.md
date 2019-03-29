@@ -12,6 +12,34 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 ---
 `March 25,2019`
+#### Path finding
+`algorithm`
+- **The Dijkstra's algorithm**:
+    - 
+- **The $A^*$ algorithm**:
+    - 
+
+
+---
+`March 25,2019`
+#### Kth Smallest element in N sorted arrays
+`algorithm`
+- One is keep a heap of the first elements from all arrays!
+- Better solution:
+    - Look at the middle element(m) in the largest array, and binary search it's index(i) in all other arrays.
+    - All elements on the left of that index are less than *m* and on the right are greater than *m*.
+    - See if i1 + i2 + .. == k or < k and based on that update the lists (get rid of elements less than i1, i2 etc. in arrays 1, 2 etc.)!
+    - Also update k = k - (i1 + i2 + i3)
+    - Recurse!
+    - Crazy solution! :bomb:
+- Square matrix ? Think in terms of quad trees! (Split the array in 4 parts!).
+- **Trap water**: Keep track of the left max and right max
+    - Iterate from the direction whichever is smaller! And keep adding water based on current value - leftmax (if we iterated left)!
+    - Elegant as :duck:
+    - Can also use a stack! Less elegant, but works!
+
+---
+`March 25,2019`
 #### Tree common ancestor :man:
 `algorithm`
 - Common Ancestor: Bottom up! If both left and right subtrees have one of the children, return the current node! else return None!
