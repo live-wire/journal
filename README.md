@@ -11,6 +11,18 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`April 1,2019`
+#### Next Lexicographical permutation algorithm
+`algorithm`
+- It means find the number which has the same set of digits but is greater than the given number. [Link](https://www.geeksforgeeks.org/find-next-greater-number-set-digits/)
+    - Clever tricks: Start iterating from back see if you find a number less than the previous number. Number = 5234976 - Found = 523[4]976
+    - If you don't, it means the number is the greatest possible number.
+    - If you do, replace it with the smallest number on it's right. 523[6]97[4]
+    - And then, ascending sort the numbers on the right! 523[6]479
+    - You've found the your number :smile:
+
+
+---
 `March 25,2019`
 #### Path finding
 `algorithm`
