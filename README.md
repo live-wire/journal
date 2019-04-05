@@ -11,6 +11,16 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`April 5, 2019`
+#### Repetition Counting
+`msc`
+- Preparing training data for matrix profile training: subproblem:
+    - Your network is supposed to find the frame which had the minimum distance to your frame
+    - Maybe learning weights of a 3D convnet using the matrix profile makes more sense for end to end learning.
+        - With filters of depth = the length of the entire sequence.
+    - Or better, just convolutions to the frames! and feeding this to an LSTM for counting class assignment!
+    -  
+---
 `April 1,2019`
 #### Next Lexicographical permutation algorithm
 `algorithm`
@@ -20,10 +30,12 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - If you do, replace it with the smallest number on it's right. 523[6]97[4]
     - And then, ascending sort the numbers on the right! 523[6]479
     - You've found the your number :smile:
-
+- Python union and intersection: Can't be done with `and` and `or`! 
+    - `set3 = set1.union(set2)` is the same as `set1 | set2`
+    - `set3 = set1.intersection(set2)`
 
 ---
-`March 25,2019`
+`March 27, 2019`
 #### Path finding
 `algorithm`
 - **The Dijkstra's algorithm**:
@@ -33,7 +45,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
-`March 25,2019`
+`March 26, 2019`
 #### Kth Smallest element in N sorted arrays
 `algorithm`
 - One is keep a heap of the first elements from all arrays!
@@ -51,7 +63,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - Can also use a stack! Less elegant, but works!
 
 ---
-`March 25,2019`
+`March 25, 2019`
 #### Tree common ancestor :man:
 `algorithm`
 - Common Ancestor: Bottom up! If both left and right subtrees have one of the children, return the current node! else return None!
