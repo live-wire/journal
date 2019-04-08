@@ -3,6 +3,45 @@ _TU Delft_
 
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
 
+---
+### Exam time:
+##### Part 1: Constraint Programming
+- Explainwhat is a constraint program, and the concepts of constraint programming.
+- Listsome common applications of CP, i.e., show awareness of when CP is an appropriatetechnology in terms of modelling and/or solving.
+- Writea CP model for an optimisation problem (in MiniZinc), including demonstrating com-petency is good modelling practice. See the lecture slides for details.
+- Solvea CP model written in MiniZinc (using a solver) – this is assessed primarily throughthe assignment, but the exam might ask you to solve a small model by hand.
+- Summarisethe main ideas in CP solving. See the lecture slides for details.2
+
+##### Part 2: Game Theory and Mechanism Designorganized per lecture:
+###### Lecture 5:
+- Games/auctions: English auction, Prisoner’s dilemma, matching pennies, battle of the sexes,sealed-bid (first/second-price Vickrey) auction
+- Definitions: solution concepts, normal / strategic form game, strategy profile, utility func-tion, preferences, Pareto efficiency, dominant strategy, dominant-strategy equilibrium (DSE),(pure) best response, (pure) Nash equilibrium, best-response correspondence, Bayes-Nashequilibrium (BNE)
+- Proofs: Second-price DSE, 2 player first-price BNE
+- Results: Nash’s theorem, revenue-equivalence
+
+###### Lecture 6:
+- Games/auctions: combinatorial auction, auction, Groves mechanism, with Clarke pivot rule,VCG, critical-value payment (CVP), AGV / d’AGVA, median rule, knapsack auction withCVP, min-makespan scheduling with "payment identity"
+- Definitions: social welfare, incentive compatible, strategy-proof, implementing, direct mech-anism, quasi-linear utility function, transfer/payment, budget balance, individual rationality,single-parameter domain, monotonicity, critical value payment/price, single-peaked prefer-ences
+- Proofs: Revelation principle. Groves mechanisms are strategy-proof and efficient.
+- Results: Gibbard-Satterthwaite. Groves are the only mechanisms (Green-Lafont) / taxationprinciple. Bilateral trading (HGL). Myerson-Satterthwaite.
+
+###### Lecture 7:
+- Voting Rules: majority, plurality, plurality-with-elimination, single transferable votes, Borda,Copeland, Schulze, Kemeny
+- Definitions:  social choice/welfare function, Condorcet winner, weighted majority graph,Condorcet-consistent, Non-dictatorship, Unrestricted Domain, Independence of IrrelevantAlternatives, Anonymity, Neutrality, Weak monotonicity, Non-constancy, Consistency, Con-tinuity, positional-scoring rule, Kendall-tau distance, Kemeny score, Condorcet criterion,Mallows model
+- Proofs: Copeland always selects the Condorcet winner. The Schulze rule is Condorcet con-sistent. No positional-scoring rule is Condorcet-consistent.
+- Results: Arrow’s theorem. Identification of positional-scoring rules.
+
+###### Lecture 8:
+- Mechanisms: deferred acceptance (DA), serial dictatorship (SD), top trading cycle algorithm(TTC), max-cardinality matching with 2-cycles,
+- Definitions:  Two-sided One-to-one Matching, blocking pair, stable matching, achievable,student-optimal, House allocation (HA), assignment problem, housing market, the core,kidney-paired donation,
+- Proofs: DA is stable.  DA is strategy-proof for one side.  No mechanism is both stableand strategy-proof for both sides. SD is strategy-proof and Pareto efficient for HA. max-cardinality matching with priority-based tie-breaking is strategy-proof (and consistent).
+- Results: Existence of stable matching. Properties of TTC.3
+
+##### Part 3: Reinforcement Learning
+- Explainwhat Markov decision processes are, including partially observable, multi-objectiveand constrained versions.
+- Constructsuch models for simple applications.
+- Explainand apply basic solution algorithms.
+- Summarisethe key concepts behind these algorithms.
 
 ---
 ### Part III: Reinforcement Learning and Planning
