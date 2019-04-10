@@ -4,19 +4,43 @@ _TU Delft_
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
 
 ---
-### Exam time:
-##### Part 1: Constraint Programming
-- Explain what is a constraint program, and the concepts of constraint programming.
-- List some common applications of CP, i.e., show awareness of when CP is an appropriate technology in terms of modelling and/or solving.
-- Write a CP model for an optimisation problem (in MiniZinc), including demonstrating com-petency is good modelling practice. See the lecture slides for details.
-- Solve a CP model written in MiniZinc (using a solver) – this is assessed primarily through the assignment, but the exam might ask you to solve a small model by hand.
-- Summarise the main ideas in CP solving. See the lecture slides for details.2
-
-
----
 ### Part III: Reinforcement Learning and Planning
 - Markov Decision Process - Mathematical model for modelling decision making in situations where outcomes are partly random and partly under control of a decision maker. Useful for studying optimization problems.
 - Partially observable Markov Decision Process
+- MOMDP is difficult because number of joint actions is exponential in number of agents
+- Value iteration requires a model of the environment.
+- Point based POMDP = scalable!
+- Q learning learns from experience, no information about model is required. Greedy exploration!
+- POMDP value function is piecewise linear and convex!
+###### MoMDP
+- Multi Objective: 
+    - Motivation: when the rward is a vector of rewards! Every policy has a value and the value is a scalar(reward)! But in MoMDP, every value is a vector of rewards.
+        - $R = SxAxS = R^n$
+        - Can't we just scalarize it ?
+        - It is not always feasible/ desirable/ impossible to a priori serialize it.
+    - Scalarization function projects multi objective value to a scalar.
+        - It's a weighted sum of Values! (usually between 0 and 1)
+        - $\sum V_i^{\pi} w_i$
+    - Unknown weight scenario - Weights revealed only in the execution phase!
+    - Decision support scenario - User selection scenario! Which of the following outcomes you prefer!
+- Stationary policy: Maps states to probability of taking an action
+- Deterministic stationary policy: maps states directly to actions.
+
+- Instead of $V^{\pi}(s) = E[R_t | \pi, s_t = s]$, it is now $V^{\pi} = E[\sum_{k=0}^{\infty} \gamma^k r_{k+1} | \pi, s_t = s].
+    - Partial ordering (comparing vectors will be weird), optimality not clear!
+    - Solution: Problem Taxonomy
+- Problem Taxonomy - Utility based approach:
+    - While execution, one policy will obviously followed! (That follows some weight!)
+    - Deduce solution set from 3 factors:
+        - Multi objective - (known weights(single policy) / Unknown weights(multiple policies))
+        - Properties of scalarization function - (Linear / Monotonically increasing) (We can know something about it)
+        - Allowable policies - (Deterministic/Stochastic)
+    - Solution space is a grid which considers all combinations of the above three factors!
+- Solved by using convex hull value iteration instead of regular value iteration!
+    - On Each iteration, the value sets are merged! They are then merged with the R and discounted previous state values! (separately for each action) and then merged together! 
+        - CPrune is used to get rid of useless vectors in this merged set!
+- Another approach = Optimistic Linear support! Move a horizontal bar up the inverted triangle solution that you've found! :confused:
+- Cool application = Epidemic control! - MOPOMDP!
 
 
 ---
