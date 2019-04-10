@@ -58,7 +58,10 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
         - $\sum_{agent-i} \sum_{\pi \in K_i} E[C_{\pi_j}].x_{i,\pi_j} <= L$ (constraint)
         - $\sum_{\pi_j \in K_i} x_{i,\pi_j} = 1$ (sum of probs = 1)
         - $x_{i,\pi_j} >= 0$ (Probabilities >= 0 duh)
-
+- Types of constraints:
+    - Instantaneous constraints - replenishes with time etc.
+    - Budget constraints - Total budget given for all agents
+    - Deterministic resource constraints
 
 ---
 ### Part II: Game Theory and Mechanism Design
