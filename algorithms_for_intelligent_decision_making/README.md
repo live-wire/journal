@@ -41,7 +41,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
         - CPrune is used to get rid of useless vectors in this merged set!
 - Another approach = Optimistic Linear support! Move a horizontal bar up the inverted triangle solution that you've found! :confused:
 - Cool application = Epidemic control! - MOPOMDP!
-
+![Problem Taxonomy](https://live-wire.github.io/images/taxonomy.png)
 
 ---
 ### Part II: Game Theory and Mechanism Design
