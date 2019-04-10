@@ -8,6 +8,12 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 `MDP, POMDP, MOMDP`
 - Markov Decision Process - Mathematical model for modelling decision making in situations where outcomes are partly random and partly under control of a decision maker. Useful for studying optimization problems.
 - Partially observable Markov Decision Process
+    - You don't know the global state of the world!
+    - You only know what you see!
+    - All the states in POMDP are observation states! (Sum of probabilities of actual states in an equivalent MDP)
+    - Agent maintains a belief state of where it is:
+    - It is updated by Bayes rule:b'(s') = p(o/s',a) * sum(p(s'/s,a)b(s)) / p(o/b,a)
+    - Reward function R(b,a) = sum R(s,a)b(s)
 - MOMDP is difficult because number of joint actions is exponential in number of agents
 - Value iteration requires a model of the environment.
 - Point based POMDP = scalable!
@@ -127,7 +133,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Every voting scheme can run into problems! Paradoxical outcomes:
 - Pareto efficiency- 
     - Social welfare also should have b at last.
-    - If b is always top or always last, social welfare function also should have b at top or last.
+    - If b is always top or always last, social welfare function also should have b at top or last. (Unanimous)
 - Monotonicity: If outcome was the winner, It must stay the winner if support for it in a preference profile is increased.
 - Arrow's impossibility theorem: If preferences are considered, the election will always fail one of the following properties:
     - Non- Dictatorship
@@ -136,6 +142,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - None of the positional scoring rules are condorcet consistent:
     - Borda, Plurality(with/without elimination)
 - Kendal Tau: Concordant pairs = C, Discordant pairs = D , Formula = (C-D)/(C+D) (range -1 to 1)
+- Kemmeny's rule: Maximize Kendal Tau distance!
 
 ###### Lecture 8: Deferred Acceptance
 `Two sided matching` - student prefs vs teacher prefs!
@@ -145,8 +152,9 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 `One sided matching`
 - Simple Serial assignment! Strategy proof and Pareto efficient! (But how do you decide who gets a vote first)
-- Top Trading Cycle Algorithm: 
+- Top Trading Cycle Algorithm:
     - Create a graph! And give em what they want whenever there is a cycle!
+    - Pareto efficient!
 
 
 ---
