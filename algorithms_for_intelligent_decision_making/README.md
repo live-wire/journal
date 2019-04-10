@@ -6,47 +6,18 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 ---
 ### Exam time:
 ##### Part 1: Constraint Programming
-- Explainwhat is a constraint program, and the concepts of constraint programming.
-- Listsome common applications of CP, i.e., show awareness of when CP is an appropriatetechnology in terms of modelling and/or solving.
-- Writea CP model for an optimisation problem (in MiniZinc), including demonstrating com-petency is good modelling practice. See the lecture slides for details.
-- Solvea CP model written in MiniZinc (using a solver) – this is assessed primarily throughthe assignment, but the exam might ask you to solve a small model by hand.
-- Summarisethe main ideas in CP solving. See the lecture slides for details.2
+- Explain what is a constraint program, and the concepts of constraint programming.
+- List some common applications of CP, i.e., show awareness of when CP is an appropriate technology in terms of modelling and/or solving.
+- Write a CP model for an optimisation problem (in MiniZinc), including demonstrating com-petency is good modelling practice. See the lecture slides for details.
+- Solve a CP model written in MiniZinc (using a solver) – this is assessed primarily through the assignment, but the exam might ask you to solve a small model by hand.
+- Summarise the main ideas in CP solving. See the lecture slides for details.2
 
-##### Part 2: Game Theory and Mechanism Designorganized per lecture:
-###### Lecture 5:
-- Games/auctions: English auction, Prisoner’s dilemma, matching pennies, battle of the sexes,sealed-bid (first/second-price Vickrey) auction
-- Definitions: solution concepts, normal / strategic form game, strategy profile, utility func-tion, preferences, Pareto efficiency, dominant strategy, dominant-strategy equilibrium (DSE),(pure) best response, (pure) Nash equilibrium, best-response correspondence, Bayes-Nashequilibrium (BNE)
-- Proofs: Second-price DSE, 2 player first-price BNE
-- Results: Nash’s theorem, revenue-equivalence
-
-###### Lecture 6:
-- Games/auctions: combinatorial auction, auction, Groves mechanism, with Clarke pivot rule,VCG, critical-value payment (CVP), AGV / d’AGVA, median rule, knapsack auction withCVP, min-makespan scheduling with "payment identity"
-- Definitions: social welfare, incentive compatible, strategy-proof, implementing, direct mech-anism, quasi-linear utility function, transfer/payment, budget balance, individual rationality,single-parameter domain, monotonicity, critical value payment/price, single-peaked prefer-ences
-- Proofs: Revelation principle. Groves mechanisms are strategy-proof and efficient.
-- Results: Gibbard-Satterthwaite. Groves are the only mechanisms (Green-Lafont) / taxationprinciple. Bilateral trading (HGL). Myerson-Satterthwaite.
-
-###### Lecture 7:
-- Voting Rules: majority, plurality, plurality-with-elimination, single transferable votes, Borda,Copeland, Schulze, Kemeny
-- Definitions:  social choice/welfare function, Condorcet winner, weighted majority graph,Condorcet-consistent, Non-dictatorship, Unrestricted Domain, Independence of IrrelevantAlternatives, Anonymity, Neutrality, Weak monotonicity, Non-constancy, Consistency, Con-tinuity, positional-scoring rule, Kendall-tau distance, Kemeny score, Condorcet criterion,Mallows model
-- Proofs: Copeland always selects the Condorcet winner. The Schulze rule is Condorcet con-sistent. No positional-scoring rule is Condorcet-consistent.
-- Results: Arrow’s theorem. Identification of positional-scoring rules.
-
-###### Lecture 8:
-- Mechanisms: deferred acceptance (DA), serial dictatorship (SD), top trading cycle algorithm(TTC), max-cardinality matching with 2-cycles,
-- Definitions:  Two-sided One-to-one Matching, blocking pair, stable matching, achievable,student-optimal, House allocation (HA), assignment problem, housing market, the core,kidney-paired donation,
-- Proofs: DA is stable.  DA is strategy-proof for one side.  No mechanism is both stableand strategy-proof for both sides. SD is strategy-proof and Pareto efficient for HA. max-cardinality matching with priority-based tie-breaking is strategy-proof (and consistent).
-- Results: Existence of stable matching. Properties of TTC.3
-
-##### Part 3: Reinforcement Learning
-- Explainwhat Markov decision processes are, including partially observable, multi-objectiveand constrained versions.
-- Constructsuch models for simple applications.
-- Explainand apply basic solution algorithms.
-- Summarisethe key concepts behind these algorithms.
 
 ---
 ### Part III: Reinforcement Learning and Planning
-- Markov Decision Process
+- Markov Decision Process - Mathematical model for modelling decision making in situations where outcomes are partly random and partly under control of a decision maker. Useful for studying optimization problems.
 - Partially observable Markov Decision Process
+
 
 ---
 ### Part II: Game Theory and Mechanism Design
@@ -57,8 +28,43 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Given a strategy profile of all other players, a pure best response of a player is his pure strategy profile.
     - *Mixed strategy profile* assigns a probability to each strategy.
 - Following this [Advanced Game Theory Course](https://www.coursera.org/learn/game-theory-2/) on coursera.
+###### Lecture 5:
+- **Mixed strategy nash equilibrium**: Pure Nash doesn't exist! What is nash ? see point below!
+    - first equate prob of going left and right to obtain the value of $\sigma_u$ (going up/down)
+    - Then do the same for going up and down to obtain $\sigma_l$ (going left and right)
+    - Strategy with probabilities!
+    - In every game there is one Nash! Pure or Mixed! :bomb:
+- **Pareto efficienct**: Going up or down or left or right from that state is not possible without harming atleast one player!
+- **Nash**: Moving from that position gives loss to BOTH PLAYERS. `Fix one player and see the other`, You know what the other player is doing!
+- **First price sealed bid auction**- Highest bidder has to pay the amount!
+    - Proof: Bayes Nash equilibrium is when all bid v1/2, v2/2 as:
+        - S1 >= V2/2
+        - Integrate (0, 2S1) [v1 - s1] dv2
+        - 2s1v1 - 2s1^2
+        - Maximise w.r.t. s1 so, 2v1 - 4s1 = 0 
+        - s1 = v1/2
+    - For N bidders, Sn = ((N-1)/N) * Vn 
+- **Second price sealed bid auction**- Highest bidder has to pay the second highest bid amount! 
+    - Proof: No use trying to be dishonest!
+- **Mixed auction**: Set a hard and a soft floor!
 
-##### Voting schemes
+###### Lecture 6:
+- Find rule G such that it Maximizes the social sum of utilities = equilibrium.
+- No use lying to G bitches. Direct stategy-proof mechanism implementing social choice function. When g == f => equilibrium. DSIC = Direct strategy-proof incentive compatible mechanism.
+- There is also mechanism design with transfers!
+    - For each row (theta) (agent), add utilities of other agents (transfers) to it! to calculate that agent's total utility!
+    - Quasi Linear representation
+- Groves mechanism: If there is Quasi linear preferences IS `strategy proof and efficient`.
+    - Common sense show agents the global picture! 
+- **VCG**: Budget balance:
+    - Transfers are not just added!, The ex: t1 = v2 - maxUtil(v2)
+    - Therefore, t1 can be negative.
+    - Bass!
+    - What is subtracted, is a part of the _socially maximizing outcome_!
+- VCG is no good for min makespan!
+
+
+###### Lecture 7: Voting schemes
 - Our setting:
     - **Outcomes** / Alternatives
     - Agents have **preferences**
@@ -70,6 +76,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - *Plurality with elimination*: Outcome with fewest votes is eliminated (Repeat till there is a majority/winner) (French Elections)
     - *Borda count*: If there are n candidates, each agent will give n-1 votes to top preference,n-2 to second .. and 0 to the last one. (Sports Evaluations)
     - *Successive/Pairwise Elimination*: Pairwise elimination. (Like Hackjunction Budapest) (Sensitive to order in which you run it)
+    - *Copeland/Schulze*: Pairwise majority between 2 candidates and then assign +1 to winner and -1 to loser. Do this for all pairs. (Always selects the condorcet winner).
 - **Condorcet Consistency**:
     - Means there is a clear winner (a candidate always wins in a pairwise majority(50% votes)).
     - NOTE: There is not always a condorcet winner!
@@ -78,9 +85,24 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - Social welfare also should have b at last.
     - If b is always top or always last, social welfare function also should have b at top or last.
 - Monotonicity: If outcome was the winner, It must stay the winner if support for it in a preference profile is increased.
+- Arrow's impossibility theorem: If preferences are considered, the election will always fail one of the following properties:
+    - Non- Dictatorship
+    - Unanimity
+    - Independence of irrelevant alternatives
+- None of the positional scoring rules are condorcet consistent:
+    - Borda, Plurality(with/without elimination)
+- Kendal Tau: Concordant pairs = C, Discordant pairs = D , Formula = (C-D)/(C+D) (range -1 to 1)
 
-##### Mechanism Design
-- Can we design a game that yields a particular outcome.
+###### Lecture 8: Deferred Acceptance
+`Two sided matching` - student prefs vs teacher prefs!
+- Stable and strategy-proof for one side. No algo is stable and strategy proof (students can't mess with the system) for both sides.
+- Don't accept anyone! Just keep rejecting and when there are no rejections, stop!
+    - Student doesn't go anywhere else till he gets rejected!
+
+`One sided matching`
+- Simple Serial assignment! Strategy proof and Pareto efficient! (But how do you decide who gets a vote first)
+- Top Trading Cycle Algorithm: 
+    - Create a graph! And give em what they want whenever there is a cycle!
 
 
 ---
