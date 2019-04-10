@@ -104,7 +104,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - Transfers are not just added!, The ex: t1 = v2 - maxUtil(v2)
     - Therefore, t1 can be negative.
     - Bass!
-    - What is subtracted, is a part of the _socially maximizing outcome_!
+    - What is added, is a part of the _socially maximizing outcome_ and what is subtracted is the best possible outcome for that agent!
 - VCG is no good for min makespan!
 
 
@@ -179,4 +179,4 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
         - **comprehensions for building constraints**
     - `If else` can be used inside forall blocks and outside the nested forall blocks.
     - `if condition then <blah> else <blah2> endif`
-
+        - If the if else block is used inside forall `<blah>` must be a conditional or another forall and if used inside sum()(), it must be a value.
