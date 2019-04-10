@@ -26,7 +26,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Stationary policy: Maps states to probability of taking an action
 - Deterministic stationary policy: maps states directly to actions.
 
-- Instead of $V^{\pi}(s) = E[R_t | \pi, s_t = s]$, it is now $V^{\pi} = E[\sum_{k=0}^{\infty} \gamma^k r_{k+1} | \pi, s_t = s].
+- Instead of $V^{\pi}(s) = E[R_t | \pi, s_t = s]$, it is now $V^{\pi} = E[\sum_{k=0}^{\infty} \gamma^k r_{k+1} | \pi, s_t = s]$.
     - Partial ordering (comparing vectors will be weird), optimality not clear!
     - Solution: Problem Taxonomy
 - Problem Taxonomy - Utility based approach:
