@@ -5,6 +5,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 ---
 ### Part III: Reinforcement Learning and Planning
+`MDP, POMDP, MOMDP`
 - Markov Decision Process - Mathematical model for modelling decision making in situations where outcomes are partly random and partly under control of a decision maker. Useful for studying optimization problems.
 - Partially observable Markov Decision Process
 - MOMDP is difficult because number of joint actions is exponential in number of agents
@@ -42,6 +43,22 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Another approach = Optimistic Linear support! Move a horizontal bar up the inverted triangle solution that you've found! :confused:
 - Cool application = Epidemic control! - MOPOMDP!
 ![Problem Taxonomy](https://live-wire.github.io/images/taxonomy.png)
+
+- `Constrained MDP`
+- Taxonomy Depends on 2 factors:
+    - Offline(communication)/ Online(no communication)
+    - Hard constraint/ Soft constraint
+- Possible grid of solution spaces = 
+    - offline: Hard(Deterministic preallocation), Soft(Stochastic preallocation)
+    - online: Hard(Coordination online/Online reallocation), Soft(Coordination online/Online reallocation)
+- With resource constraint L:
+    - $K_i$ = all policies, $C_i(s,a)$ = resource consumption, $R_i(s,a)$ = reward function, $x_{i,\pi_j}$ = probability of following a polciy __for agent i__.
+    - maximize $\sum_{agent-i} \sum_{\pi \in K_i} E[R_{\pi_i}].x_{j,\pi_j}$
+    - s.t. 
+        - $\sum_{agent-i} \sum_{\pi \in K_i} E[C_{\pi_j}].x_{i,\pi_j} <= L$ (constraint)
+        - $\sum_{\pi_j \in K_i} x_{i,\pi_j} = 1$ (sum of probs = 1)
+        - $x_{i,\pi_j} >= 0$ (Probabilities >= 0 duh)
+
 
 ---
 ### Part II: Game Theory and Mechanism Design
