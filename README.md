@@ -11,6 +11,27 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`April 12, 2019`
+#### DenseNet
+`msc`
+- Decided to use `torchvision.models.densenet121()`
+- It has 7 million parameters.
+- As a toy CNN, using [this](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html)
+
+---
+`April 6, 2019`
+#### Autograd on Matrix Profile ? :wow:
+`msc`
+- Gradients seem to flow! :party:
+- Should I make the image pixels learnable ? Instead of using CNN features ? :bomb:
+- How to decide the window size ?
+
+`Just in time normalization doubt:`
+- [pdf](https://www.cs.ucr.edu/~eamonn/Matrix_Profile_Tutorial_Part2.pdf). The step where I'm supposed to get a scalar between -1 and 1, I get a vector! Stuck there! 
+- The autograd brute force approach is implemented.
+- Sending back gradients now!
+
+---
 `April 5, 2019`
 #### Repetition Counting
 `msc`
@@ -19,7 +40,10 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - Maybe learning weights of a 3D convnet using the matrix profile makes more sense for end to end learning.
         - With filters of depth = the length of the entire sequence.
     - Or better, just convolutions to the frames! and feeding this to an LSTM for counting class assignment!
-    -  
+- Getting a better output from the matrix profile seems more tedious as that would mean you have high correlation frame occurance exactly at the right times. Which means the distance matrix will have to be learned! Which would mean less distance.
+- I have reasons to believe, the current implementation of the Matrix Profile is wrong!
+- 
+
 ---
 `April 1,2019`
 #### Next Lexicographical permutation algorithm
