@@ -11,6 +11,15 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`April 14, 2019`
+#### EndToEnd
+`msc`
+- Used a modified LeNet, Pytorch MatrixProfile implementation and finally an LSTM to complete the pipeline.
+- Used all subsets from annotations to create folders marked with number of repetitions to prepare the training set.
+- Can see end to end deployed in the very near future.
+- Only the weights with `requires_grad=True` need to be sent to cuda!
+
+---
 `April 12, 2019`
 #### DenseNet
 `msc`
