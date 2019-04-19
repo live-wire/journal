@@ -21,6 +21,17 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Rotating a matrix now is easier than ever.
     - Clockwise: Reverse matrix (rows). Then take it's transpose!
     - Anticlockwise: Transpose and then reverse.
+- Number of subarrays with sum=k:
+    - Brute force (eww) = O(n^2)
+    - HashMap approach (Mind blowing :sparkles:) = O(n)
+        - 3 variables: counter, map, sumtillnow
+        - `for item in arr:`
+            - `sumtillnow += item`
+            - `counter += map[sumtillnow-k]`
+            - `map[sumtillnow] += 1`
+        - `return counter`
+        - This approach checks how many k-sum-subarrays end at that point! (Hence it checks the mapper for existing sum-k values in it)
+
 
 ---
 `April 14, 2019`
