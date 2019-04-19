@@ -11,6 +11,18 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`April 19, 2019`
+#### Wow Transpose Python
+`algorithm`
+- `Zip` in python expects iterables as it's arguments. It returns an iterable of tuples which takes one from each iterable. (The length of the resulting iterable is = length of the smallest iterable passed to it).
+- Now that we know all of this:
+    - `matrix = [[1,2,3], [4,5,6], [7,8,9]]`
+    - Transpose: `[*zip(*matrix)] = [(1, 4, 7), (2, 5, 8), (3, 6, 9)]`
+- Rotating a matrix now is easier than ever.
+    - Clockwise: Reverse matrix (rows). Then take it's transpose!
+    - Anticlockwise: Transpose and then reverse.
+
+---
 `April 14, 2019`
 #### EndToEnd
 `msc`
@@ -19,6 +31,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Can see end to end deployed in the very near future.
 - Only the weights with `requires_grad=True` need to be sent to cuda!
 
+
 ---
 `April 12, 2019`
 #### DenseNet
@@ -26,6 +39,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Decided to use `torchvision.models.densenet121()`
 - It has 7 million parameters.
 - As a toy CNN, using [this](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html)
+
 
 ---
 `April 6, 2019`
@@ -40,6 +54,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - The autograd brute force approach is implemented.
 - Sending back gradients now!
 
+
 ---
 `April 5, 2019`
 #### Repetition Counting
@@ -52,6 +67,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Getting a better output from the matrix profile seems more tedious as that would mean you have high correlation frame occurance exactly at the right times. Which means the distance matrix will have to be learned! Which would mean less distance.
 - I have reasons to believe, the current implementation of the Matrix Profile is wrong!
 - 
+
 
 ---
 `April 1,2019`
@@ -66,6 +82,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Python union and intersection: Can't be done with `and` and `or`! 
     - `set3 = set1.union(set2)` is the same as `set1 | set2`
     - `set3 = set1.intersection(set2)`
+
 
 ---
 `March 27, 2019`
