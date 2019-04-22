@@ -12,12 +12,34 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 ---
 `April 19, 2019`
+#### Distributed locks and Consistent Hashing
+`algorithm`
+- Arguably this requires consistency, durability which are not what redis is known for.
+- [This article](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html) is great!
+- Consistent hashing - Used by distributed caches!
+    - Where(which machine) to send the object, depends on which machine was below that hash number (in a counter clockwise direction or clockwise).
+    - To distribute load unevenly, one can have x instances of one server and 2x instances of another servers in the hash-ring.
+    - [Great Post on Consistent Hashing](https://www.toptal.com/big-data/consistent-hashing)
+
+
+---
+`April 19, 2019`
+#### Bloom Filters
+`algorithm`
+- Space efficient probabilistic data structures.
+- Beautifully uses multiple hash functions when filling up the bloom-filter-bit-array.
+    - Says DOES NOT EXIST with 100% confidence.
+    - Says DOES EXIST with a little less confidence.
+- [This Links](https://hur.st/bloomfilter/) to play around with probabilities etc.
+
+---
+`April 19, 2019`
 #### Wow Transpose Python
 `algorithm`
 - `Zip` in python expects iterables as it's arguments. It returns an iterable of tuples which takes one from each iterable. (The length of the resulting iterable is = length of the smallest iterable passed to it).
 - Now that we know all of this:
     - `matrix = [[1,2,3], [4,5,6], [7,8,9]]`
-    - Transpose: `[*zip(*matrix)] = [(1, 4, 7), (2, 5, 8), (3, 6, 9)]`
+    - Transpose: `[*zip(*matrix)] = [(1, 4, 7), (2, 5, 8), (3, 6, 9)]` Beautiful! :cry:
 - Rotating a matrix now is easier than ever.
     - Clockwise: Reverse matrix (rows). Then take it's transpose!
     - Anticlockwise: Transpose and then reverse.
