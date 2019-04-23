@@ -13,6 +13,19 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 ---
 `April 22, 2019`
+#### Morris Traversal
+`algorithm`
+- Usual tree traversals employ a stack! which uses some memory usually (log(n))!
+- Morris traversal doesn't take up space O(1). [Link](http://www.cnblogs.com/AnnieKim/archive/2013/06/15/morristraversal.html) to the post.
+- Steps:
+    - If the left child of the current node is empty, the current node is output and its right child is used as the current node.
+    - If the left child of the current node is not empty, find the precursor node of the current node in the middle order traversal in the left subtree of the current node.
+        - If the right child of the precursor node is empty, set its right child to the current node. The current node is updated to the left child of the current node.
+        - If the right child of the precursor node is the current node, reset its right child to null (restore the shape of the tree). Output the current node. The current node is updated to the right child of the current node.
+![Example Morris traversal](https://images0.cnblogs.com/blog/300640/201306/14214057-7cc645706e7741e3b5ed62b320000354.jpg)
+
+---
+`April 22, 2019`
 #### Palindrome pairs in a list of strings, SSH Tunnels
 `algorithm`
 - For each word check suffixes and prefixes.
@@ -27,7 +40,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - Fix a long command that you messed up ? `fc`
     - mkdir -p folder/{1..100}/{1..100} etc.
     - **SSH Tunnels**: `ssh -L <local-port>:<host-ip>:<host-port> username@domain -N`
-
+        - For managing cloud instances without exposing ports to the internet.
 
 
 ---
