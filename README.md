@@ -10,6 +10,26 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
 
+
+---
+`April 22, 2019`
+#### Palindrome pairs in a list of strings, SSH Tunnels
+`algorithm`
+- For each word check suffixes and prefixes.
+    - If a suffix is a palindrome on its own (make it the center of your new string) and search for the reverse of the **corresponding prefix**.
+    - Similarly check the prefixes.
+    - Done!
+- Another approach using Trie:
+    - Save the reversed words in a Trie.
+- Linux Tricks: [wow video](https://www.youtube.com/watch?v=Zuwa8zlfXSY&t=74s)
+    - Suspend a running command using [Ctrl+z] and then send it to background using bg!
+        - It runs it like it was run with an `&` side appended to it.
+    - Fix a long command that you messed up ? `fc`
+    - mkdir -p folder/{1..100}/{1..100} etc.
+    - **SSH Tunnels**: `ssh -L <local-port>:<host-ip>:<host-port> username@domain -N`
+
+
+
 ---
 `April 19, 2019`
 #### Distributed locks and Consistent Hashing
@@ -195,6 +215,9 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - Supports all dictfunctions too!
     - Usage: `od = collections.OrderedDict(d)` or can submit a dict sorted on keys/vals
     - useful method: `od.popitem()` removes a `(k,v)` from the end. Can remove from beginning if argument `False` is passed to it. 
+- **defaultdict** - dictionary of lists/sets etc
+    - Usage `dd = collections.defaultdict(list)`
+    - `set/list/int` can be used for default initialization of the value for the key that is being accessed.
 - Python reduce has to be imported: `from functools import reduce`
 - Regex:
     - `import re`
