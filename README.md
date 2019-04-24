@@ -16,7 +16,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 #### Morris Traversal
 `algorithm`
 - Usual tree traversals employ a stack! which uses some memory usually (log(n))!
-- Morris traversal doesn't take up space O(1). [Link](http://www.cnblogs.com/AnnieKim/archive/2013/06/15/morristraversal.html) to the post.
+- Morris traversal doesn't take up space O(1) and O(n) complexity *(Finding precursor seems like a big task taking logN, but if you look at the edges, there are atmost two passes over each of (n-1) edges Hence O(n))*. [Link](http://www.cnblogs.com/AnnieKim/archive/2013/06/15/morristraversal.html) to the post.
 - Steps:
     - If the left child of the current node is empty, the current node is output and its right child is used as the current node.
     - If the left child of the current node is not empty, find the precursor node of the current node in the middle order traversal in the left subtree of the current node.
