@@ -24,6 +24,39 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
         - If the right child of the precursor node is the current node, reset its right child to null (restore the shape of the tree). Output the current node. The current node is updated to the right child of the current node.
 ![Example Morris traversal](https://images0.cnblogs.com/blog/300640/201306/14214057-7cc645706e7741e3b5ed62b320000354.jpg)
 
+
+---
+`April 29, 2019`
+#### Maximum area rectangle in a Histogram, Count number of 1s in bit representation - DP
+`algorithm`
+- Count number of 1s in bit representation:
+    - each number has 2 parts:
+        - last digit (n%2) which is = n&1
+        - remaining digits (n/2) which is already calculated in = ret[n>>1]
+    - Beautiful DP :heart_eyes:
+- Can be done in O(n). Use a stack to solve this!
+    - Push indices on to the stack!
+    - Make sure the stack has histograms with increasing height! With each histo, store the first occurance for that value on its left! (Remove bigger items when a new small item appears)
+    - Empty the stack one by one
+    - NOTE: whenever you remove an item, calculate area by comparing with the new top of stack.
+    - Actually O(n^2) but can be optimized by storing only the indices in the stack! O(n)!
+- Find maximum area rectangle is a version of this problem.
+- NOTE TO SELF: Whenever you store something in stack, make sure to store a tuple instead of a single value! You tend to suck otherwise!
+
+
+---
+`April 25, 2019`
+#### Word Break - DP
+`algorithm`
+- You have a list of words. See if given word can be formed by using words in the list. (repetitions allowed)
+    - Brute force approach= all possible words. O(2^n) BAD!
+    - DP
+        - Maintain an array which stores if s[:i] can be formed from the list of words.
+        - Return value is the last item in this array.
+        - :robot:
+
+
+
 ---
 `April 22, 2019`
 #### Palindrome pairs in a list of strings, SSH Tunnels
@@ -35,10 +68,10 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Another approach using Trie:
     - Save the reversed words in a Trie.
 - Linux Tricks: [wow video](https://www.youtube.com/watch?v=Zuwa8zlfXSY&t=74s)
-    - Suspend a running command using [Ctrl+z] and then send it to background using bg!
+    - Suspend a running command using `[Ctrl+z]` and then send it to background using `bg`!
         - It runs it like it was run with an `&` side appended to it.
     - Fix a long command that you messed up ? `fc`
-    - mkdir -p folder/{1..100}/{1..100} etc.
+    - `mkdir -p folder/{1..100}/{1..100}` etc.
     - **SSH Tunnels**: `ssh -L <local-port>:<host-ip>:<host-port> username@domain -N`
         - For managing cloud instances without exposing ports to the internet.
 
