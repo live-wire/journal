@@ -12,6 +12,19 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`May 3, 2019`
+#### `yield from` from in Python
+`algorithm`
+- Binary search tree iteration (Get the next smallest element):
+    - Very fast: Maintain a stack. Keep pushing items and set node to node.left on each iteration.
+    - Stack would be of size O(h) h = height of the tree.
+    - Whenever you pop an element, see if that node has a right child, if yes, push that to stack just like before (setting node to node.left each time).
+    - O(1) fetching and small stack size.
+    - That's also how you calculate **height** of a tree.
+- Generators for fetching would use very less memory! But slower as access is not O(1)!
+- Python's generators (functions that `yield` something) can also use recursive return. Just use `yield from` with the recursive function call.
+
+---
 `April 22, 2019`
 #### Morris Traversal
 `algorithm`
@@ -742,7 +755,7 @@ Following the Go Tour now!
 - Looping over variableName which could be an array, slice, string, or map (use range):
     - `for key,value := range variableName {}`
 - Capitalize the stuff in the file that you want to export to other packages!
-- Naked return. Name the return values and assign them inside the function
+- Named return. Name the return values and assign them inside the function
 ```func addSub(a int, b int) (ret1 int, ret2 int) {
     ret1 = a + b
     ret2 = a - b
