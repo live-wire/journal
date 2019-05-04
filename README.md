@@ -12,6 +12,38 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`May 4, 2019`
+#### System Design
+`algorithm`
+- **Redundancy** of services and of data! For reliability! Cost: Expensive!
+- **Partitions** - The only way to scale a relational database. Partition it based on some key! Comes at a cost of merges across partitions!
+- **Caches** -
+    - Local Cache
+    - Global cache
+    - Distributed Cache - Uses consistent hashing - each node has a small piece of the cache, and will then send a request to another node for the data before going to the origin. Therefore, one of the advantages of a distributed cache is the increased cache space that can be had just by adding nodes to the request pool. `Memcached`
+- **Proxies** - 
+    - Club requests into one big request to reduce load on the database. Usually a cache is placed in front of the proxy.
+- **Load Balancer** -
+    - Series of load balancers are also often used.
+- **Queues** - 
+    - To process requests on their own capacity.
+
+#### AB Testing
+- Test everything
+- One thing at a time. (You won't know what helped otherwise)
+- Data driven development.
+
+#### CAP Theorem
+- Consistency, Availability and Partition Tolerance! Chose any two. Can't have all 3 in a distributed database.
+- Can we sacrifice Partition Tolerance ?
+    - Not really if there is more than one nodes.
+    - Garbage collections also can cause this.
+    - Firewall / bugs in software.
+    - Can't have a CA system
+- Consistency - All writes should be synced with all nodes!
+- It's not actually chosing between C, A or P. It means in the time of a network partition, you have to chose between C or A. Can't have both. And Partition is something that can't be avoided.
+
+---
 `May 3, 2019`
 #### `yield from` from in Python
 `algorithm`
