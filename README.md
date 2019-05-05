@@ -11,6 +11,52 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 
+
+---
+`May 6, 2019`
+#### Triplet Loss
+`msc`
+- This technique uses triplets of training samples to train.
+- Anchor, Positive and Negative.
+- Minimize the distance between anchor, positive sample and maximize distance between anchor and negative sample.
+- Usually an $\alpha$ is used (margin like SVM). It is a hyperparameter.
+- Use hard combinations of A, P and N to make the network smarter! (therwise most training samples are too easy for the neural net).
+
+
+---
+`May 5, 2019`
+#### NoSQL vs RDBMS
+`algorithm`
+- RDBMS scaling - Master(writes) slave(reads) architecture - with async replication.
+    - This can be inconsistent!
+- Sharding - Split data based on some key.
+    - But there can be uneven split of data
+    - Solution: using consistent hashing
+- CAP theorem - is for NoSQL databases.
+- RDBMS supports ACID
+    - Availability
+    - Consistency
+    - Isolation
+    - Durability
+- NoSql supports BASE - (AP systems)
+    - Basically 
+    - Available
+    - Softstate
+    - Consistency
+- Distributed datastore: No master slave, All nodes have some backup in other nodes
+    - Uses consistent hash ring to decide node to save data in.
+    - Use gossip protocol for inter-node communication.
+- Who doesn't use NoSQL databases: 
+    - Stackoverflow, Youtube, Instagram, WhatsApp
+    - ACID is not guaranteed, two nodes have different versions of the data (Too many updates!)
+    - Not read optimized! Get users of age > 30.
+    - No implicit relations: And address can only exist if there is atleast one user with that address.
+    - Joins are hard!
+- When to use it ?
+    - Many writes and not too many joins/updates.
+    - For analytical applications on unstructured data.
+- [Multi-level sharding](https://www.youtube.com/watch?v=xQnIN9bW0og) can be used when you expect a node to have too much traffic. That node forwards the load to another cluster which evenly distributes the load across that cluster.
+
 ---
 `May 4, 2019`
 #### System Design
