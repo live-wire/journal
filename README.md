@@ -22,6 +22,12 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Usually an $\alpha$ is used (margin like SVM). It is a hyperparameter.
 - Use hard combinations of A, P and N to make the network smarter! (therwise most training samples are too easy for the neural net).
 
+#### Finding anagrams
+`algorithm`
+- Finding anagrams doesn't require always sorting the string and looking for the same in t
+he hashmap (O(nLog(n)))
+- One cool approach is just O(n), create an array of all possible characters in the word. And iterate over it to increase counter for each character. Then the key in the hashmap can be a tuple of this array.
+ 
 
 ---
 `May 5, 2019`
