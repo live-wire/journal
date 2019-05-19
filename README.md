@@ -13,6 +13,25 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`May 19, 2019`
+#### Backpropagating isn't that easy
+`msc`
+- There are NaNs while training the cnns
+- Caused due to Wrong divisions or sqrts. Adding tiny epsilons should help.
+- Pytorch also has [anomaly detection](https://pytorch.org/docs/master/autograd.html#anomaly-detection).
+
+---
+`May 6, 2019`
+#### Search space and complexity
+`algorithm`
+- Complexity of recursive fibbonaci?
+    - Search space is a tree growing downwards fib(n-1) fib(n-2)
+    - Number of nodes in the leaves = 2^n
+- Boom!
+- External merge sort: For sorting large files with limited RAM.
+
+
+---
 `May 6, 2019`
 #### Triplet Loss
 `msc`
