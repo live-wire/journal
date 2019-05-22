@@ -11,6 +11,24 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 
+---
+`May 22, 2019`
+#### Didn't pexpect that time would fly like this
+`algorithm`
+- Whenever you want to do something sketchy `sshy`, just use [pexpect](https://pexpect.readthedocs.io/en/stable/).
+- Easy ssh, scp series of commands.
+- Can even interact with the process.
+- Sample usage:
+```
+child = pexpect.spawn('ssh username@host')
+child.expect('.* password:')
+child.sendline(password)
+child.expect('.*login.*')
+child.sendline('ssh further-in')
+child.expect('.* password:')
+child.sendline(password)
+child.interact()
+```
 
 ---
 `May 19, 2019`
