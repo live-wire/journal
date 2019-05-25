@@ -10,6 +10,13 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
 
+---
+`May 25, 2019`
+#### Repositioning dimensions for pytorch
+`msc`
+- `nn.Conv2d` expects input in NCHW (batch, channels, height, width) format.
+- `nn.LSTM` expects input in (seq_len, batch, input_size) format.
+- Use [tensor.permute](https://pytorch.org/docs/stable/tensors.html#torch.Tensor.permute) to switch these dimensions.
 
 ---
 `May 22, 2019`
