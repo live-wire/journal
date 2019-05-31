@@ -12,6 +12,15 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 ---
 `May 25, 2019`
+#### More Ideas for pipeline-compact
+`msc`
+- Don't save any distances, but only the max distance so far per column! (Don't have any high hopes from this)
+- Check out [torch multiprocessing](https://towardsdatascience.com/speed-up-your-algorithms-part-1-pytorch-56d8a4ae7051) - torch.multiprocessing is a wrapper around Python multiprocessing module and its API is 100% compatible with original module. So you can use `Queue`, `Pipe`, `Array` etc.
+    - TODO: Look at all of them multiprocessing techniques in python.
+
+
+---
+`May 25, 2019`
 #### Repositioning dimensions for pytorch
 `msc`
 - `nn.Conv2d` expects input in NCHW (batch, channels, height, width) format.
