@@ -11,7 +11,18 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
-`May 25, 2019`
+`June 1, 2019`
+#### PySnooper
+`algorithm`
+- No need to setup a debugger.
+- Use PySnooper instead of well crafted prints.
+- Just slap a decorator on the function you want to debug.
+- Install:`pip install pysnooper`
+- Deorator: `@pysnooper.snoop()`
+- More Features: [here](https://github.com/cool-RR/PySnooper#features)
+
+---
+`May 31, 2019`
 #### More Ideas for pipeline-compact
 `msc`
 - Don't save any distances, but only the max distance so far per column! (Don't have any high hopes from this)
