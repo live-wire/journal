@@ -11,6 +11,29 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`June 8, 2019`
+#### Googol
+`algorithm`
+- Goog Brush up!
+- Python BFS can be done without using extra space (2 queue approach is not the best.). Use nested loops
+    - Outer loop loops over the level
+    - Inner loop connects the children
+    - Beautiful. (Keep track of the first child at each level, so root can be set to that in the outer loop)
+- Vertical traversal of a tree = simple. Use my favourite Recursive approach that fills in a variable outside the function.
+- When creating a data structure, keep in mind, creating multiple lists instead of a list of tuples can be faster sometimes.
+- Use DFS when you have a graph of jobs dependent on each other, to create a final order of jobs to execute.
+     - If a node is checked for dependencies once, it is done!
+- All possible subsets of size K:
+    - Find all possible subsets of size 1
+    - Pop everything and subsequently find all possible subsets of size 2
+    - etc.
+    - Recursive approach:
+        - inner function should have big array, so_far and budget!
+- [Karnaugh Maps](https://www.youtube.com/watch?v=RO5alU6PpSU): Compress the storage of truth tables. (K-Map) - A function can be written that represents the truth table.
+- Decoding string from numbered brackets. Use stack, always edit the top of the stack whenever you encounter alphabets.
+
+
+---
 `June 1, 2019`
 #### PySnooper
 `algorithm`
