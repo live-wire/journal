@@ -31,6 +31,11 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
         - inner function should have big array, so_far and budget!
 - [Karnaugh Maps](https://www.youtube.com/watch?v=RO5alU6PpSU): Compress the storage of truth tables. (K-Map) - A function can be written that represents the truth table.
 - Decoding string from numbered brackets. Use stack, always edit the top of the stack whenever you encounter alphabets.
+- Probability in a new-21(K) game to have points less than N. DP problem like climbing stairs. Final output = sum of dps[K:N+1].
+- Find index of element in a sorted array (which is also rotated.)
+    - Find index of smallest element by comparing it with the first item in the array. (logn)
+    - Binary search in either of these based on target (logn)
+    - Beautiful and simple.
 
 
 ---
