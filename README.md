@@ -36,6 +36,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - Find index of smallest element by comparing it with the first item in the array. (logn)
     - Binary search in either of these based on target (logn)
     - Beautiful and simple.
+- MD5 hash is a compact digital fingerprint of a file. (Not bullet-proof, but still not bad)
 
 
 ---
