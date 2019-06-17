@@ -10,6 +10,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
 
+
+---
+`June 17, 2019`
+#### Final experiments
+`msc`
+- Final version of accuracy would be: `what percentage of frames are correctly labeled ?`.
+
+
 ---
 `June 8, 2019`
 #### Googol
@@ -37,7 +45,10 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - Binary search in either of these based on target (logn)
     - Beautiful and simple.
 - MD5 hash is a compact digital fingerprint of a file. (Not bullet-proof, but still not bad)
-
+- `from functools import lru_cache` - LRU cache decorator with a maxsize
+    - decorate a function with it `@lru_cache(max_size=32)`
+    - The function then has these options available: `func.cache_info()`, `func.cache_clear()`
+- 
 
 ---
 `June 1, 2019`
