@@ -16,6 +16,9 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 #### Final experiments
 `msc`
 - Final version of accuracy would be: `what percentage of frames are correctly labeled ?`.
+- Memory usage inspection:
+    - Sublime text is a python process
+    - Interactive `pexpect` is obviously a python process.
 
 
 ---
@@ -48,7 +51,11 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - `from functools import lru_cache` - LRU cache decorator with a maxsize
     - decorate a function with it `@lru_cache(max_size=32)`
     - The function then has these options available: `func.cache_info()`, `func.cache_clear()`
-- 
+- Feedback:
+    - Bomb all the coding rounds at-least!
+        - Usually all the questions have a follow up! Don't forget that.
+    - Better team player in the cultural fit round.
+    - Practice system design.
 
 ---
 `June 1, 2019`
