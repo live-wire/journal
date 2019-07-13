@@ -12,6 +12,16 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`July 11, 2019`
+#### Leet keep in touch
+`algorithm`
+- Do the given two rectangles overlap? (Given the diagonal points)
+    - Easiest approach is to see when they don't overlap! and return True otherwise.
+- Minimum steps to distribute coins in the tree.
+    - Can't wrap my head around this.
+
+
+---
 `June 17, 2019`
 #### Final experiments
 `msc`
