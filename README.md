@@ -11,6 +11,20 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Sep 23, 2019`
+#### Stdin in python
+`algorithm`
+- Get all permutations of a string
+    - `from itertools import permutations`
+- Run a script which accepts input from stdin
+    - `python script < input-file` accepts input line by line.
+- She-bang works for python too.
+    - `#!/Users/dbatheja/venv3/bin/python` as the first line in the file.
+    - Make sure the file is executable (`chmod`).
+    - Run the script like: `./script.py`
+
+
+---
 `Sep 18, 2019`
 #### VIM
 - `VIM` > 🌍
