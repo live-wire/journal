@@ -11,6 +11,29 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Oct 7, 2019`
+#### HBase
+- Column-oriented non-relational database management system that runs on top of HDFS.
+- For billions of rows and millions of columns.
+- Has column-families. Each column family can have a ton of columns which don't need to be consistent across rows.
+- Indexed on only one key. (called row-id)
+- Each row-id maintains the changes that occured on it with a timestamp. So, older values(columns) for a key can be fetched.
+
+---
+`Oct 3, 2019`
+#### AWK in unix
+- awk is used for processing text based data. 
+- Nicely tied up with linux. (can be used with pipes)
+- Sample usages:
+- `awk '<pattern> {<action>}' filename` 
+    - `awk '{print}' file.txt` prints entire file
+    - `awk '$9 == 500 { print $0}' /var/log/httpd/access.log` for patterns you can see filenames.
+    - `awk -F ':' '{print $1}' file.txt` Splits line by `:` instead of a space and prints the first item from each row.
+    - `whois google.com | awk '/Registry Expiry Date:/ { print $4 }'`
+- Grep is just for filteration! AWK is a powerful programming language especially useful for csv type files.
+
+
+---
 `Sep 23, 2019`
 #### Stdin in python
 `algorithm`
