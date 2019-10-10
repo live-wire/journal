@@ -10,6 +10,15 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
 
+
+---
+`Oct 9, 2019`
+#### GoLang nooks and corners
+- `runtime.GOMAXPROCS(runtime.NumCPU())`
+- Mac often needs to run `ulimit -n 65536` in each session to increase number of open files limit.
+- Goroutines can get stuck sometimes. `runtime.Gosched()` for it to yield that processor and allow other routines to run.
+
+
 ---
 `Oct 7, 2019`
 #### HBase
@@ -991,7 +1000,7 @@ subtargets:
 
 ---
 `Jan 6, 2019`
-#### Hello Gopher
+#### Hello Gopher `GoLang`
 Following the Go Tour now!
 - Workspace = `~/go/src/` ( Typically a single workspace is used for all go-programs) (All repositories inside this workspace ) (Usually create a folder structure like `~/go/src/github.com/live-wire/project/` to avoid clashes in the future)
     - `$ go env GOPATH` (Set the environment variable GOPATH to change the workspace)
