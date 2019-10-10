@@ -17,6 +17,9 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - `runtime.GOMAXPROCS(runtime.NumCPU())`
 - Mac often needs to run `ulimit -n 65536` in each session to increase number of open files limit.
 - Goroutines can get stuck sometimes. `runtime.Gosched()` for it to yield that processor and allow other routines to run.
+- Amazing go JSON libraries:
+    - [sjson](https://github.com/tidwall/sjson) for setting/deleting.
+    - [gjson](https://github.com/tidwall/gjson) for getting.
 
 
 ---
