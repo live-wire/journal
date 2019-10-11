@@ -10,6 +10,12 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
 
+---
+`Oct 11, 2019`
+#### Distributed Columnar stores
+- Cassandra vs BigTable - Columnar store war!
+- Cassandra is not on HDFS so is nice that way.
+- BigTable maintains history of records which is nice
 
 ---
 `Oct 9, 2019`
