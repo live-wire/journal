@@ -10,6 +10,21 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
 
+
+---
+`Oct 14, 2019`
+#### Tmux
+- Quick tutorial [here](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/).
+- Split screen horizontal: `ctrl + b` and `%`
+- Split screen vertical: `ctrl + b` and `"`
+- Navigate between screens: `ctrl + b` and `arrow`
+- Close a pane: `ctrl + d`
+- Detach a session: `ctrl + b` and `d` 
+- `tmux ls` to list all sessions
+- `tmux attach -t <session-number>` to attach to a session
+- `tmux -CC` is a nice tmux iTerm integration.
+
+
 ---
 `Oct 11, 2019`
 #### Distributed Columnar stores
