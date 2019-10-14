@@ -91,6 +91,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - `yy` copy current line `p` pastes current line.
 - `:tabnew filename` Opens file in a new tab.
 - `:<line-number>` Jump to line.
+- `u` undo, `Ctrl + r` 
 - `/searchword` Navigate through the results with `n` and `N`.
 - Find and replace in selection: like perl regexes
     - select text > `:` > `s/toreplace/replacewith/gc` -(`g` for all occurances, `c` for interactive one by one).
