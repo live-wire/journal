@@ -10,6 +10,61 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
 
+---
+`Oct 30, 2019`
+#### Java Thread Coordination :coffee: :tea:
+- For thread creation:
+```
+Thread t1 = new Thread(new Runnable(){
+
+    @Override
+    public void run(){
+        // Do Something in new thread
+    }
+});
+```
+- Or have your class extend Thread class. In either case, `run()` needs to be implemented.
+- Have a list of `java.lang.Runnable`s and execute them together using a wrapper class that calls a start on each thread that implements them.
+- Loop over List (say `List<Runnable> tasks;`) like:
+```
+for (Runnable task : tasks) {}
+```
+- Thread termination: 
+    - `.interrupt()` Can be checked inside the thread with `Thread.currentThread().isInterrupted()`
+    - Other option is to `thread.setDaemon(true)` so that this thread is not a blocker for the application or the main thread while exiting.
+- `thread.join()` only returns when that thread is terminated (finished the `run()` function). (Also takes time in millis for returning before execution terminates).
+- **Memory Management** `!important`
+    - _Stack_ = every local variable is pushed here. Local primitive types and local references. Every methods frame is added here. (This is what overflows during recursion). **Exclusive: Not shared among threads**
+    - _Heap_ =  Anything created with the `new` operator. Objects, Members of classes, static variables. Managed by the Garbage collector. **Shared among threads**
+- **Resource sharing among threads**: Shared object instances, if are operated upon by different threads, need to be `Atomic`. (Atomic = No intermediate states)
+    - Use `synchronized` keyword with the function.
+    - OR use `synchronized(lockingObject){...}` for more flexibility. The first technique locks all the synchronized functions for an object and not just the one function. The second technique is more like locks in Golang :heart:
+    - Use `volatile` keyword with double and long to make single line operations on them atomic.
+
+
+
+---
+`Oct 28, 2019`
+#### Java :coffee:
+- MultiThreading and concurrency in Java. Following a course by `Michael Pogrebinsky`.
+- **OS Process**:
+    - Metadata: like PID, Mode, Priority etc.
+    - Files: Files it is working with etc.
+    - Data (Heap)
+    - Code.
+    - Thread: atleast one main thread
+- **Thread**:
+    - Stack - Region in memory where variables are stored and passed to functions.
+    - Instruction Pointer - Address of next instruction to execute.
+- Problems
+    - Too many threads = **thrashing**.
+    - Thread Scheduling such that no thread is starved. OS usually employs dynamic priority.
+- **Multiprocessing:** `Microservices` architectures.
+    - Security and stability are of higher importance.
+    - Unrelated tasks.
+- **Multithreading:** 
+    - Tasks share a lot of data.
+    - Switching is cheaper.
 
 ---
 `Oct 14, 2019`
