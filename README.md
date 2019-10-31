@@ -9,6 +9,68 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
+---
+`Oct 31, 2019`
+#### Java Data Race :coffee: :beer:
+- Data race is not the same as a race condition.
+- Compiler reorders some lines to optimize hardware usage and make the code faster. May result in weird results.
+- Solutions:
+    - `synchronize` methods that modify shared variables (shared by multiple threads).
+    - `volatile` keyword with shared variables ensures the instructions before/after it are actually run before/after it even after compiler optimization.
+- Locks avoidance:
+    - Enforce a **strict order** on lock acquisition. (A after B etc.)
+    - Lock detection: Watchdog.
+- **Concurrent collections in Java**: `java.util.concurrent`
+    - ConcurrentHashMap - [Link](http://tutorials.jenkov.com/java-util-concurrent/concurrentmap.html) Can be modified even when being iterated upon.
+    - BlockingQueue - [Link](http://tutorials.jenkov.com/java-util-concurrent/blockingqueue.html) Blocks the producer if the upper limit is reached till a consumer polls from it.
+    - 
+- Lock free programming: `java.util.concurrent.atomic.AtomicInteger` 
+    - `AtomicInteger` - useful methods: (incrementAndGet), (getAndIncrement) return new and old values respectively. No need for locks and synchronization.
+    - `AtomicReference<T>` - Use this to reference any object. Like the head of a stack data structure
+    - `atomicReference.compareAndSet(oldExpectedValue, NewValue)`
+- Lock free thread safe data structure: (without synchronized) and using `AtomicReference and compareAndSet`, Performance increase is mindblowing. Loop and retry till you were able to modify what you expected to modify.
+```
+public static class LockFreeStack<T> {
+        private AtomicReference<StackNode<T>> head = new AtomicReference<>();
+        private AtomicInteger counter = new AtomicInteger(0);
+
+        public void push(T value) {
+            StackNode<T> newHeadNode = new StackNode<>(value);
+
+            while (true) {
+                StackNode<T> currentHeadNode = head.get();
+                newHeadNode.next = currentHeadNode;
+                if (head.compareAndSet(currentHeadNode, newHeadNode)) {
+                    break;
+                } else {
+                    LockSupport.parkNanos(1);
+                }
+            }
+            counter.incrementAndGet();
+        }
+
+        public T pop() {
+            StackNode<T> currentHeadNode = head.get();
+            StackNode<T> newHeadNode;
+
+            while (currentHeadNode != null) {
+                newHeadNode = currentHeadNode.next;
+                if (head.compareAndSet(currentHeadNode, newHeadNode)) {
+                    break;
+                } else {
+                    LockSupport.parkNanos(1);
+                    currentHeadNode = head.get();
+                }
+            }
+            counter.incrementAndGet();
+            return currentHeadNode != null ? currentHeadNode.value : null;
+        }
+
+        public int getCounter() {
+            return counter.get();
+        }
+    }
+```
 
 ---
 `Oct 30, 2019`
@@ -46,6 +108,7 @@ for (Runnable task : tasks) {}
 ---
 `Oct 28, 2019`
 #### Java :coffee:
+- Class inside another class has to be static.
 - MultiThreading and concurrency in Java. Following a course by `Michael Pogrebinsky`.
 - **OS Process**:
     - Metadata: like PID, Mode, Priority etc.
@@ -65,6 +128,25 @@ for (Runnable task : tasks) {}
 - **Multithreading:** 
     - Tasks share a lot of data.
     - Switching is cheaper.
+- Java Generics: Used by util classes like List, Iterator etc.
+- If using for a function, use it like this:
+```
+public static <T> void minus(T a, T b) {
+        System.out.println(a + "," + b);
+}
+```
+
+- Easier to use with a Class
+```
+class Test<T> 
+{ 
+    // An object of type T is declared 
+    T obj; 
+    Test(T obj) {  this.obj = obj;  }  // constructor 
+    public T getObject()  { return this.obj; } 
+} 
+```
+
 
 ---
 `Oct 14, 2019`
