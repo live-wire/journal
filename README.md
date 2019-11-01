@@ -32,6 +32,7 @@ Executor executor = Executors.newFixedThreadPool(2);
 - Handling Exceptions: `.handle((res, ex) -> {}` or `.exceptionally(ex -> {`.
 - **Java Functional**: Interfaces with only one implementable methods. Lambda expressions can be used for these.
 - Lambda functions can be declared as
+
 ```
 // Functional interface example
 class Hey {
