@@ -30,7 +30,7 @@ Executor executor = Executors.newFixedThreadPool(2);
 - If your functions return a `CompletableFuture` you can combine the results using `thenCompose()`. It is different from `thenApply()` like flatMap is different from map.
     - `thenCompose()` is used to combine two Futures where one future is dependent on the other, `thenCombine()` is used when you want two Futures to run independently and do something after both are complete.
 - Handling Exceptions: `.handle((res, ex) -> {}` or `.exceptionally(ex -> {`.
-- - **Java Functional**: Interfaces with only one implementable methods. Lambda expressions can be used for these.
+- **Java Functional**: Interfaces with only one implementable methods. Lambda expressions can be used for these.
 - Lambda functions can be declared as
 ```
 // Functional interface example
