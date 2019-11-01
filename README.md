@@ -38,12 +38,12 @@ class Hey {
         return Math.pow(num, 2);
     }
 }
-
 Function<Double, Double> square = (Double x) -> x * x;
 SAME AS
 Function<Double, Double> square = hey::square;
 
 ```
+
 - This can now be passed around as regular functions.
 - For referring static methods, the syntax is: `ClassName :: methodName`
 - For referring non-static methods, the syntax is `objRef :: methodName`
