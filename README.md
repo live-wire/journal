@@ -9,9 +9,51 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
+
 ---
 `Oct 31, 2019`
-#### Java Data Race :coffee: :beer:
+#### Java Async ☕️ 🍪
+- `CompletableFuture`: [Nice link](https://www.callicoder.com/java-8-completablefuture-tutorial/)
+```
+CompletableFuture<String> completableFuture = new CompletableFuture<String>();
+```
+- `completableFuture.get()` blocks till future is complete to return the result.
+- `completableFuture.complete("YOLO")` to manually complete a future.
+- `.supplyAsync(()->{})` will be non blocking.
+    - Use `.thenApply(()->{})` or `thenApplyAsync` for transformations.
+    - Use `.thenAccept(()->{})` or `thenRun(()->{})` for finshing the promise.
+    - Final result of this chain can be accessed by `.get()`
+- The Async methods also have a variant with an argument that expects Executors (for more fine grained parallelism control).
+```
+Executor executor = Executors.newFixedThreadPool(2);
+```
+- If your functions return a `CompletableFuture` you can combine the results using `thenCompose()`. It is different from `thenApply()` like flatMap is different from map.
+    - `thenCompose()` is used to combine two Futures where one future is dependent on the other, `thenCombine()` is used when you want two Futures to run independently and do something after both are complete.
+- Handling Exceptions: `.handle((res, ex) -> {}` or `.exceptionally(ex -> {`.
+- - **Java Functional**: Interfaces with only one implementable methods. Lambda expressions can be used for these.
+- Lambda functions can be declared as:
+```
+class Hey {
+     public static double square(double num){
+        return Math.pow(num, 2);
+    }
+}
+
+Function<Double, Double> square = (Double x) -> x * x;
+SAME AS
+Function<Double, Double> square = hey::square;
+
+```
+- This can now be passed around as regular functions.
+- For referring static methods, the syntax is: `ClassName :: methodName`
+- For referring non-static methods, the syntax is `objRef :: methodName`
+- Map and Filter in Java using `stream()`: 
+`List<String> collect = alpha.stream().map(String::toUpperCase).collect(Collectors.toList());` Notice the collection at the end just like Python needs to convert it to list.
+
+
+---
+`Oct 31, 2019`
+#### Java Data Race ☕️ 🍺
 - Data race is not the same as a race condition.
 - Compiler reorders some lines to optimize hardware usage and make the code faster. May result in weird results.
 - Solutions:
@@ -74,7 +116,7 @@ public static class LockFreeStack<T> {
 
 ---
 `Oct 30, 2019`
-#### Java Thread Coordination :coffee: :tea:
+#### Java Thread Coordination ☕️ 🍵
 - For thread creation:
 ```
 Thread t1 = new Thread(new Runnable(){
@@ -100,14 +142,14 @@ for (Runnable task : tasks) {}
     - _Heap_ =  Anything created with the `new` operator. Objects, Members of classes, static variables. Managed by the Garbage collector. **Shared among threads**
 - **Resource sharing among threads**: Shared object instances, if are operated upon by different threads, need to be `Atomic`. (Atomic = No intermediate states)
     - Use `synchronized` keyword with the function.
-    - OR use `synchronized(lockingObject){...}` for more flexibility. The first technique locks all the synchronized functions for an object and not just the one function. The second technique is more like locks in Golang :heart:
+    - OR use `synchronized(lockingObject){...}` for more flexibility. The first technique locks all the synchronized functions for an object and not just the one function. The second technique is more like locks in Golang ❤️
     - Use `volatile` keyword with double and long to make single line operations on them atomic.
 
 
 
 ---
 `Oct 28, 2019`
-#### Java :coffee:
+#### Java ☕️
 - Class inside another class has to be static.
 - MultiThreading and concurrency in Java. Following a course by `Michael Pogrebinsky`.
 - **OS Process**:
@@ -128,7 +170,7 @@ for (Runnable task : tasks) {}
 - **Multithreading:** 
     - Tasks share a lot of data.
     - Switching is cheaper.
-- Java Generics: Used by util classes like List, Iterator etc.
+- **Java Generics**: Used by util classes like List, Iterator etc.
 - If using for a function, use it like this:
 ```
 public static <T> void minus(T a, T b) {
