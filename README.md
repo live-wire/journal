@@ -34,12 +34,10 @@ Executor executor = Executors.newFixedThreadPool(2);
 - Lambda functions can be declared as:
 ```
 class Hey {
-     public static double square(double num){
-        return Math.pow(num, 2);
-    }
-}
+    public static double square(double num){
+        return Math.pow(num, 2); }}
 Function<Double, Double> square = (Double x) -> x * x;
-SAME AS
+<IS THE SAME AS>
 Function<Double, Double> square = hey::square;
 
 ```
