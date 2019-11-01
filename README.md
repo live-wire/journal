@@ -39,7 +39,6 @@ class Hey {
 Function<Double, Double> square = (Double x) -> x * x;
 <IS THE SAME AS>
 Function<Double, Double> square = hey::square;
-
 ```
 
 - This can now be passed around as regular functions.
