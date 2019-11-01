@@ -31,11 +31,14 @@ Executor executor = Executors.newFixedThreadPool(2);
     - `thenCompose()` is used to combine two Futures where one future is dependent on the other, `thenCombine()` is used when you want two Futures to run independently and do something after both are complete.
 - Handling Exceptions: `.handle((res, ex) -> {}` or `.exceptionally(ex -> {`.
 - - **Java Functional**: Interfaces with only one implementable methods. Lambda expressions can be used for these.
-- Lambda functions can be declared as:
+- Lambda functions can be declared as
 ```
+// Functional interface example
 class Hey {
     public static double square(double num){
-        return Math.pow(num, 2); }}
+        return Math.pow(num, 2); 
+    }
+}
 Function<Double, Double> square = (Double x) -> x * x;
 <IS THE SAME AS>
 Function<Double, Double> square = hey::square;
