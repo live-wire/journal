@@ -11,6 +11,25 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Nov 14, 2019`
+#### sed in Unix
+- Mostly used for find and replace in files.
+- `$ sed 's/unix/linux/g' geekfile.txt` replaces all occurances because of `g`.
+- `$ sed -n '2 p' filename` Prints the second line from filename. (p is for print)
+- `sed OPTIONS FILENAME`
+
+
+---
+`Nov 13, 2019`
+#### Go ftw
+- [Gops](https://github.com/google/gops) for diagnosing go processes running on the system.
+- `gops tree` for looking at `<pid>` of your process
+- `gops pid` for basic details and network connections.
+- `gops stats pid` for goroutines etc.
+- `gops memstats pid` for memory usage statistics.
+- `gops gc pid` for triggering garbage collection.
+
+---
 `Oct 31, 2019`
 #### Java Async ☕️ 🍪
 - `CompletableFuture`: [Nice link](https://www.callicoder.com/java-8-completablefuture-tutorial/)
