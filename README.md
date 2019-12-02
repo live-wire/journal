@@ -12,6 +12,22 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 ---
 `Nov 14, 2019`
+#### Mac tips and tricks
+- `Cmd + tab` = for switching between apps. But we already know that.
+- `Cmd + tab + q` kill an open app 😍
+- `Cmd + tab + 1` for opening all open windows for the app 😍 (just like swipe down with 3 fingers).
+- `ITERM`  with ZSH: [useful link](https://coderwall.com/p/a8uxma/zsh-iterm2-osx-shortcuts)
+    - `Cmd + right` end of line
+    - `Cmd + left` begining of line
+    - `Option + right` next word
+    - `Option + left` previous word
+- Copy from ssh vim to local clipboard:
+    - `set mouse=i` helps copy stuff easily
+    - `set number` and `set number!` for turning line numbers on or off.
+
+
+---
+`Nov 14, 2019`
 #### sed in Unix
 - Mostly used for find and replace in files.
 - `$ sed 's/unix/linux/g' geekfile.txt` replaces all occurances because of `g`.
