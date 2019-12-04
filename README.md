@@ -11,6 +11,51 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Dec 4, 2019`
+#### Kubernetes Setup
+- `DigitalOcean`
+- `doctl kubernetes cluster kubeconfig save <cluster-name>` for downloading kubeconfig and putting it in `./kube/config`
+- Need to set `context` to see which cluster you're connecting to
+    - `kubectl config current-context`
+    - `kubectl config get-contexts`
+    - `kubectl config use-context <context-name>`
+- Nodes are workers(machines). Each node can have multiple pods (each of which is a bunch of tightly knit containers (docker-compose like)). 
+- Service is an abstraction which defines a logical set of Pods and a policy by which to access them.
+    - Useful for decoupling backends and frontends
+    - For proxying or relaying network related things
+    - For load balancing etc.
+- Get Everything(default namespace):
+    - `kubectl get all`
+    - `kubectl get all -n <namespace>`
+- Get:
+    - `kubectl get pods`
+    - `kubectl get svc`
+    - `kubectl get deployments`
+    - Get all deployments from a namespace yaml
+        - `kubectl get -n emojivoto deploy -o yaml`
+- Delete:
+    - `kubectl delete deploy/<name>` - Deletes all pods and replicasets
+    - `kubectl delete svc/<service>` - 
+- Enter a container inside a pod?
+    - `kubectl exec -it my-pod --container main-app -- /bin/bash`
+- ServiceAccounts are for access restrictions and having the pod interact with API server. (kubectl works on the API server).
+- `selector` in Service usually maps pods to services
+- `nodeSelector` in pod yaml can be used to map pods to nodePools etc by assigning labels to nodes. [link](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/)
+- Setting up Linkerd for advanced monitoring. [link](https://linkerd.io/2/getting-started/)
+    - `linkerd -n namespace tap deploy/web`
+- PersistentVolumeClaim to persist data. Deleting deployments will not delete pvc.
+
+
+---
+`Dec 2, 2019`
+#### Java and Unix Services
+- Java make sure to run with flag `-Xmx2g` for 2gb heap memory or better (since Java8), `-XX:MaxRAMPercentage=75.0` for running with Heap memory = 75% of available ram!.
+- Unix pipe:
+    - Run the piped command with the output of the first command!
+    - Example `$ cat something | boxify`
+
+
+---
 `Nov 14, 2019`
 #### Mac tips and tricks
 - `Cmd + tab` = for switching between apps. But we already know that.
