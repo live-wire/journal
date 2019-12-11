@@ -17,37 +17,37 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Maven - Possible to give command line flags and conditional dependencies options using `<profiles>` at the top-level. Example:
 
 ```
- <profiles>
-        <profile>
-            <id>prof1</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-                <property>
-                    <name>type</name>
-                    <value>prof1</value>
-                </property>
-            </activation>
-            <dependencies>
-                <dependency> ...
-        </profile>
-        <profile> ..
+<profiles>
+ <profile>
+  <id>prof1</id>
+  <activation>
+   <activeByDefault>true</activeByDefault>
+   <property>
+    <name>type</name>
+    <value>prof1</value>
+   </property>
+  </activation>
+  <dependencies>
+  <dependency> ...
+ </profile>
+<profile> ..
 ```
 - Maven - `<packaging>` can also be of type `pom` and not just `jar`. That usually means the pom contains some modules like:
 
 ```
- <modules>
-    <module>m1</module>
-    <module>m2</module>
-    <module>m3</module>
+<modules>
+ <module>m1</module>
+ <module>m2</module>
+ <module>m3</module>
 </modules>
 ```
 - Each of these modules is a subfolder in the project and their poms contain the `<parent>` tag pointing to the top level pom.
 
 ```
 <parent>
-    <artifactId>papa</artifactId>
-    <groupId>com.company.papa</groupId>
-    <version>0.0.1</version>
+ <artifactId>papa</artifactId>
+ <groupId>com.company.papa</groupId>
+ <version>0.0.1</version>
 </parent>
 ```
 
