@@ -11,6 +11,13 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Dec 12, 2019`
+#### FingerTips
+- Launch Intellij Applications from command line by `Tools > Create command-line launcher`.
+    - Open a project by `$ idea .`
+    - Diff between two files by `$ idea diff file1 file2`
+
+---
 `Dec 11, 2019`
 #### Java Maven and Docker
 - [Docker multistage builds for GoLang like use-cases](https://www.callicoder.com/docker-golang-image-container-example/). Final image is tiny.
