@@ -12,10 +12,21 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 ---
 `Dec 12, 2019`
-#### FingerTips
+#### FingerTips and ssh tunnels
 - Launch Intellij Applications from command line by `Tools > Create command-line launcher`.
     - Open a project by `$ idea .`
     - Diff between two files by `$ idea diff file1 file2`
+- [SSH tunnels](https://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/) on a remote machine without actually opening that port using ssh config trickery:
+- Add this to `~/.ssh/config` will forward remote's 3306 port to local's 9906:
+
+```
+Host tunnel
+  HostName database.example.com
+  IdentityFile ~/.ssh/coolio.example.key
+  LocalForward 9906 127.0.0.1:3306
+  User coolio
+```
+- `ssh -f -N tunnel` to start the tunnel in background.
 
 ---
 `Dec 11, 2019`
