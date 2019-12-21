@@ -11,6 +11,35 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Dec 21, 2019`
+#### Go modules and Docker
+- `go mod init` to initialize go modules. (Generates go.mod file)
+- `go mod tidy` to create go.sum file.
+- These files can be used for quick dockerized builds.
+- Dockerfile
+    - ENTRYPOINT is used to run container as a script
+    - CMD is used to run commands.
+- Multistage alpine images are usually not kept up by docker run.
+- To keep them up: `docker run --entrypoint "/bin/sh" --env-file ./.secrets -it dbatheja/repository:tag`
+- NOTE that `--env-file path` comes before the image name.
+
+---
+`Dec 20, 2019`
+#### Go sync.Pool and /etc/hosts
+- Golang sync Pool is used whenever there is a lot of allocation and deallocation on a single Data Structure and you want to avoid gc overhead. [link](https://blog.usejournal.com/why-you-should-like-sync-pool-2c7960c023ba)
+- A Pool is a set of temporary objects that may be individually saved and retrieved
+- `/etc/hosts` contains domain resolution for your boxc.
+
+
+---
+`Dec 13, 2019`
+#### GitLab
+- Gitlab can be a pain in the 🍑 sometimes.
+- Use HTTPS url for remote. And then run this:
+`git config --global credential.helper store`
+
+
+---
 `Dec 12, 2019`
 #### FingerTips and ssh tunnels
 - Launch Intellij Applications from command line by `Tools > Create command-line launcher`.
