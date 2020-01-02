@@ -11,6 +11,23 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Jan 2, 2020`
+#### Python concurrency
+- `import threading`
+    - `threading.active_count()` - current active threads
+    - `threading.current_thread()` - current Thread object
+    - `threading.enumerate()` - list of all alive Thread objects
+- Thread object `threading.Thread`
+    - `start()/run()/join()/name()/is_alive()`
+    - `daemon` must be set before start is called.
+- Lock object `threading.Lock`
+    - `l = Lock()`
+    - `acquire()`, `release()`
+    - Better: `with lock:` (equivalent to calling acquire() and then release())
+
+
+
+---
 `Dec 21, 2019`
 #### Go modules and Docker
 - `go mod init` to initialize go modules. (Generates go.mod file)
