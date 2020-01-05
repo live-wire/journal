@@ -10,6 +10,19 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
 
+
+---
+`Jan 5, 2020`
+#### Gas giant Jupyter
+- Your virtualenvironment is not the same as jupyter's virtualenvironment.
+- Solution:
+    - Create your virtualenvironment and activate it `python3 -m virtualenv venv3`.
+    - Install ipykernel `pip install ipykernel`
+    - `python -m ipykernel install --user --name <your-env> --display-name "<your-env>"`
+    - Change to this kernel from inside the notebook. 🍻
+    - Jupyter should be installed globally and not inside a virtualenvironment.
+
+
 ---
 `Jan 2, 2020`
 #### Python concurrency
