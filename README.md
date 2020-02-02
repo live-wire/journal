@@ -10,6 +10,114 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Simplicity is Beautiful" - Juergen Schmidhuber
 
 
+---
+`Jan 14, 2020`
+#### File Locks
+- Shared Lock - aka **Read Lock**: Multiple locks can exist at the same time. Write transactions should wait for the read to finish.
+- Exclusive Lock - aka **Write Lock**: One lock can exist at a time. Can't be read or written by another transaction.
+- Golang package [lockedfile](https://golang.org/pkg/cmd/go/internal/lockedfile/)
+
+
+---
+`Jan 13, 2020`
+#### gRPC - Taller better faster stronger
+- gRPC on Kubernetes requires proxies configured on each pod to be able to load balance. Linkerd service mesh helps with just that :D
+- Server maintains a keep-alive HTTP2 connection with the client. All requests don't create a new connection.
+- Hence the load needs to be balanced on requests instead of open connections.
+- Protobuf: Sample message and rpc
+```
+syntax = "proto3";
+
+message Burp {
+    int32 status = 1;
+    string message = 2;
+}
+
+service OesophagusService {
+    rpc Consume(Swallow) returns (Burp) {}
+}
+```
+
+#### Grafana Influx k8s 
+- Influx and Grafana setup on Kubernete is fairly simple. Use Persistent volume claim for InfluxDB. Everything else can be stateless.
+- [Nice Link](https://opensource.com/article/19/2/deploy-influxdb-grafana-kubernetes)
+
+#### screenrc
+- Screen can also be configured for things like scroll up buffer etc.
+- `screen -ls`
+- `screen -r <number or name>`
+- `screen` 
+- `Ctrl+a, :sessionname name`
+- `Ctrl+a, /` run screenrc file.
+
+---
+`Jan 6, 2020`
+#### Kubernetes
+- Uses etcd - key value store
+- **Master**
+    - API Server - interact with cluster
+    - Can have multiple masters
+    - etcd
+    - Scheduler - schedules pods
+- **Worker
+    - kubelet - reports status to API server
+    - kube-proxy - networking
+    - Docker - container runtime
+- **Pods**
+    - Atomic unit of Kube
+    - Can have multiple containers and volumes
+    - All containers are equal except:
+        - InitContainer - A Pod can have multiple containers running apps within it, but it can also have one or more init containers, which are run before the app containers are started.
+            - Runs to completion
+            - One has to finish before the next init container can start.
+        - Sidecar Container ?
+    - Starts a container (pause container) that creates a network for the pod that all the containers in it share.
+    - Get a shell to a running container in a pod. `kubectl exec -it <pod-name> -- /bin/sh`
+    - Debug a pod: Port forward to localhost `kubectl port-forward <podname> 2020:80` (localhost-port:pod-port)
+    - Pod logs: `kubectl logs <pod> <-c container-name>` container name is not compulsary ofcourse. This is like docker-compose logs.
+    - `kubectl describe pod <podname>` Check status for lifecycle of the container/pod.
+- **ReplicaSet**
+    - Encapsulates pods
+    - Pod replication.
+    - Automatically created in Deployment.
+- **Deployment**
+    - Encapsulates replicaset - (grouped pods on ReplicaSets)
+    - Can also roll back to previous deployment. Current state to desired state.
+- **Namespace**
+    - Separation of concerns in a Kubernetes cluster.
+    - For different teams.
+- Workload patterns
+    - Stateless Pattern
+    - Stateful Pattern
+    - Daemon Pattern
+    - Batch Pattern
+    - Deployment
+    - StatefulSet
+    - DaemonSet
+    - Job
+- Switch kubernetes context from the top in Docker 4 Mac.
+- Setting default namespace:
+`kubectl config set-context <your-context> --namespace=<namespace-name>`
+- **Labels:** Key value pair attached to an object like a tag
+    - Objects include Pods, Services
+    - Used for load-balancing/ deployments etc.
+    - comma separated (means and), = or !=, in means or.
+    - `environment=production,tier!=frontend,partition in (europe, asia)`
+    - Useful commands:
+        - `kubectl label deployment hello-world env=prod`
+        - `kubectl get deployment -l env=prod`
+        - `kubectl label deployment hello-world env-` to remove 
+- **Annotations** - Much like Labels except this is arbitrary non-identifying metadata.
+- LABEL SELECTORS IS HOW KUBERNETES OPERATES!
+- ALWAYS CHECK ENDPOINTS!
+- **Services** - 
+    - Forward traffic to pod or a group of pods that work together
+    - Decoupled from the lifecycle of Pods
+    - Stable endpoint like a dns (The IP of a service only changes )
+    - Types:
+        - NodePort
+        - 
+
 
 ---
 `Jan 5, 2020`
@@ -171,7 +279,9 @@ Host tunnel
 - Unix pipe:
     - Run the piped command with the output of the first command!
     - Example `$ cat something | boxify`
-
+- Unix cut:
+    - `$ cut -d "delimiter" -f (field number) file.txt`
+    - can also be piped.
 
 ---
 `Nov 14, 2019`
