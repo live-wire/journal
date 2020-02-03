@@ -25,6 +25,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Server maintains a keep-alive HTTP2 connection with the client. All requests don't create a new connection.
 - Hence the load needs to be balanced on requests instead of open connections.
 - Protobuf: Sample message and rpc
+
 ```
 syntax = "proto3";
 
