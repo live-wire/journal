@@ -30,14 +30,15 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 syntax = "proto3";
 
 message Burp {
-    int32 status = 1;
-    string message = 2;
+  int32 status = 1;
+  string message = 2;
 }
 
 service OesophagusService {
-    rpc Consume(Swallow) returns (Burp) {}
+  rpc Consume(Swallow) returns (Burp) {}
 }
 ```
+- Proto file can be used to generate client and server side code for the spec.
 
 #### Grafana Influx k8s 
 - Influx and Grafana setup on Kubernete is fairly simple. Use Persistent volume claim for InfluxDB. Everything else can be stateless.
