@@ -11,6 +11,25 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Feb 4, 2020`
+#### Go Interfaces and structs and time precision
+- [Link](https://www.golang-book.com/books/intro/9)
+- `type cat struct{}` is like a class and interfaces are like interfaces.
+- To have a GoLang interface use the following syntax. `type animal interface {func1() int64}`
+- This comes in handy when you want to define function arguments. All the classes that implement this interface just need to implement func1.
+- `structs` can also have embedded anonymous types. Usually fields inside structs have: `has a` relationship, but these anonymous types have `is a` relation ship. Like a superclass. `type dog struct {Canine}` assuming canine struct is also defined with all members and methods.
+- Several ways to initialize them:
+    - `var c Dog`
+    - `c := Dog{}`
+    - `c := new(Dog) //returns a pointer`
+    - `c := Dog{a: 1, b:2}`
+
+##### Go time precision and conversion
+- Use `time.Now().UnixNano()` for high precision.
+- Convert this int64 back to time.Time using: `time.Unix(0, timestampUnixNano)`
+
+
+---
 `Jan 14, 2020`
 #### File Locks
 - Shared Lock - aka **Read Lock**: Multiple locks can exist at the same time. Write transactions should wait for the read to finish.
