@@ -58,6 +58,9 @@ service OesophagusService {
 }
 ```
 - Proto file can be used to generate client and server side code for the spec.
+- Go proto generating command:
+`protoc --go_out=plugins=grpc:. *.proto`
+- See [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway) for also supporting REST.
 
 #### Grafana Influx k8s 
 - Influx and Grafana setup on Kubernete is fairly simple. Use Persistent volume claim for InfluxDB. Everything else can be stateless.
@@ -135,10 +138,26 @@ service OesophagusService {
     - Forward traffic to pod or a group of pods that work together
     - Decoupled from the lifecycle of Pods
     - Stable endpoint like a dns (The IP of a service only changes )
-    - Types:
-        - NodePort
-        - 
+    - Types: `spec.type`
+        - **ClusterIP** - Default type. It creates a cluster internal IP for pods that match the selector criterea and can be accessed by all pods by `service-name:port`.
+        - **NodePort** - Also creates a clusterIP and additionally also forwards specified ports (from each pod) to all the Nodes in the cluster.
+        - **LoadBalancer** - External LoadBalancer service usually proviced by cloud provider.
+        - `kubectl get endpoints` to see where the traffic is mapped from a service.
 
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample
+spec:
+  type: NodePort # or ClientIP
+  ports:
+  - name: http
+    port: 3000
+    targetPort: 3000
+  selector:
+    app: sample # all pods/deployments with this label will be loadbalanced over
+```
 
 ---
 `Jan 5, 2020`
