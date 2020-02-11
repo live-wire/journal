@@ -11,6 +11,37 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Feb 11, 2020`
+#### Flink and shoot
+- 'Stream/Batch' processing engine. Same programming model for both kinds of workloads.
+- Available modes: `Standalone, Cluster`
+-
+
+
+---
+`Feb 6, 2020`
+#### Steve tricks :alien:
+- There will always be so much to learn
+
+##### less
+- [Post](https://linuxize.com/post/less-command-in-linux/)
+- Adds pagination to most command outputs. `ps aux | less` 
+- `mysql Something | less -S` to chomp lines instead of warping them. Useful in case of wide tables.
+- `less -N filename` displays line numbers.
+- `less -X filename` leaves the output on the screen.
+- `less +F filename` watches a file for change.
+
+##### watch
+- `watch Yourscript` Re runs it in full screen every n seconds.
+- `watch -n 1 youscript` time interval
+- `watch -d -n 1 yourscript` Prints differences in successive runs.
+
+##### mysql `\G`
+- In mysql shell, `\g` is equivalent to `;` to end statements.
+- `\G` can be used at the end of statements instead of `;` for displaying results vertically! It is much easier to read if the number of columns is a lot.
+
+
+---
 `Feb 4, 2020`
 #### Go Interfaces and structs and time precision
 - [Link](https://www.golang-book.com/books/intro/9)
