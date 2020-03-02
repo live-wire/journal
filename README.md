@@ -7,15 +7,28 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
-> "Simplicity is Beautiful" - Juergen Schmidhuber
 
+---
+`Feb 24, 2020`
+#### Critical edges (bridges) in a Graph
+`algorithm`
+- Naive approach is O(n^2).
+- Edges not part of a cycle are bridges.
+- [Solution](https://www.geeksforgeeks.org/bridge-in-a-graph/)
+    - 
+    
 
 ---
 `Feb 11, 2020`
 #### Flink and shoot
 - 'Stream/Batch' processing engine. Same programming model for both kinds of workloads.
-- Available modes: `Standalone, Cluster`
--
+- Available modes: `Standalone, Cluster`. 
+    - Standalone = pretty much useless.
+    - Cluster = Can be used on baremetal or using resouce allocator layers like yarn or k8s etc. Yarn who!
+- Flink on K8s:
+    - `Job cluster` - Cluster allocated per job. Long running jobs. Job Manager deployed as a k8s-Job(that submits the task and ends).
+    - `Session cluster` - Single cluster used for multiple short jobs (like ad-hoc queries). Job Manager deployed as a k8s-deployment. Tasks can be submitted by port-forwarding a job manager pod submitting flink job-ar using flink cli.
+    - `Hybrid` (Zalando) - Deploy like session cluster but submit long running jobs.
 
 
 ---
@@ -654,7 +667,9 @@ class Test<T>
 - `/searchword` Navigate through the results with `n` and `N`.
 - Find and replace in selection: like perl regexes
     - select text > `:` > `s/toreplace/replacewith/gc` -(`g` for all occurances, `c` for interactive one by one).
-
+- Jump to file in folder like an IDE:
+    - `:tabe <filepath>` Tab etc. also work here.
+    - switch between tabs: `gt` forward, `gT` backwards.
 
 ---
 `July 11, 2019`
