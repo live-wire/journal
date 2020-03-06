@@ -203,6 +203,14 @@ spec:
     app: sample # all pods/deployments with this label will be loadbalanced over
 ```
 
+- **ConfigMaps** - 
+    - ConfigMaps can be used to send config files to pods.
+    `kubectl create configmap <cmapname> --from-file=<configFile>`
+    - Path where to put it is set in pod configuration. It is mounted as a volume. 
+
+- **Secrets** -
+    - Can be used to send sensitive environment variables to pods.
+
 ---
 `Jan 5, 2020`
 #### Gas giant Jupyter
