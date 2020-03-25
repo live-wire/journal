@@ -3,6 +3,8 @@
 I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_! 
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
 
+> "Science isn't good or bad, it's just true." - Hank Green
+
 > "One day I will find the right words, and they will be simple." - Jack Kerouac
 
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
