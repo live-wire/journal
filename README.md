@@ -18,7 +18,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Edges not part of a cycle are bridges.
 - [Solution](https://www.geeksforgeeks.org/bridge-in-a-graph/)
     - 
-    
+- **Non repeating element in a list** - Find XOR of all elements. `reduce(lambda x,y: x^y, lst)`
 
 ---
 `Feb 11, 2020`
