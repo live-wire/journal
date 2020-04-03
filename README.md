@@ -19,6 +19,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - [Solution](https://www.geeksforgeeks.org/bridge-in-a-graph/)
     - 
 - **Non repeating element in a list** - Find XOR of all elements. `reduce(lambda x,y: x^y, lst)`
+- **Max Subarray Sum**: has a beautiful tiny implementation. We already know that if the subarray sum becomes negative, it is useless for the upcoming subarrays.
+
+```
+for i in range(1, len(nums)):
+    if nums[i-1] > 0:
+        nums[i] += nums[i-1]
+    return max(nums)
+``` 
 
 ---
 `Feb 11, 2020`
