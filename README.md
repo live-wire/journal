@@ -27,6 +27,11 @@ for i in range(1, len(nums)):
         nums[i] += nums[i-1]
     return max(nums)
 ``` 
+- **Palindrome** hack - Count number of occurances of each character in the string. Number of odd count elements usually gives you hints.
+- **Axis aligned rectangle**: To find the closest point in that rectangle to a circle, `closestX = xc>x2?x2:xc<x1:x1:xc`. Similar for `closestY`
+Then distance can be compared to radius to see if there is any intersection. Closest X and closest Y are calculated separately to make life easier.
+- **Stocks when to buy sell** - Any number of transactions. 1 transaction at a time. Boils down to finding increasing sub-sequences in the array. Quick hack is to buy today sell tomorrow if tomorrow>today for each pair. 
+`return sum(max(prices[i + 1] - prices[i], 0) for i in range(len(prices) - 1))` :bomb: Neat!
 
 ---
 `Feb 11, 2020`
