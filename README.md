@@ -9,9 +9,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
+---
+`April 8, 2020`
+#### Minmax optimal game
+`algorithm`
+- Both players play optimally. Players can pick 1, 2 or 3 items at a time. Solution: start from back of the item list. DP[i] is difference between both players' optimal moves so far, assuming nothing behind A[i] exists yet. As DP progresses backwards, dp[0] will contain final score difference between player 1 and player 2.
 
 ---
-`Feb 24, 2020`
+`April 1, 2020`
 #### Critical edges (bridges) in a Graph
 `algorithm`
 - Naive approach is O(n^2).
