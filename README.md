@@ -9,6 +9,34 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
+
+---
+`April 17, 2020`
+#### Map Reduce and Spark
+`Big Data`
+- **Mapper** splits the task into key value pairs
+- **Partitioner/Shuffler** decides which reducer will the mapped keys will go to (sticky). Usually the hash of key is used to do this mapping. Time consuming step of actually performing netowork operations.
+- **Reducer** gets its input and performs aggregations. Usually stores the results on disk for further consumption. 
+- Types of file input formats:
+    - *Text*: key = byte offset of each line, value = line itself.
+    - *Key Value*: key = before seperator, value = after separator. (Default separator=tab)
+    - *NLine*: Each mapper receives N lines of input
+    - *Sequence File*: Map output is stored intermediate in this format (binary key value pairs).
+- Spark = Better then MapReduce because of RDDs and high level library.
+- [Read these notes before continuing](https://live-wire.github.io/journal/bigdata/#lecture-2) 
+- 2 types of spark processes:
+    - **Driver** is where user code runs, converted to map-reduce pattern.
+    - **Spark executors** are the executors that run the job. These are launched by the driver in the cluster.
+- RDDs vs DataFrames:
+    - Use Dataframes API always.
+- **Transformations** are steps in a recipe. Aren't actually executed till an action is called. Transformations on a Dataframe returns a dataframe. Only the DAG is computed. (Lazy Evaluation).
+    - `df = spark.table('blah')`
+    - `df.where('col="meow"')`
+    - `df.groupBy('col(category)').sum('col2(quantity)')`
+    - `orderBy, select` etc.
+- **Actions**: Data is actually sent through the DAG(`collect, take, count, reduce, saveAsTextFile`)
+- Use `df.cache()` when the intermediate result will be reused. It will be cached whenever it is materialized for an action. Simlarly do `df.unpersist()` when you don't need it cached anymore.
+
 ---
 `April 8, 2020`
 #### Minmax optimal game
