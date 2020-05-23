@@ -10,8 +10,43 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
 
+
+---
+`May 23, 2020`
+#### Dynamic Programming patterns
+- [Link](https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns).
+- **Minimum/maximum path to reach a target** - 
+
+
+---
+`April 25, 2020`
+#### Asyncio Python
+- `async` with function definition
+- Always `await` async function calls.
+- `asyncio.sleep` for sleeping
+- `asyncio.run(asyncFunc())` to run the function from a non async scope.
+- `asyncio.create_task(asyncFunc()) ` wraps function into a Task before running.
+- `asyncio.gather(asyncFunc("A", 2),asyncFunc("B", 3))` wait on multiple asyncs.
+- Can also write `go` like producer consumer code by using `asyncio.Queue`
+    - Usage: `q = asyncio.Queue()`, Functions: 
+    - `await q.put((i, t))`
+    - `i, t = await q.get()`
+    - `q.task_done()` to mark task as done
+    - `await q.join()` to wait on all q tasks to be done
+
 ---
 `April 17, 2020`
+#### GraphQL
+- Alternative to REST/gRPC.
+- GraphQL seems relevant when the network and bandwith matter (mobile) as there will be less calls and data on the wire,
+- GraphQL seems relevant when you need a typed schema (less flexibility) and some kind of contract between you and your consumer or maybe you don't know your consumer (public API)
+- GraphQL seems relevant when you have a highly connected or hierarchical data. Relations and traversal can be retrieved as a single query
+- GraphQL seems relevant when you need to aggregate multiple data sources (mashup).
+- For CRUD operations, plain old **REST** is still the way to go
+- For streaming, asynchronous and action/command oriented API, **gRPC** is our best choice
+
+---
+`April 16, 2020`
 #### Map Reduce and Spark
 `Big Data`
 - **Mapper** splits the task into key value pairs
