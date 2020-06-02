@@ -10,13 +10,33 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
 
+---
+`May 27, 2020`
+#### Observability - Metrics
+- *Monitoring a service is an essential part of owning a service and it is as important as the service itself.* - **Ivan Kruglov**
+- Resolution determines how fine-grained the resolution of our data is (per second, per 10 seconds).
+- [Link](https://metrics.dropwizard.io/4.1.2/getting-started.html) to documentation.
+- **Meters**: rate of an event over time. Requests per second. Mean rate, (1,5,15 min) moving averages.
+- **Gauge**: A gauge is an instantaneous measurement of a value.
+- **Counter**: A counter is just a gauge for an AtomicLong instance. You can increment or decrement its value.
+- **Histogram**: A histogram measures the statistical distribution of values in a stream of data. In addition to minimum, maximum, mean, etc., it also measures median, 75th, 90th, 95th, 98th, 99th, and 99.9th percentiles.
+- **Timer**: A timer measures both the rate that a particular piece of code is called and the distribution of its duration.
+    - Timers usefully combine a histogram of the event’s duration and a meter of its rate. (For web requests maybe, not for producer consumer use cases).
+- MetricReporter implementations push to a specified sink every few seconds/minutes as configured.
 
 ---
 `May 23, 2020`
 #### Dynamic Programming patterns
 - [Link](https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns).
 - **Minimum/maximum path to reach a target** - 
-
+    - Use previous min/max of previous results + currentItemCost.
+    - `routes[i] = min(routes[i-1], routes[i-2], ... , routes[i-k]) + cost[i]`
+- **Distinct ways to reach a target** -
+    - Sum all possible ways to reach the current state.
+    - `routes[i] = routes[i-1] + routes[i-2], ... , + routes[i-k]`
+    - (Maintain a dict or list of all sums encountered so far).
+- **Decision Making**
+    - State Machine thinking: [sample](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75928/Share-my-DP-solution-(By-State-Machine-Thinking)). Create state diagram and make sure there is a list for each state and each update checks previous items in the corresponding lists(based on state connections). 
 
 ---
 `April 25, 2020`
