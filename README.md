@@ -18,6 +18,8 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - `combinations('ABCD', 2) --> AB AC AD BC BD CD`
 - `combinations_with_replacement('ABCD', 2) --> AA AB AC AD BB BC BD CC CD DD`
 - All of the above are generators.
+#### Factorial
+- Use `math.factorial` for a fast C implementation for the same.
 
 ---
 `June 18, 2020`
