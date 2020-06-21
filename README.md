@@ -11,6 +11,36 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`June 21, 2020`
+#### Itertools package python
+- `product('ABCD', repeat=2) --> AA AB AC AD BA BB BC BD CA CB CC CD DA DB DC DD`
+- `permutations('ABCD', 2) --> AB AC AD BA BC BD CA CB CD DA DB DC`
+- `combinations('ABCD', 2) --> AB AC AD BC BD CD`
+- `combinations_with_replacement('ABCD', 2) --> AA AB AC AD BB BC BD CC CD DD`
+- All of the above are generators.
+
+---
+`June 18, 2020`
+#### MySQL revisit
+- Joins: `SELECT * FROM Employee e LEFT JOIN Managers m `
+    - `USING(id);` Column names need to be the same.
+    - `ON e.id = m.id;` Can contain any condition.
+- Nth highest salary: `SELECT Salary from Employee ORDER BY Salary DESC LIMIT 1 OFFSET N;`. Offset is the key ingredient.
+- Nested queries: `SELECT * from Employee where Salary > (Select Salary from Employee where Name = "Alex");`
+
+---
+`June 10, 2020`
+#### Bellman Ford 
+- For finding minimum paths in graphs.
+- Maintain 2 arrays of size `N` (`N`=number of nodes in graph).
+- At each iteration = `i`, maintain the vertices reached in exactly `i` steps.
+- Maintain a global minimum/maximum as necessary.
+#### Priority Queue
+- Maintain a heap with minimum cost so far.
+- With each step (`i`) add possible paths to heap.
+- The First time you reach the destination is the shortest path to that node.
+
+---
 `May 27, 2020`
 #### Observability - Metrics
 - *Monitoring a service is an essential part of owning a service and it is as important as the service itself.* - **Ivan Kruglov**
