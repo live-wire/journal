@@ -11,6 +11,30 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`June 22, 2020`
+#### Sample hash function
+- Get ascii values of all input characters, multiply them = get a big number.
+- Mod big number with a prime number (this will be your size) of your choice. Bigger number = less collisions = size of your hashtable.
+- That's it. Your hash function is ready.
+
+#### Latency numbers you should know
+- [Year wise latency numbers](https://colin-scott.github.io/personal_website/research/interactive_latency.html)
+- System design prep must revisits: 
+    - **Consistent Hash ring** - Multiple hash functions to decide ranges for each server. Send requests to the next(clockwise) server in the ring.
+    - **Bloom filters** - Multiple hash functions to fill in a single array.
+    - Python Decorators hierarchy: 
+```
+@dec
+def yellow():
+    pass
+# is the same as 
+yellow = dec(yellow) (decorator should return a callable function basically)
+
+# Decorators with params
+decorator_func('decorator', 'arguments')(my_fun)('function', 'arguments') 
+```
+
+---
 `June 21, 2020`
 #### Itertools package python
 - `product('ABCD', repeat=2) --> AA AB AC AD BA BB BC BD CA CB CC CD DA DB DC DD`
@@ -20,6 +44,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - All of the above are generators.
 #### Factorial
 - Use `math.factorial` for a fast C implementation for the same.
+- Use `divmod(numerator, denominator)` to get `div, mod` for convenient division results.
 
 ---
 `June 18, 2020`
