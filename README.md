@@ -35,7 +35,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - `partition.assignment.strategy` can be set to Range or RoundRobin.
 - It is possible to add listeners for `partitionRevoked` and `partitionAssigned` by implementing `ConsumerRebalanceListener` and passing it to the subscribe method.
     - So you can commit offsets etc. before the rebalance actually comes into effect.
-
+- It is also possible to seek to a certain offset(+1) per partition. Useful if you use an external database for storing offsets everytime after processing a record.
 
 ---
 `Jul 13, 2020`
