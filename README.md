@@ -11,6 +11,47 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Jul 19, 2020`
+#### Apache Beam
+- Portable (Runs on any stream processing engine like spark/flink/dataflow) + Flexible (SDKs in many languages).
+- flow `Data -> PCollection -(PTransform)> PCollection -> sink`
+- Python/Go SDKs not yet ready for the party :(
+    - Lack of generics in go makes it painful to build for this use case.
+
+#### Streams
+- [101](https://www.oreilly.com/radar/the-world-beyond-batch-streaming-101/) by Tyler Akidau.
+- [State management in Stream Processors](https://www.oreilly.com/content/why-local-state-is-a-fundamental-primitive-in-stream-processing/) - by Jay Kreps.
+- Joins in streams:
+    + Streaming join: so you might only need to wait for a few minutes after the impression for the matching click to occur.
+    + Enriching join: Query user data from another source to enrich your stream.
+- Instead of a remote DB, have some state colocated for fast access. This is where in memory dbs like rocksDb/Badger shine.
+
+#### Kafka Consumers definitive
+- [Nice post](https://www.oreilly.com/library/view/kafka-the-definitive/9781491936153/ch04.html)
+- The way consumers maintain membership in a consumer group and ownership of the partitions assigned to them is by sending heartbeats to a Kafka broker designated as the _group coordinator_.
+- If the consumer stops sending heartbeats for long enough (`session.timeout.ms` default `10s`), its session will time out and the group coordinator will consider it dead and trigger a **rebalance**. (During the rebalance, no messages from the partitions owned by the dead consumer are processed)
+    - At each rebalance, groupCoordinator decides a leader (first consumer) and sends it the list of hearbeat-sending consumers which assigns partitions to them.
+- `auto.offset.reset` decides where should a consumer start reading from when no valid offset is available. (Values can be `earliest`, `latest` etc.)
+- `partition.assignment.strategy` can be set to Range or RoundRobin.
+- It is possible to add listeners for `partitionRevoked` and `partitionAssigned` by implementing `ConsumerRebalanceListener` and passing it to the subscribe method.
+    - So you can commit offsets etc. before the rebalance actually comes into effect.
+
+
+---
+`Jul 13, 2020`
+#### Reduce By Key in Python
+- Stefan Pochmann's [brilliance](https://stackoverflow.com/questions/29933189/reduce-by-key-in-python).
+
+
+---
+`June 24, 2020`
+#### Advanced Java
+- Varargs `public void printer(String... lst) {}` equivalent to passing any number of strings or a list to this function.
+- Wildcards: `<? extends Building>`
+- 
+
+
+---
 `June 22, 2020`
 #### Sample hash function
 - Get ascii values of all input characters, multiply them = get a big number.
@@ -370,6 +411,9 @@ spec:
 
 - **Secrets** -
     - Can be used to send sensitive environment variables to pods.
+
+- **DaemonSets** - 
+    - Use this if you want certain pods to be deployed on each Node in the cluster as Nodes are added/removed. Examples: Node monitoring, cluster storage, log collection etc.
 
 ---
 `Jan 5, 2020`
