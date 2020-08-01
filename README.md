@@ -9,6 +9,18 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
 
+> "Obstacle is the way" - Marcus Aurelius
+
+
+---
+`Jul 21, 2020`
+#### Distributed Systems
+- Read about:
+    - Two phased commits
+    - Wound wait deadlock prevention algorithm
+    - Collaborative filtering
+- Spanner [link](https://cloud.google.com/spanner/docs/whitepapers/life-of-reads-and-writes): Distributed database with strong consistency. 
+
 
 ---
 `Jul 19, 2020`
