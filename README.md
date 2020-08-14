@@ -13,6 +13,29 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Aug 14, 2020`
+#### Kafka Transactions
+- Processing exactly once.
+- [Link to confluent article](https://www.confluent.io/blog/transactions-apache-kafka/)
+- [Talk by Matthias J. Sax](https://www.youtube.com/watch?v=zm5A7z95pdE) @ kafka Summit-2018.
+
+#### Benford's Law
+- Given enough data, all the numbers for any given question fit the benford's curve. 
+- Log curve:
+    - Numbers beginning with 1 = 30% 
+    - With 2 = 17% 
+    - so on.
+- Intuitive (think about it) and useful! 
+- If a set of numbers seem to not follow this law, they could possibly be tampered with.
+
+
+---
+`Aug 1, 2020`
+#### Tessellation
+- Covering of a plane with one or more geometric shapes called tiles with no overlaps or gaps.
+- M.C. Escher was a genius. [3 Kinds](https://sites.google.com/site/tessellationunit/tessellations/kinds-of-tessellations) of tessellations.
+
+---
 `Jul 21, 2020`
 #### Distributed Systems
 - Read about:
