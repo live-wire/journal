@@ -19,6 +19,8 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Avro creates a self-describing file named Avro Data File, in which it stores data along with its schema in the metadata section.
 - Avro is also used in Remote Procedure Calls (RPCs). During RPC, client and server exchange schemas in the connection handshake.
 - Avro schemas can represent **Union types**, but **not Abstract types**.  It does not make sense to serialize an abstract class, since its data members are not known.
+- [Using avro with maven](https://dzone.com/articles/using-avros-code-generation).
+- [Creating complicated schemas with maven](https://feitam.es/use-of-avro-maven-plugin-with-complex-schemas-defined-in-several-files-to-be-reused-in-different-typed-messages/)
 
 ---
 `Aug 14, 2020`
