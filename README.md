@@ -11,6 +11,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Obstacle is the way" - Marcus Aurelius
 
+---
+`Aug 26, 2020`
+#### Apache Avro
+*Serialization is the process of translating data structures or objects state into binary or textual form to transport the data over network or to store on some persisten storage.*
+- Avro is a *language-neutral* data serialization system (like thrift, protocol buffers).
+- Avro creates a self-describing file named Avro Data File, in which it stores data along with its schema in the metadata section.
+- Avro is also used in Remote Procedure Calls (RPCs). During RPC, client and server exchange schemas in the connection handshake.
+- Avro schemas can represent **Union types**, but **not Abstract types**.  It does not make sense to serialize an abstract class, since its data members are not known.
 
 ---
 `Aug 14, 2020`
@@ -18,6 +26,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Processing exactly once.
 - [Link to confluent article](https://www.confluent.io/blog/transactions-apache-kafka/)
 - [Talk by Matthias J. Sax](https://www.youtube.com/watch?v=zm5A7z95pdE) @ kafka Summit-2018.
+- **Two phase commits**: Two phase commit does not guarantee that a distributed transaction can't fail, but it does guarantee that it can't fail silently without the Transaction Manager being aware of it.
 
 #### Benford's Law
 - Given enough data, all the numbers for any given question fit the benford's curve. 
