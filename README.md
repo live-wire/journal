@@ -111,13 +111,13 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - **Consistent Hash ring** - Multiple hash functions to decide ranges for each server. Send requests to the next(clockwise) server in the ring.
     - **Bloom filters** - Multiple hash functions to fill in a single array.
     - Python Decorators hierarchy: 
+
 ```
 @dec
 def yellow():
     pass
 # is the same as 
 yellow = dec(yellow) (decorator should return a callable function basically)
-
 # Decorators with params
 decorator_func('decorator', 'arguments')(my_fun)('function', 'arguments') 
 ```
