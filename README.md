@@ -13,6 +13,16 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Sep 18, 2020`
+#### HDFS is immutable
+- HDFS operates on the concept of "immutable block storage". It also has a strict requirement that all file creation / deletion MUST be atomic. That is the operation completes entirely, or if it aborts no intermediate state is left behind.
+- Writing data has 2 paths:
+    - If file doesn't exist: write new
+    - If file does exist: discard old, write new.
+- You cannot append to a file in the regular sense when using HDFS. You have to read the file out completely, mutate it, and write it back out entirely.
+
+
+---
 `Sep 17, 2020`
 #### Scala 
 - Hello again [scala](https://www.scala-exercises.org/scala_tutorial)
