@@ -11,6 +11,21 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Obstacle is the way" - Marcus Aurelius
 
+
+---
+`Sep 17, 2020`
+#### Scala 
+- Hello again [scala](https://www.scala-exercises.org/scala_tutorial)
+- [Tail recursion](https://www.scala-exercises.org/scala_tutorial/tail_recursion). Neat concept of using recursion when the current stack frame can be reused. (No stack overflows). Just decorate the function with `@tailrec`
+
+```@tailrec
+def gcd(a: Int, b: Int): Int = …
+```
+
+- Scala and Java together in the same project with maven [link](https://dzone.com/articles/scala-in-java-maven-project).
+- `case class` is advantageous over `class` in Scala as it doesn't create a new object and keeps it all functional.
+
+
 ---
 `Aug 26, 2020`
 #### Apache Avro
