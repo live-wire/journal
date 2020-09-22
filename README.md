@@ -13,6 +13,30 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Sep 22, 2020`
+#### Helm
+- It is a package manager for Kubernetes like homebrew for mac.
+- You can define multiple services/deployments etc. in a single **chart**.
+- Building blocks:
+    - Charts: Packaged k8s resources
+    - Chart repository: Registry of consumable charts
+    - Release: Deployed instance of a chart
+- Has a Hub like Docker: [HelmHub](https://hub.helm.sh/)
+- Helm client:
+    - helm search hub whatToSearch (hub search)
+    - helm repo add repo-name repo-link
+    - helm search repo repo-name (local search)
+    - helm install yourReleaseName chartName
+    - helm status yourReleaseName
+    - helm show values chartName (shows configurable options in chart)
+    - helm get values yourReleaseName (shows configurations applied to a chart)
+    - helm install -f configWithOptions.yaml yourReleaseName chartName
+    - helm upgrade -f configWithOptions.yaml yourReleaseName chartName
+    - helm rollback yourReleaseName revision (revision begins at 1 and keeps incrementing)
+    - helm history yourReleaseName
+    - helm create yourChart (creates a template for your chart)
+    - helm package yourChart (creates a chart for distribution)
+---
 `Sep 18, 2020`
 #### HDFS is immutable
 - HDFS operates on the concept of "immutable block storage". It also has a strict requirement that all file creation / deletion MUST be atomic. That is the operation completes entirely, or if it aborts no intermediate state is left behind.
