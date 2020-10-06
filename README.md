@@ -13,6 +13,57 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Oct 6, 2020`
+#### Streaming building blocks
+- [Flink docs](https://flink.apache.org/flink-applications.html)
+- Layered API:
+    + Low level: [processFunctions](https://ci.apache.org/projects/flink/flink-docs-stable/dev/stream/operators/process_function.html)
+    + Medium level: DataStreams API / DataSet API
+    + High level: SQL & Table API
+- Making updates to a stateful streaming application is not trivial. This is solved by Flink’s **Savepoints**.
+
+#### Flink DataStreams API
+###### Execution Environment 
+
+- `env = StreamExecutionEnvironment.getExecutionEnvironment();`
+- This will do the right thing depending on the context: if you are executing your program inside an IDE or as a regular Java program it will create a local environment that will execute your program on your local machine.
+- Local cluster (`./bin/start-cluster.sh`) (UI at `localhost:8081`). You don't need this if running from IDE.
+- Execution environment provides Multiple ways of reading streams like from file, sockets etc. `val text: DataStream[String] = env.readTextFile("file:///path/to/file")`
+- Buffer Size: Full buffer(wait for buffer to fill up before forwarding) means highest throughput, and empty small buffer means low throughput. 
+
+###### Operators
+- Operators transform one or more DataStreams into a new DataStream
+- [List](https://ci.apache.org/projects/flink/flink-docs-release-1.11/dev/stream/operators/)
+- map/filter 
+
+###### Windows
+- Make sure to keyBy before using windows.
+- A window is created as soon as the first element that should belong to this window arrives, and the window is completely removed when the time (event or processing time) passes its end timestamp.
+    + Trigger: Trigger specifies the conditions under which the window is considered ready for the function to be applied.
+    + Function:  The function will contain the computation to be applied to the contents of the window
+    + Evictors: which will be able to remove elements from the window after the trigger fires and before and/or after the function is applied
+- Windows can be defined over long periods of time (such as days, weeks, or months) and therefore accumulate very large state. [link](Windows can be defined over long periods of time (such as days, weeks, or months) and therefore accumulate very large state.)
+
+###### Event Time and Watermarks
+- In order to work with [event time](https://ci.apache.org/projects/flink/flink-docs-release-1.11/concepts/timely-stream-processing.html), Flink needs to know the events timestamps, meaning each element in the stream needs to have its event timestamp assigned. 
+- Event time can progress independently of processing time (measured by wall clocks). For example, in one program the current event time of an operator may trail slightly behind the processing time (accounting for a delay in receiving the events), while both proceed at the same speed. On the other hand, another streaming program might progress through weeks of event time with only a few seconds of processing, by fast-forwarding through some historic data already buffered in a Kafka topic (or another message queue).
+- The mechanism in Flink to measure progress in event time is **watermarks**. Watermarks flow as part of the data stream and carry a timestamp t.
+
+###### Side Output
+- In addition to the main stream that results from DataStream operations, you can also produce any number of additional side output result streams
+- Only step = declare OutputTag to identify sideOutput.
+- Get side output from result stream like this `DataStream<T> lateStream = result.getSideOutput(lateOutputTag);`
+
+###### Parameters
+- [Link](https://ci.apache.org/projects/flink/flink-docs-release-1.11/dev/application_parameters.html)
+- The `ParameterTool` provides a set of predefined static methods for reading the configuration.
+- Parameters registered as global job parameters in the ExecutionConfig can be accessed as configuration values from the JobManager web interface and in all functions defined by the user.
+
+###### Stateful Stream Processing
+
+
+
+---
 `Sep 22, 2020`
 #### Helm
 - It is a package manager for Kubernetes like homebrew for mac.
