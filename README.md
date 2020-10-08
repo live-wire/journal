@@ -11,6 +11,20 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Obstacle is the way" - Marcus Aurelius
 
+---
+`Oct 8, 2020`
+#### Rock the JVM - Advanced Scala
+
+
+#### Java read files in resources folder
+```
+String fileName = "yourfile.txt";
+ClassLoader classLoader = getClass().getClassLoader();
+URL resource = classLoader.getResource(fileName);
+// Now file can be accessed like
+... new File(resource.toURI());
+```
+
 
 ---
 `Oct 6, 2020`
@@ -60,7 +74,9 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Parameters registered as global job parameters in the ExecutionConfig can be accessed as configuration values from the JobManager web interface and in all functions defined by the user.
 
 ###### Stateful Stream Processing
-
+- Flink needs to be aware of the state in order to make it fault tolerant using checkpoints and savepoints.
+- Queryable state allows you to access state from outside of Flink during runtime.
+- For processing exactly once, the source must be replayable and the sink must be transactional(idempotent).
 
 
 ---
