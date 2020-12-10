@@ -12,9 +12,26 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "Obstacle is the way" - Marcus Aurelius
 
 ---
+`Dec 11, 2020`
+#### Postman on Steroids
+- Test your APIs in style with ease.
+- Use Collection Runners for sending a particular request multiple times (iterations).
+- Also possible to send requests with variables that can be sent via a CSV. 
+- It is also possible to chaining requests for parsing response from one request and using the response to create variables to use for the upcoming requests. This can help build test suites.
+
+
+---
+`Oct 13, 2020`
+#### Kerberos
+- Kerberos is a network authentication software that allows safe client-server authentication even on non safe protocols.
+- Client applications must authenticate themselves when communicating with (almost) any Hadoop service.
+- 
+
+
+---
 `Oct 8, 2020`
 #### Rock the JVM - Advanced Scala
-
+- Added some tutorial implementations [here](https://github.com/anandkanav92/scala-tuts).
 
 #### Java read files in resources folder
 ```
@@ -968,10 +985,14 @@ class Test<T>
 - Navigate between screens: `ctrl + b` and `arrow`
 - Close a pane: `ctrl + d`
 - Detach a session: `ctrl + b` and `d` 
+- `tmux new -s <sessionname>` or just `tmux` starts a new tmux session.
 - `tmux ls` to list all sessions
 - `tmux attach -t <session-number>` to attach to a session
 - `tmux -CC` is a nice tmux iTerm integration.
 
+#### Tmux shared session. (cursors move together)
+- `tmux -S /tmp/pair` will start a shared session. Now make this `/tmp/pair` accessable to all by doing a `chmod 777 /tmp/pair` so other users can join your session
+- `tmux -S /tmp/pair attach` will allow users to join this session and watch you code (in multiple split screens if need be).
 
 ---
 `Oct 11, 2019`
