@@ -11,6 +11,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Obstacle is the way" - Marcus Aurelius
 
+
+---
+`Dec 11, 2020`
+#### Hot swapping - Thanks to Oleg
+- 
+- `Cmd + shift + F9` to actually hot swap.
+
+
 ---
 `Dec 11, 2020`
 #### Postman on Steroids
@@ -993,6 +1001,11 @@ class Test<T>
 #### Tmux shared session. (cursors move together)
 - `tmux -S /tmp/pair` will start a shared session. Now make this `/tmp/pair` accessable to all by doing a `chmod 777 /tmp/pair` so other users can join your session
 - `tmux -S /tmp/pair attach` will allow users to join this session and watch you code (in multiple split screens if need be).
+
+#### Tmux scrolling up
+- `ctrl + b + [`. Then use PageUp PageDown to scroll. q to quit.
+- `tmux set-option -g history-limit 5000` to increase scrollback buffer.
+
 
 ---
 `Oct 11, 2019`
