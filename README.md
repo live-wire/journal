@@ -1004,6 +1004,7 @@ class Test<T>
 
 #### Tmux scrolling up
 - `ctrl + b + [`. Then use PageUp PageDown to scroll. q to quit.
+- When in scrollback mode. Use `ctrl + s` for searching through the scrollback buffer.
 - `tmux set-option -g history-limit 5000` to increase scrollback buffer.
 
 
