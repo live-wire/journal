@@ -15,9 +15,11 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 ---
 `Dec 11, 2020`
 #### Hot swapping - Thanks to Oleg
-- 
+- Make sure this is added to your server run command `-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5010`
+- Once this is done, make sure you have this in your IDE run config. (`Remote > Attach to remote JVM> `).
+- Port forward your deployed service using `ssh tunnels` or `kubectl port-forward`.
 - `Cmd + shift + F9` to actually hot swap.
-
+- Life = Easy.
 
 ---
 `Dec 11, 2020`
