@@ -18,7 +18,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - We want to guarantee that for each message consumed from the input topics, the resulting message(s) from processing this message will be reflected in the output topics **exactly once**, even under failures. In order to support this guarantee, we need to include the consumer’s offset commits in the producer’s transaction.
 - Kafka [wire protocol](http://kafka.apache.org/protocol.html) is how to implement a language agnostic client. **Phew**.
 - The txn protocols need to be implemented first before I can proceed with the steps mentioned in the [beautiful design](https://docs.google.com/document/d/11Jqy_GjUGtdXJK94XGsEIK7CP1SnQGdp2eF0wSw9ra8/edit#).
- 
+
 
 ---
 `Jan 23, 2021`
@@ -42,7 +42,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 #### Kafka Go
 - Planning to contribute to segmentio's [kafka-go](https://github.com/segmentio/kafka-go)
-
+- Their API does not deal with transactions at all. Yet ;)
 
 ---
 `Dec 11, 2020`
