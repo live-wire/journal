@@ -11,6 +11,8 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Obstacle is the way" - Marcus Aurelius
 
+> "We must run as fast as we can, just to stay in place." - Lewis Carrol
+
 
 ---
 `Jan 24, 2021`
