@@ -18,6 +18,7 @@
 - Words ending with 'je' is a het word.
 - Address, time are het words.
 - Plural is always de.
+
 ---
 
 #### Question words
@@ -28,10 +29,12 @@
 - Wat - What
 - Waar - Where
 - Waarom - Why
+
 ---
 
 #### Nummers
 - 
+
 ---
 
 #### Time - Tijd
@@ -45,6 +48,7 @@
 - kwart voor twaalf.
 - vijf voor twaalf.
 - Het is twaalf uur.
+
 ---
 
 #### Possessief pronomen
@@ -56,10 +60,12 @@
 - wij/we - onze(de)/ons(het) 
 - jullie - jullie
 - zij/ze - hun
+
 ---
 
 #### Family Members
 - 
+
 ---
 
 #### Greetings
@@ -68,14 +74,17 @@
 - Tot Ziens - Until next time
 - Dag, Hallo
 - Dag, Doei
+
 ---
 
 #### Maanden en Seizoenen
 - Winter - Lente - Zomer - Herfst
+
 ---
 
 #### Forms
 - Geslacht - sex
+
 ---
 
 #### Vocab
@@ -86,4 +95,5 @@
 - nog - any/as well
 - veel - many
 - gaat - go
+
 ---
