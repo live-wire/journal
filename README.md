@@ -11,6 +11,40 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "Obstacle is the way" - Marcus Aurelius
 
+> "We must run as fast as we can, just to stay in place." - Lewis Carrol
+
+
+---
+`Jan 24, 2021`
+#### Exactly Once - Kafka - kafka-go
+- We want to guarantee that for each message consumed from the input topics, the resulting message(s) from processing this message will be reflected in the output topics **exactly once**, even under failures. In order to support this guarantee, we need to include the consumer’s offset commits in the producer’s transaction.
+- Kafka [wire protocol](http://kafka.apache.org/protocol.html) is how to implement a language agnostic client. **Phew**.
+- The txn protocols need to be implemented first before I can proceed with the steps mentioned in the [beautiful design](https://docs.google.com/document/d/11Jqy_GjUGtdXJK94XGsEIK7CP1SnQGdp2eF0wSw9ra8/edit#).
+
+
+---
+`Jan 23, 2021`
+#### Transactions in Kafka
+- [Beautiful Design](https://docs.google.com/document/d/11Jqy_GjUGtdXJK94XGsEIK7CP1SnQGdp2eF0wSw9ra8/edit#)
+- **Idempotent producer**: Every message write will be persisted exactly once, without duplicates and without data loss -- even in the event of client retries or broker failures. However, idempotent producers don’t provide guarantees for writes across multiple TopicPartitions.
+    + To implement idempotent producer semantics, we introduce the concepts of a producer id, henceforth called the PID, and sequence numbers for Kafka messages. *Every new producer will be assigned a unique PID during initialization*. The PID assignment is completely transparent to users and is never exposed by clients.
+    For a given PID, sequence numbers will start from zero and be monotonically increasing, with one sequence number per topic partition produced to. The sequence number will be incremented for every message sent by the producer. Similarly, the broker will increment the sequence number associated with the PID -> topic partition pair for every message it commits for that topic partition.  Finally, the broker will reject a message from a producer unless its sequence number is exactly one greater than the last committed message from that PID -> topic partition pair. 
+    This ensures that, even though a producer must retry requests upon failures, every message will be persisted in the log exactly once. Further, since each new instance of a producer is assigned a new, unique, PID, we can only guarantee idempotent production within *a single producer session*.
+
+- **Transactional Guarantees:** A ‘batch’ of messages in a transaction can be consumed from and written to multiple partitions, and are ‘atomic’ in the sense that writes will fail or succeed as a single unit. 
+    + **Atomic multi-partition writes and Zombie fencing** - To achieve this, we require that the application provides a unique id which is stable across all sessions of the application. For the rest of this document, we refer to such an id as the TransactionalId. TransactionalId is provided by users, and is what enables idempotent guarantees across producers sessions. When provided with such an TransactionalId, Kafka will guarantee:
+        - Idempotent production across application sessions. This is achieved by fencing off old generations when a new instance with the same TransactionalId comes online.
+        - Transaction recovery across application sessions. If an application instance dies, the next instance can be guaranteed that any unfinished transactions have been completed (whether aborted or committed), leaving the new instance in a clean state prior to resuming work.
+        - The API requires that the first operation of a transactional producer should be to explicitly register its transactional.id with the Kafka cluster. When it does so, the Kafka broker checks for open transactions with the given transactional.id and completes them. It also increments an epoch associated with the transactional.id (effectively broker will return same `PID` for a given `transactionalId` which will ensure idempotent writes across producer sessions). The epoch is an internal piece of metadata stored for every transactional.id. Hence it can fence writes from zombie producers which have an older epoch.
+    + **Consuming Transactional Messages:** - The transactional guarantees mentioned here are from the point of view of the producer. On the consumer side, the guarantees are a bit weaker. In particular, we cannot guarantee that all the messages of a committed transaction will be consumed all together. This is for several reasons:
+        - For compacted topics, some messages of a transaction maybe overwritten by newer versions.
+        - Transactions may straddle log segments. Hence when old segments are deleted, we may lose some messages in the first part of a transaction.
+        - Consumers may seek to arbitrary points within a transaction, hence missing some of the initial messages.
+        - Consumer may not consume from all the partitions which participated in a transaction. Hence they will never be able to read all the messages that comprised the transaction.
+
+#### Kafka Go
+- Planning to contribute to segmentio's [kafka-go](https://github.com/segmentio/kafka-go)
+- Their API does not deal with transactions at all. Yet ;)
 
 ---
 `Dec 11, 2020`
