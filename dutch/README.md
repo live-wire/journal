@@ -87,6 +87,12 @@
 
 ---
 
+#### Prepositions
+- Op (Date/Day) - Om (Time) - In (Season, Place etc.)
+- 
+
+---
+
 #### Vocab
 - Het - it
 - Bezoek - visitors
@@ -95,5 +101,10 @@
 - nog - any/as well
 - veel - many
 - gaat - go
-
+- Jarig - Birthday boy
+- Vandag - Today
+- Morgen - Tomorrow/Morning
+- Gisteren - Yesterday
+- Eergisteren - Day before yesterday
+- Overmorgen - Day after tomorrow
 ---

@@ -13,6 +13,12 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
+---
+`Feb 3, 2021`
+#### Game Theory - Evolution of Trust
+- [Great Link](https://ncase.me/trust/)
+- That may seem cynical or naive -- that we're "merely" products of our environment -- but as game theory reminds us, we are each others' environment. In the short run, the game defines the players. But in the long run, it's us players who define the game. So, do what you can do, to create the conditions necessary to evolve trust. Build relationships. Find win-wins. Communicate clearly. 
+
 
 ---
 `Jan 24, 2021`
