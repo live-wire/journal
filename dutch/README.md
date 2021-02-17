@@ -6,22 +6,25 @@
 | ---             | luisteren | hebben | zijn  |
 | --------------- | --------- | ------ | ----- |
 | ik              | luister   | heb    |  ben  |
-| jij/je          | luistert  | hebt!  |  bent |
-| hij,zij/ze,het  | luistert  | heeft  |  is!  |
+| jij/je          | luistert  | hebt!  |  bent |   ben je (t gets removed in Questions)
+| hij,zij/ze,het  | luistert  | heeft  |  is!  |   schrijven => schrift ("v"en becomes ft)
 | wij/we          | luisteren | hebben |  zijn |
 | jullie          | luisteren | hebben |  zijn |
 | zij/ze          | luisteren | hebben |  zijn |
+
 ---
+
 
 #### Het and De words (twee types of 'the/it' in dutch)
 - 80% words are De words.
-- Words ending with 'je' is a het word.
+- Words ending with 'je' is a het word. Rondje/Zusje/Kopje
 - Address, time are het words.
-- Plural is always de.
+- Plural is always de cursus. (The courses only when definitive)
 
 ---
 
 #### Question words
+- Verb at the end.
 - Welk - Which
 - Wanneer - When
 - Wie - Who
@@ -29,11 +32,21 @@
 - Wat - What
 - Waar - Where
 - Waarom - Why
+- Mogen/Mag - Must/May
+- Kunnen/Kan - Could/Can
+- Zullen/Zal - Should/Shall
+
 
 ---
 
 #### Nummers
-- 
+
+- Eeerste
+- tweede 
+- derde
+- achtste
+- tien**de** till negentiende
+- twintig**ste** till honderdste
 
 ---
 
@@ -91,10 +104,16 @@
 - Op (Date/Day) - Om (Time) - In (Season, Place etc.)
 - 
 
+#### Inversion Important
+- **Subject _ verb _ time/place _ rest of the sentence**
+- **Time/place _ verb _ subject _ rest of the sentence**
+- Ik wil nu een cola -> Nu wil ik een cola
+
 ---
 
 #### Vocab
 - Het - it
+- Naar - to
 - Bezoek - visitors
 - Krijg - get
 - Kijk - look
@@ -107,4 +126,28 @@
 - Gisteren - Yesterday
 - Eergisteren - Day before yesterday
 - Overmorgen - Day after tomorrow
+- Eigenlijk - Actually
+- Graag - Please
+- De Ober - Waiter
+- Samen - together
+- Hetzelfde - the same one
+- (Af)Rekenen - Pay 
+- Elkaar - each other
+- Neem - take
+- Thuis - House
+- Bezorgd - Order
+- Schrijf - Write
+- Slecht - Bad
+- Zin - Feel like
+- Blijven - Stay
+
+---
+
+#### Idioms
+- Ik weet het niet - I don't know
+- Prettig met je kennis te maken - Nice to meetje
+- Zegt u het maar - What can I get you? You name it? 
+- Nog en keer / nog maar - Once more/ Another one
+- Gefeliciteerd met je verjaardag - Congratulations for your birthday
+
 ---
