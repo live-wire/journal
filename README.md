@@ -31,14 +31,15 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     ballast := make([]byte, 10<<30)
 ```
     
+
     - It reduced GC cycles by allowing the heap to grow larger
     - API latency improved since the Go GC delayed our work less with assists
     - The ballast allocation is mostly free because it resides in virtual memory
     - Ballasts are easier to reason about than configuring a GOGC value
     - Start with a small ballast and increase with testing
 - Uber engineering production issues with spawning new goroutines on each request. [Link](https://github.com/m3db/m3x/blob/master/sync/worker_pool.go)
-- Goroutine stacks: Every goroutine in Go starts off with a 2 kibibyte stack. As more items and stack frames are allocated and the amount of stack space required exceeds the allocated amount, the runtime will grow the stack (in powers of 2) by allocating a new stack that is twice the size of the previous one, and copying over everything from the old stack to the new one.
-- Solution: Don't create a goroutine for each request. Use a worker pool to reuse the already expanded stacks of existing goroutines.
+    - Goroutine stacks: Every goroutine in Go starts off with a 2 kibibyte stack. As more items and stack frames are allocated and the amount of stack space required exceeds the allocated amount, the runtime will grow the stack (in powers of 2) by allocating a new stack that is twice the size of the previous one, and copying over everything from the old stack to the new one.
+    - Solution: Don't create a goroutine for each request. Use a worker pool to reuse the already expanded stacks of existing goroutines.
 
 ---
 `Feb 3, 2021`
