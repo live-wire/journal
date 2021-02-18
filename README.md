@@ -31,7 +31,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     ballast := make([]byte, 10<<30)
 ```
     
-
+- Continuing ^:
     - It reduced GC cycles by allowing the heap to grow larger
     - API latency improved since the Go GC delayed our work less with assists
     - The ballast allocation is mostly free because it resides in virtual memory
