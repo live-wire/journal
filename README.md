@@ -14,6 +14,33 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
 ---
+`Feb 18, 2021`
+#### Go Optimizations
+- [Amazing post](https://blog.twitch.tv/en/2019/04/10/go-memory-ballast-how-i-learnt-to-stop-worrying-and-love-the-heap-26c2462549a2/) on using a memory ballast to trigger fewer GC cycles.
+- More on Go GC [here](https://blog.golang.org/ismmkeynote).
+- Heap is used for dynamic allocations.
+- A few takeaways:
+    - Go's Garbage Collection is Concurrent and not "Stop the world".
+    - Each goroutine needs to pay some tax (gc marking work)
+    - GC Pacer: If need be, the Pacer slows down allocation while speeding up marking. At a high level the Pacer stops the Goroutine, which is doing a lot of the allocation, and puts it to work doing marking. The amount of work is proportional to the Goroutine's allocation. This speeds up the garbage collector while slowing down the mutator.
+    - Go’s default pacer will try to trigger a GC cycle every time the heap size doubles. `GOGC`
+    - Marking is the more expensive step in GC.
+    - Enter "Ballast" — Nautical. any heavy material carried temporarily or permanently in a vessel to provide desired draft and.
+```
+// Create a large heap allocation of 10 GiB
+    ballast := make([]byte, 10<<30)
+```
+    
+    - It reduced GC cycles by allowing the heap to grow larger
+    - API latency improved since the Go GC delayed our work less with assists
+    - The ballast allocation is mostly free because it resides in virtual memory
+    - Ballasts are easier to reason about than configuring a GOGC value
+    - Start with a small ballast and increase with testing
+- Uber engineering production issues with spawning new goroutines on each request. [Link](https://github.com/m3db/m3x/blob/master/sync/worker_pool.go)
+- Goroutine stacks: Every goroutine in Go starts off with a 2 kibibyte stack. As more items and stack frames are allocated and the amount of stack space required exceeds the allocated amount, the runtime will grow the stack (in powers of 2) by allocating a new stack that is twice the size of the previous one, and copying over everything from the old stack to the new one.
+- Solution: Don't create a goroutine for each request. Use a worker pool to reuse the already expanded stacks of existing goroutines.
+
+---
 `Feb 3, 2021`
 #### Game Theory - Evolution of Trust
 - [Great Link](https://ncase.me/trust/)
