@@ -7,7 +7,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "One day I will find the right words, and they will be simple." - Jack Kerouac
 
-> "Youth is wasted on the young. Take control! NOW!" - George Bernard Shaw
+> "Duplication is far cheaper than the wrong Abstraction" - Sandi Metz
 
 > "Obstacle is the way" - Marcus Aurelius
 
