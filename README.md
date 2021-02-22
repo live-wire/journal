@@ -13,6 +13,18 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
+
+---
+`Feb 22, 2021`
+#### Euler Path in Graph
+- Itineary planning. Make sure all tickets are used at least once. What path will be followed?
+- DFS is good. But how to decide valid paths.
+- DFS with ticket use each time and mark path in bottom up. Append to a ret variable after the recursive call.
+- This will ensure that node is visited (appended to the list) when it is stuck there. 
+- Hence that should be visited at the end. (If you reverse the list).
+- Kind-of like topological sort. DFS in graphs are quite similar!
+- Debugging bottom up recursions is not very pleasant.
+
 ---
 `Feb 18, 2021`
 #### Go Optimizations
@@ -35,7 +47,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - It reduced GC cycles by allowing the heap to grow larger
     - API latency improved since the Go GC delayed our work less with assists
     - The ballast allocation is mostly free because it resides in virtual memory
-    - Ballasts are easier to reason about than configuring a GOGC value
+    - Ballasts are easier to reason about than configuring a `GOGC` value
     - Start with a small ballast and increase with testing
 - Uber engineering production issues with spawning new goroutines on each request. [Link](https://github.com/m3db/m3x/blob/master/sync/worker_pool.go)
     - Goroutine stacks: Every goroutine in Go starts off with a 2 kibibyte stack. As more items and stack frames are allocated and the amount of stack space required exceeds the allocated amount, the runtime will grow the stack (in powers of 2) by allocating a new stack that is twice the size of the previous one, and copying over everything from the old stack to the new one.
