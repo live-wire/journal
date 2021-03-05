@@ -119,7 +119,7 @@
 - Kijk - look
 - nog - any/as well
 - veel - many
-- gaat - go
+- gaat/gaan - go
 - Jarig - Birthday boy
 - Vandag - Today
 - Morgen - Tomorrow/Morning
@@ -140,6 +140,13 @@
 - Slecht - Bad
 - Zin - Feel like
 - Blijven - Stay
+- Geeft les - Teaches
+- De Buurman - Neighbour
+- Antwoord - Answer
+- Iedereen - everyone
+- Bladzijde - page
+- Maar - but
+- Zeg - Call
 
 ---
 
