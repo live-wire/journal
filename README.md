@@ -15,6 +15,37 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Mar 4, 2021`
+#### Array remove O(1) trick
+- It is possible to remove item from an array in O(1) if the order of items is not important.
+- Just do a pop. Then replace the index of the item removed with the last item.
+
+#### Multithreading tricks in Python
+- `l = threading.Lock()` - Use it like a mutex
+    + `l.acquire()`
+    + `l.release()`
+- `e = threading.Event()` - Use it to wait inside and event can be set from outside.
+    + `e.wait()`
+    + `e.set()`
+- `cv = threading.Condition(lock=None)` - This is pretty cool if you need to block a thread till a condition is satisfied.
+    + `cv.wait_for(lambda: True)` Waits for this function to return true.
+    + `cv.notify_all()` Notifies all waiting threads that it is done.
+```
+with cv:
+    cv.wait_for(lambda: condition_satisfied())
+    # Do your thing here
+    cv.notify_all()
+```
+
+---
+`Feb 23, 2021`
+#### Wiggle sort
+- Wiggle sort can be achieved in a single iteration. 
+- Look at 3 items at a time and make the condition satisfy. a <= b >= c <= d ...
+
+
+
+---
 `Feb 22, 2021`
 #### Euler Path in Graph
 - Itineary planning. Make sure all tickets are used at least once. What path will be followed?
