@@ -15,6 +15,26 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Mar 5, 2021`
+#### Bounded Blocking Queues
+- Bound blocking queues are amazing for producer consumer settings.
+- You need two mutexes (Locks) to make produce and consume blocking (when queue is full or empty). Produce lock and consume lock.
+    + Or a single python `threading.Condition()`
+- Guess what buffered Go channels are! 🤯
+
+#### Binary Search - Finding leftmost item and rightmost item
+- Need two separate binary searches. That go left/right when item found at mid.
+
+#### Land and Island Problem
+- Flip the problem! Water to land calculation needs a single pass over each cell. Also BFS, but faster. Maintain a visited set().
+
+#### Splitwise
+- Minimum transactions needed to settle. 
+- Amazing DP solution with backtracking.
+- First calculate debt per person. (Total sum of array = 0)
+- Keep checking with the transactions on the right. Move the value at current cell to the right(where sign is different). Then DFS that. Then backtrack that transaction settle to look for other possible paths.
+
+---
 `Mar 4, 2021`
 #### Array remove O(1) trick
 - It is possible to remove item from an array in O(1) if the order of items is not important.
