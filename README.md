@@ -15,6 +15,64 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Mar 17, 2021`
+#### Distributed Locks
+- 2 phase commit. - prepare - commit
+- Use etcd locks. 
+- Or Zookeeper locks using one of the [higher order recipes](https://zookeeper.apache.org/doc/r3.6.2/recipes.html).
+
+#### Virtualization
+- Hypervisor makes virtualization feasible.
+    + Software that runs on physical server.
+    + Type1(Baremetal/KVM) / Type2(Hosted/Sit on top of hostOS)
+- It is possible to move VMs from one Hypervisor to another in case of a host going down.
+- Containers run on an OS (which in usual cloud scenarios, is a VM).
+- [Nice video about virtualization](https://www.youtube.com/watch?v=L1ie8negCjc).
+
+---
+`Mar 16, 2021`
+#### Union Find
+- Useful algorithm for finding cycles in a graph (given a list of edges).
+- Also useful for finding number of disjoint subsets in the graph at any point in time.
+- The data structure maintains one node as a representative of the disjoint subset.
+- Initialize with a list which contains parents for all elements.
+- Implements a `find_parent(x)` function that returns the representative node of the current disjoint subset.
+- Also implements a `union(x,y)` function that makes `find(x) the parent of find(y)`
+
+
+---
+`Mar 15, 2021`
+#### Consistency and Reliability
+#### Zookeeper 
+- Structured as a tree. Each node is called a `zNode` and has a path.
+- Each node can be `persistent` or `ephemeral` and can store data.
+- zNodes can't be renamed.
+- zNodes can be `watched` for changes.
+- Recover from partial failures with style.
+- Widespread applications that need **consistency** like:
+    - Leader election.
+    - Coordination and Locks.
+    - Currently available workers.
+- Use Apache Curator recipes for working implementations of common zookeeper use cases like `locks`, `barriers`, `distributed counters` etc.
+
+#### Cassandra
+
+
+
+#### Consensus algorithms - RAFT
+- Paxos has been industry leader since forever but not very easy to understand.
+    + 
+- Raft is a recent and more understandable approach to the same.
+- Replicated state machine. [Video link](https://www.youtube.com/watch?v=vYp4LYbnnW8)
+- ETCD - Key value state store that kubernetes relies on implements this. One leader at a time. Replicated and consistent. Uses disk.
+
+
+---
+`Mar 8, 2021`
+#### Longest Palindrome in a String
+- Palindrome checking can be done recursively. Check recursively if the center of the string is a palindrome or not.
+
+---
 `Mar 5, 2021`
 #### Bounded Blocking Queues
 - Bound blocking queues are amazing for producer consumer settings.
@@ -62,7 +120,9 @@ with cv:
 #### Wiggle sort
 - Wiggle sort can be achieved in a single iteration. 
 - Look at 3 items at a time and make the condition satisfy. a <= b >= c <= d ...
-
+- DP way of looking at it. Create two dp arrays up and down. 
+    + In case of a wiggle up `(n[i] > n[i-1]), up[i] = down[i-1] + 1`
+    + In case of a wiggle down, `down[i] = up[i-1] + 1`
 
 
 ---
@@ -461,6 +521,7 @@ decorator_func('decorator', 'arguments')(my_fun)('function', 'arguments')
 ---
 `April 25, 2020`
 #### Asyncio Python
+- Async/Await is a better/cleaner way of writing promises or asynchronous code in general. (Much cleaner than `promise.then(..).catch(..)`). C# came up with it and most languages are adopting it.
 - `async` with function definition
 - Always `await` async function calls.
 - `asyncio.sleep` for sleeping
