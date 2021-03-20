@@ -15,6 +15,18 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Mar 20, 2021`
+#### Chosing the right database
+- Integration considerations.
+- Scaling requirements (Storage and Requests/sec).
+- Support considerations (Security concerns etc.).
+- Keep it simple.
+    + Internal phone directory: MySQL.
+    + Internal analytics: If not a lot of people are consuming results constantly, no need for a NoSQL solution. Just a spark job on your hadoop cluster is enough.
+    + Movie Recommendations: High availability - Cassandra.
+    + The truth is, you can force Cassandra or MySQL to behave just how you'd like (CAP) with enough effort.
+
+---
 `Mar 17, 2021`
 #### Distributed Locks
 - 2 phase commit. - prepare - commit
@@ -56,16 +68,68 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Use Apache Curator recipes for working implementations of common zookeeper use cases like `locks`, `barriers`, `distributed counters` etc.
 
 #### Cassandra
+- Impossible to perform joins. No Joins.
+- Query first approach.
+- Query one table whenever reading. While writing, write to multiple.
+- Rows with same partition key will be stored on the same node.
+- Partition key (does not have to be unique) is not the same as Primary key. (Only partition key should be used for querying data in cassandra)
+- PRIMARY KEY = PARTITION KEY + CLUSTERING KEY (which is used for order by)
+- Each node gets some virtual nodes in Cassandra. (Tunable in case your hosts have varying capacities).
+- Set a replication factor for the kind of consistency you need. (It should be less than or equal to the number of nodes).
+- Consistency level can be set for reading/writing.
+- Keyspaces = logical grouping. Table = Also logical grouping. Only rows with the same partition keys get stored on the same node.
+- Some useful commands (for `cqlsh`):
+    + `CREATE KEYSPACE blah WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'} AND durable_writes = 'true'`;
+    + `DESCRIBE KEYSPACES/TABLES`
+    + `USE KEYSPACE blah;`
+    + `DROP KEYSPACE blah;`
+    + `CREATE TABLE table (id int PRIMARY KEY, name text, position text);`
+    + `CREATE TABLE carmake (carmake text, id int, car_model text, PRIMARY_KEY(car_make, id));` -> Notice the partition key and clustering key(s) here.
+        + You could also have a combination of columns as partition key in case one partition is getting overloaded.
+    + `CONSISTENCY x` to change consistency level. (Just `CONSISTENCY` for querying current consistency level for `cqlsh` session)
+    + `SELECT car_make, writetime(car_model) FROM tablename;` Writetime can be found
+    + `UPDATE table USING TTL 60 SET car_model='TRUCK' WHERE primary_key=2` TTLs could be useful.
+    + `ALTER TABLE emp ADD colname set<text>;` Adds column on the fly with set of texts.
+    + `UPDATE emp SET colname = colname + {'123'} WHERE id=2;` Adding (+) or removing (-) from set/list types in cassandra.
+    + `CREATE INDEX ON emp (name);` (When you designed the system wrong initially)
+- UUIDs is a col type like (`text`, `uuid`, `timeuuid`)
+    - `INSERT INTO emp (id, fname) VALUES (uuid(), 'tom');`
+    - `timeuuid` is also a column of type uuid with a time component
+    - `INSERT INTO emp (id, fname) VALUES (now(), 'tom');`
+- Counters in cassandra (Increment or decrement)
+    + `CREATE TABLE purchases (id uuid PRIMARY KEY, pur counter);`
+    + `UPDATE purchases SET pur = pur + 1 WHERE id = uuid();`
+- Snitch - Decides which node is the best to serve a request. Dynamic snitches allow  nodes to decide which nodes (closest) to route the request to to serve a query.
+- Gossip protocol - Nodes communicate cluster state with all other machines they're aware of. And eventually, exponentially all machines are aware of each other and their health checks etc.
+- Data Storage:
+    + Memtable - In memory - ordered by clustering keys
+    + Commit Log - On disc - append only - unordered
+    + SS Table - Created whenever memtable is flushed to disk to create an immutable ordered table. - ordered
+        * The flush also creates a new commit log and memtable.
+    + These SSTables are **compacted** into fewer SSTables over time for better read performance.
+    + While reading, it compares values in Memtable vs SSTables and returns values with the same timestamp.
+- More read optimizations: 
+    + Bloom Filter - To tell you if a value DOES NOT exist in an SSTable.
+    + Key Cache - For giving locations of a LRU partition keys.
+    + Partition Index - For giving disk index locations for each partition.
 
-
-
-#### Consensus algorithms - RAFT
+#### Consensus algorithms
+##### Paxos
 - Paxos has been industry leader since forever but not very easy to understand.
-    + 
+
+##### Raft
 - Raft is a recent and more understandable approach to the same.
+    + Leader is elected when timer times out. (Timeout is reset on each heartbeat)
+    + Leader can reset their timer with a heartbeat or some data.
+    + Term is a time that a leader serves after an election.
+    + Term can have no leaders in case of split vote and another leader election is triggered after a node timeout.
 - Replicated state machine. [Video link](https://www.youtube.com/watch?v=vYp4LYbnnW8)
 - ETCD - Key value state store that kubernetes relies on implements this. One leader at a time. Replicated and consistent. Uses disk.
+    + etcd has another mode called learner (Which blocks the node from election till it catches up on leader logs).
 
+##### Byzantine Failure
+- Both raft and paxos assume that the nodes are not evil.
+- Public ledgers (Like blockchain) use Byzantine failure for consensus assuming everyone is evil.
 
 ---
 `Mar 8, 2021`
