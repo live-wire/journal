@@ -15,6 +15,42 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Mar 25, 2021`
+#### Bot detection
+- Bots scrape website's pricing data to kick ass.
+- Cause unnecessary load on the servers.
+- Conversion calculations are unreliable with bots causing a percentage of the traffic.
+- A company that does it: `PerimeterX`
+
+---
+`Mar 22, 2021`
+#### Find distinct items - HyperLogLog
+- Approximation algorithm like bloom filter.
+- Just like bloom filters, have one integer which stores all bits.
+- You need one hash function to generate numbers in this integer's range.
+- Lets look at last x bits. If we have n 0s there, that means there are 2^n unique items.
+- Get max 0s for each bucket. (Buckets are made from bits preceeding the x bits).
+- Get the average max 0s from these buckets = avg.
+- Total number of unique users is approx: 2^avg.
+
+---
+`Mar 21, 2021`
+#### AVL Self balancing trees
+- There are 4 possible scenarios when the `abs(left_tree_height - right_tree_height) > 1`.
+- Tree rotations come in handy when tree is left heavy or right heavy.
+- BTree is used for databases. [Amazing video](https://www.youtube.com/watch?v=aZjYr87r1b8).
+    + Multi level indexes. (Rotate it for a tree impression)
+    + Disc access needs to be optimized.
+    + Tree grows bottom up. Whenever one node has more than specified elements, it is split up and the middle value is sent up (to parent).
+    + Each node has a record and block pointer.
+    + In a B+ tree, only the leaf nodes have record indexes. The higher level nodes are sparse indexes (only block pointers).
+- Red Black trees - Root and leaves are always black. If a node is red, the children will be black.
+    + Number of black nodes from the root to the nil nodes is the same across the tree.
+    + Longest path is no more than 2 times the shortest path (Path = root to nil).
+    + Insertions/Removals can cause rotations to maintain red black properties.
+        * Since the violations have to be resolved all the way up the tree, the complexity of these operations is log(n).
+
+---
 `Mar 20, 2021`
 #### Chosing the right database
 - Integration considerations.
@@ -1936,6 +1972,7 @@ he hashmap (O(nLog(n)))
 `March 11, 2019`
 #### Python List Comprehensions and Generators
 `algorithm`
+- Generators are just wrappers around closures internally.
 - Use List comprehensions (`[x*2 for x in range(256)]`) when you need to iterate over the sequence multiple times.
 - Use Generators (`(x*2 for x in range(256))`) (same as `yield`) when you need to iterate over the sequence once!
 - **xrange** uses yielding(generator) and **range** creates the list. (Python3's range = Python2's xrange)
