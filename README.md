@@ -13,6 +13,15 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
+---
+`Mar 29, 2021`
+#### Itertools permutations, combinations
+- When you want to also use elements that were not a part of the permutation, there is a neat trick to get them: Thanks to Stefan Poochman:
+```
+for a,b,*rest in itertools.permutations(rem):
+    # rest contains the list of elements apart from a,b
+```
+- Brilliant!
 
 ---
 `Mar 25, 2021`
