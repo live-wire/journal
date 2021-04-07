@@ -14,6 +14,40 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
 ---
+`Apr 07, 2021`
+#### Apache Lucene
+- Index on documents for efficient searching.
+- Information Retrieval on steroids.
+- Document -> tokens -> inverted index.
+- Tokenizing = splitting by whitespace.
+- Inverted index = frequency of words, document list.
+    - such an index created from 3 documents
+    - Indexed (merged) 
+    - Then the group of 3 is merged to a bigger 9 index.
+    - Useful for time series. (Newer documents are in a faster index).
+
+---
+`Mar 31, 2021`
+#### Kth Largest Number
+- Heapq has a function nlargest for the same.
+- Another approach is an algorithm called quickselect. (Works just like quicksort).
+    + Select a pivot, fix its position.
+        * Move pivot element to right.
+        * Iterate over remaining elements from left to right moving any smaller elements to the left and incrmenting potential pivot index.
+        * Swap right with pivot index.
+    + Once the fixed position is the same as the nth largest index, return!
+    + Complexity worst case = O(Nlog(N)), Average case = O(N)
+
+
+---
+`Mar 31, 2021`
+#### Helm X Kubernetes Operators
+- Helm project has gained considerable popularity as it solves one of the key problems that enterprises face — creating custom YAMLs for deploying the same application workload with different settings, or deploying it in different environments (dev/test/prod).
+- Operators use the kubernetes Custom resource and Controller pattern --> which uses a reconcilliation loop (You always strive to be in the target state). Its API is set towards running stateful application workloads natively on Kubernetes.
+    - Once deployed, new Custom Resources (e.g. Mysql, Cassandra, etc.) are available to the end users similar to built-in Resources (e.g. Pod, Service, etc.).
+- As an Operator developer, it is tremendously useful for your users if you create Helm chart for its deployment. Soo, they go hand in hand and not vs.
+
+---
 `Mar 29, 2021`
 #### Itertools permutations, combinations
 - When you want to also use elements that were not a part of the permutation, there is a neat trick to get them: Thanks to Stefan Poochman:
@@ -22,6 +56,14 @@ for a,b,*rest in itertools.permutations(rem):
     # rest contains the list of elements apart from a,b
 ```
 - Brilliant!
+
+#### Global interpreter lock
+- Python programs are inherently not multithreaded because of GIL.
+- This is used because of the garbage collection that python uses:
+    + reference counting.
+- Ease of developer work because of this lock.
+- One possible solution for the same is using multiprocessing module.
+- Or use a different python distribution. (Not Cython).
 
 ---
 `Mar 25, 2021`
