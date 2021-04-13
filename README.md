@@ -13,6 +13,33 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
+
+---
+`Apr 13, 2021`
+#### Approximations
+- Find point that is minimum distance from all points on the grid combined. (Sum of distances is minimized).
+- We can decide on a precision and move in the direction of descent (x = x + dx * multiplier) with reducing multiplier with each step. Just like gradient descent.
+
+#### Count min sketch
+- Find top K for something.
+- Another approximation technique for calculating top k items with very low memory footprint.
+- 2D grid. Each row means a hash function. When you want to find occurences of a key, you can get minimum from all rows.
+- You'll need an additional heap to maintain top k keys.
+- [Great link](https://www.youtube.com/watch?v=kx-XDoPjoHw&t=1s).
+
+---
+`Apr 08, 2021`
+#### Rate Limiting
+- Token bucket algorithm. 
+   - Tokens refill after every x time. 
+   - New requests need tokens to go through.
+   - In a distributed setting, maintain a separate bucket on each node and share information.
+- Distributed key value store to store token information.
+- Can also use a coordinator (master slave) to decide correct counts per machine.
+- Can also use gossip protocol.
+- Can also use mesh connection to share token information among nodes.
+
+
 ---
 `Apr 07, 2021`
 #### Apache Lucene
@@ -426,6 +453,8 @@ URL resource = classLoader.getResource(fileName);
     + Function:  The function will contain the computation to be applied to the contents of the window
     + Evictors: which will be able to remove elements from the window after the trigger fires and before and/or after the function is applied
 - Windows can be defined over long periods of time (such as days, weeks, or months) and therefore accumulate very large state. [link](Windows can be defined over long periods of time (such as days, weeks, or months) and therefore accumulate very large state.)
+- The state size of a window depends on the type of function that you apply. If you apply a ReduceFunction or AggregateFunction, arriving data is immediately aggregated and the window only holds the aggregated value. If you apply a ProcessWindowFunction or WindowFunction, Flink collects all input records and applies the function when time (event or processing time depending on the window type) passes the window's end time.
+    + You can also use them together. This is useful because you have incremental aggregation (due to ReduceFunction / AggregateFunction) but also access to the window metadata like begin and end timestamp (due to ProcessWindowFunction).
 
 ###### Event Time and Watermarks
 - In order to work with [event time](https://ci.apache.org/projects/flink/flink-docs-release-1.11/concepts/timely-stream-processing.html), Flink needs to know the events timestamps, meaning each element in the stream needs to have its event timestamp assigned. 
@@ -444,6 +473,7 @@ URL resource = classLoader.getResource(fileName);
 
 ###### Stateful Stream Processing
 - Flink needs to be aware of the state in order to make it fault tolerant using checkpoints and savepoints.
+- Many operators maintain their own state and async checkpoint when checkpoint barriers pass through them.
 - Queryable state allows you to access state from outside of Flink during runtime.
 - For processing exactly once, the source must be replayable and the sink must be transactional(idempotent).
 
