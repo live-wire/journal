@@ -15,6 +15,13 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Apr 16, 2021`
+#### RAID - Redundant Array of Inexpensive Disks
+- RAID 0 : data split into multiple drives. (No redundancy, high throughput)
+- RAID 1 : data duplicated. Half the storage space is wasted on this. Hot swaps not possible.
+- RAID 5 : Data is stored with parity bits. Parity bits are used to reconstruct missing data in either of the drives. [Great quick video](https://www.youtube.com/watch?v=Aa0RTgxJJy8). Zero downtime for maintenance.
+
+---
 `Apr 13, 2021`
 #### Approximations
 - Find point that is minimum distance from all points on the grid combined. (Sum of distances is minimized).
