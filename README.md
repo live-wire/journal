@@ -13,6 +13,39 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
+---
+`June 10, 2021`
+#### Apache Beam Ecosystem - Scio
+- **DBeam** is a Apache Beam based single threaded pipeline that reads all the data from single SQL database table, and converts the data into Avro and stores it into appointed location, usually in GCS.
+- 
+
+
+---
+`June 9, 2021`
+#### Apache Beam 
+- Following this [programming guide](https://beam.apache.org/documentation/programming-guide/).
+- Steps: 
+    - Create a driver program using one of Beam SDKs.
+    - It defines all the steps in your DAG like sources, transforms, sinks etc.
+    - Set execution options including the Pipeline Runner (with CLI arguments etc.)
+- Beam Abstractions:
+    - **Pipeline**: A Pipeline encapsulates your entire data processing task, from start to finish.
+    - **PCollection**: A PCollection represents a distributed data set that your Beam pipeline operates on. you can also create a PCollection from in-memory data within your driver program. PCollections are the inputs and outputs for each step in your pipeline.
+    - **PTransform**: A PTransform represents a data processing operation, or a step, in your pipeline. Every PTransform takes one or more PCollection objects as input, performs a processing function that you provide on the elements of that PCollection, and produces zero or more output PCollection objects.
+- Pipeline Options can be implemented by implementing/extending the `PipelineOptions` interface.
+- Once a pipeline object is created, the source PCollection is `apply`-ed to the pipeline object.
+- Transforms are applied to PCollection objects. They provide a generic processing framework. You provide processing logic in the form of a function object. Core Beam transforms:
+    - `ParDo` is useful for a variety of common data processing operations like Map, FlatMap, Filter. You'll need to implement a `DoFn`.
+    - `GroupByKey` is a Beam transform for processing collections of key/value pairs. It’s a parallel reduction operation, analogous to the Shuffle phase of a Map/Shuffle/Reduce-style algorithm.
+    - `CoGroupByKey` performs a relational join of two or more key/value PCollections that have the same key type.
+        - NOTE: If you are using unbounded PCollections, you must use either non-global windowing or an aggregation trigger in order to perform a GroupByKey or CoGroupByKe because a bounded GroupByKey or CoGroupByKey must wait for all the data with a certain key to be collected, but with unbounded collections, the data is unlimited. Windowing and/or triggers allow grouping to operate on logical, finite bundles of data within the unbounded data streams.
+    - `Combine` - Combine has variants that work on entire PCollections, and some that combine the values for each key in PCollections of key/value pairs.
+    - `Flatten` - merges multiple PCollection objects into a single logical PCollection.
+    - `Side Inputs` - A side input is an additional input that your DoFn can access each time it processes an element in the input PCollection. When you specify a side input, you create a view of some other data that can be read from within the ParDo transform’s DoFn while processing each element.
+    - `Composite Transforms` - Multiple transforms that are seen frequently bundled together.
+- Windows
+- Triggers
+- Splittable DoFns
 
 ---
 `Apr 16, 2021`
