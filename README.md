@@ -19,6 +19,60 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - **DBeam** is a Apache Beam based single threaded pipeline that reads all the data from single SQL database table, and converts the data into Avro and stores it into appointed location, usually in GCS.
 - 
 
+#### Functional programming concepts
+- **Monoids and Semigroups**
+- A monoid is a function that takes two arguments and follows two laws: _associativity and identity_.
+- The general notion here is to separate behavior from the data. The algebraic structure provides the context for describing the desired behavior through operations applied to the data.
+- The algebraic structure semigroup is a set and an associated binary operator that combines two elements from the set. A monoid is a semigroup with the added identity element.
+```
+trait Semigroup[A] {
+  def op(x: A, y: => A): A
+}
+trait Monoid[A] extends Semigroup[A] {
+  def zero: A
+}
+```
+
+- **Implicits** **Given/Using**
+- Implicit parameters: Your function can have parameters that are labelled with implicits. 
+- It takes an available _default_ value from a predefined implicit value. (There can only be ONE predefined implicit value though).
+```
+def summer(x: Int)(implicit y: Int): Int = x * y
+implicit val z: Int = 10
+println(summer(5)) // Returns 50
+```
+
+- Another use case is to convert from one type to other which is discouraged in Scala3. 
+- You can use this syntax with a class as well instead of a def. All the functions in the class become implicit then. 
+- NOTE: implicit modifier cannot be used for top-level objects.
+```
+case class Person(name: String) {
+    def greet: String = s"Hey my name is $name"
+}
+implicit def stringToPerson(s: String): Person = Person(s)
+println("Alice".greet) // Treats Alice like a person and prints the greeting
+```
+
+- Newer(Scala3) enforced implicit needs to be "explicit"
+```
+import scala.language.implicitConversions // This is needed
+
+// And this makes it explicit that you want a conversion
+given stringToPerson as Conversion[String, Person] {
+    def apply(s: String): Person = Person(s)
+}
+```
+
+- Given and using can also be used with function parameters instead of implicits
+```
+given z as Int = 10
+def summer(x: Int)(using y: Int): Int = x * y 
+println(summer(5)) // 50
+println(summer(5)(using 11)) // 55 // This is how you override
+```
+
+- This implicit pattern is used as **Pimp my library** pattern to make the code more expressive.
+- _Implicitly_ is used with the type classes pattern. Suppose you have a bunch of model classes that you don't want to create copies of. You can make them extend a new trait that you created by using this pattern. Also, implicitly works as a “compiler for implicits”. We can verify if there is an implicit value of type T. If no implicit value of type T is available in the scope, the compiler will warn us of the fact.
 
 ---
 `June 9, 2021`
