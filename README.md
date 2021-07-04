@@ -13,6 +13,24 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
+
+---
+`July 2, 2021`
+#### Parquet
+- Storage format initially built by Twitter and Cloudera.
+- [Informative video](https://www.youtube.com/watch?v=1j8SdS7s_NY)
+- Hybrid storage format. 
+    - Horizontal partitioning - For splitting up rows into groups called **Row Groups**. Also known as **Blocks**. Default size of such a file is 128MB. These files have footers which contain basic stats about the row group columns.
+    - Vertical partitioning - For splitting up column types so only necessary columns are queried, each block is stored as Column chunks.
+    - Each column chunk stores data in the form of Pages. **Data Pages** that also contains metadata along with encoded values.
+- On disk it is not a file, it is a directory.
+
+---
+`June 10, 2021`
+#### Scala Magic
+- Scala 3 has introduced `inline` variables and methods. The change here is that wherever the function is called, that call is eliminated and its code is inlined at that point. It is done at compile time. (This could effectively avoid deep stack calls).
+- Scala has `macros` 
+
 ---
 `June 10, 2021`
 #### Apache Beam Ecosystem - Scio
@@ -1046,6 +1064,7 @@ service OesophagusService {
         - **NodePort** - Also creates a clusterIP and additionally also forwards specified ports (from each pod) to all the Nodes in the cluster.
         - **LoadBalancer** - External LoadBalancer service usually proviced by cloud provider.
         - `kubectl get endpoints` to see where the traffic is mapped from a service.
+        - **Ingress** - With Ingress, you can easily set up rules for routing traffic without creating a bunch of Load Balancers or exposing each service on the node. This makes it the best option to use in production environments. 
 
 ```
 apiVersion: v1
