@@ -1,6 +1,6 @@
 # Journal 📮
 
-I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_! 
+I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_!
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
 
 > "Science isn't good or bad, it's just true." - Hank Green
@@ -13,13 +13,31 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
+---
+`July 2, 2021`
+#### VSCode tricks
+- [Link](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
+- Open file `Cmd + P`
+- Command Pallete `Cmd + Shift + P`
+- Multicursors
+    - `Cmd + shift + L` for taking cursor to all selections.
+    - `option + click` = multicursor arbitrary
+    - `Cmd + option + arrow-up/down` = spawn new cursors
+- `Cmd + \` Split screen vertical only
+- `Cmd + B` open close folder view
+- File diff `code --diff <file1> <file2>`
+- Copy selection up/down `shift option up/down`.
+- Move line up/down `option up/down`
+- Jump to line number `ctrl + g`
+- Find and replace `Cmd + option + R`
+
 
 ---
 `July 2, 2021`
 #### Parquet
 - Storage format initially built by Twitter and Cloudera.
 - [Informative video](https://www.youtube.com/watch?v=1j8SdS7s_NY)
-- Hybrid storage format. 
+- Hybrid storage format.
     - Horizontal partitioning - For splitting up rows into groups called **Row Groups**. Also known as **Blocks**. Default size of such a file is 128MB. These files have footers which contain basic stats about the row group columns.
     - Vertical partitioning - For splitting up column types so only necessary columns are queried, each block is stored as Column chunks.
     - Each column chunk stores data in the form of Pages. **Data Pages** that also contains metadata along with encoded values.
@@ -29,13 +47,13 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 `June 10, 2021`
 #### Scala Magic
 - Scala 3 has introduced `inline` variables and methods. The change here is that wherever the function is called, that call is eliminated and its code is inlined at that point. It is done at compile time. (This could effectively avoid deep stack calls).
-- Scala has `macros` 
+- Scala has `macros`
 
 ---
 `June 10, 2021`
 #### Apache Beam Ecosystem - Scio
 - **DBeam** is a Apache Beam based single threaded pipeline that reads all the data from single SQL database table, and converts the data into Avro and stores it into appointed location, usually in GCS.
-- 
+-
 
 #### Functional programming concepts
 - **Monoids and Semigroups**
@@ -52,7 +70,7 @@ trait Monoid[A] extends Semigroup[A] {
 ```
 
 - **Implicits** **Given/Using**
-- Implicit parameters: Your function can have parameters that are labelled with implicits. 
+- Implicit parameters: Your function can have parameters that are labelled with implicits.
 - It takes an available _default_ value from a predefined implicit value. (There can only be ONE predefined implicit value though).
 ```
 def summer(x: Int)(implicit y: Int): Int = x * y
@@ -60,8 +78,8 @@ implicit val z: Int = 10
 println(summer(5)) // Returns 50
 ```
 
-- Another use case is to convert from one type to other which is discouraged in Scala3. 
-- You can use this syntax with a class as well instead of a def. All the functions in the class become implicit then. 
+- Another use case is to convert from one type to other which is discouraged in Scala3.
+- You can use this syntax with a class as well instead of a def. All the functions in the class become implicit then.
 - NOTE: implicit modifier cannot be used for top-level objects.
 ```
 case class Person(name: String) {
@@ -84,7 +102,7 @@ given stringToPerson as Conversion[String, Person] {
 - Given and using can also be used with function parameters instead of implicits
 ```
 given z as Int = 10
-def summer(x: Int)(using y: Int): Int = x * y 
+def summer(x: Int)(using y: Int): Int = x * y
 println(summer(5)) // 50
 println(summer(5)(using 11)) // 55 // This is how you override
 ```
@@ -94,9 +112,9 @@ println(summer(5)(using 11)) // 55 // This is how you override
 
 ---
 `June 9, 2021`
-#### Apache Beam 
+#### Apache Beam
 - Following this [programming guide](https://beam.apache.org/documentation/programming-guide/).
-- Steps: 
+- Steps:
     - Create a driver program using one of Beam SDKs.
     - It defines all the steps in your DAG like sources, transforms, sinks etc.
     - Set execution options including the Pipeline Runner (with CLI arguments etc.)
@@ -142,8 +160,8 @@ println(summer(5)(using 11)) // 55 // This is how you override
 ---
 `Apr 08, 2021`
 #### Rate Limiting
-- Token bucket algorithm. 
-   - Tokens refill after every x time. 
+- Token bucket algorithm.
+   - Tokens refill after every x time.
    - New requests need tokens to go through.
    - In a distributed setting, maintain a separate bucket on each node and share information.
 - Distributed key value store to store token information.
@@ -161,7 +179,7 @@ println(summer(5)(using 11)) // 55 // This is how you override
 - Tokenizing = splitting by whitespace.
 - Inverted index = frequency of words, document list.
     - such an index created from 3 documents
-    - Indexed (merged) 
+    - Indexed (merged)
     - Then the group of 3 is merged to a bigger 9 index.
     - Useful for time series. (Newer documents are in a faster index).
 
@@ -256,7 +274,7 @@ for a,b,*rest in itertools.permutations(rem):
 `Mar 17, 2021`
 #### Distributed Locks
 - 2 phase commit. - prepare - commit
-- Use etcd locks. 
+- Use etcd locks.
 - Or Zookeeper locks using one of the [higher order recipes](https://zookeeper.apache.org/doc/r3.6.2/recipes.html).
 
 #### Virtualization
@@ -281,7 +299,7 @@ for a,b,*rest in itertools.permutations(rem):
 ---
 `Mar 15, 2021`
 #### Consistency and Reliability
-#### Zookeeper 
+#### Zookeeper
 - Structured as a tree. Each node is called a `zNode` and has a path.
 - Each node can be `persistent` or `ephemeral` and can store data.
 - zNodes can't be renamed.
@@ -334,7 +352,7 @@ for a,b,*rest in itertools.permutations(rem):
         * The flush also creates a new commit log and memtable.
     + These SSTables are **compacted** into fewer SSTables over time for better read performance.
     + While reading, it compares values in Memtable vs SSTables and returns values with the same timestamp.
-- More read optimizations: 
+- More read optimizations:
     + Bloom Filter - To tell you if a value DOES NOT exist in an SSTable.
     + Key Cache - For giving locations of a LRU partition keys.
     + Partition Index - For giving disk index locations for each partition.
@@ -377,7 +395,7 @@ for a,b,*rest in itertools.permutations(rem):
 - Flip the problem! Water to land calculation needs a single pass over each cell. Also BFS, but faster. Maintain a visited set().
 
 #### Splitwise
-- Minimum transactions needed to settle. 
+- Minimum transactions needed to settle.
 - Amazing DP solution with backtracking.
 - First calculate debt per person. (Total sum of array = 0)
 - Keep checking with the transactions on the right. Move the value at current cell to the right(where sign is different). Then DFS that. Then backtrack that transaction settle to look for other possible paths.
@@ -408,9 +426,9 @@ with cv:
 ---
 `Feb 23, 2021`
 #### Wiggle sort
-- Wiggle sort can be achieved in a single iteration. 
+- Wiggle sort can be achieved in a single iteration.
 - Look at 3 items at a time and make the condition satisfy. a <= b >= c <= d ...
-- DP way of looking at it. Create two dp arrays up and down. 
+- DP way of looking at it. Create two dp arrays up and down.
     + In case of a wiggle up `(n[i] > n[i-1]), up[i] = down[i-1] + 1`
     + In case of a wiggle down, `down[i] = up[i-1] + 1`
 
@@ -421,7 +439,7 @@ with cv:
 - Itineary planning. Make sure all tickets are used at least once. What path will be followed?
 - DFS is good. But how to decide valid paths.
 - DFS with ticket use each time and mark path in bottom up. Append to a ret variable after the recursive call.
-- This will ensure that node is visited (appended to the list) when it is stuck there. 
+- This will ensure that node is visited (appended to the list) when it is stuck there.
 - Hence that should be visited at the end. (If you reverse the list).
 - Kind-of like topological sort. DFS in graphs are quite similar!
 - Debugging bottom up recursions is not very pleasant.
@@ -443,7 +461,7 @@ with cv:
 // Create a large heap allocation of 10 GiB
     ballast := make([]byte, 10<<30)
 ```
-    
+
 - Continuing ^:
     - It reduced GC cycles by allowing the heap to grow larger
     - API latency improved since the Go GC delayed our work less with assists
@@ -458,7 +476,7 @@ with cv:
 `Feb 3, 2021`
 #### Game Theory - Evolution of Trust
 - [Great Link](https://ncase.me/trust/)
-- That may seem cynical or naive -- that we're "merely" products of our environment -- but as game theory reminds us, we are each others' environment. In the short run, the game defines the players. But in the long run, it's us players who define the game. So, do what you can do, to create the conditions necessary to evolve trust. Build relationships. Find win-wins. Communicate clearly. 
+- That may seem cynical or naive -- that we're "merely" products of our environment -- but as game theory reminds us, we are each others' environment. In the short run, the game defines the players. But in the long run, it's us players who define the game. So, do what you can do, to create the conditions necessary to evolve trust. Build relationships. Find win-wins. Communicate clearly.
 
 
 ---
@@ -475,10 +493,10 @@ with cv:
 - [Beautiful Design](https://docs.google.com/document/d/11Jqy_GjUGtdXJK94XGsEIK7CP1SnQGdp2eF0wSw9ra8/edit#)
 - **Idempotent producer**: Every message write will be persisted exactly once, without duplicates and without data loss -- even in the event of client retries or broker failures. However, idempotent producers don’t provide guarantees for writes across multiple TopicPartitions.
     + To implement idempotent producer semantics, we introduce the concepts of a producer id, henceforth called the PID, and sequence numbers for Kafka messages. *Every new producer will be assigned a unique PID during initialization*. The PID assignment is completely transparent to users and is never exposed by clients.
-    For a given PID, sequence numbers will start from zero and be monotonically increasing, with one sequence number per topic partition produced to. The sequence number will be incremented for every message sent by the producer. Similarly, the broker will increment the sequence number associated with the PID -> topic partition pair for every message it commits for that topic partition.  Finally, the broker will reject a message from a producer unless its sequence number is exactly one greater than the last committed message from that PID -> topic partition pair. 
+    For a given PID, sequence numbers will start from zero and be monotonically increasing, with one sequence number per topic partition produced to. The sequence number will be incremented for every message sent by the producer. Similarly, the broker will increment the sequence number associated with the PID -> topic partition pair for every message it commits for that topic partition.  Finally, the broker will reject a message from a producer unless its sequence number is exactly one greater than the last committed message from that PID -> topic partition pair.
     This ensures that, even though a producer must retry requests upon failures, every message will be persisted in the log exactly once. Further, since each new instance of a producer is assigned a new, unique, PID, we can only guarantee idempotent production within *a single producer session*.
 
-- **Transactional Guarantees:** A ‘batch’ of messages in a transaction can be consumed from and written to multiple partitions, and are ‘atomic’ in the sense that writes will fail or succeed as a single unit. 
+- **Transactional Guarantees:** A ‘batch’ of messages in a transaction can be consumed from and written to multiple partitions, and are ‘atomic’ in the sense that writes will fail or succeed as a single unit.
     + **Atomic multi-partition writes and Zombie fencing** - To achieve this, we require that the application provides a unique id which is stable across all sessions of the application. For the rest of this document, we refer to such an id as the TransactionalId. TransactionalId is provided by users, and is what enables idempotent guarantees across producers sessions. When provided with such an TransactionalId, Kafka will guarantee:
         - Idempotent production across application sessions. This is achieved by fencing off old generations when a new instance with the same TransactionalId comes online.
         - Transaction recovery across application sessions. If an application instance dies, the next instance can be guaranteed that any unfinished transactions have been completed (whether aborted or committed), leaving the new instance in a clean state prior to resuming work.
@@ -507,7 +525,7 @@ with cv:
 #### Postman on Steroids
 - Test your APIs in style with ease.
 - Use Collection Runners for sending a particular request multiple times (iterations).
-- Also possible to send requests with variables that can be sent via a CSV. 
+- Also possible to send requests with variables that can be sent via a CSV.
 - It is also possible to chaining requests for parsing response from one request and using the response to create variables to use for the upcoming requests. This can help build test suites.
 
 
@@ -516,7 +534,7 @@ with cv:
 #### Kerberos
 - Kerberos is a network authentication software that allows safe client-server authentication even on non safe protocols.
 - Client applications must authenticate themselves when communicating with (almost) any Hadoop service.
-- 
+-
 
 
 ---
@@ -545,18 +563,18 @@ URL resource = classLoader.getResource(fileName);
 - Making updates to a stateful streaming application is not trivial. This is solved by Flink’s **Savepoints**.
 
 #### Flink DataStreams API
-###### Execution Environment 
+###### Execution Environment
 
 - `env = StreamExecutionEnvironment.getExecutionEnvironment();`
 - This will do the right thing depending on the context: if you are executing your program inside an IDE or as a regular Java program it will create a local environment that will execute your program on your local machine.
 - Local cluster (`./bin/start-cluster.sh`) (UI at `localhost:8081`). You don't need this if running from IDE.
 - Execution environment provides Multiple ways of reading streams like from file, sockets etc. `val text: DataStream[String] = env.readTextFile("file:///path/to/file")`
-- Buffer Size: Full buffer(wait for buffer to fill up before forwarding) means highest throughput, and empty small buffer means low throughput. 
+- Buffer Size: Full buffer(wait for buffer to fill up before forwarding) means highest throughput, and empty small buffer means low throughput.
 
 ###### Operators
 - Operators transform one or more DataStreams into a new DataStream
 - [List](https://ci.apache.org/projects/flink/flink-docs-release-1.11/dev/stream/operators/)
-- map/filter 
+- map/filter
 
 ###### Windows
 - Make sure to keyBy before using windows.
@@ -569,7 +587,7 @@ URL resource = classLoader.getResource(fileName);
     + You can also use them together. This is useful because you have incremental aggregation (due to ReduceFunction / AggregateFunction) but also access to the window metadata like begin and end timestamp (due to ProcessWindowFunction).
 
 ###### Event Time and Watermarks
-- In order to work with [event time](https://ci.apache.org/projects/flink/flink-docs-release-1.11/concepts/timely-stream-processing.html), Flink needs to know the events timestamps, meaning each element in the stream needs to have its event timestamp assigned. 
+- In order to work with [event time](https://ci.apache.org/projects/flink/flink-docs-release-1.11/concepts/timely-stream-processing.html), Flink needs to know the events timestamps, meaning each element in the stream needs to have its event timestamp assigned.
 - Event time can progress independently of processing time (measured by wall clocks). For example, in one program the current event time of an operator may trail slightly behind the processing time (accounting for a delay in receiving the events), while both proceed at the same speed. On the other hand, another streaming program might progress through weeks of event time with only a few seconds of processing, by fast-forwarding through some historic data already buffered in a Kafka topic (or another message queue).
 - The mechanism in Flink to measure progress in event time is **watermarks**. Watermarks flow as part of the data stream and carry a timestamp t.
 
@@ -626,7 +644,7 @@ URL resource = classLoader.getResource(fileName);
 
 ---
 `Sep 17, 2020`
-#### Scala 
+#### Scala
 - Hello again [scala](https://www.scala-exercises.org/scala_tutorial)
 - [Tail recursion](https://www.scala-exercises.org/scala_tutorial/tail_recursion). Neat concept of using recursion when the current stack frame can be reused. (No stack overflows). Just decorate the function with `@tailrec`
 
@@ -647,7 +665,7 @@ def gcd(a: Int, b: Int): Int = …
 - Avro creates a self-describing file named Avro Data File, in which it stores data along with its schema in the metadata section.
 - Avro is also used in Remote Procedure Calls (RPCs). During RPC, client and server exchange schemas in the connection handshake.
 - Avro schemas can represent **Union types**, but **not Abstract types**.  It does not make sense to serialize an abstract class, since its data members are not known.
-- [LogicalTypes](https://avro.apache.org/docs/current/spec.html#Logical+Types) in Avro like date etc. 
+- [LogicalTypes](https://avro.apache.org/docs/current/spec.html#Logical+Types) in Avro like date etc.
 - [Using avro with maven](https://dzone.com/articles/using-avros-code-generation).
 - [Creating complicated schemas with maven](https://feitam.es/use-of-avro-maven-plugin-with-complex-schemas-defined-in-several-files-to-be-reused-in-different-typed-messages/)
 
@@ -660,12 +678,12 @@ def gcd(a: Int, b: Int): Int = …
 - **Two phase commits**: Two phase commit does not guarantee that a distributed transaction can't fail, but it does guarantee that it can't fail silently without the Transaction Manager being aware of it.
 
 #### Benford's Law
-- Given enough data, all the numbers for any given question fit the benford's curve. 
+- Given enough data, all the numbers for any given question fit the benford's curve.
 - Log curve:
-    - Numbers beginning with 1 = 30% 
-    - With 2 = 17% 
+    - Numbers beginning with 1 = 30%
+    - With 2 = 17%
     - so on.
-- Intuitive (think about it) and useful! 
+- Intuitive (think about it) and useful!
 - If a set of numbers seem to not follow this law, they could possibly be tampered with.
 
 
@@ -682,7 +700,7 @@ def gcd(a: Int, b: Int): Int = …
     - Two phased commits
     - Wound wait deadlock prevention algorithm
     - Collaborative filtering
-- Spanner [link](https://cloud.google.com/spanner/docs/whitepapers/life-of-reads-and-writes): Distributed database with strong consistency. 
+- Spanner [link](https://cloud.google.com/spanner/docs/whitepapers/life-of-reads-and-writes): Distributed database with strong consistency.
 
 
 ---
@@ -723,7 +741,7 @@ def gcd(a: Int, b: Int): Int = …
 #### Advanced Java
 - Varargs `public void printer(String... lst) {}` equivalent to passing any number of strings or a list to this function.
 - Wildcards: `<? extends Building>`
-- 
+-
 
 
 ---
@@ -735,19 +753,19 @@ def gcd(a: Int, b: Int): Int = …
 
 #### Latency numbers you should know
 - [Year wise latency numbers](https://colin-scott.github.io/personal_website/research/interactive_latency.html)
-- System design prep must revisits: 
+- System design prep must revisits:
     - **Consistent Hash ring** - Multiple hash functions to decide ranges for each server. Send requests to the next(clockwise) server in the ring.
     - **Bloom filters** - Multiple hash functions to fill in a single array.
-    - Python Decorators hierarchy: 
+    - Python Decorators hierarchy:
 
 ```
 @dec
 def yellow():
     pass
-# is the same as 
+# is the same as
 yellow = dec(yellow) (decorator should return a callable function basically)
 # Decorators with params
-decorator_func('decorator', 'arguments')(my_fun)('function', 'arguments') 
+decorator_func('decorator', 'arguments')(my_fun)('function', 'arguments')
 ```
 
 ---
@@ -773,7 +791,7 @@ decorator_func('decorator', 'arguments')(my_fun)('function', 'arguments')
 
 ---
 `June 10, 2020`
-#### Bellman Ford 
+#### Bellman Ford
 - For finding minimum paths in graphs.
 - Maintain 2 arrays of size `N` (`N`=number of nodes in graph).
 - At each iteration = `i`, maintain the vertices reached in exactly `i` steps.
@@ -801,7 +819,7 @@ decorator_func('decorator', 'arguments')(my_fun)('function', 'arguments')
 `May 23, 2020`
 #### Dynamic Programming patterns
 - [Link](https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns).
-- **Minimum/maximum path to reach a target** - 
+- **Minimum/maximum path to reach a target** -
     - Use previous min/max of previous results + currentItemCost.
     - `routes[i] = min(routes[i-1], routes[i-2], ... , routes[i-k]) + cost[i]`
 - **Distinct ways to reach a target** -
@@ -809,7 +827,7 @@ decorator_func('decorator', 'arguments')(my_fun)('function', 'arguments')
     - `routes[i] = routes[i-1] + routes[i-2], ... , + routes[i-k]`
     - (Maintain a dict or list of all sums encountered so far).
 - **Decision Making**
-    - State Machine thinking: [sample](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75928/Share-my-DP-solution-(By-State-Machine-Thinking)). Create state diagram and make sure there is a list for each state and each update checks previous items in the corresponding lists(based on state connections). 
+    - State Machine thinking: [sample](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75928/Share-my-DP-solution-(By-State-Machine-Thinking)). Create state diagram and make sure there is a list for each state and each update checks previous items in the corresponding lists(based on state connections).
 
 ---
 `April 25, 2020`
@@ -822,7 +840,7 @@ decorator_func('decorator', 'arguments')(my_fun)('function', 'arguments')
 - `asyncio.create_task(asyncFunc()) ` wraps function into a Task before running.
 - `asyncio.gather(asyncFunc("A", 2),asyncFunc("B", 3))` wait on multiple asyncs.
 - Can also write `go` like producer consumer code by using `asyncio.Queue`
-    - Usage: `q = asyncio.Queue()`, Functions: 
+    - Usage: `q = asyncio.Queue()`, Functions:
     - `await q.put((i, t))`
     - `i, t = await q.get()`
     - `q.task_done()` to mark task as done
@@ -845,14 +863,14 @@ decorator_func('decorator', 'arguments')(my_fun)('function', 'arguments')
 `Big Data`
 - **Mapper** splits the task into key value pairs
 - **Partitioner/Shuffler** decides which reducer will the mapped keys will go to (sticky). Usually the hash of key is used to do this mapping. Time consuming step of actually performing netowork operations.
-- **Reducer** gets its input and performs aggregations. Usually stores the results on disk for further consumption. 
+- **Reducer** gets its input and performs aggregations. Usually stores the results on disk for further consumption.
 - Types of file input formats:
     - *Text*: key = byte offset of each line, value = line itself.
     - *Key Value*: key = before seperator, value = after separator. (Default separator=tab)
     - *NLine*: Each mapper receives N lines of input
     - *Sequence File*: Map output is stored intermediate in this format (binary key value pairs).
 - Spark = Better then MapReduce because of RDDs and high level library.
-- [Read these notes before continuing](https://live-wire.github.io/journal/bigdata/#lecture-2) 
+- [Read these notes before continuing](https://live-wire.github.io/journal/bigdata/#lecture-2)
 - 2 types of spark processes:
     - **Driver** is where user code runs, converted to map-reduce pattern.
     - **Spark executors** are the executors that run the job. These are launched by the driver in the cluster.
@@ -879,7 +897,7 @@ decorator_func('decorator', 'arguments')(my_fun)('function', 'arguments')
 - Naive approach is O(n^2).
 - Edges not part of a cycle are bridges.
 - [Solution](https://www.geeksforgeeks.org/bridge-in-a-graph/)
-    - 
+    -
 - **Non repeating element in a list** - Find XOR of all elements. `reduce(lambda x,y: x^y, lst)`
 - **Max Subarray Sum**: has a beautiful tiny implementation. We already know that if the subarray sum becomes negative, it is useless for the upcoming subarrays.
 
@@ -888,18 +906,18 @@ for i in range(1, len(nums)):
     if nums[i-1] > 0:
         nums[i] += nums[i-1]
     return max(nums)
-``` 
+```
 - **Palindrome** hack - Count number of occurances of each character in the string. Number of odd count elements usually gives you hints.
 - **Axis aligned rectangle**: To find the closest point in that rectangle to a circle, `closestX = xc>x2?x2:xc<x1:x1:xc`. Similar for `closestY`
 Then distance can be compared to radius to see if there is any intersection. Closest X and closest Y are calculated separately to make life easier.
-- **Stocks when to buy sell** - Any number of transactions. 1 transaction at a time. Boils down to finding increasing sub-sequences in the array. Quick hack is to buy today sell tomorrow if tomorrow>today for each pair. 
+- **Stocks when to buy sell** - Any number of transactions. 1 transaction at a time. Boils down to finding increasing sub-sequences in the array. Quick hack is to buy today sell tomorrow if tomorrow>today for each pair.
 `return sum(max(prices[i + 1] - prices[i], 0) for i in range(len(prices) - 1))` :bomb: Neat!
 
 ---
 `Feb 11, 2020`
 #### Flink and shoot
 - 'Stream/Batch' processing engine. Same programming model for both kinds of workloads.
-- Available modes: `Standalone, Cluster`. 
+- Available modes: `Standalone, Cluster`.
     - Standalone = pretty much useless.
     - Cluster = Can be used on baremetal or using resouce allocator layers like yarn or k8s etc. Yarn who!
 - Flink on K8s:
@@ -915,7 +933,7 @@ Then distance can be compared to radius to see if there is any intersection. Clo
 
 ##### less
 - [Post](https://linuxize.com/post/less-command-in-linux/)
-- Adds pagination to most command outputs. `ps aux | less` 
+- Adds pagination to most command outputs. `ps aux | less`
 - `mysql Something | less -S` to chomp lines instead of warping them. Useful in case of wide tables.
 - `less -N filename` displays line numbers.
 - `less -X filename` leaves the output on the screen.
@@ -983,7 +1001,7 @@ service OesophagusService {
 `protoc --go_out=plugins=grpc:. *.proto`
 - See [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway) for also supporting REST.
 
-#### Grafana Influx k8s 
+#### Grafana Influx k8s
 - Influx and Grafana setup on Kubernete is fairly simple. Use Persistent volume claim for InfluxDB. Everything else can be stateless.
 - [Nice Link](https://opensource.com/article/19/2/deploy-influxdb-grafana-kubernetes)
 
@@ -991,7 +1009,7 @@ service OesophagusService {
 - Screen can also be configured for things like scroll up buffer etc.
 - `screen -ls`
 - `screen -r <number or name>`
-- `screen` 
+- `screen`
 - `Ctrl+a, :sessionname name`
 - `Ctrl+a, /` run screenrc file.
 
@@ -1051,11 +1069,11 @@ service OesophagusService {
     - Useful commands:
         - `kubectl label deployment hello-world env=prod`
         - `kubectl get deployment -l env=prod`
-        - `kubectl label deployment hello-world env-` to remove 
+        - `kubectl label deployment hello-world env-` to remove
 - **Annotations** - Much like Labels except this is arbitrary non-identifying metadata.
 - LABEL SELECTORS IS HOW KUBERNETES OPERATES!
 - ALWAYS CHECK ENDPOINTS!
-- **Services** - 
+- **Services** -
     - Forward traffic to pod or a group of pods that work together
     - Decoupled from the lifecycle of Pods
     - Stable endpoint like a dns (The IP of a service only changes )
@@ -1064,7 +1082,7 @@ service OesophagusService {
         - **NodePort** - Also creates a clusterIP and additionally also forwards specified ports (from each pod) to all the Nodes in the cluster.
         - **LoadBalancer** - External LoadBalancer service usually proviced by cloud provider.
         - `kubectl get endpoints` to see where the traffic is mapped from a service.
-        - **Ingress** - With Ingress, you can easily set up rules for routing traffic without creating a bunch of Load Balancers or exposing each service on the node. This makes it the best option to use in production environments. 
+        - **Ingress** - With Ingress, you can easily set up rules for routing traffic without creating a bunch of Load Balancers or exposing each service on the node. This makes it the best option to use in production environments.
 
 ```
 apiVersion: v1
@@ -1081,15 +1099,15 @@ spec:
     app: sample # all pods/deployments with this label will be loadbalanced over
 ```
 
-- **ConfigMaps** - 
+- **ConfigMaps** -
     - ConfigMaps can be used to send config files to pods.
     `kubectl create configmap <cmapname> --from-file=<configFile>`
-    - Path where to put it is set in pod configuration. It is mounted as a volume. 
+    - Path where to put it is set in pod configuration. It is mounted as a volume.
 
 - **Secrets** -
     - Can be used to send sensitive environment variables to pods.
 
-- **DaemonSets** - 
+- **DaemonSets** -
     - Use this if you want certain pods to be deployed on each Node in the cluster as Nodes are added/removed. Examples: Node monitoring, cluster storage, log collection etc.
 
 ---
@@ -1218,7 +1236,7 @@ Host tunnel
     - `kubectl config current-context`
     - `kubectl config get-contexts`
     - `kubectl config use-context <context-name>`
-- Nodes are workers(machines). Each node can have multiple pods (each of which is a bunch of tightly knit containers (docker-compose like)). 
+- Nodes are workers(machines). Each node can have multiple pods (each of which is a bunch of tightly knit containers (docker-compose like)).
 - Service is an abstraction which defines a logical set of Pods and a policy by which to access them.
     - Useful for decoupling backends and frontends
     - For proxying or relaying network related things
@@ -1234,7 +1252,7 @@ Host tunnel
         - `kubectl get -n emojivoto deploy -o yaml`
 - Delete:
     - `kubectl delete deploy/<name>` - Deletes all pods and replicasets
-    - `kubectl delete svc/<service>` - 
+    - `kubectl delete svc/<service>` -
 - Enter a container inside a pod?
     - `kubectl exec -it my-pod --container main-app -- /bin/bash`
 - ServiceAccounts are for access restrictions and having the pod interact with API server. (kubectl works on the API server).
@@ -1318,7 +1336,7 @@ Executor executor = Executors.newFixedThreadPool(2);
 // Functional interface example
 class Hey {
     public static double square(double num){
-        return Math.pow(num, 2); 
+        return Math.pow(num, 2);
     }
 }
 Function<Double, Double> square = (Double x) -> x * x;
@@ -1329,7 +1347,7 @@ Function<Double, Double> square = hey::square;
 - This can now be passed around as regular functions.
 - For referring static methods, the syntax is: `ClassName :: methodName`
 - For referring non-static methods, the syntax is `objRef :: methodName`
-- Map and Filter in Java using `stream()`: 
+- Map and Filter in Java using `stream()`:
 `List<String> collect = alpha.stream().map(String::toUpperCase).collect(Collectors.toList());` Notice the collection at the end just like Python needs to convert it to list.
 
 
@@ -1347,8 +1365,8 @@ Function<Double, Double> square = hey::square;
 - **Concurrent collections in Java**: `java.util.concurrent`
     - ConcurrentHashMap - [Link](http://tutorials.jenkov.com/java-util-concurrent/concurrentmap.html) Can be modified even when being iterated upon.
     - BlockingQueue - [Link](http://tutorials.jenkov.com/java-util-concurrent/blockingqueue.html) Blocks the producer if the upper limit is reached till a consumer polls from it.
-    - 
-- Lock free programming: `java.util.concurrent.atomic.AtomicInteger` 
+    -
+- Lock free programming: `java.util.concurrent.atomic.AtomicInteger`
     - `AtomicInteger` - useful methods: (incrementAndGet), (getAndIncrement) return new and old values respectively. No need for locks and synchronization.
     - `AtomicReference<T>` - Use this to reference any object. Like the head of a stack data structure
     - `atomicReference.compareAndSet(oldExpectedValue, NewValue)`
@@ -1415,7 +1433,7 @@ Thread t1 = new Thread(new Runnable(){
 ```
 for (Runnable task : tasks) {}
 ```
-- Thread termination: 
+- Thread termination:
     - `.interrupt()` Can be checked inside the thread with `Thread.currentThread().isInterrupted()`
     - Other option is to `thread.setDaemon(true)` so that this thread is not a blocker for the application or the main thread while exiting.
 - `thread.join()` only returns when that thread is terminated (finished the `run()` function). (Also takes time in millis for returning before execution terminates).
@@ -1449,7 +1467,7 @@ for (Runnable task : tasks) {}
 - **Multiprocessing:** `Microservices` architectures.
     - Security and stability are of higher importance.
     - Unrelated tasks.
-- **Multithreading:** 
+- **Multithreading:**
     - Tasks share a lot of data.
     - Switching is cheaper.
 - **Java Generics**: Used by util classes like List, Iterator etc.
@@ -1462,13 +1480,13 @@ public static <T> void minus(T a, T b) {
 
 - Easier to use with a Class
 ```
-class Test<T> 
-{ 
-    // An object of type T is declared 
-    T obj; 
-    Test(T obj) {  this.obj = obj;  }  // constructor 
-    public T getObject()  { return this.obj; } 
-} 
+class Test<T>
+{
+    // An object of type T is declared
+    T obj;
+    Test(T obj) {  this.obj = obj;  }  // constructor
+    public T getObject()  { return this.obj; }
+}
 ```
 
 
@@ -1480,7 +1498,7 @@ class Test<T>
 - Split screen vertical: `ctrl + b` and `"`
 - Navigate between screens: `ctrl + b` and `arrow`
 - Close a pane: `ctrl + d`
-- Detach a session: `ctrl + b` and `d` 
+- Detach a session: `ctrl + b` and `d`
 - `tmux new -s <sessionname>` or just `tmux` starts a new tmux session.
 - `tmux ls` to list all sessions
 - `tmux attach -t <session-number>` to attach to a session
@@ -1526,10 +1544,10 @@ class Test<T>
 ---
 `Oct 3, 2019`
 #### AWK in unix
-- awk is used for processing text based data. 
+- awk is used for processing text based data.
 - Nicely tied up with linux. (can be used with pipes)
 - Sample usages:
-- `awk '<pattern> {<action>}' filename` 
+- `awk '<pattern> {<action>}' filename`
     - `awk '{print}' file.txt` prints entire file
     - `awk '$9 == 500 { print $0}' /var/log/httpd/access.log` for patterns you can see filenames.
     - `awk -F ':' '{print $1}' file.txt` Splits line by `:` instead of a space and prints the first item from each row.
@@ -1562,7 +1580,7 @@ class Test<T>
 - `yy` copy current line `p` pastes current line.
 - `:tabnew filename` Opens file in a new tab.
 - `:<line-number>` Jump to line.
-- `u` undo, `Ctrl + r` 
+- `u` undo, `Ctrl + r`
 - `/searchword` Navigate through the results with `n` and `N`.
 - Find and replace in selection: like perl regexes
     - select text > `:` > `s/toreplace/replacewith/gc` -(`g` for all occurances, `c` for interactive one by one).
@@ -1707,7 +1725,7 @@ child.interact()
 - Finding anagrams doesn't require always sorting the string and looking for the same in t
 he hashmap (O(nLog(n)))
 - One cool approach is just O(n), create an array of all possible characters in the word. And iterate over it to increase counter for each character. Then the key in the hashmap can be a tuple of this array.
- 
+
 
 ---
 `May 5, 2019`
@@ -1725,14 +1743,14 @@ he hashmap (O(nLog(n)))
     - Isolation
     - Durability
 - NoSql supports BASE - (AP systems)
-    - Basically 
+    - Basically
     - Available
     - Softstate
     - Consistency
 - Distributed datastore: No master slave, All nodes have some backup in other nodes
     - Uses consistent hash ring to decide node to save data in.
     - Use gossip protocol for inter-node communication.
-- Who doesn't use NoSQL databases: 
+- Who doesn't use NoSQL databases:
     - Stackoverflow, Youtube, Instagram, WhatsApp
     - ACID is not guaranteed, two nodes have different versions of the data (Too many updates!)
     - Not read optimized! Get users of age > 30.
@@ -1753,11 +1771,11 @@ he hashmap (O(nLog(n)))
     - Local Cache
     - Global cache
     - Distributed Cache - Uses consistent hashing - each node has a small piece of the cache, and will then send a request to another node for the data before going to the origin. Therefore, one of the advantages of a distributed cache is the increased cache space that can be had just by adding nodes to the request pool. `Memcached`
-- **Proxies** - 
+- **Proxies** -
     - Club requests into one big request to reduce load on the database. Usually a cache is placed in front of the proxy.
 - **Load Balancer** -
     - Series of load balancers are also often used.
-- **Queues** - 
+- **Queues** -
     - To process requests on their own capacity.
 
 #### AB Testing
@@ -1926,7 +1944,7 @@ he hashmap (O(nLog(n)))
 - How to decide the window size ?
 
 `Just in time normalization doubt:`
-- [pdf](https://www.cs.ucr.edu/~eamonn/Matrix_Profile_Tutorial_Part2.pdf). The step where I'm supposed to get a scalar between -1 and 1, I get a vector! Stuck there! 
+- [pdf](https://www.cs.ucr.edu/~eamonn/Matrix_Profile_Tutorial_Part2.pdf). The step where I'm supposed to get a scalar between -1 and 1, I get a vector! Stuck there!
 - The autograd brute force approach is implemented.
 - Sending back gradients now!
 
@@ -1942,7 +1960,7 @@ he hashmap (O(nLog(n)))
     - Or better, just convolutions to the frames! and feeding this to an LSTM for counting class assignment!
 - Getting a better output from the matrix profile seems more tedious as that would mean you have high correlation frame occurance exactly at the right times. Which means the distance matrix will have to be learned! Which would mean less distance.
 - I have reasons to believe, the current implementation of the Matrix Profile is wrong!
-- 
+-
 
 
 ---
@@ -1955,7 +1973,7 @@ he hashmap (O(nLog(n)))
     - If you do, replace it with the smallest number on it's right. 523[6]97[4]
     - And then, ascending sort the numbers on the right! 523[6]479
     - You've found the your number 😄
-- Python union and intersection: Can't be done with `and` and `or`! 
+- Python union and intersection: Can't be done with `and` and `or`!
     - `set3 = set1.union(set2)` is the same as `set1 | set2`
     - `set3 = set1.intersection(set2)`
 
@@ -1965,9 +1983,9 @@ he hashmap (O(nLog(n)))
 #### Path finding
 `algorithm`
 - **The Dijkstra's algorithm**:
-    - 
+    -
 - **The $A^*$ algorithm**:
-    - 
+    -
 
 
 ---
@@ -1994,7 +2012,7 @@ he hashmap (O(nLog(n)))
 `algorithm`
 - Common Ancestor: Bottom up! If both left and right subtrees have one of the children, return the current node! else return None!
 - Path to a node: BackTracking! Keep appending items to a passed array (by reference) and remove them if result was not found!
-- Reverse a linked list inplace: prev, curr, next 
+- Reverse a linked list inplace: prev, curr, next
     - `while(curr is not None):`
     - `next = curr.next`, `curr.next = prev`, `prev = curr`, `curr = next`
     - Recursive solutions:
@@ -2037,7 +2055,7 @@ he hashmap (O(nLog(n)))
 - **OrderedDict** - List of tuples!
     - Supports all dictfunctions too!
     - Usage: `od = collections.OrderedDict(d)` or can submit a dict sorted on keys/vals
-    - useful method: `od.popitem()` removes a `(k,v)` from the end. Can remove from beginning if argument `False` is passed to it. 
+    - useful method: `od.popitem()` removes a `(k,v)` from the end. Can remove from beginning if argument `False` is passed to it.
 - **defaultdict** - dictionary of lists/sets etc
     - Usage `dd = collections.defaultdict(list)`
     - `set/list/int` can be used for default initialization of the value for the key that is being accessed.
@@ -2045,7 +2063,7 @@ he hashmap (O(nLog(n)))
 - Regex:
     - `import re`
     - `re.search` will search anywhere in string, `re.match` at the beginning (Useless). `re.findall` will try to find all occurances!
-    - 
+    -
 
 
 ---
@@ -2054,7 +2072,7 @@ he hashmap (O(nLog(n)))
 `algorithm`
 - Median from a running list ?
     - Maintain two heaps! One for smaller elements and one for larger elements! Their tops will contribute to the median.
-    - Another approach ? Keep a sorted list! Insertion will be O(logn) and median will be the middle of the sorted list! Same complexity simple solution! 
+    - Another approach ? Keep a sorted list! Insertion will be O(logn) and median will be the middle of the sorted list! Same complexity simple solution!
 - In place array update ? Use an encoding for different cases! (like substitute 2,3,4 when array can actually have only 0s and 1s).
 - 2D Matrix with sorted rows and cols. How to find an element in this ?
     - O(m + n) soln: Start looking from top right corner: (row=0, col = m)
@@ -2069,7 +2087,7 @@ he hashmap (O(nLog(n)))
 `March 21,2019`
 #### Hello DP :robot:
 `algorithm`
-- Is number(n) a power of 3 ? Without loops/recursions ? 
+- Is number(n) a power of 3 ? Without loops/recursions ?
     - Find biggest power of 3 which is a valid int! (3^19) (call it `a`)
     - Number is a power if `a%n == 0`.
 - For power of 4, see if number has 1s at odd bit locations! `1, 100, 10000, ..` and prepare a mask like `10101010101`.
@@ -2078,7 +2096,7 @@ he hashmap (O(nLog(n)))
     - `a[::2] = some_slice_of_same_size` inplace! Isn't Python neat ? 🐍
 - Dynamic programming: Always use loops to fill up stuff! Instead of recursion!
 - Smaller numbers ahead of each number! Loop back from the end and maintain a BST with counts of how many smaller numbers were encountered at each node.
-- Increasing subsequence! - DP again! Check sequences of sizes 1 and then 2 etc. 
+- Increasing subsequence! - DP again! Check sequences of sizes 1 and then 2 etc.
     - Keep iterating, if new element is larger than everything, append! else replace/update an existing item in the list! That's it!
     - NOTE: the elements will be incorrect, but the length is correct:
     - Dry run the seq: `[8, 2, 5, 1, 6, 7, 9, 3]`
@@ -2139,7 +2157,7 @@ he hashmap (O(nLog(n)))
 `algorithm`
 - Use 2 dicts to solve this!
 - [Great Problem](https://www.hackerrank.com/challenges/count-triplets-1/problem)
-- How to find all possible triplets ? 
+- How to find all possible triplets ?
     - Recursively call the function that adds to a global array!
     - Append only if the size of the triplet is 3.
     - Call the function like merge_sort! without having to return anything!
@@ -2231,7 +2249,7 @@ he hashmap (O(nLog(n)))
 `March 6, 2019`
 #### Rotate Image (2D array) in-place
 `algorithm`
-- Transpose first - 
+- Transpose first -
     - You transpose only on one side of the diagonal. (Inner loop should be  `for j in range(i,n)` - OR - `for j in range(0,i)`)
 - Then reverse column order
 - Easy Peasy!
@@ -2294,7 +2312,7 @@ he hashmap (O(nLog(n)))
 ---
 `Feb 9, 2019`
 #### Voice Typing
-- *Google Docs*: `Tools > Voice Typing` 🐙 
+- *Google Docs*: `Tools > Voice Typing` 🐙
 - Gonna start *typing* 😉 tonight!
 
 #### Noise generation
@@ -2334,7 +2352,7 @@ he hashmap (O(nLog(n)))
 #### LSTMs vs MP
 - LSTMs trained just on sine waves showed some good signs on the Matrix Profile ❤️
 - Waiting for the meeting to decide how to make it and end to end model!
-- 
+-
 
 ---
 `Jan 22, 2019`
@@ -2367,9 +2385,9 @@ he hashmap (O(nLog(n)))
 - Expected Number of occurences in interval (h) = $\lambda. h$
 - Sum of two poisson processes is also a poisson with $\lambda s$ added.
 - **Uniform distribution**: If an event of a Poisson Process occurs during interval [0, t], the time of occurance of this event is uniformly distributed over [0, t].
-- `PROBLEMS TAKEAWAY`: 
+- `PROBLEMS TAKEAWAY`:
     - Don't forget the law of total probabilities (Summation) for calculating PDFs with a **variable** input etc. There can be questions with a mixture of Poisson (Probability that Count of something is k) and Bernoulli (Probability that number of successes is k) distributions.
-    - From a combination of poissons, **Given an arrival:** prob that arrival was from p1 = $\frac{\lambda_1}{\lambda_1 + \lambda_2}$ 
+    - From a combination of poissons, **Given an arrival:** prob that arrival was from p1 = $\frac{\lambda_1}{\lambda_1 + \lambda_2}$
         - This will be just a product if **not given** an arrival. (Bayes! Duh!)
         - **A joint flow can also be decomposed** with rates $\lambda.p$ and $\lambda.(1-p)$ (Instead of mixing it up with a binomial).
     - Maximising winning probability = equate first derivative to 0 and solve!
@@ -2378,7 +2396,7 @@ he hashmap (O(nLog(n)))
 ---
 `Jan 17, 2019`
 #### Luigi's Princess
-- Found an issue to work on in Spotify's Luigi. Working on creating a pull request for the same. 
+- Found an issue to work on in Spotify's Luigi. Working on creating a pull request for the same.
     - Currently, a dictionary {bool, worker} is returned along with the worker details.
     - an object of type `LuigiRunResult` should be returned
 - Got responses from `Beats` and `Luigi` on the PRs. 😍
@@ -2388,7 +2406,7 @@ he hashmap (O(nLog(n)))
 `Jan 15, 2019`
 #### Matrix Profiling
 `msc`
-- Should I use the (n x n) distance profile for my training ? 
+- Should I use the (n x n) distance profile for my training ?
 - IDEA: Make use of the fact that a repetition means it has a peak and the part after the peak is a mirror of the part before the peak.
 
 #### Neural Ordinary Differential Equations
@@ -2402,11 +2420,11 @@ he hashmap (O(nLog(n)))
 #### GNU Make
 - [Tutorial](https://opensourceforu.com/2012/06/gnu-make-in-detail-for-beginners/)
 - `sudo apt-get install build-essential`
-- 
-``` 
+-
+```
 target: dependency1 dependency2 ...
 [TAB] action1
-[TAB] action2 
+[TAB] action2
 ```
 - Target can be all, clean etc.
 - all/First target is executed if make is run without arguments. Otherwise `make target`
@@ -2460,12 +2478,12 @@ subtargets:
 ---
 `Jan 9, 2019`
 #### Beats setting up
-- I have decided to contribute to Elastic Beats! Cz go go go! 
+- I have decided to contribute to Elastic Beats! Cz go go go!
 - Following these [setup instructions](https://www.elastic.co/guide/en/beats/devguide/current/beats-contributing.html#setting-up-dev-environment).
 - Use [EditorConfig](https://editorconfig.org/) file for your open-source projects fellas! Installed the sublime plugin.
 - `magefile` = Make like tool for converting go-functions to make-target like executables.
 - Installed [govendor](https://github.com/kardianos/govendor) for dependency management.
-- Beats contain 
+- Beats contain
     - Data collection logic aka _The Beater_!
     - Publisher - (Implemented already by `libbeat` which is a utility for creating custom beats)
 - Bare minimum message requirements:
@@ -2510,8 +2528,8 @@ Following the Go Tour now!
 - Use `go build` to see if your program compiles
 - First line in a Go program must be `package blah` where the files belonging to this package must all have this. This package name must not always be unique, just the path where it resides should be! Use `package main` for executables.
 - Importing packages <br>
-``` import ( 
-        "fmt" 
+``` import (
+        "fmt"
         "github.com/live-wire/util" )
     fmt.Println(util.something)
 ```
@@ -2548,7 +2566,7 @@ Following the Go Tour now!
 - Errors: cast the erroneous variable with the error class.
     - define `type ErrType float64`
     - `func (e ErrType) Error()string { return fmt.Sprintf("%f",e) } `
-    - Use it as `ErrType(12.23)` 
+    - Use it as `ErrType(12.23)`
     - It will also be of type error!
 - Go Routines:
     - Usage `go functionName()`
@@ -2556,7 +2574,7 @@ Following the Go Tour now!
     - `ch := make(chan int)`
     - Channels need to close themselves by calling when `close(c)` when reading in a loop (to exit a _range_) `for i := range c {}`
 - To select a channel to run:
-``` for { select { 
+``` for { select {
         case res := <-resc:
             fmt.Println(res)
         case err := <-errc:
@@ -2583,7 +2601,7 @@ Following the Go Tour now!
 ---
 `Jan 2, 2019`
 #### Pong to pixels
-- [Blog post] by Karpathy on Reinforcement Learning! 
+- [Blog post] by Karpathy on Reinforcement Learning!
 - Good [video](https://www.youtube.com/watch?v=JgvyzIkgxF0) by Xander.
 - Deep Q Learning with function approximation (which can be a CNN etc.)
 - "Whenever there is a disconnect between how magical something seems and how simple it is under the hood I get all antsy and really want to write a blog post" - _Karpathy_ You Go Boy!
@@ -2592,7 +2610,7 @@ Following the Go Tour now!
 - Nice take-away = Policy gradients help incorporate stochastic, non-differentiable flows which can be backpropagated through. [Stochastic computation paths](https://arxiv.org/abs/1506.05254). These work best if there are a few discrete choices.
 - [Trust Region Policy](https://arxiv.org/abs/1502.05477) is generally used in practice. (Monotonically improves)
 - Keyboard/mouse input programatically = [Pyautogui](https://github.com/asweigart/pyautogui)
-- Applying for AI jobs! In amazing teams? Be useful to them! Read what they must be reading right now! 
+- Applying for AI jobs! In amazing teams? Be useful to them! Read what they must be reading right now!
 
 
 
@@ -2601,7 +2619,7 @@ Following the Go Tour now!
 #### Temporal Convolutional Networks
 `msc`
 ![TCN Block](https://live-wire.github.io/msc/temporal_block.png)
-- Could TCNs replace LSTMs for Sequence Tasks ? 
+- Could TCNs replace LSTMs for Sequence Tasks ?
     - TCNs have a longer memory and have Convolutions (faster to train, fewer parameters)
 - TCNs employs residual modules instead of simple conv layers with dilations.
     - It employs `Weight Normalization`
@@ -2668,10 +2686,10 @@ Following the Go Tour now!
 
 #### CNNs with dilations
 `msc`
-- There are other activations like ELU, SELU etc. 
+- There are other activations like ELU, SELU etc.
     - They make RELU differentiable at x=0! (RELU = $max(0,x)$, ELU = $max(0,x) + min(0, \alpha*(exp(x)-1))$)
 - Learnable parameters in 1D-CNNs = For each kernel: kernel_params + 1 (bias)
-    - 1D CNN Pytorch: 
+    - 1D CNN Pytorch:
         - Input/Output = (N (Batch size), C(input/output channels), L(length of sequence))
 - `Try to make a bidirectional CNN with dilations model!`
 - Looks like I wasn't employing the dilations before. Was just using the FCN. 🙈
@@ -2685,7 +2703,7 @@ Following the Go Tour now!
 - `Bidirectional=True` with same number of hidden parameters (actually multiplied by 2 for both directions), performs much better for peak detection.
     - Make sure to double the input params of the linear layer that follows it when you make it bidirectional.
     - A fair competition would be competing against a regular(unidirectional) LSTM with double the hidden units.
-    - Calculating parameters in a bidirectional LSTM/GRU/RNN: 
+    - Calculating parameters in a bidirectional LSTM/GRU/RNN:
         - First Layer: 2 * (inp * hidden + hidden) (Multiplied by 2 as bidirectional)
         - Output of first/upcoming hidden layers: 2 * (hidden*hidden + hidden)
         - Input of second/upcoming hidden layers: 2 * ((hidden+hidden)*hidden + hidden)
@@ -2744,7 +2762,7 @@ Following the Go Tour now!
 - Override methods `__str__` to make the object printable when printed directly and `__repr__` to make the object printable even when a part of an array etc.
 
 #### Heapify [RECAP](https://en.wikipedia.org/wiki/Binary_heap#Building_a_heap)
-- Heapify! = log(n) = (Trickle down! **ALWAYS TRICKLE DOWN**) 
+- Heapify! = log(n) = (Trickle down! **ALWAYS TRICKLE DOWN**)
     - Insert element at the top and call heapify once.
     - Pop element by first swapping the first with the last and removing the last! Then call heapify once.
 - BuildHeap = n/2 * log(n) = (Start from bottom) check children for heap property (trickle up)
@@ -2752,9 +2770,9 @@ Following the Go Tour now!
 
 ---
 `Dec 6, 2018`
-#### Plotting peaks and valleys in Sine waves 
+#### Plotting peaks and valleys in Sine waves
 `msc`
-- combining multiple generators - 
+- combining multiple generators -
     - `from itertools import chain`
     - `generator3 = chain(generator1(), generator2())`
 - Sine waves - Manual Peak detection can look at the local minimas and maximas! What about the global characteristics ? How to tackle them ? :sad:
@@ -2894,13 +2912,13 @@ Notations: $h_t$ = output at each time step, $C_t$ = Cell State, $x_t$ = Input a
     - Principal Component Analysis / Maximum Likelihood estimation / Variational AutoEncoders. We use it when some data is missing! Who else uses this ? - Auto Encoders.
     - Latent variables capture, in some way, an underlying phenomenon in the system being investigated
     - After calculating the latent variables in a system, we can use these fewer number of variables, instead of the K columns of raw data. This is because the actual measurements are correlated with the latent variable
-- Two Dimensional RNNs [link](https://arxiv.org/pdf/1506.03478.pdf) used for generating patterns in images. 
+- Two Dimensional RNNs [link](https://arxiv.org/pdf/1506.03478.pdf) used for generating patterns in images.
 - Autoregressive - A value is a function of itself (in a previous timestep). AR(1) means the process includes instance of t-1.
 - **Uber's pyro** - Probabilistic programming (Bayesian statistics) with PyTorch. Build Bayessian Deep learning models.
     - Traditional ML models like XGBoost and RandomForests don't work well with small data. [source](https://www.youtube.com/watch?v=7QlKZKbQa6M)
     - Used for Semi-supervised learning.
     - Variational inference models for time-series forecasting ? SVI ? (IDEA ? `msc` ?)
-    
+
 
 ---
 `Nov 14, 2018`
@@ -2926,7 +2944,7 @@ Notations: $h_t$ = output at each time step, $C_t$ = Cell State, $x_t$ = Input a
 `Maths` `Numbers` `Primes`
 - The $\zeta(s) = \frac{1}{1^s} + \frac{1}{2^s} + \frac{1}{3^s} + \frac{1}{4^s} ...$
 - This is undefined for real numbers <=1 and is convergent for any values greater.
-- Great [video](https://www.youtube.com/watch?v=d6c6uIyieoo). 
+- Great [video](https://www.youtube.com/watch?v=d6c6uIyieoo).
 - Where is this function zero apart from the trivial(-2, -4, -6 etc.) ones. (On the strip between zero and 1 somewhere)
 - Rieman's hypothesis = they lie on the line where the real-component = 1/2. This tells us something about the distribution of primes.
 - Take away: How many primes are less than x ? $\frac{x}{ln(x)}$ 💣 and the prime density is $\frac{1}{ln(x)}$
@@ -2938,7 +2956,7 @@ Notations: $h_t$ = output at each time step, $C_t$ = Cell State, $x_t$ = Input a
 
 ---
 `October 26, 2018`
-#### Konigsberg Bridge problem 
+#### Konigsberg Bridge problem
 `Algorithm` `Puzzle`
 - The Graph needs to have all nodes with even degree and only zero or 2 nodes with odd degree for the _Eulerian Walk_ to be possible. (Same as being able to draw a figure without lifting the pencil or drawing on the same line again)
 
@@ -2951,7 +2969,7 @@ Notations: $h_t$ = output at each time step, $C_t$ = Cell State, $x_t$ = Input a
 
 #### Neural Style
 [Pytorch tutorial](https://pytorch.org/tutorials/advanced/neural_style_tutorial.html)
-- Distances (Minimize both of these during optimization): 
+- Distances (Minimize both of these during optimization):
     - $D_s$ - Style Distance
     - $D_c$ - Content Distance
 - It is amazing how easy it was to run this :O (Loving PyTorch 🔥)
@@ -2959,7 +2977,7 @@ Notations: $h_t$ = output at each time step, $C_t$ = Cell State, $x_t$ = Input a
 #### Torchvision useful functions
 `msc`
 - `torchvision.transforms` contains a bunch of image transformation options
-- Chain them up using `transforms.Compose` like this: 
+- Chain them up using `transforms.Compose` like this:
 ```
 loader = transforms.Compose([
     transforms.Resize(imsize),  # scale imported image
@@ -2967,7 +2985,7 @@ loader = transforms.Compose([
     transforms.ToTensor()])  # transform it into a torch tensor
 unloader = transforms.ToPILImage()
 ```
-and use it like: 
+and use it like:
 ```
 def image_loader(image_name):
     image = Image.open(image_name)
@@ -3000,14 +3018,14 @@ These models expect some normalizations in the input
 #### HackJunction Budapest
 - DCM files(from both MRI and CT scans) contain pixel_array for each slice.
 - A different file contains information about the contours of tumour - corresponding to the slices.
-- Learnings: 
+- Learnings:
     - **Fail Fast**,  **Move on**, **Don't try to protect your code**
     - Spend time on MLH challenges, win cool stuff like the Google home mini 😉
     - Check out Algolia (Hosted search API) for quick prototyping
 
 #### Algorithms Q1 New Year's chaos:
 [Link](https://www.hackerrank.com/challenges/new-year-chaos/) to the problem.
-- Solution: 
+- Solution:
     - No one can move more than two positions backwards (2 bribes each) (Break if someone does)
     - Start from the back: See how many bribes the small number took to reach there. If the number at the end is 4, see from 4-2= _2 to end-1_ if there are numbers bigger than 4 and keep a count :happy:
 
@@ -3021,7 +3039,7 @@ These models expect some normalizations in the input
 ![WaveNet Structure](https://storage.googleapis.com/deepmind-live-cms/documents/BlogPost-Fig2-Anim-160908-r01.gif)
 - Dilated convolutions support exponential expansion of the receptive field instead of linear
 - Saves memory, but also preserves resolution.
-- Parametrising convolution kernels as Kronecker-products is a cool idea. (It is a nice approximation technique - very natural) 
+- Parametrising convolution kernels as Kronecker-products is a cool idea. (It is a nice approximation technique - very natural)
     - Reduces number of parameters by over 3x with accuracy loss of not over 1%.
 - Convolutions arithmetic. [Link](https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md)
 
@@ -3048,7 +3066,7 @@ These models expect some normalizations in the input
 ---
 `October 10, 2018`
 `msc`
-#### RepCount 
+#### RepCount
 - Discuss about IndRNN (Long sequence problems for Recurrent neural network)
 - Plot activations in layers(one by one) over timesteps. Activation vs Timestep.
 - NEWMA - online change point detection
@@ -3059,11 +3077,11 @@ These models expect some normalizations in the input
 - Square-root is a monotonic function (Can be avoided when using L2)
 - KNN is okay in low dimensional datasets. Usually not okay with images.
 - Linear Classifier:
-    - Better than KNN because 
+    - Better than KNN because
         - parameters need to be checked instead of all existing images.
         - Template is learned and negative-dot-product is used as distance with the template instead of L1, L2 distances like in KNN
     - The class score function has the form $Wx_i + b$. You get scores for each class.
-    - If you plot a row of W, it will be a template vector for a class. Loss is a different thing be it SVM(hinge loss) or softmax (cross-entropy). 
+    - If you plot a row of W, it will be a template vector for a class. Loss is a different thing be it SVM(hinge loss) or softmax (cross-entropy).
     - And once you have the loss, you can perform optimization over the loss.
 ![svm-softmax](http://cs231n.github.io/assets/svmvssoftmax.png)
 #### Constraint optimization
@@ -3129,7 +3147,7 @@ These models expect some normalizations in the input
             - A*
         - Make absolutely sure you can't think of a way to solve it using graphs before moving on to other solution types.
     - NP-completeness
-        - traveling salesman 
+        - traveling salesman
         - knapsack problem
         - Greedy approaches
     - Math
@@ -3153,7 +3171,7 @@ These models expect some normalizations in the input
 - If you share the weights across time, then your input time sequences can be a variable length. Because each time before backpropagating loss, you go over atleast a sequence.
     - Shared weights means fewer parameters to train.
     - IDEA! - For longer sequences, maybe share less weights across time.
-- nn.LSTM: Suppose we have 2 layers. 
+- nn.LSTM: Suppose we have 2 layers.
     - Input to L1 = input, (h1, c1)
     - Output from L1 = (h1_, c1_)
     - Input to L2 = h1_, (h2, c2)
@@ -3187,7 +3205,7 @@ These models expect some normalizations in the input
 - threading.Thread vs multiprocessing.Process nice [video](https://www.youtube.com/watch?v=ecKWiaHCEKs)
 - Use Threading for IO tasks and Process for CPU intensive tasks.
 - Threading makes use of one core and switches context between the threads on the same core.
-- Processing makes use of all the cores (Like a badass) 
+- Processing makes use of all the cores (Like a badass)
 
 ---
 `September 23, 2018`
@@ -3212,7 +3230,7 @@ These models expect some normalizations in the input
 ---
 `September 19, 2018`
 
-#### Everything Gaussian 
+#### Everything Gaussian
 - When someone says random variable, it is a single dimension!
 - _Central limit theorem_: If any random variable is sampled infinitely, it ends up being normally distributed
 - Expectation values:
@@ -3232,7 +3250,7 @@ These models expect some normalizations in the input
 - Normally distributed classes:
     - Use formula $(x-\mu)^T\Sigma^{-1}(x-\mu) = C$ to get the equation of an ellipse(the iso curve that `seaborn.jointplot` plots).
     - The orientation and axes of this ellipse depend on the eigen vectors and eigen values respectively of the covariance matrix.
-    - 
+    -
 
 
 ---
@@ -3286,7 +3304,7 @@ def forward(self, input, hidden):
     - i.e. $P( x | w_1) P(w_1) > P( x | w_2) P(w_2)$
     - where $P(x | w_1) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp{-\frac{(x - \mu)^2}{2\sigma^2}}$
     - Boom!
-- Use `np.random.normal(self.mean, self.cov, self.n)` for univariate and `numpy.random.multivariate_normal` for multivariate data generation 
+- Use `np.random.normal(self.mean, self.cov, self.n)` for univariate and `numpy.random.multivariate_normal` for multivariate data generation
 
 
 #### Seaborn for visualization in matplotlib
@@ -3339,7 +3357,7 @@ Karpathy's [talk](https://skillsmatter.com/skillscasts/6611-visualizing-and-unde
 #### Django :mango:
 - Finished Routing
 - **Permissions / Groups**
-    - TODO 
+    - TODO
 
 
 ---
@@ -3447,8 +3465,8 @@ than the input and output layers so it doesn't learn a one on one representation
 (overcomplete).(use regularization!)
     - Split-brain auto encoders are composed of concatenated cross-channel encoders. are able to transfer well to other, unseen tasks.
 - **GANs**
-- **Unsupervised Learning**: 
-    - It can learn compression to store large datasets  
+- **Unsupervised Learning**:
+    - It can learn compression to store large datasets
     - Density estimation
     - Capable of generating new data samples
 - "Inverse Compositional Spatial Transformer Networks." ICSTN stores the geometric warp (p) and outputs the original image, while STN only returns the warped image (Pixel information outside the cropped region is discarded).
@@ -3474,11 +3492,11 @@ Nice [Numpy](http://cs231n.github.io/python-numpy-tutorial/) tricks.
     - If the arrays do not have the same rank, prepend the shape of the lower rank array with 1s until both shapes have the same length.
     - In any dimension where one array had size 1 and the other array had size greater than 1, the first array behaves as if it were copied along that dimension
 
-#### CS231n 
+#### CS231n
 
 - One Hidden Layer NN is a universal approximator
 - Always good to have more layers. (Prevent overfitting by using Regularization etc.)
-- **Initialization**: 
+- **Initialization**:
     - For Activation tanh = `np.random.randn(N)/sqrt(N)`
     - For RELU = `np.random.randn(n)*sqrt(2/n)`
     - Batch Norm makes model robust to bad initialization
