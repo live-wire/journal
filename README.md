@@ -27,10 +27,36 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - `Cmd + B` open close folder view
 - File diff `code --diff <file1> <file2>`
 - Copy selection up/down `shift option up/down`.
-- Move line up/down `option up/down`
+- Move line up/down `Cmd + option + up/down`
 - Jump to line number `ctrl + g`
+- Jump lines `option + up/down` (Install extension line-jumper for this)
 - Find and replace `Cmd + option + R`
-
+- `keybindings.json` should look like this
+```json
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "alt+cmd+up",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+up",
+        "command": "-editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+cmd+down",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+down",
+        "command": "-editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    }
+]
+```
 
 ---
 `July 2, 2021`
