@@ -14,6 +14,39 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
 ---
+`July 11, 2021`
+#### Functional Programming & Scala
+- Following a book by Paul Chiusana, Runar Bjarnason, Martin Odersky.
+- Functional programming is a restriction on how we write programs, but not on what programs we can express.
+- Pure functions are easier to test, reuse, parallelize, generalize, and reason
+about. Furthermore, pure functions are much less prone to bugs.
+- An expression e is referentially transparent if, for all programs p, all occurrences of e in p can be replaced by the result of evaluating e without affecting the meaning of p.
+    - When expressions are referentially transparent, we can
+imagine that computation proceeds much like we’d solve an algebraic equation.
+- Currying = convert function of two arguments to a function of one argument and applies f partially.
+    - `def curry[A,B,C](f: (A, B) => C): A => (B => C) = (a: A) => (b: B) => f(a,b)`
+    - It is often used for assisting with type inference.
+- Uncurry = reverse of curry. Convert curried function to a function with multiple arguments.
+    - `def uncurry[A,B,C](f: A => B => C): (A, B) => C = (a: A, b: B) => f(a)(b)`
+- Compose = one function aftet the another. Very common use case. Scala Function1 has this available. (`compose`, `andThen` are similar. `f andThen g` = `g compose f`)
+    - `def compose[A,B,C](f: B => C, g: A => B): A => C = (a: A) => f(g(a))`
+    - `val f = (x: Double) => math.Pi/2-x`
+    - `val cos = f andThen math.sin` NEAT
+- Functional List:
+```
+sealed trait List[+A]
+case object Nil extends List[Nothing]
+case class Cons[+A](head: A, tail: List[A]) extends List[A]
+```
+
+- Functional Tree:
+```
+sealed trait Tree[+A]
+case class Leaf[A](value: A) extends Tree[A]
+case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
+```
+
+---
 `July 2, 2021`
 #### VSCode tricks
 - [Link](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
@@ -57,6 +90,8 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     }
 ]
 ```
+
+
 
 ---
 `July 2, 2021`
