@@ -15,6 +15,24 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 ---
 `July 11, 2021`
+#### Open Policy Agents
+- In Kubernetes, Admission Controllers enforce policies on objects during create, update, and delete operations. Admission control is fundamental to policy enforcement in Kubernetes. 
+For example, by deploying OPA as an **admission controller** you can:
+    - Require specific labels on all resources.
+    - Require container images come from the corporate image registry.
+    - Require all Pods specify resource requests and limits.
+    - Prevent conflicting Ingress objects from being created.
+    - Admission controllers can also mutate incoming objects. 
+
+By deploying OPA as a **mutating admission controller** you can:
+    - Inject sidecar containers into Pods.
+    - Set specific annotations on all resources.
+    - Rewrite container images to point at the corporate image registry.
+    - Include node and pod (anti-)affinity selectors on Deployments.
+
+
+---
+`July 11, 2021`
 #### Functional Programming & Scala
 - Following a book by Paul Chiusana, Runar Bjarnason, Martin Odersky.
 - Functional programming is a restriction on how we write programs, but not on what programs we can express.
@@ -64,6 +82,7 @@ case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
 - Jump to line number `ctrl + g`
 - Jump lines `option + up/down` (Install extension line-jumper for this)
 - Find and replace `Cmd + option + R`
+- Open extensions marketplace `Cmd + shift + x`
 - `keybindings.json` should look like this
 ```json
 // Place your key bindings in this file to override the defaults
