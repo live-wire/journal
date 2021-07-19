@@ -13,9 +13,41 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
+
+
+---
+`July 19, 2021`
+#### Go Modules
+`k8s`
+- `go mod init` creates a new module, initializing the go.mod file that describes it.
+- `go build, go test,` and other package-building commands add new dependencies to go.mod as needed.
+- `go list -m all` prints the current module’s dependencies.
+- `go list -m -versions <module>` prints module's available versions.
+- `go get` changes the required version of a dependency (or adds a new dependency).
+- `go mod tidy` removes unused dependencies.
+
+
+---
+`July 16, 2021`
+#### Kubernetes Operators - Kubebuilder
+`k8s`
+- [Following this book](https://book.kubebuilder.io/)
+![Architecture](https://live-wire.github.io/msc/temporal_block.png): 
+- Edit `api/v1/project_types.go` to make changes in the API (CRD).
+- `make install` generates kustomize template and applies it to your context.
+- Edit `controllers/project_controller.go` to make changes to the Controller.
+    - `make run` to run the controller in a shell for development
+    - Deploying the controller on cluster:
+        - `make docker-build docker-push IMG=<some-registry>/<project-name>:tag`
+        - `make deploy IMG=<some-registry>/<project-name>:tag`
+- An API Group in Kubernetes is simply a collection of related functionality.
+- Each API group-version contains one or more API types, which we call Kinds.
+- A resource is simply a use of a Kind in the API.
+
 ---
 `July 11, 2021`
 #### Open Policy Agents
+`k8s`
 - In Kubernetes, Admission Controllers enforce policies on objects during create, update, and delete operations. Admission control is fundamental to policy enforcement in Kubernetes. 
 For example, by deploying OPA as an **admission controller** you can:
     - Require specific labels on all resources.
@@ -34,6 +66,7 @@ By deploying OPA as a **mutating admission controller** you can:
 ---
 `July 11, 2021`
 #### Functional Programming & Scala
+`Scala`
 - Following a book by Paul Chiusana, Runar Bjarnason, Martin Odersky.
 - Functional programming is a restriction on how we write programs, but not on what programs we can express.
 - Pure functions are easier to test, reuse, parallelize, generalize, and reason
@@ -67,6 +100,7 @@ case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
 ---
 `July 2, 2021`
 #### VSCode tricks
+`IDE`
 - [Link](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
 - Open file `Cmd + P`
 - Command Pallete `Cmd + Shift + P`
@@ -115,6 +149,7 @@ case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
 ---
 `July 2, 2021`
 #### Parquet
+`Data`
 - Storage format initially built by Twitter and Cloudera.
 - [Informative video](https://www.youtube.com/watch?v=1j8SdS7s_NY)
 - Hybrid storage format.
@@ -193,6 +228,7 @@ println(summer(5)(using 11)) // 55 // This is how you override
 ---
 `June 9, 2021`
 #### Apache Beam
+`Data`
 - Following this [programming guide](https://beam.apache.org/documentation/programming-guide/).
 - Steps:
     - Create a driver program using one of Beam SDKs.
