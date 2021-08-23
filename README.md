@@ -14,6 +14,20 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
 
+---
+`Aug 5, 2021`
+#### TLS, Crypto and Quantum
+- Transport layer security [great video](https://www.youtube.com/watch?v=T4Df5_cojAs)
+- Shor's algorithm. Getting the prime factors of a big number is computationally demanding af. [video](https://www.youtube.com/watch?v=lvTqbM5Dq4Q&vl=en)
+  - Makes a bad guess and converts it into a better guess.
+  - This conversion takes loong on conventional compute, but surprisingly fast on quantum computers.
+  - So you need to guess the power p in this: `g^p = m.N + 1` (N = big number, g = crappy initial guess)
+  - 3/8 times you will end up with factors of N or m.N. Euclid's algorithm can be used to get the shared factors from there.
+  - This power also has a repeating property that the quantum computers can exploit by superposition and find a `p` that solves our equation.
+- Grover's algorithm. Search space N tasks can be done in `sqrt(N)` time using quantum.
+- Casper ffg - Vitalyk's consensus paper for proof of stake.
+- ETH2 will use Proof of stake instead of Proof of Work that is used by Bitcoin and will need much less compute.
+- ETH is all about smart contracts. Smart = code is embedded in the contract to distribute the tied up ethers (wealth) in the contract.
 
 ---
 `July 19, 2021`
