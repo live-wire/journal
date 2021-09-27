@@ -15,6 +15,94 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Sep 24, 2021`
+#### GoDoc
+- GoDoc tips [link](https://elliotchance.medium.com/godoc-tips-tricks-cda6571549b)
+- Each comment line should end with a `.` otherwise it is considered a `heading`
+- Multi line comments over a package/function, only the first line is used for "overview".
+- Only exported methods (that begin with a capital letter) are added to documentation.
+- Comments that begin with one extra space, are considered code blocks.
+- Examples can be added to the same package or in `yourpackage_test`
+```
+// This is a package-level example:
+func Example() {
+    fmt.Printf("Hi")
+}
+
+// Real is just another name for float64.
+type Real float64
+// Use Real like a general floating type:
+func ExampleReal() {
+    var x Real = 1.23
+}
+
+// Multiple examples for a function
+// Absolute value.
+func Abs(x Real) Real {
+}
+
+func ExampleAbs_positive() {
+    Abs(1.23)
+    // Output: 1.23
+}
+func ExampleAbs_negative() {
+    Abs(-1.23)
+    // Output: 1.23
+}
+```
+
+
+---
+`Sep 24, 2021`
+#### Scio Masterclass by Neville Li
+- `ScioContext.scala` Separation of runner classes (reflection)
+  - `ContextAndArgs` - Cmd line or Luigi specifies args here. (Intercept dataflow args here and pass on the rest)
+    - `PipelineOptions` - Dataflow specific
+    - `Args` - Scalding handles arg parsing
+  - `ScioExecutionContext` - Can have runner specific things in the response
+  - Counters are initialized to 0 in the `run()`
+- `PCollectionWrapper.scala` wraps the basic functionality like `apply`
+- `Scio coder case class sealed trait is not the same as Beam Coder`
+- `SCollection.scala` - syntactic sugar over beam transforms
+  - `CoderMaterializer.beam` - Takes a Scio coder and converts it to Beam Coder.
+  - `map`, `flatMap`, `filter` are just `beam doFns`
+- `Functions.scala` - Wrapping scala functions to convert them into Beam `DoFns`
+  - `NamedProcessFn` to get all stack traces etc. 
+  - Closure cleaner to send serialized functions. Scalding came up with it.
+- `SideInput` -
+- `PairSCollectionFunction` 
+  - Artisan Join
+  - Sparse join
+  - Bloom Filter - When one side has too many inputs compared to the other side.
+- `PairSkewedCollection`
+  - CountMinSketch - To get Hot keys.
+- `Coders`
+  - `CoderMaterializer` - Sending it to beam happens on SCollection apply
+  - Everything else happens in Scio before that.
+
+---
+`Sep 15, 2021`
+#### Apache Flink - Deeper dive - Network stack
+- [Link](https://flink.apache.org/2019/06/05/flink-network-stack.html) to the blog post.
+- The communication is a big part of `flink-runtime`. (Not to be confused with job manager and task manager coordination which is handled by Akka RPCs)
+- These low level components are implemented using Netty.
+- Network buffers: At this point in the stack, Flink is not dealing with individual records anymore but instead with a group of serialised records assembled together into **network buffers**. The number of buffers available to each subtask in its own local buffer pool (one per sending and receiving side each) is limited to at most `channels * buffers-per-channel + floating-buffers-per-gate`
+- In Flink, there are three situations that make a buffer available for consumption by the Netty server:
+    - a buffer becomes full when writing a record to it, or
+    - the buffer timeout hits, or
+    - a special event such as a checkpoint barrier is sent.
+- These network buffers can also be hand tuned as described [here](https://nightlies.apache.org/flink/flink-docs-release-1.8/ops/config.html#configuring-the-network-buffers).
+- 
+
+---
+`Aug 23, 2021`
+#### Open Policy Agent - Gatekeeper
+- Automating policy checks for kubernetes.
+- Uses a specialized language to define policy check constraints: [Rego](https://www.openpolicyagent.org/docs/latest/#rego)
+- Before you can define a constraint, you must first define a `ConstraintTemplate` (<- This is a CRD), which describes both the Rego that enforces the constraint and the schema of the constraint.
+
+
+---
 `Aug 5, 2021`
 #### TLS, Crypto and Quantum
 - Transport layer security [great video](https://www.youtube.com/watch?v=T4Df5_cojAs)
