@@ -15,6 +15,25 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Sep 30, 2021`
+#### K8s Applications
+- Stateless apps = Simple Deployments (That use ReplicaSets)
+- Single instance Stateful app:
+  - Deployment 1 replica
+  - PersistentVolume, PersistentVolumeClaim
+  - Service
+- Replicated stateful app:
+  - StatefulSet 
+    - PersistentVolume, PersistentVolumeClaim are a part of statefulset spec
+    - Names all the pods as `<statefulset-name>-<ordinal-number>` eg. `mysql-1`
+    - Scaling up statefulsets creates new pvc but scaling down doesn't delete them automatically.
+  - Headless service `clusterIp: None` Makes all pods available on the network individually
+    - `<pod-name>.<headless-service-name>`
+  - Service (Simple load balancer / clusterIp service)
+  - Usually a ConfigMap
+  - A pod disruption budget, so pods are not killed voluntarily (for maintenance, autoscaling etc.)
+
+---
 `Sep 24, 2021`
 #### GoDoc
 - GoDoc tips [link](https://elliotchance.medium.com/godoc-tips-tricks-cda6571549b)
@@ -1276,6 +1295,7 @@ service OesophagusService {
     - StatefulSet
     - DaemonSet
     - Job
+- StatefulSet: Manages the deployment and scaling of a set of Pods, and provides guarantees about the ordering and uniqueness of these Pods. Unlike a Deployment, a StatefulSet maintains a sticky identity for each of their Pods. These pods are created from the same spec, but are not interchangeable: each has a persistent identifier that it maintains across any rescheduling.
 - Switch kubernetes context from the top in Docker 4 Mac.
 - Setting default namespace:
 `kubectl config set-context <your-context> --namespace=<namespace-name>`
