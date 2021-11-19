@@ -13,6 +13,51 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
+---
+`Oct 7, 2021`
+#### Advanced Data Engineering
+- **Semigroups** - Sets which have an associative binary operation. (doesn't matter where you put the parenthesis)
+```
+(a + b) + c == a + (b + c)
+```
+
+- See `cats.Semigroup` 
+- **Commutativity** - `(a + b) == (b + a)` position doesn't matter
+-
+-
+
+- [Coursier](https://get-coursier.io/) is great for playing with dependencies etc. It is used by sbt for interacting with Artifactories.
+  - Mac: `~/Library/Caches/Coursier/v1`
+  - Linux: `~/.cache/coursier/v1`
+- Dependency Conflict resolution: Add the line: `addDependencyTreePlugin` to `project/plugins.sbt`
+  - Then use the sbt command `dependencyTree` / `dependencyBrowseTree` / `evicted`
+  - add setting `conflictManager := ConflictManager.strict` to NOT have conflicting dependencies silently evicted.
+  - Another option is add setting `dependencyOverrides ++= Seq("group" % "artifact" % "yourversion")`
+  - Or exclude deps per dependency in the setting `libraryDependency ++= Seq("group" % "artifact-dep" % "yourversion" exclude("group", "artifact"))
+
+---
+`Oct 7, 2021`
+#### Scala and Data
+- [Scala school basics](http://twitter.github.io/scala_school/basics.html) by twitter.
+```
+def timesTwo(i: Int): Int = {
+  println("hello world")
+  i * 2
+}
+```
+
+- Any function can be partially applied by using `_`
+```
+def adder(m: Int, n: Int) = m + n
+val add2 = adder(2, _:Int)
+add2(3)
+```
+
+- This `_` magic wildcard syntax also works with curried functions.
+```
+def multiply(m: Int)(n: Int): Int = m * n
+```
+
 
 ---
 `Sep 30, 2021`
@@ -32,6 +77,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
   - Service (Simple load balancer / clusterIp service)
   - Usually a ConfigMap
   - A pod disruption budget, so pods are not killed voluntarily (for maintenance, autoscaling etc.)
+- Get all CRD and resources in your k8s cluster: `kubectl api-resources -o wide`
 
 ---
 `Sep 24, 2021`
