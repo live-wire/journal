@@ -23,7 +23,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
   - `cargo check` checks compilation errors without producing executables
   - `cargo run` from within a cargo repo, runs the executable
 
-#### Hello GraphQL
+#### Hello GraphQL - [Link](https://graphql.org/learn/queries/)
 ##### Querying
 - **Fields** - straight forward. Query the nested fields you want only.
 ```
@@ -60,7 +60,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 }
 ```
 
-- **Fragments** - GraphQL includes reusable units called fragments.
+- **Fragments** - GraphQL includes reusable units called fragments. (A fragment cannot refer to itself or create a cycle)
 ```
 {
   leftComparison: hero(episode: EMPIRE) {
@@ -110,7 +110,7 @@ query HeroNameAndFriends($episode: Episode = "DefaultValue") {
 
 ```
 
-- **Directives** - More control to create dynamic queries: `@include(if: Boolean)`, `@skip(if: Boolean)`
+- **Directives** - More control to create dynamic queries: default ones `@include(if: Boolean)`, `@skip(if: Boolean)`. It is possible to create custom directives.
 ```
 query Hero($episode: Episode, $withFriends: Boolean!) {
   hero(episode: $episode) {
@@ -183,7 +183,125 @@ mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
 ```
 
 ##### Schemas/Types
-- 
+- Objects are defined with `type` keyword. 
+```
+type Character {
+  name: String!
+  appearsIn: [Episode!]!
+}
+```
+
+- Arguments. Each field in an object can have arguments. Arguments can have default values and are always named.
+```
+type Starship {
+  id: ID!
+  name: String!
+  length(unit: LengthUnit = METER): Float
+}
+```
+
+- Special reserved types. Query and Mutation. This is the entrypoint for all graphql queries/mutations.
+```
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+# You need this to expose types for querying
+type Query {
+  hero(episode: Episode): Character
+  droid(id: ID!): Droid
+}
+```
+
+- GraphQL default scalar types: `Int, Float, String, Boolean, ID`. It is possible to specify custom scalar types.
+- Enums
+```
+enum Episode {
+  NEWHOPE
+  EMPIRE
+  JEDI
+}
+```
+
+- Object types, scalars, and enums are the only kinds of types. Additional modifiers are list `[]` and not-null `!`.
+- **Interfaces** abstract type that includes a certain set of fields that a type must include to implement the interface.
+```
+interface Character {
+  id: ID!
+  name: String!
+  friends: [Character]
+  appearsIn: [Episode]!
+}
+```
+
+- **UnionTypes** Similar to interfaces but are not dependent on fields.
+```
+union SearchResult = Human | Droid | Starship
+```
+
+- Remember, to query object fields on unionTypes/Interfaces, use inlined fragments
+```
+query HeroForEpisode($ep: Episode! = "JEDI") {
+  hero(episode: $ep) {
+    name
+    ... on Droid {
+      primaryFunction
+    }
+  }
+}
+```
+
+- **Input Types**: Passing complex variables as arguments. Input types look exactly the same as regular object types, but with the keyword input instead of type. Schema:
+```
+input ReviewInput {
+  stars: Int!
+  commentary: String
+}
+```
+
+Query:
+```
+mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
+  createReview(episode: $ep, review: $review) {
+    stars
+    commentary
+  }
+}
+
+# variables 
+{
+  "ep": "JEDI",
+  "review": {
+    "stars": 5,
+    "commentary": "This is a great movie!"
+  }
+}
+```
+
+- Input types can't be mixed with output types in your schemas. Also, you can't have arguments on the fields in input types.
+
+##### Introspection
+- `__schema` is always available at the root type of a Query
+```
+{
+  __schema {
+    types {
+      name
+    }
+  }
+}
+```
+
+- Then you can dig into the schemas per field like so:
+```
+{
+  __type(name: "Droid") {
+    name
+    kind
+  }
+}
+```
 
 ---
 `March 28, 2022`
