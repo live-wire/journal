@@ -13,6 +13,195 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
+
+---
+`Sep 09, 2022`
+#### Hello Rust
+- Cargo package manager + build system
+  - `cargo new <newproject>`
+  - `cargo build` creates executable in `target/`
+  - `cargo check` checks compilation errors without producing executables
+  - `cargo run` from within a cargo repo, runs the executable
+
+#### Hello GraphQL
+##### Querying
+- **Fields** - straight forward. Query the nested fields you want only.
+```
+{
+  hero {
+    name
+    # Queries can have comments!
+    friends {
+      name
+    }
+  }
+}
+```
+
+- **Arguments** - Nested fields can have arguments too (that act like filters). Scalars can also have arguments (to perform trasnformations on the server side).
+```
+{
+  human(id: "1000") {
+    name
+    height(unit: FOOT)
+  }
+}
+```
+
+- **Aliases** - You can't directly query for the same field with different arguments. That's why you need aliases.
+```
+{
+  empireHero: hero(episode: EMPIRE) {
+    name
+  }
+  jediHero: hero(episode: JEDI) {
+    name
+  }
+}
+```
+
+- **Fragments** - GraphQL includes reusable units called fragments.
+```
+{
+  leftComparison: hero(episode: EMPIRE) {
+    ...comparisonFields
+  }
+  rightComparison: hero(episode: JEDI) {
+    ...comparisonFields
+  }
+}
+
+fragment comparisonFields on Character {
+  name
+  appearsIn
+  friends {
+    name
+  }
+}
+```
+
+- Specifying operation-type and operation-name is optional if the operation is a query. Valid operation-types: `query, mutation, or subscription`
+```
+query HeroNameAndFriends {
+  hero {
+    name
+    friends {
+      name
+    }
+  }
+}
+```
+
+- **Variables** - pass dynamic arguments directly in the query string. Another dictionary of values is also expected with the query. All declared variables must be either scalars, enums, or input object types. Default values can also be assigned to the variables in the query by adding the default value after the type declaration
+```
+query HeroNameAndFriends($episode: Episode = "DefaultValue") {
+  hero(episode: $episode) {
+    name
+    friends {
+      name
+    }
+  }
+}
+
+# variables
+{
+  "episode": "JEDI"
+}
+
+```
+
+- **Directives** - More control to create dynamic queries: `@include(if: Boolean)`, `@skip(if: Boolean)`
+```
+query Hero($episode: Episode, $withFriends: Boolean!) {
+  hero(episode: $episode) {
+    name
+    friends @include(if: $withFriends) {
+      name
+    }
+  }
+}
+
+# variables
+{
+  "episode": "EMPIRE",
+  "withFriends": true
+}
+```
+
+- **Inline Fragments** - If you are querying a field that returns an interface or a union type, you will need to use inline fragments to access data on the underlying concrete type.
+```
+query HeroForEpisode($ep: Episode! = "JEDI") {
+  hero(episode: $ep) {
+    name
+    ... on Droid {
+      primaryFunction
+    }
+    ... on Human {
+      height
+    }
+  }
+}
+```
+
+- **Meta fields** - GraphQL allows you to request __typename, a meta field, at any point in a query to get the name of the object type at that point. `search` in the example below returns a union type.
+```
+{
+  search(text: "an") {
+    __typename
+    ... on Human {
+      name
+    }
+    ... on Droid {
+      name
+    }
+    ... on Starship {
+      name
+    }
+  }
+}
+```
+
+##### Mutations
+- query fields are executed in parallel, mutation fields run in series, one after the other.
+- Mutations can return an object type which can be useful for fetching the new state of an object after an update
+```
+mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
+  createReview(episode: $ep, review: $review) {
+    stars
+    commentary
+  }
+}
+
+# variables
+{
+  "ep": "JEDI",
+  "review": {
+    "stars": 5,
+    "commentary": "This is a great movie!"
+  }
+}
+```
+
+##### Schemas/Types
+- 
+
+---
+`March 28, 2022`
+#### Advanced Data Engineering - Revisit
+- Scala benchmarking:
+  - `jmh:run -t 1 -f 1 -wi 1 -i 1 .*benchFuncRegex.*`
+  - -t = threads
+  - -f = jvm instances
+  - -wi = warmump iterations
+  - -i = iterations
+  - Results: lower score is better.
+- Running tests: `sbt testOnly TestFunc`
+- Mutable is always faster. See which steps lead to actual memory allocation. 
+  - Try to make things lazy to avoid allocations.
+  - Try to use mutable data structures for faster execution times.
+- **Coders and Serialization**
+  - 
+
 ---
 `Oct 7, 2021`
 #### Advanced Data Engineering
@@ -30,7 +219,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
   - Mac: `~/Library/Caches/Coursier/v1`
   - Linux: `~/.cache/coursier/v1`
 - Dependency Conflict resolution: Add the line: `addDependencyTreePlugin` to `project/plugins.sbt`
-  - Then use the sbt command `dependencyTree` / `dependencyBrowseTree` / `evicted`
+  - Then use the sbt command `dependencyList` / `dependencyTree` / `dependencyBrowseTree` / `evicted`
   - add setting `conflictManager := ConflictManager.strict` to NOT have conflicting dependencies silently evicted.
   - Another option is add setting `dependencyOverrides ++= Seq("group" % "artifact" % "yourversion")`
   - Or exclude deps per dependency in the setting `libraryDependency ++= Seq("group" % "artifact-dep" % "yourversion" exclude("group", "artifact"))
