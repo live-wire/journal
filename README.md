@@ -23,6 +23,105 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
   - `cargo check` checks compilation errors without producing executables
   - `cargo run` from within a cargo repo, runs the executable
 
+- **Variables** 
+  - Immutable by default. `let a: u32 = 5;`
+  - Redeclaration of same var names is allowed. `let a = "override previous value";`
+  - Make Mutable. `let mut a = 5;` and now `a = 6;` is allowed.
+  - Constants: `const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;`
+
+- **Data types**
+  - Int `i8`, ... `i128`, `u8` ... `u128`
+    - Decimal `98_222`
+    - Hex `0xff`
+    - Octal `0o77`
+    - Binary `0b1111_0000`
+    - Byte (u8 only) `b'A'`
+  - Float `f32` `3.0`
+  - Boolean `bool` `true/false`
+  - Character `char` `'😻'`
+  - Compound types
+    - tuple `let tup: (i32, f64, u8) = (500, 6.4, 1);`
+      - Access elements like this `tup.0`, `tup.1`
+      - Explode into variables like: `let (x, y, z) = tup;`
+    - array `let a = [1, 2, 3, 4, 5];`
+      - Access elements like `a[0]`.
+
+- Valid program that panics when index is out of bounds
+```
+use std::io;
+fn main() {
+    let a = [1, 2, 3, 4, 5];
+
+    println!("Please enter an array index.");
+
+    let mut index = String::new();
+
+    io::stdin()
+        .read_line(&mut index)
+        .expect("Failed to read line");
+
+    let index: usize = index
+        .trim()
+        .parse()
+        .expect("Index entered was not a number");
+
+    let element = a[index];
+
+    println!("The value of the element at index {index} is: {element}");
+}
+```
+
+- **Functions**
+  - Most assignments are _statements_ (that do not return a value)
+  - Calling a function is an _expression_. Calling a macro is an expression. A new scope block created with curly brackets is an expression.
+```
+// Sample expression
+{
+    let x = 3;
+    x + 1
+}
+
+fn five() -> i32 {
+    5
+}
+```
+
+- **Control flow**
+  - `let number = if condition { 5 } else { 6 };`
+
+
+- **Loops**
+```
+let mut counter = 0;
+// loop can also return a value
+let result = loop {
+    counter += 1;
+    if counter == 10 {
+        break counter * 2;
+    }
+};
+
+// while loops
+let mut number = 3;
+while number != 0 {
+    println!("{number}!");
+    number -= 1;
+}
+```
+
+- Loop over compound types:
+```
+let a = [10, 20, 30, 40, 50];
+
+for element in a {
+    println!("the value is: {element}");
+}
+
+for number in (1..4).rev() {
+    println!("{number}!");
+}
+```
+
 #### Hello GraphQL - [Link](https://graphql.org/learn/queries/)
 ##### Querying
 - **Fields** - straight forward. Query the nested fields you want only.
