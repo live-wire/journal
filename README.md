@@ -122,6 +122,9 @@ for number in (1..4).rev() {
 }
 ```
 
+##### Ownership - what makes rust unique
+- 
+
 #### Hello GraphQL - [Link](https://graphql.org/learn/queries/)
 ##### Querying
 - **Fields** - straight forward. Query the nested fields you want only.
