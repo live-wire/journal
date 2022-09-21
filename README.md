@@ -123,7 +123,46 @@ for number in (1..4).rev() {
 ```
 
 ##### Ownership - what makes rust unique
-- 
+- Rules:
+  - Each value in Rust has an owner.
+  - There can only be one owner at a time.
+  - When the owner goes out of scope, the value will be dropped. (when a variable goes out of scope, Rust automatically calls the `drop` function and cleans up the heap memory for that variable)
+- All data stored on the stack must have a known, fixed size. 
+- Data with an unknown size at compile time or a size that might change must be stored on the heap instead.
+
+```
+let s1 = String::from("hello");
+let s2 = s1;
+```
+
+- String is made up of three parts, shown on the left: a pointer to the memory that holds the contents of the string, a length, and a capacity. This group of data is stored on the stack. On the right is the memory on the heap that holds the contents.
+- `move`: To ensure memory safety, after the line let s2 = s1, Rust considers s1 as no longer valid.
+- stack-only-data is `copied`. If a type implements the Copy trait, variables that use it do not move, but rather are trivially copied, making them still valid after assignment to another variable.
+- Rust won’t let us annotate a type with Copy if the type, or any of its parts, has implemented the `Drop` trait.
+
+##### References
+- Rust has a feature for using a value without transferring ownership, called references.
+- The Rules of References:
+  - At any given time, you can have either one mutable reference or any number of immutable references.
+  - References must always be valid.
+- Functions cannot return references of new variables (because the reference variable will go out of scope when the function ends).
+
+```
+fn main() {
+    let mut s = String::from("hello");
+    let r1 = &s; // no problem
+    let r2 = &s; // no problem
+    println!("{} and {}", r1, r2);
+    // variables r1 and r2 will not be used after this point (NLL-Non Lexical Lifetime)
+
+    let r3 = &mut s; // no problem
+    change(r3);
+}
+
+fn change(some_string: &mut String) {
+    some_string.push_str(", world");
+}
+```
 
 #### Hello GraphQL - [Link](https://graphql.org/learn/queries/)
 ##### Querying
