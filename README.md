@@ -164,6 +164,28 @@ fn change(some_string: &mut String) {
 }
 ```
 
+##### Slices
+- Slices let you reference a contiguous sequence of elements in a collection rather than the whole collection. A slice is a kind of reference, so it does not have ownership.
+- A string slice (`&str`) is a reference to part of a String. (Immutable reference)
+  
+```
+let s = String::from("hello");
+
+let len = s.len();
+
+let slice = &s[0..2];
+let slice = &s[..2]; // same
+
+let slice = &s[3..len];
+let slice = &s[3..]; // same
+
+let slice = &s[0..len];
+let slice = &s[..]; // same
+```
+
+- Slices work on other types too: `let a = [1, 2, 3, 4, 5];` , `let slice = &a[1..3];` This slice has the type `&[i32]`
+- The concepts of ownership, borrowing, and slices ensure memory safety in Rust programs at compile time.
+
 #### Hello GraphQL - [Link](https://graphql.org/learn/queries/)
 ##### Querying
 - **Fields** - straight forward. Query the nested fields you want only.
