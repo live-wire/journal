@@ -3,14 +3,14 @@
 
 
 #### Grammar
-| ---             | luisteren | hebben | zijn  |
-| --------------- | --------- | ------ | ----- |
-| ik              | luister   | heb    |  ben  |
-| jij/je          | luistert  | hebt!  |  bent |   ben je (t gets removed in Questions)
-| hij,zij/ze,het  | luistert  | heeft  |  is!  |   schrijven => schrift ("v"en becomes ft)
-| wij/we          | luisteren | hebben |  zijn |
-| jullie          | luisteren | hebben |  zijn |
-| zij/ze          | luisteren | hebben |  zijn |
+| ---            | luisteren | hebben | zijn |
+| -------------- | --------- | ------ | ---- |
+| ik             | luister   | heb    | ben  |
+| jij/je         | luistert  | hebt!  | bent | ben je (t gets removed in Questions)    |
+| hij,zij/ze,het | luistert  | heeft  | is!  | schrijven => schrift ("v"en becomes ft) |
+| wij/we         | luisteren | hebben | zijn |
+| jullie         | luisteren | hebben | zijn |
+| zij/ze         | luisteren | hebben | zijn |
 
 ---
 
@@ -25,9 +25,9 @@
 
 #### Question words
 - Verb at the end.
-- Welk - Which
-- Wanneer - When
-- Wie - Who
+- Welk(het)/welke(de) - Which
+- Wanneer - When (time)
+- Wie - Who (person)
 - Hoe - How
 - Wat - What
 - Waar - Where
@@ -35,7 +35,7 @@
 - Mogen/Mag - Must/May
 - Kunnen/Kan - Could/Can
 - Zullen/Zal - Should/Shall
-
+- Hoeveel - How many (number)
 
 ---
 
@@ -77,7 +77,11 @@
 ---
 
 #### Family Members
-- 
+- Zus - sister
+- Broer - brother
+- Ouders - parent
+- Vrouw - wife
+- Man - husband
 
 ---
 
@@ -87,6 +91,11 @@
 - Tot Ziens - Until next time
 - Dag, Hallo
 - Dag, Doei
+
+---
+#### Common phrases
+- Mag ik iets vragen? - May I ask something?
+- 
 
 ---
 
@@ -102,18 +111,23 @@
 
 #### Prepositions
 - Op (Date/Day) - Om (Time) - In (Season, Place etc.)
-- 
+- op naar - To
+- lang - along
 
 #### Inversion Important
 - **Subject _ verb _ time/place _ rest of the sentence**
 - **Time/place _ verb _ subject _ rest of the sentence**
 - Ik wil nu een cola -> Nu wil ik een cola
 
+#### Time
+-  
+
 ---
 
 #### Vocab
 - Het - it
 - Naar - to
+- Al - already
 - Bezoek - visitors
 - Krijg - get
 - Kijk - look
@@ -147,6 +161,42 @@
 - Bladzijde - page
 - Maar - but
 - Zeg - Call
+- Doen - to do
+- ongeveer - about/almost
+- afstand - distance
+- vlak land - flat country
+- bergens - mountains
+- behalve - except
+- trots op - proud of
+- zag - saw(see)
+- laag - low
+- helft - half
+- gebieden - areas
+- bijna - almost
+- houden - keep
+- ligen - lies
+- zee - sea
+- overal - everywhere
+- wegen - ways
+- vormt - poses
+- gevaar - danger
+- gebeurt - happen
+- enkele - a few
+- stijgt - rises
+- wordt - become
+- gebouwd - built
+- nog wel - still
+- doordat/daardoor - because/because of that
+- dorpen - villages
+- steden - cities
+- genoeg - enough
+- groeien - growing
+- ruimte - space/room
+- ten slotte - finally
+- brede - broad
+- stranden - beaches
+- zoiets - such a thing
+- hetzelde - same (to you)
 
 ---
 
@@ -156,5 +206,47 @@
 - Zegt u het maar - What can I get you? You name it? 
 - Nog en keer / nog maar - Once more/ Another one
 - Gefeliciteerd met je verjaardag - Congratulations for your birthday
-
+- Wat noem je mooi? - what do you take as nice?
+- 
 ---
+
+#### Delftse methode Les 20 - Een avondje uit
+- Misschien - maybe
+- Tussen - between
+- dichtbij - close by
+- Makkelijk - easy
+- Moelijk - hard
+- veel/heel - a lot
+- iets - something
+- vragen - to ask
+- dacht - think
+- een keer - one time
+- bijvoorbeeld - for example
+- dichtbij - closeby
+- daar zin in - interested in?
+- ergens - somewhere
+- geloof ik - I believe
+- iedereen | niemaand - everyone | noone
+- bioscoop - cinema Pathe
+- Mooi - nice
+- Naast - next to
+- duur - expensive
+- moeten - should
+- paar - a few
+- dingen - things (summi)
+- kiezen - select
+- Regel ik - I will arrange
+- ontmoeten - meet
+- elkaar - each other
+- Ramp - disaster
+- als je daarvan houdt - if you like it
+- Natuurlijk - ofcourse
+- Delen - share
+- Bedrag door tien - Amount by ten
+- bezwaar - object
+- Spaar / verliezen - Save / lose
+- alleen - only
+- afspreken - agree
+- drie keer
+- volgende jaar
+- heet - is called
