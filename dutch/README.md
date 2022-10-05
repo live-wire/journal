@@ -176,6 +176,7 @@
 - houden - keep
 - ligen - lies
 - zee - sea
+- over - about
 - overal - everywhere
 - wegen - ways
 - vormt - poses
@@ -197,6 +198,28 @@
 - stranden - beaches
 - zoiets - such a thing
 - hetzelde - same (to you)
+- hoofdtelefoon - headphones
+- oplader - charger
+- dichtbij - close by
+- potlood - pencil
+- Kabel - cable 
+- doosje - box
+- merk - brand
+- akoestische gitaar - acoustic guitar
+- bijvoorbeeld - for example
+- auteursrechten - copyright
+- herhalen - repeat
+- eten, spelen en slapen - eat play and sleep
+- volwassenen - adults
+- dat was het / Klaar - finished
+- maaltijd - meal
+- gebakken ei - fried egg
+- vla - custard
+- gewend - accustomed
+- verbaast - surprises
+- berg/heuvel - mountain/hill
+- vragen - questions
+- geleden - ago
 
 ---
 
@@ -207,7 +230,11 @@
 - Nog en keer / nog maar - Once more/ Another one
 - Gefeliciteerd met je verjaardag - Congratulations for your birthday
 - Wat noem je mooi? - what do you take as nice?
-- 
+- ik houd van rock muziek - I love rock music
+- even proberen - let's try
+- ik ben naar Texel geweest
+- zeilvereniging
+
 ---
 
 #### Delftse methode Les 20 - Een avondje uit
@@ -240,7 +267,7 @@
 - elkaar - each other
 - Ramp - disaster
 - als je daarvan houdt - if you like it
-- Natuurlijk - ofcourse
+- Natuurlijk - ofcourse/naturally
 - Delen - share
 - Bedrag door tien - Amount by ten
 - bezwaar - object
