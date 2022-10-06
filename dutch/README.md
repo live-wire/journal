@@ -120,7 +120,7 @@
 - Ik wil nu een cola -> Nu wil ik een cola
 
 #### Time
--  
+- 
 
 ---
 
@@ -141,7 +141,7 @@
 - Eergisteren - Day before yesterday
 - Overmorgen - Day after tomorrow
 - Eigenlijk - Actually
-- Graag - Please
+- Graag - Please/like
 - De Ober - Waiter
 - Samen - together
 - Hetzelfde - the same one
@@ -212,6 +212,7 @@
 - eten, spelen en slapen - eat play and sleep
 - volwassenen - adults
 - dat was het / Klaar - finished
+- altijd - always
 - maaltijd - meal
 - gebakken ei - fried egg
 - vla - custard
@@ -220,6 +221,37 @@
 - berg/heuvel - mountain/hill
 - vragen - questions
 - geleden - ago
+- huishouden - household
+- was doen - do laundry
+- strijken - to iron/smoothe
+- stofzuigen - vaccuum
+- afwassen - do the dishes
+- werkelijk - really
+- hekel - dislike
+- helemaal niet - not at all
+- heerlijke - delicious
+- zet - make
+- soort zaken - sort of things
+- aardige mevrouw - nice lady
+- tevreden - satisfied
+- tegenvoordig - nowadays
+- verdient - earns
+- Geld - money
+- zorgen - to care
+- gezin - family
+- vies - dirty
+- keuken - kitchen
+- taken - tasks
+- verdeeld - divided
+- denk - think
+- daarna - then
+- inhoud - content
+- herinner - remember
+- voldoente - plenty
+- onbekende - unknown
+- weinig - few
+- kies - chose
+- volgt - follow
 
 ---
 
@@ -233,7 +265,14 @@
 - ik houd van rock muziek - I love rock music
 - even proberen - let's try
 - ik ben naar Texel geweest
-- zeilvereniging
+- zeilvereniging - sailing club
+- al zeg ik het zelf - though I say so myself
+- niet echt - not really
+- vroeger deden - used to do (past)
+- volledige baan - fulltime job
+- opeens - suddenly
+- weer - weather
+- reizen - to travel
 
 ---
 
