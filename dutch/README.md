@@ -1,7 +1,6 @@
 # Nederlands les met docent Tavishi
 ---
 
-
 #### Grammar
 | ---            | luisteren | hebben | zijn |
 | -------------- | --------- | ------ | ---- |
