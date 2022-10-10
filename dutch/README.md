@@ -113,6 +113,7 @@
 - Op (Date/Day) - Om (Time) - In (Season, Place etc.)
 - op naar - To
 - lang - along
+- aan - at
 
 #### Inversion Important
 - **Subject _ verb _ time/place _ rest of the sentence**
@@ -252,6 +253,82 @@
 - weinig - few
 - kies - chose
 - volgt - follow
+- klinkt goed - sounds good
+- vissersdorp - fishing village
+- betaalbaar - affordable
+- geleden - ago
+- rijk - rich
+- openbaar vervoer - public transport
+- ieederen - everyone
+- op bezoek - visiting
+- nemen - take
+- verdieping - floor
+- schoonmaakster - cleaner
+- Bevolking - Population
+- hangt ervan af - depends on
+- hoe je het bekijkt - how you look at it
+- inwoners - inhabitants
+- dichte - dense
+- gemiddeld - average
+- vierkante - square
+- nogal - quite a bit
+- nog - still
+- gegroeid - grown
+- steeds - steadily
+- voral - mostly
+- oorzaken - causes
+- daarvan - of that
+- krijgen - get
+- minder - less
+- hoger - higher
+- veel - very/many
+- vroeger - before
+- belangrijke - important
+- vrijheid - freedom
+- veiligheid - safety
+- volgen - follow
+- juist - on the contrary
+- verlaten - leave
+- verklaaring - explanation
+- kerk - church
+- rechten - rights
+- godsdienst - religion
+- jodan - jews
+- gescheiden - divorced
+- gelijke - equal
+- tegenwoordig - now a days
+- geloven - believe
+- Trouwen - marry
+- huwelijken - marriages
+- Samenwonen - live together
+- liever alleen blijven
+- gemist - missed
+- getuige - witness
+- zeker - definitely
+- deel - part
+- verplicht - obligated
+- ambtenaar - civil servant
+- diest - service
+- indruk - impression
+- beloofden - promise
+- zorgen - take care
+- vaak - often
+- scheiding - divorce
+- eindight - end
+- gelukkig - luckily
+- geweldig - great
+- ooit - at some point
+- feest - party
+- zaal - hall
+- helemaal - totally
+- vol - full
+- gasten - guests
+- aanweizig - present
+- lied - song
+- zulke - such
+- vreselijk - horrible
+- samenleving - society
+  
 
 ---
 
@@ -273,6 +350,12 @@
 - opeens - suddenly
 - weer - weather
 - reizen - to travel
+- we nemen pauze tot 6 over 12 - we take a break till 12:06
+- niet zoveel zin in - don't want to do something (feel ik) (not so much)
+- beter dan niets - better than nothing
+- volgens jou - according to you
+- verklaring daarvoor - explanation for that
+- ging trouwen - got married
 
 ---
 
