@@ -13,6 +13,73 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
+---
+`Dec 22, 2022`
+#### k8s Client-go
+- Auth can-i equivalent example:
+```
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	authv1 "k8s.io/api/authorization/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/client-go/kubernetes"
+	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
+	"k8s.io/client-go/rest"
+	"k8s.io/client-go/tools/clientcmd"
+)
+
+func main() {
+
+	kubeconfig := fmt.Sprintf("%s/.kube/config", os.Getenv("HOME"))
+	config, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	ns := "dummy-namespace"
+
+	config.Impersonate = rest.ImpersonationConfig{
+		UserName: "system:serviceaccount:" + ns + ":default",
+	}
+
+	clientset, err := kubernetes.NewForConfig(config)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	action := authv1.ResourceAttributes{
+		Namespace: ns,
+		Verb:      "get",
+		Resource:  "configmaps",
+	}
+
+	selfCheck := authv1.SelfSubjectAccessReview{
+		Spec: authv1.SelfSubjectAccessReviewSpec{
+			ResourceAttributes: &action,
+		},
+	}
+
+	resp, err := clientset.AuthorizationV1().
+		SelfSubjectAccessReviews().
+		Create(context.TODO(), &selfCheck, metav1.CreateOptions{})
+
+	if err != nil {
+		panic(err.Error())
+	}
+
+	if resp.Status.Allowed {
+		fmt.Println("allowed")
+	} else {
+		fmt.Println("denied")
+	}
+}
+
+```
 
 ---
 `Sep 09, 2022`
