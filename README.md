@@ -13,6 +13,21 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
+
+---
+`Jan 17, 2023`
+#### Python multiprocessing in 2023
+- GoChannels equivalent: Thread safe [Queue](https://superfastpython.com/thread-queue/)
+- Java ThreadPool equivalent: Concurrent [futures library](https://docs.python.org/3/library/concurrent.futures.html)
+- We should be able to solve all multiprocessing needs using these without locks.
+- Locks anyway:
+```
+l = threading.Lock() 
+l.acquire()
+# do stuff
+l.release()
+```
+
 ---
 `Dec 22, 2022`
 #### k8s Client-go
