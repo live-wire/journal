@@ -15,6 +15,12 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Jan 27, 2023`
+#### Hello Elixir
+- [Discord uses elixir](https://elixir-lang.org/blog/2020/10/08/real-time-communication-at-scale-with-elixir-at-discord/) to scale up. So few engineers, so much scale.
+- 
+
+---
 `Jan 17, 2023`
 #### Python multiprocessing in 2023
 - GoChannels equivalent: Thread safe [Queue](https://superfastpython.com/thread-queue/)
