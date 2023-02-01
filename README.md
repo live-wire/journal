@@ -16,9 +16,9 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 ---
 `Jan 27, 2023`
-#### Hello Elixir
+#### Rust updates
 - [Discord uses elixir](https://elixir-lang.org/blog/2020/10/08/real-time-communication-at-scale-with-elixir-at-discord/) to scale up. So few engineers, so much scale.
-- 
+- Moved all rusty progress [here](https://github.com/live-wire/crab#rust-crab).
 
 ---
 `Jan 17, 2023`
