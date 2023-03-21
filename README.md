@@ -15,6 +15,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Mar 21, 2023`
+#### Headless chrome
+- [chromedp](https://github.com/chromedp/chromedp) is a nice project in `go`.
+- [Here](https://github.com/chromedp/examples) are some nice examples for the same.
+- [CSS Selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors) can be used to find elements.
+
+
+---
 `Jan 27, 2023`
 #### Rust updates
 - [Discord uses elixir](https://elixir-lang.org/blog/2020/10/08/real-time-communication-at-scale-with-elixir-at-discord/) to scale up. So few engineers, so much scale.
