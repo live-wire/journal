@@ -14,6 +14,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
 
+---
+`Apr 10, 2023`
+#### TRL, PEFT, Stack LLAMA
+- Transformer Reinfocement Learning library: https://github.com/lvwerra/trl
+- PEFT (parameter efficient fine tuning) of LLMs using adapter layers (keeping the base LLM layer weights frozen).
+- Nice hands on guide that uses peft: https://huggingface.co/blog/stackllama
+- 
+
 
 ---
 `Mar 21, 2023`
