@@ -15,6 +15,58 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Aug 26, 2023`
+#### Elixir, Phoenix
+- Elixir [official guide](https://elixir-lang.org/getting-started/introduction.html)
+- Beautiful highlevel scripting language. Runs on the Erlang virtual machine (aka Beam).
+- Different Concurrency model: Split your program into processes (when you don't want one process slowness to affect other processes). Each process has a mailbox. You can spawn millions of processes within your program. Each process has a pid and can be killed.
+- Quickstart:
+    - Interactive shell `$ iex`
+    - Run programs `$ elixir yourfile.exs`
+    - `IO.puts("Hello world")`
+- Types:
+```
+iex> 1          # integer
+iex> 0x1F       # integer
+iex> 1.0        # float
+iex> true       # boolean
+iex> :atom      # atom / symbol / constant
+iex> "elixir"   # string
+iex> [1, 2, 3]  # list
+iex> {1, 2, 3}  # tuple
+```
+
+- Types:
+    - `is_number()/ is_integer/ is_float/ is_boolean/ is_atom`
+    - Use div(a,b) and rem(a,b) to get divisor/remainder. Operator `/` always returns float.
+    - `round` and `trunc` to round a float or to floor it.
+    - `String.length("hellö")` for string length.
+    - `is_function(..)` Anonymous functions `add = fn a, b -> a + b end` need to be invoked with a `.` like this: `add.(1, 2)`
+    - List: `[1, 2, true, 3]`
+        - `length l` returns length of list
+        - `++` to extend a list `--` to remove items
+        - `hd(l), tl(l)` returns head and tail (rest of the list).
+        - `[0 | list]` Prepend item to list
+        - Lists are stored in memory as linked lists, meaning that each element in a list holds its value and points to the following element until the end of the list is reached.
+    - Tuples: `{:ok, "hello"}`
+        - `tuple_size t` returns size of tuple
+        - `put_elem(tuple, 1, "blah")` returns a new tuple with item "blah" inserted at index 1
+        - Access item at index`elem(tuple, 1)`
+        - Tuples, on the other hand, are stored contiguously in memory. This means getting the tuple size or accessing an element by index is fast. However, updating or adding elements to tuples is expensive because it requires creating a new tuple in memory
+- Operators:
+    - `"foo" <> "bar"` string concat like this
+    - `and/or/not` with booleans only `false or is_atom(:example)`
+    - `||, && and !` for other types (everything but `false` and `nil` will evaluate to true)
+    - `1 == 1.0` true but `1 === 1.0` false
+- PatternMatching: `=` is the match operator
+    - A variable can only be assigned on the left side of `=`
+    - `x=1; 2=x` will raise MatchError. You can also use the pin operator `^` for this use case: `x = 1; ^x = 2` will give a MatchError too.
+    - `{a, b, c} = {:hello, "world", 42}`
+    - `[head | tail] = [1, 2, 3]` Just like the `hd/tl` functions
+- Conditionals:
+    - WIP
+
+---
 `Apr 10, 2023`
 #### TRL, PEFT, Stack LLAMA
 - Transformer Reinfocement Learning library: https://github.com/lvwerra/trl
