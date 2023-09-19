@@ -15,6 +15,25 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Sep 19, 2023`
+#### Elixir in Action
+- Building server processes has these common steps:
+    - Spawn a separate process.
+    - Run an infinite loop in the process.
+    - Maintain the process state.
+    - React to messages.
+    - Send a response back to the caller.
+
+- `gen_server` generic server processes (very close to the actor model)
+    - `use GenServer` in your module.
+    - `init/1` accepts one argument. This is the second argument provided to `GenServer.start/2`, and you can use it to pass data to the server process while starting it.
+    - The result of `init/1` must be in the format `{:ok, initial_state}`. Alternatively, you can return `{:stop, some_reason}` if for some reason you decide the server process shouldn’t be started.
+    - ASYNC: `handle_cast/2` accepts the request and the state and should return the result in the format `{:noreply, new_state}`.
+    - SYNC: `handle_call/3` takes the request, the caller information, and the state. It should return the result in the format `{:reply, response, new_state}`.
+    - `:timer.send_interval(5000, :cleanup)` inside init will call `handle_info/2` every 5 seconds.
+    - Returning `{:stop, reason, new_state}` from `handle_*` callbacks causes gen_server to stop the server process.
+
+---
 `Aug 26, 2023`
 #### Elixir, Phoenix
 - Elixir [official guide](https://elixir-lang.org/getting-started/introduction.html)
@@ -22,8 +41,15 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 - Different Concurrency model: Split your program into processes (when you don't want one process slowness to affect other processes). Each process has a mailbox. You can spawn millions of processes within your program. Each process has a pid and can be killed.
 - Quickstart:
     - Interactive shell `$ iex`
-    - Run programs `$ elixir yourfile.exs`
+    - Run programs `$ elixir yourfile.exs` (exs means elixir script)
+        - `$ elixir  --no-halt yourfile.exs` will not exit after starting concurrent tasks.
     - `IO.puts("Hello world")`
+- Start with Mix:
+    - `mix new my_project`
+    - `mix compile` compiles and puts all beam files in `ebin`
+    - `mix run`
+    - `mix run --no-halt`
+    - `iex -S mix run`
 - Types:
 ```
 iex> 1          # integer
@@ -64,7 +90,145 @@ iex> {1, 2, 3}  # tuple
     - `{a, b, c} = {:hello, "world", 42}`
     - `[head | tail] = [1, 2, 3]` Just like the `hd/tl` functions
 - Conditionals:
-    - WIP
+```
+
+case :ok do
+    :error -> "Won't match"
+    _ -> "catchall"
+end
+
+cond do
+    2 + 2 == 5 -> "This is never true"
+    2 * 2 == 3 -> "Nor this"
+    true -> "This is always true (equivalent to else)"
+end
+
+# To change the value of x in an if clause
+x = if true do
+    x + 1
+else
+    x
+end
+```
+
+- Bitstrings, Binary:
+    - A bitstring `denoted by <<>>` is a contiguous sequence of bits in memory `<<42>> == <<42::8>>` by default 8 bits are used to stored any number in this.
+    - If bits are divisible by 8, it is a binary `is_binary`
+    - A string is a UTF-8 encoded binary. Given that strings are binaries, we can also pattern match on strings:`<<head::utf8, rest::binary>> = "banana"` head is `b`
+    - Charlists are denoted by `~c` the list is only printed in single-quotes if all code points are within the ASCII range.
+    - "Got hello from #{inspect some_variable}" to convert var to str representation.
+- Keywordlists and Maps:
+    - As the name implies, keyword lists are simply lists. In particular, they are lists consisting of 2-item tuples where the first element (the key) is an atom and the second element can be any value.`[{:trim, true}] == [trim: true]`. keyword lists are used in Elixir mainly for passing optional values. If you need to store many items or guarantee one-key associates with at maximum one-value, you should use maps instead.
+    - `map = %{:a => 1, 2 => :b}` Trying to access not-present key gives `nil`. `Map.get(xx), Map.put(), Map.remove` etc. `put_in` and `update_in` functions can be used to update map entries.
+    - When working with known data, use map with fixed keys: `%{name: "John", age: 23}` where all keys are atoms, it can be denoted just like keyword lists.
+- Modules and Functions:
+    - Modules are usually put in separate files with extension `.ex`
+    - `defmodule Math do ... end` Module name is capitalised. Inside a module, functions can be defined like `def sum(a,b) do ... end` or with `defp` (for private methods). 
+    - `elixirc math.ex` to generate bytecode for the module so `iex` can pick it up.
+    - `.ex` files are compiled and `.exs` files are used for scripting.
+    - Question mark at the end of function name means it returns a boolean.
+    - Capturing `&` can let you assign named function to a variable for passing around as arguments. Assume function is `Math.zero?(0)`, `fun = &Math.zero?/1` then fun can be invoked like an anonymous function `fun.(0)`
+        - You can also capture operators: `add = &+/2`, `add.(1,2)`
+        - `fn x -> x + 1` anonymous function is the same as `&(&1 + 1)`
+```
+defmodule Concat do
+  # A function head declaring defaults
+  def join(a, b \\ nil, sep \\ " ")
+
+  def join(a, b, _sep) when is_nil(b) do
+    a
+  end
+
+  def join(a, b, sep) do
+    a <> sep <> b
+  end
+end
+
+IO.puts Concat.join("Hello", "world")      #=> Hello world
+IO.puts Concat.join("Hello", "world", "_") #=> Hello_world
+IO.puts Concat.join("Hello")               #=> Hello
+
+# Sample reduce impl:
+defmodule Math do
+  def sum_list([head | tail], accumulator) do
+    sum_list(tail, head + accumulator)
+  end
+
+  def sum_list([], accumulator) do
+    accumulator
+  end
+end
+
+```
+
+- Recursion:
+    - You usually use recursion to create loops in Elixir with different functions with clause matching for end-loop cases. (Sample reduce impl above)
+    - For list modifications however you use the utilities from Enum:
+        - `Enum.reduce([1, 2, 3], 0, fn(x, acc) -> x + acc end)`
+        - `Enum.map([1,2,3], fn(x) -> x*2)` is the same using capture syntax: `Enum.map([1,2,3], &(&1*2))`
+- Enumerables and Streams:
+    - Enumerables are eager and Streams are lazy and composable.
+    - The `|>` symbol is the pipe operator: it takes the output from the expression on its left side and passes it as the first argument to the function call on its right side. 
+    - `1..100_000 |> Enum.map(&(&1 * 3)) |> Enum.filter(odd?) |> Enum.sum()` is the same as: `Enum.sum(Enum.filter(Enum.map(1..100_000, &(&1 * 3)), odd?))` pipe makes it readable.
+    - `1..100_000 |> Stream.map(&(&1 * 3)) |> Stream.filter(odd?) |> Enum.sum` lazy. Instead of generating intermediate lists, streams build a series of computations that are invoked only when we pass the underlying stream to the Enum module.
+    - `Stream.unfold("hełło", &String.next_codepoint/1) |> Enum.take(stream, 3)`
+- Processes:
+    - In Elixir, all code runs inside processes. Processes are isolated from each other, run concurrent to one another and communicate via message passing. Processes are not only the basis for concurrency in Elixir, but they also provide the means for building distributed and fault-tolerant programs.
+    - `pid = spawn(fn -> 1 + 2 end)` `Process.alive?(pid)`
+    - `current_pid = self()`
+    - `send(self(), {:hello, "world"})` send is non blocking
+    - `receive do \n{:hello, msg} -> msg\n{:world, _msg} -> "won't match"\n end` Receive is blocking. It is possible to set timeout to receive: `after \n 1_000 -> "timed out"`.
+    - `flush()` for flushing and printing items of mailbox.
+    - Links:
+        - `spawn(fn -> raise "oops" end)` Will not just log the exception and continue, it brings the exception to the current process.
+    - **Tasks**:
+        - Tasks build on top of the spawn functions to provide better error reports and introspection
+        - Task provides convenience functions, like `Task.async/1` and `Task.await/1`, and functionality to ease distribution.
+- State:
+```
+defmodule KV do
+  def start_link do
+    Task.start_link(fn -> loop(%{}) end)
+  end
+
+  defp loop(map) do
+    receive do
+      {:get, key, caller} ->
+        send caller, Map.get(map, key)
+        loop(map)
+      {:put, key, value} ->
+        loop(Map.put(map, key, value))
+    end
+  end
+end
+```
+
+- State: 
+    - You can maintain state in elixir using a pattern like above. Spawn a new process that loops and you can interact with it using messages. `{:ok, pid} = KV.start_link()`, then use it like `send(pid, {:get, :hello, self()})`
+    - You can register a pid for a started process too: `Process.register(pid, :kv)` then use `:kv` instead of pid anywhere.
+    - Or you can use an abstraction like Agent.
+        - `{:ok, pid} = Agent.start_link(fn -> %{} end)`
+        - `Agent.get(pid, fn map -> Map.get(map, :hello) end)`
+- IO/Filesystem:
+    - If you don’t want to handle the error outcomes, prefer to use the functions ending with an exclamation mark.
+    - `IO.puts("hello world")`, `IO.gets("Yolo? y/n")`
+    - File writing
+        - `{:ok, file} = File.open("path/to/file/hello", [:write])`
+        - `IO.binwrite(file, "world")`
+        - `File.close(file)`
+        - `File.read!("path/to/file/hello")` will raise error if file not found unlike the regular `File.read/1`
+    - iodata and chardata are lists of binaries and integers. Those binaries and integers can be arbitrarily nested inside lists. Their goal is to give flexibility and performance when working with IO devices and files. The choice between iodata and chardata depends on the encoding of the IO device. If the file is opened without encoding, the file expects iodata, and the functions in the IO module starting with bin* must be used. 
+    - Elixir uses processes for the underlying IO mechanisms.
+- Require/Alias/Import/Use
+    - Alias: Has lexical scope
+        - `alias Math.List, as: List` is the same as `alias Math.List`
+        - These aliases can be defined inside lexical scopes like modules/functions
+    - Require: Has lexical scope
+        - Elixir provides macros as a mechanism for meta-programming (writing code that generates code). Macros are expanded at compile time. Public functions in modules are globally available, but in order to use macros, you need to opt-in by requiring the module they are defined in.
+        - `Integer.is_odd(3)` can't be used without `require Integer`
+    - Import: Has lexical scope
+        - `import List, only: [duplicate: 2]` `duplicate/2` can now be used without using the Fully qualified name
+- 
 
 ---
 `Apr 10, 2023`
