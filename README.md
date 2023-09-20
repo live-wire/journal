@@ -33,6 +33,8 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - `:timer.send_interval(5000, :cleanup)` inside init will call `handle_info/2` every 5 seconds.
     - Returning `{:stop, reason, new_state}` from `handle_*` callbacks causes gen_server to stop the server process.
 
+- Exceptions/Supervisor:
+    - 
 ---
 `Aug 26, 2023`
 #### Elixir, Phoenix
