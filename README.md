@@ -35,6 +35,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 - Exceptions/Supervisor:
     - 
+
 ---
 `Aug 26, 2023`
 #### Elixir, Phoenix
