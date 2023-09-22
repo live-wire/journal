@@ -34,8 +34,16 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - Returning `{:stop, reason, new_state}` from `handle_*` callbacks causes gen_server to stop the server process.
 
 - Exceptions/Supervisor:
-    - 
+    - There are three types of runtime errors: throws, errors, and exits.
+    - When a runtime error occurs, execution moves up the stack to the corresponding try block. If an error isn’t handled, a process will crash.
+    - Process termination can be detected in another process. To do this, you can use links or monitors.
+    - Links are bidirectional—a crash of either process is propagated to the other process
+    - By default, when a process terminates abnormally, all processes linked to it terminate as well. By trapping exits, you can react to the crash of a linked process and do something about it.
+    - Supervisors can be used to start, supervise, and restart crashed processes.
 
+- Isolating errors/Supervision trees
+    - 
+    
 ---
 `Aug 26, 2023`
 #### Elixir, Phoenix
