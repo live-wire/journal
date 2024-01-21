@@ -15,6 +15,40 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 
 ---
+`Jan 21, 2024`
+- Designing ML systems quick summary:
+- Sampling data:
+    - Probability
+    - Simple random
+    - Weighted sampling
+    - Reservoir sampling - (Sampling a random number from a stream of numbers with a fixed probability)
+- Getting labels:
+    - Weak supervision
+    - Simulation
+    - Transfer learning
+    - Active learning - Use ab-test metrics to generate samples
+- Class imbalance: (asymetric cost error)
+    - Right evaluation - (overall accuracy not enough - look at precision/recall/f1-scores)
+    - Data resampling - (oversample minority/undersample majority)
+    - Focal loss
+- Feature engineer:
+    - Keep track of data lineage
+    - Use features that generalise well
+    - Keep data partitioned
+    - Golden datasets
+    - Understand feature importance to the model
+- Ensemble:
+    - bagging - aggregate using majority voting
+    - boosting - weak learners
+    - stacking - meta learner model looks at outputs from other models to output.
+- Keeping up:
+    - Stateless retraining
+    - Stateful training (incremental only using new data)
+- Multi armed bandit: (Strike a balance between exploration and exploitation)
+    - Thompson sampling - Popular in recommendation systems. (Keep sampling from all distributions as the distributions keep getting updated as new results flow in).
+    - Use this instead of plain AB testing to dynamically scale traffic to the best models.
+
+---
 `Sep 19, 2023`
 #### Elixir in Action
 - Building server processes has these common steps:
