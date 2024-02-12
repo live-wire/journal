@@ -13,6 +13,13 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
+---
+`Feb 12, 2024`
+- Multimodal huggingface process. [Nice podcast](https://open.spotify.com/episode/2kwzayKbNf71YsZbFAEmDm?si=Qnfv6WRnTZG7ADnt80sbNw)
+- You don't need to train the entire models from scratch like Visual question answering, language mode, and merge them using adapters.
+- Only the adapter weights are trained. Adapters can be linear layers or even attention.
+- Perplexity score is a way to check the dataset quality for multimodal dataset.
+- Most time as always is spent data engineering.
 
 ---
 `Jan 21, 2024`
