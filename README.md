@@ -14,6 +14,17 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
 ---
+`Feb 23, 2024`
+- Recommendation systems:
+    - Collaborative filtering
+    - Two tower embeddings
+    - Siamese networks
+    - Graph networks
+- Train embeddings based on an objective function. If you find a generic enough feedback signal, you could reuse the embeddings for other use cases too (potentially with more linear layers for task specific use cases).
+- Karpathy dropped a new [Tokenization Video](https://www.youtube.com/watch?v=zduSFxRajkE)
+- Nice [LLM course repo](https://github.com/mlabonne/llm-course)
+
+---
 `Feb 12, 2024`
 - Multimodal huggingface process. [Nice podcast](https://open.spotify.com/episode/2kwzayKbNf71YsZbFAEmDm?si=Qnfv6WRnTZG7ADnt80sbNw)
 - You don't need to train the entire models from scratch like Visual question answering, language mode, and merge them using adapters.
