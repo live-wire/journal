@@ -14,6 +14,28 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
 ---
+`Mar 13, 2024`
+- NVIDIA GTC talks.
+- Transforming AI - Attention is all you need collected for [this talk](https://www.nvidia.com/gtc/session-catalog/#/session/1702594702652001JJhD).
+    - Maybe gradient descent is not the way?
+    - Too much wasted compute at the moment.
+    - Try to learn everything instead of handcrafting it. (Andrej energy of trying to train the tokenization process).
+- NVIDIA Merlin library called [transformers4rec](https://github.com/NVIDIA-Merlin/Transformers4Rec) for building recommendation models.
+    - Uses Huggingface transformers
+    - Input data is typically a sequence of interactions such as items that are browsed in a web session or items put in a cart
+    - A special use case of sequential-recommendation is the session-based recommendation
+    - [Link to paper](https://dl.acm.org/doi/10.1145/3460231.3474255)
+
+![Collaborative filtering transformer implementation](https://live-wire.github.io/journal/public/collaborative-filtering.png)
+
+- CUDA tips:
+    - Try to make use of the L2 cache (memory is good but much much slower)
+    - Try to pack items in bundles that knapsack well in GPUs.
+    - Ugly code will usually lead to performance gains.
+
+- GPU kernel programming in the next post.
+
+---
 `Feb 23, 2024`
 - Recommendation systems:
     - Collaborative filtering
