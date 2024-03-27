@@ -14,6 +14,18 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
 ---
+`Mar 27, 2024`
+- [GPU Puzzles](https://github.com/srush/GPU-Puzzles) by Sasha Rush. (He also has a Pytorch [tensor puzzles](https://github.com/srush/Tensor-Puzzles) course that I might skim later)
+    - The exercises use NUMBA which directly maps Python code to CUDA kernels
+    - The global index uniquely identifies a thread across the entire grid of blocks being launched by a CUDA kernel. If you have multiple blocks, each block contributes threads, and the global index helps you locate a specific thread within the entire grid `global_index = blockIdx.x * blockDim.x + threadIdx.x`
+    - Within a block, the `threadIdx.x` is the local index.
+    - Shared memory is only accessible by threads within the same block. `shared = cuda.shared.array(block_size, numba.float32)`.
+    - Shared memory operations are often coupled with thread synchronization to ensure that all threads in a block have reached a certain point in the code `cuda.syncthreads()`. This is usually enough for within-block-synchronization.
+    - For inter-block synchronization, you can use techniques like:
+        - Atomic add: `cuda.atomic.add(out, 0, temp_sum)`
+        - Multi step reduction. Compute partial sums and put them in an array and then compute a global sum in a separate CUDA kernel.
+
+---
 `Mar 13, 2024`
 - NVIDIA GTC talks.
 - Transforming AI - Attention is all you need collected for [this talk](https://www.nvidia.com/gtc/session-catalog/#/session/1702594702652001JJhD).
