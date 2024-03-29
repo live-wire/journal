@@ -24,6 +24,7 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - For inter-block synchronization, you can use techniques like:
         - Atomic add: `cuda.atomic.add(out, 0, temp_sum)`
         - Multi step reduction. Compute partial sums and put them in an array and then compute a global sum in a separate CUDA kernel.
+    - Organisation of threads in a block (1d vs 2d vs 3d) is just for ease of programming. You will always be limited by max-threads-per-block which is a GPU hardware limitation. (Example nvidia 3090 limitation = max 1024 threads per block - which is logically the same as 32 x 32 threads in a 2d thread arrangement)
 
 ---
 `Mar 13, 2024`
