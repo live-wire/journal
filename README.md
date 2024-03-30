@@ -14,6 +14,11 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
 ---
+`Mar 31, 2024`
+- [convnet-benchmarks](https://github.com/soumith/convnet-benchmarks) Easy benchmarking of all public open-source implementations of convnets. A summary is provided in the section below. 
+- Soumith Chintala's interview with latent space take away: NVIDIA's moat is their GPU interconnect NVlink. (Google's GPU interconnect is great too but not for sale only for rent)
+
+---
 `Mar 27, 2024`
 - [GPU Puzzles](https://github.com/srush/GPU-Puzzles) by Sasha Rush. (He also has a Pytorch [tensor puzzles](https://github.com/srush/Tensor-Puzzles) course that I might skim later)
     - The exercises use NUMBA which directly maps Python code to CUDA kernels
@@ -25,9 +30,8 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
         - Atomic add: `cuda.atomic.add(out, 0, temp_sum)`
         - Multi step reduction. Compute partial sums and put them in an array and then compute a global sum in a separate CUDA kernel.
     - Organisation of threads in a block (1d vs 2d vs 3d) is just for ease of programming. You will always be limited by max-threads-per-block which is a GPU hardware limitation. (Example nvidia 3090 limitation = max 1024 threads per block - which is logically the same as 32 x 32 threads in a 2d thread arrangement)
-    - [convnet-benchmarks](https://github.com/soumith/convnet-benchmarks) Easy benchmarking of all public open-source implementations of convnets. A summary is provided in the section below.
 
-
+    
 ---
 `Mar 13, 2024`
 - NVIDIA GTC talks.
