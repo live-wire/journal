@@ -14,6 +14,11 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
 ---
+`Apr 8, 2024`
+- Grant Sanderson from 3Blue1Brown dropped visual tutorials about [GPT](https://www.youtube.com/watch?v=wjZofJX0v4M&ab_channel=3Blue1Brown) and [attention in transformers](https://www.youtube.com/watch?v=eMlx5fFNoYc&t=13s&ab_channel=3Blue1Brown).
+
+
+---
 `Mar 31, 2024`
 - [convnet-benchmarks](https://github.com/soumith/convnet-benchmarks) Easy benchmarking of all public open-source implementations of convnets. A summary is provided in the section below. 
 - Soumith Chintala's interview with latent space take away: NVIDIA's moat is their GPU interconnect NVlink. (Google's GPU interconnect is great too but not for sale only for rent)
