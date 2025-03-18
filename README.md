@@ -22,6 +22,24 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
     - Works well with Kustomize. The Kustomization custom resource represents a local set of Kubernetes resources (e.g. kustomize overlay) that Flux is supposed to reconcile in the cluster
     - Cool feature alert: Progressive Delivery (techniques like feature flags, canary releases, and A/B testing): builds on Continuous Delivery by gradually rolling out new features or updates to a subset of users, allowing developers to test and monitor the new features in a controlled environment and make necessary adjustments before releasing them to everyone. Implemented using [Flagger](https://fluxcd.io/flagger/usage/deployment-strategies/).
     - NOTE: If you make any changes to the cluster using kubectl edit/patch/delete, they will be promptly reverted. You either suspend the reconciliation or push your changes to a Git repository.
+- [ML Flow](https://mlflow.org/docs/latest/index.html)
+    - MLflow Tracking Server - is a stand-alone HTTP server that serves multiple REST API endpoints for tracking runs/experiments
+        - Artifact store - is a core component in MLflow Tracking where MLflow stores (typically large) artifacts for each run such as model weights (e.g. a pickled scikit-learn model), images (e.g. ONGs), model and data files (e.g. Parquet file).
+        - Backend store - metadata like parameters, metrics, and tags are stored in a backend store (e.g., PostGres, MySQL, or MSSQL Database), the other component of the MLflow Tracking.
+- [Achilles SDK](https://github.com/reddit/achilles-sdk)
+    - The Achilles SDK offers efficient operator/controller creation by allowing engineers to focus on defining their automation business logic, modeled as transitions between resources states (like a finite state machine)
+    - [FSM Model](https://github.com/reddit/achilles-sdk/blob/main/docs/sdk-fsm-reconciler.md#fsm-reconciler)
+        - It must be a directed acyclic graph (else runtime errors).
+        - Each reconciliation starts from the FSM's initial state rather than starting from the last reached state.
+        - All FSM states must be reachable by observing persisted state available to the controller
+        - This makes controller logic idempotent and dependent on externally persisted state
+        - Transitioning Between States:
+            - Each state defines a [result type](https://github.com/reddit/achilles-sdk/blob/4fe0f620d71a1a988cd05629df5ea4502b5ff2ea/pkg/fsm/types/results.go#L21)
+            - There are three types of results: `done, requeue and error`
+        - Writing and Updating Managed Resources
+            - If your controller creates CRDs they use [OutputObjectSet](https://github.com/reddit/achilles-sdk/blob/4fe0f620d71a1a988cd05629df5ea4502b5ff2ea/pkg/fsm/types/output.go#L17) abstraction.
+            - Output objects have their owner references updated with the parent object (for easy garbage collection)
+        - Also allows for specifying Finalizer states (FSM) when k8s GC isn't enough and you want to perform a proper cleanup. [Example](https://github.com/reddit/achilles-token-controller/blob/b807e6b4f8000830aa2596132d73d466441a5d17/internal/controllers/accesstoken/reconciler.go#L165)
 
 ---
 `Apr 8, 2024`
