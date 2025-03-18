@@ -14,6 +14,18 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
 ---
+`Mar 19, 2025`
+- [Kuberay](https://github.com/ray-project/kuberay)
+- KubeRay core: This is the official, fully-maintained component of KubeRay that provides three custom resource definitions, RayCluster, RayJob, and RayService. These resources are designed to help you run a wide range of workloads with ease.
+    - RayCluster: KubeRay fully manages the lifecycle of RayCluster, including cluster creation/deletion, autoscaling, and ensuring fault tolerance.
+    - RayJob: With RayJob, KubeRay automatically creates a RayCluster and submits a job when the cluster is ready. You can also configure RayJob to automatically delete the RayCluster once the job finishes.
+    - RayService: RayService is made up of two parts: a RayCluster and a Ray Serve deployment graph. RayService offers zero-downtime upgrades for RayCluster and high availability.
+
+- Community-managed components (optional): Some components are maintained by the KubeRay community.
+    - KubeRay APIServer: It provides a layer of simplified configuration for KubeRay resources. The KubeRay API server is used internally by some organizations to back user interfaces for KubeRay resource management.
+    - KubeRay Python client: This Python client library provides APIs to handle RayCluster from your Python application.
+
+---
 `Mar 18, 2025`
 - Let's start journaling again (time to heal)
 - Reading about [Flux CD](https://fluxcd.io/flux/concepts/) (CNCF graduate project)
@@ -40,7 +52,14 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
             - If your controller creates CRDs they use [OutputObjectSet](https://github.com/reddit/achilles-sdk/blob/4fe0f620d71a1a988cd05629df5ea4502b5ff2ea/pkg/fsm/types/output.go#L17) abstraction.
             - Output objects have their owner references updated with the parent object (for easy garbage collection)
         - Also allows for specifying Finalizer states (FSM) when k8s GC isn't enough and you want to perform a proper cleanup. [Example](https://github.com/reddit/achilles-token-controller/blob/b807e6b4f8000830aa2596132d73d466441a5d17/internal/controllers/accesstoken/reconciler.go#L165)
-
+    - Resource Updates for items your controller owns. [Nice doc](https://github.com/reddit/achilles-sdk/blob/main/docs/sdk-apply-objects.md)
+        - Recommended that you build the object from scratch rather than mutate a copy read from the server
+        - For all Kubernetes objects that our controllers read and/or write, we must make the assumption that every field in metadata, spec, and status has a single owner
+        - We must ensure that all spec and status fields are types that allow omission when serializing from Go types (pointer types, maps, or slices)
+        - For apis where setting the field to the zero value is equivalent to deleting the field
+            - Using JSON merge patch semantics, deleting a field requires that the request body contain the field with an empty value (0 for numerics, "" for strings, false for bools, [] for slices and {} for maps or structs).
+        - In APIs where a field's zero value is not semantically equivalent to the field being absent, deleting the field requires using an Update operation (rather than a Patch operation) to overwrite the entire object
+            - SDK provides `io.WithOptimisticLock()` for resource locking, `io.AsUpdate()` for full object update. Usage: `out.Apply(obj, io.AsUpdate())`
 ---
 `Apr 8, 2024`
 - Grant Sanderson from 3Blue1Brown dropped visual tutorials about [GPT](https://www.youtube.com/watch?v=wjZofJX0v4M&ab_channel=3Blue1Brown) and [attention in transformers](https://www.youtube.com/watch?v=eMlx5fFNoYc&t=13s&ab_channel=3Blue1Brown).
