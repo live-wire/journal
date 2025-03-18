@@ -14,6 +14,16 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
 ---
+`Mar 18, 2025`
+- Let's start journaling again (time to heal)
+- Reading about [Flux CD](https://fluxcd.io/flux/concepts/) (CNCF graduate project)
+    - Keeps your k8s cluster in sync with the source of truth repository
+    - All `sources` are specified as Custom Resources in a Kubernetes cluster, examples of sources are `GitRepository`, OCIRepository, HelmRepository and Bucket resources.
+    - Works well with Kustomize. The Kustomization custom resource represents a local set of Kubernetes resources (e.g. kustomize overlay) that Flux is supposed to reconcile in the cluster
+    - Cool feature alert: Progressive Delivery (techniques like feature flags, canary releases, and A/B testing): builds on Continuous Delivery by gradually rolling out new features or updates to a subset of users, allowing developers to test and monitor the new features in a controlled environment and make necessary adjustments before releasing them to everyone. Implemented using [Flagger](https://fluxcd.io/flagger/usage/deployment-strategies/).
+    - NOTE: If you make any changes to the cluster using kubectl edit/patch/delete, they will be promptly reverted. You either suspend the reconciliation or push your changes to a Git repository.
+
+---
 `Apr 8, 2024`
 - Grant Sanderson from 3Blue1Brown dropped visual tutorials about [GPT](https://www.youtube.com/watch?v=wjZofJX0v4M&ab_channel=3Blue1Brown) and [attention in transformers](https://www.youtube.com/watch?v=eMlx5fFNoYc&t=13s&ab_channel=3Blue1Brown).
 
