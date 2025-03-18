@@ -60,6 +60,15 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
             - Using JSON merge patch semantics, deleting a field requires that the request body contain the field with an empty value (0 for numerics, "" for strings, false for bools, [] for slices and {} for maps or structs).
         - In APIs where a field's zero value is not semantically equivalent to the field being absent, deleting the field requires using an Update operation (rather than a Patch operation) to overwrite the entire object
             - SDK provides `io.WithOptimisticLock()` for resource locking, `io.AsUpdate()` for full object update. Usage: `out.Apply(obj, io.AsUpdate())`
+    - Claim and Claimed resources:
+        - You want to expose a namespace-scoped CR (the claim object) whose implementation (the claimed object) requires cluster-scoped resources.
+        - You want to decouple the "request" (the claim object) from the "fulfillment" of that request (the claimed object), similar to Kubernetes' PVC and PV pattern.
+    - New metrics exposed by sdk (apart from controller-runtime-metrics):
+        - `achilles_resource_readiness`
+        - `achilles_trigger` (self, relative, child)
+        - `achilles_object_suspended`
+        - `achilles_state_duration_seconds`
+
 ---
 `Apr 8, 2024`
 - Grant Sanderson from 3Blue1Brown dropped visual tutorials about [GPT](https://www.youtube.com/watch?v=wjZofJX0v4M&ab_channel=3Blue1Brown) and [attention in transformers](https://www.youtube.com/watch?v=eMlx5fFNoYc&t=13s&ab_channel=3Blue1Brown).
