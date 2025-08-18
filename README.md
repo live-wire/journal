@@ -14,6 +14,25 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
 ---
+`Aug 18, 2025`
+- 
+
+---
+`Jul 08, 2025`
+- [Apache Iceberg](https://iceberg.apache.org/) started @ Netflix.  Tim berglund's [overview](https://www.youtube.com/watch?v=TsmhRZElPvM).
+    - Wins: Schema, consistency, acid over blob store data.
+    - Building Iceberg from bottom up:
+    - Data layer = data files like parquet. (Immutable)
+    - Metadata layer 
+        - **Manifest file** (with a group of parquet files). 
+        - One level up = **manifest list** file (which is a group of manifest files)
+        - One level up = **metadata file** (which has a notion of snapshots.)
+        - One level up = **Catalog** - it is a database of where the metadata files exist/
+    
+- Pinterest's Ray based ML infra - [Blog post](https://medium.com/pinterest-engineering/scaling-pinterest-ml-infrastructure-with-ray-from-training-to-end-to-end-ml-pipelines-4038b9e837a0)
+
+
+---
 `Mar 19, 2025`
 - [Kuberay](https://github.com/ray-project/kuberay)
 - KubeRay core: This is the official, fully-maintained component of KubeRay that provides three custom resource definitions, RayCluster, RayJob, and RayService. These resources are designed to help you run a wide range of workloads with ease.
