@@ -1,6 +1,6 @@
 # Journal 📮
 
-I plan to fill this section with what I discovered today - - - AFAP _(As Frequently as possible)_!
+I plan to fill this section with what I discovered today - _(As Frequently as possible)_!
 These notes are best viewed with MathJax [extension](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima) in chrome.
 
 > "Science isn't good or bad, it's just true." - Hank Green
@@ -15,7 +15,46 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 
 ---
 `Aug 18, 2025`
-- 
+- [MCP Spec](https://modelcontextprotocol.io/docs/getting-started/intro). MCP is an open protocol that standardizes how applications provide context to large language models (LLMs)
+    - Concepts: The key participants in the MCP architecture are:
+        - MCP Host: The AI application that coordinates and manages one or multiple MCP clients
+        - MCP Client: A component that maintains a connection to an MCP server and obtains context from an MCP server for the MCP host to use
+        - MCP Server: A program that provides context to MCP clients (can run at local or remote)
+    - Layers
+        - Data Layer: Defines the JSON-RPC based protocol for client-server communication ~ more details below
+            - Server features - Enables servers to provide core functionality including tools for AI actions, resources for context data, and prompts for interaction templates
+            - Client features - Enables servers to ask the client to sample from the host LLM
+            - Utils - Supports additional capabilities like notifications for real-time updates and progress tracking for long-running operations
+        - Transport Layer: Defines the communication mechanisms and channels that enable data exchange between clients and servers including auth
+- [Data Layer Protocol](https://modelcontextprotocol.io/docs/learn/architecture#data-layer-protocol)
+    - MCP uses JSON-RPC 2.0 as its underlying RPC protocol
+    - [Server primitives](https://modelcontextprotocol.io/docs/learn/architecture#primitives) They define what clients and servers can offer each other
+        - Tools: Executable functions that AI applications can invoke to perform actions (e.g., file operations, API calls, database queries)
+        - Resources: Data sources that provide contextual information to AI applications (e.g., file contents, database records, API responses)
+        - Prompts: Reusable templates that help structure interactions with language models (e.g., system prompts, few-shot examples)
+        - Example: MCP clients will use the `*/list` methods to discover available primitives. For example, a client can first list all available tools (`tools/list`) and then execute them. This design allows listings to be dynamic. As a concrete example, consider an MCP server that provides context about a database. It can expose tools for querying the database, a resource that contains the schema of the database, and a prompt that includes few-shot examples for interacting with the tools.
+    - Client primitives:
+        - Sampling - Allows servers to request language model completions from the client’s AI application via the method `sampling/complete`
+        - Elicitation - Allows servers to request additional information from users via method `elicitation/request`
+        - Logging - Enables servers to send log messages to clients for debugging and monitoring purposes
+    - Notifications: The protocol supports real-time notifications to enable dynamic updates between servers and clients. Notifications are sent as JSON-RPC 2.0 notification messages (without expecting a response) and enable MCP servers to provide real-time updates to connected clients.
+    - [Example](https://modelcontextprotocol.io/docs/learn/architecture#example)
+        - Client sends an `initialize` request to establish connection
+            - Protocol Version Negotiation
+            - Capability discovery - Tools, notifications etc.
+            - Identity exchange (client/server versions)
+- [Server concepts](https://modelcontextprotocol.io/docs/learn/server-concepts): Core building blocks as discussed above are:
+    - Tools - For AI actions - Model controlled. Tools are model-controlled, meaning AI models can discover and invoke them automatically. However, MCP emphasizes human oversight through several mechanisms.
+    - Resources - Context Data - provide structured access to information that the host application can retrieve and provide to AI models as context. Applications can access this information directly and decide how to use it.
+        - Resources use URI-based identification and declare MIME types for appropriate content handling. Support two discovery patterns: direct resources with fixed URIs `file:///path/to/document.md`, and resource templates with parameterized URIs `travel://activities/{city}/{category}`.
+    - Prompts - provide reusable templates. They allow MCP server authors to provide parameterized prompts for a domain, or showcase how to best use the MCP server. They are user-controlled, requiring explicit invocation rather than automatic triggering.
+
+- [Client concepts](https://modelcontextprotocol.io/docs/learn/client-concepts) MCP clients are instantiated by host applications to communicate with particular MCP servers. The host application, like Claude.ai or an IDE, manages the overall user experience and coordinates multiple clients. Each client handles one direct communication with one server. The host is the application users interact with, while clients are the protocol-level components that enable server connections
+    - Sampling - Server initiates these requests to request for AI assistance to analyze options. This keeps the server completely decoupled from the Language Model. Every sampling request needs explicit user consent.
+    - Roots define filesystem boundaries for server operations, allowing clients to specify which directories servers should focus on. It’s important to note that while roots provide guidance to servers about where to operate, the client is always in full control of file access. Roots simply communicate intended boundaries—actual file access is always mediated by the client’s security policies.
+    - Elicitation provides a structured way for servers to gather necessary information on demand. Instead of requiring all information up front or failing when data is missing, servers can pause their operations to request specific inputs from users.
+
+- Versioning: The Model Context Protocol uses string-based version identifiers following the format YYYY-MM-DD, to indicate the last date backwards incompatible changes were made.
 
 ---
 `Jul 08, 2025`
