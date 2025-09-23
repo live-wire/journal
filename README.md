@@ -14,6 +14,16 @@ These notes are best viewed with MathJax [extension](https://chrome.google.com/w
 > "We must run as fast as we can, just to stay in place." - Lewis Carrol
 
 ---
+`Sep 23, 2025`
+- Optimizations in Training workloads
+- Jagged Tensors - [Link](https://docs.pytorch.org/FBGEMM/fbgemm_gpu/overview/jagged-tensor-ops/JaggedTensorOps.html)
+  - Two notable examples of this type of input are:
+    - Sparse feature inputs in recommendation systems
+    - Batches of tokenized sentences which may be input to natural language processing systems.
+- Sparse optimizers for high cardinality embedding lookups
+  - For embedding lookups of large sizes (like user-ids etc.), your entire model size ends up being consumed by this high cardinality matrix. Solution, use sparse optimizers, so only your current batch is updated (not the entire million dimension table). This will let you grow your embedding size by alot and will also train much faster. 
+
+---
 `Aug 18, 2025`
 - [MCP Spec](https://modelcontextprotocol.io/docs/getting-started/intro). MCP is an open protocol that standardizes how applications provide context to large language models (LLMs)
     - Concepts: The key participants in the MCP architecture are:
